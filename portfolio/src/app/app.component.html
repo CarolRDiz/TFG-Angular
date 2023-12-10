@@ -1,0 +1,41 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<style>
+</style>
+<!--
+{{title}}
+{{getEdad()+1>=18?"Mayor de edad":"Menor de edad"}}
+<input type="text" #empresa>
+<input type="button" value="Dale" (click)="llamaEmpresa(empresa.value)">
+Empresa: {{empresa.value}}
+<input type="text" #nombre (keyup)="0">
+Nombre: {{nombre.value}}
+
+<button [disabled]="disableProperty">DISABLED</button>
+
+Registrado: <input type="checkbox" [checked]="registrado">
+{{getRegistroUsuario()}}
+
+<button (click)="mostrarAlerta()">ALERTA</button>
+
+BIDIRECCIONAL:
+<input type="text" [(ngModel)]="bidireccional">
+{{bidireccional}}
+-->
+
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<router-outlet></router-outlet>

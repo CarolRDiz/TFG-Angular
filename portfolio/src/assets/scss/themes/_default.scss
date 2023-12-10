@@ -1,0 +1,29 @@
+// -----------------------------------------------------------------------------
+// When having several themes, this file contains everything related to the
+// default one.
+// -----------------------------------------------------------------------------
+
+// $text-size-small: 12px;
+// $text-size-primary: 16px;
+// $text-size-medium: 18px;
+// $text-size-large: 24px;
+
+// Theme dark
+.theme{
+    --color-text: #{$text-color};
+    --color-light-gray: #{$light-gray}; 
+    --color-mid-gray: #{$mid-gray};
+    --color-dark-gray: #{$dark-gray};
+    --color-icon: #{$text-color};
+    // --mdc-checkbox-unselected-icon-color: #{$text-color};
+    // --mdc-checkbox-disabled-selected-icon-color: #{$text-color};
+    // --mdc-checkbox-unselected-focus-icon-color: #{$text-color};
+    // --mdc-checkbox-disabled-unselected-icon-color: #{$text-color};
+    // --mdc-checkbox-unselected-pressed-icon-color: #{$text-color};
+    // Theme light
+    &--light{
+    }
+}
+.mdc-checkbox__background{
+    border-color: $text-color;
+}

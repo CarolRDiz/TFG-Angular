@@ -1,0 +1,22 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the navigation component.
+// -----------------------------------------------------------------------------
+
+.nav {
+    .nav__list {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        padding-left: 0;
+        .nav__element{
+            width: 100%;
+            .nav__link{
+                color: var(--color-text);
+                //text-transform: uppercase;
+                :visited {
+                    color: var(--color-text);
+                }
+            }
+        }
+    }
+}

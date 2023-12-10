@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+.header {
+    margin: 0;
+    padding: 40px;
+    width: 300px;
+    background-color: var(--color-dark-gray);
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+.header__logo{
+    width: 30px;
+    width: 100%;
+}

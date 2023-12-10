@@ -1,0 +1,15 @@
+.content {
+    background-color: var(--color-dark-gray);
+    margin-left: 300px;
+    min-height: 100vh;
+    padding: 15px;
+    padding-top: 30px;
+    padding-right: 50px;
+    position: relative;
+}
+.content__top{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 20px;
+}

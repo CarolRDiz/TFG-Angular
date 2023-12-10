@@ -1,0 +1,7 @@
+<div class="gallery">
+    <div class="gallery__column" *ngFor="let column of getImagesColumn(); let i=index;">
+        <img class="gallery__img" [src]="image" alt="" *ngFor="let image of column; let i=index;" (click)="selectImage(image)">
+    </div>
+    <app-lightbox  [image]="currentImage" *ngIf="lightboxOpen" (slideLeftEvent)="slideLeft()" (slideRightEvent)="slideRight()" (closeEvent)="closeLightbox()"></app-lightbox>
+
+</div>

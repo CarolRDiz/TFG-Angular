@@ -1,0 +1,12 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+.button {
+    padding: 20px;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+    background-color: var(--color-text);
+    color: var(--color-dark-gray);
+}
