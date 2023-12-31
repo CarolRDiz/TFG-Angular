@@ -19,18 +19,14 @@ export class IllustrationService {
 
   postIllustration(newIllustration: IllustrationCreate) {
     const formData = new FormData();
-    formData.append("name", newIllustration.name);
-    formData.append("description", newIllustration.description);
-    // if (newIllustration.image.length == 1) {
-    //   let image = newIllustration.image[0].file;
-    //   formData.append("image", image);
-    // }
+    if(newIllustration.name) formData.append("name", newIllustration.name);
+    if(newIllustration.description) formData.append("description", newIllustration.description);
     formData.append("visibility", newIllustration.visibility.toString());
-    formData.append("image", newIllustration.image);
-
-    return axios.post('localhost:8080/illustrations/', {
+    if(newIllustration.image) formData.append("image", newIllustration.image);
+    console.log(formData)
+    return axios.post('http://localhost:8080/illustrations/', 
       formData
-    })
+    )
   }
   getAllIllustrations(): Illustration[] {
     return this.illustrationList;

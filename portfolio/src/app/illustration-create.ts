@@ -1,8 +1,8 @@
 import { Binary } from "@angular/compiler";
 
 export interface IllustrationCreate {
-    name: string,
-    image: File,
-    description: string,
+    name: string | null,
+    image: File | null | undefined,
+    description: string | null,
     visibility: boolean
 }

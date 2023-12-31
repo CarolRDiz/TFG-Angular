@@ -33,7 +33,7 @@ export class AdminCreateIllustrationComponent {
 
   //  FORM
   images = new FormGroup({
-    image: new FormControl('')
+    image: new FormControl<File | null>(null)
   })
 
   createForm = new FormGroup({
@@ -45,6 +45,10 @@ export class AdminCreateIllustrationComponent {
     images: this.images
   })
 
+  // SETTERS
+  updateImage(file: File) {
+    this.image.setValue(file);
+  }
   // GETTERS
   get image(): any {
     return this.images.get('image');
@@ -86,23 +90,23 @@ export class AdminCreateIllustrationComponent {
 
   submitCreateForm() {
     console.log(this.createForm)
-    // const illustration : IllustrationCreate = {
-    //   "name": this.createForm.value.details?.name??'',
-    //   "description": this.createForm.value.details?.description??'',
-    //   "image": this.createForm.value.images?.image,
-    //   "visibility": false
-    // }
-    //this.illustrationService.postIllustration()
+    const illustration : IllustrationCreate = {
+      "name": this.createForm.value.details?.name??'',
+      "description": this.createForm.value.details?.description??'',
+      "image": this.createForm.value.images?.image,
+      "visibility": false
+    }
+    this.illustrationService.postIllustration(illustration);
   }
 
   //  ON CHANGE
   @HostListener('change', ['$event.target.files'])
   emitFiles(event: FileList) {
     const file = event && event.item(0);
-    if(file){ 
+    if (file) {
       console.log(file)
       //  SET FILE
-      this.file = file;
+      this.updateImage(file);
       // SET URL FILE
       this.fileUrl = URL.createObjectURL(file);
       console.log(this.fileUrl);
