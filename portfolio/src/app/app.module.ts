@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { CommonModule } from '@angular/common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './layout/header/header.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { IllustrationComponent } from './views/public/illustration/illustration.component';
 import { StoreComponent } from './views/public/store/store.component';
@@ -21,6 +21,9 @@ import {MatButtonModule} from '@angular/material/button';
 
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { AdminCreateIllustrationComponent } from './views/admin/illustration/admin-create-illustration/admin-create-illustration.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { AddImageComponent } from './components/add-image/add-image.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     AdminViewComponent,
     AdminHeaderComponent,
     AdminIllustrationComponent,
+    AdminCreateIllustrationComponent,
+    SearchBarComponent,
+    AddImageComponent,
     
   ],
   imports: [
@@ -46,7 +52,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatMenuModule,
     MatButtonModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

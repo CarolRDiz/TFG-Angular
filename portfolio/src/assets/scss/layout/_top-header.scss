@@ -1,0 +1,29 @@
+.top-header {
+    align-items: center;
+    background-color: var(--color-dark-gray);
+    display: flex;
+    height: $top-header-height;
+    justify-content: space-between;
+    left:0;
+    padding-left: $header-width + $padding-sides;
+    padding-bottom: $padding-top;
+    padding-right: $padding-sides;
+    padding-top: $padding-top;  
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: $third-level;
+}
+.top-header__options{
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 10px;
+    align-items: center;
+}
+.top-header__title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text);
+}

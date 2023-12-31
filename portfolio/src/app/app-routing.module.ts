@@ -5,6 +5,7 @@ import { StoreComponent } from './views/public/store/store.component';
 import { PublicComponent } from './views/public/public/public.component';
 import { AdminViewComponent } from './views/admin/admin-view/admin-view.component';
 import { AdminIllustrationComponent } from './views/admin/illustration/admin-illustration/admin-illustration.component';
+import { AdminCreateIllustrationComponent } from './views/admin/illustration/admin-create-illustration/admin-create-illustration.component';
 
 const routes: Routes = [
   {
@@ -26,13 +27,17 @@ const routes: Routes = [
       { 
         path: 'illustration',
         component: AdminIllustrationComponent
+      },
+      { 
+        path: 'create-illustration',
+        component: AdminCreateIllustrationComponent
       }
     ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes,{ anchorScrolling: 'enabled'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

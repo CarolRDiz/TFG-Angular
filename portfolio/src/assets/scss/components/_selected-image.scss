@@ -1,0 +1,33 @@
+.selected-image {
+    position: relative;
+    width: 100%;
+}
+
+.selected-image__image {
+    opacity: 1;
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: .5s ease;
+    backface-visibility: hidden;
+  }
+  
+  .selected-image__buttons {
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    display: flex;
+    padding: 20px;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  
+  .selected-image:hover .selected-image__image {
+    opacity: 0.3;
+  }
+  
+  .selected-image:hover .selected-image__buttons {
+    opacity: 1;
+  }

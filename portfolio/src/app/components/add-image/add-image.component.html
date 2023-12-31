@@ -1,0 +1,30 @@
+<ng-container [formGroup]="parentForm">
+    <!-- <div class="selected-image" *ngIf="getFileUrl(); else elseBlock">
+        <img class="selected-image__image" [src]="getFileUrl()" alt="">
+        <div class="selected-image__buttons">
+            <button mat-icon-button aria-label="Example icon-button with a menu">
+                <mat-icon>open_in_full</mat-icon>
+            </button>
+            <button mat-icon-button aria-label="Example icon-button with a menu" (click)="deleteImage()" type="button">
+                <mat-icon class="icon--red">delete</mat-icon>
+            </button>
+        </div>
+    </div> -->
+
+
+    <!-- <ng-template #elseBlock> -->
+
+    <label class="add-image" for="image">
+        <input formControlName="image" id="image" type="file" class="add-image__input">
+        <div class="add-image__circle">
+            <mat-icon class="add-image__icon material-symbols-outlined">
+                add
+            </mat-icon>
+        </div>
+        <span>Añadir imagen</span>
+    </label>
+
+
+    <!-- {{getFile() ? getFileName(): "select"}} -->
+
+</ng-container>

@@ -1,10 +1,10 @@
 .content {
     background-color: var(--color-dark-gray);
-    margin-left: 300px;
+    margin-left: $header-width;
     min-height: 100vh;
-    padding: 15px;
-    padding-top: 30px;
-    padding-right: 50px;
+    padding-left: $padding-sides;
+    padding-right: $padding-sides;
+    padding-top: $padding-top;
     position: relative;
 }
 .content__top{
@@ -12,4 +12,7 @@
     justify-content: space-between;
     align-items: baseline;
     margin-bottom: 20px;
+}
+.content--padding-top {
+    padding-top: $padding-top;
 }

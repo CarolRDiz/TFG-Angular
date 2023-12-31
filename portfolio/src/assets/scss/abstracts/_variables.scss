@@ -2,9 +2,14 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
+// HEADER
+$header-width: 200px;
 
+// TOP HEADER
+$top-header-height: 110px;
 
-
+$padding-top: 33px;
+$padding-sides:33px;
 
 /// Regular font family
 /// @type List
@@ -39,7 +44,7 @@ $mid-gray: rgb(97, 97, 97) !default;
 $dark-gray: rgb(46, 46, 46) !default;
 
 
-
+$black: rgb(31, 31, 31) !default;
 
 
 /// Container's maximum width
@@ -61,7 +66,10 @@ $breakpoints: (
 
 
 
-
+/// Z-index
+$highest-level: 10;
+$second-level: 9;
+$third-level: 8;
 
 
 /// Relative or absolute URL where all assets are served from
@@ -69,3 +77,5 @@ $breakpoints: (
 /// @example scss - When using a CDN
 ///   $base-url: 'https://cdn.example.com/assets/';
 $base-url: '/assets/' !default;
+
+

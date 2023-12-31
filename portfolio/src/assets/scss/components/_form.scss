@@ -1,0 +1,49 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 50px;
+    width: 100%;
+}
+.form__group {
+    display: flex;
+    flex-direction: column;
+    row-gap: 15px;
+    width: 100%;
+    border: none;
+}
+.form__legend {
+    border-bottom: 1px solid var(--color-light-gray);
+    font-size: larger;
+    margin:0;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    width: 100%;
+}
+
+.label {
+    color: var(--color-light-gray);
+    font-size: small;
+    text-transform: uppercase;
+}
+
+.refillable-field {
+    background-color: var(--color-mid-gray);
+    border-bottom: 1px solid var(--color-light-gray);
+    padding: 15px 10px;
+    width: 100%;
+}
+
+.refillable-field__content {
+    display: flex;
+    position: relative;
+    width: 100%;
+}
+
+.refillable-field__input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    color: var(--color-text);
+}

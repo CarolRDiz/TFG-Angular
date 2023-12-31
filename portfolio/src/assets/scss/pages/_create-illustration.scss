@@ -1,0 +1,19 @@
+.create-illustration {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+.create-illustration__content {
+    margin-top: 44px + $padding-top;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    .form {
+        flex-direction: row;
+        column-gap: 20px;
+    }
+}
+.create-illustration__right {
+    position: fixed;
+    right: 150px;
+}

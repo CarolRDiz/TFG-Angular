@@ -3,12 +3,14 @@
 // -----------------------------------------------------------------------------
 .header {
     margin: 0;
-    padding: 40px;
-    width: 300px;
-    background-color: var(--color-dark-gray);
+    padding: $padding-top $padding-sides;
+    width: $header-width;
+    //background-color: var(--color-dark-gray);
+    background-color: $black;
     position: fixed;
     height: 100%;
     overflow: auto;
+    z-index: $second-level;
 }
 .header__logo{
     width: 30px;

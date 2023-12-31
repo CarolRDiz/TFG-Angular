@@ -1,19 +1,9 @@
 <main class="content">
     <div class="content__top">
         <h1 class="content__title">Illustration</h1>
-        <button class="button">Agregar ilustración</button>
+        <button class="button" routerLink="/admin/create-illustration">Agregar ilustración</button>
     </div>
-    <div class="search-bar">
-        <div class="search-bar__content">
-            <mat-icon class="material-symbols-outlined search-bar__icon">
-                search
-            </mat-icon>
-            <input type="text" class="search-bar__input" placeholder="Buscar por productos, categorías, etiquetas">
-            <mat-icon class="material-symbols-outlined search-bar__close-icon">
-                close
-            </mat-icon>
-        </div>
-    </div>
+    <app-search-bar></app-search-bar>
     <table class="table">
         <thead>
             <tr class="table__header">
@@ -21,19 +11,19 @@
                 <th class="table__cell">Illustration</th>
                 <th class="table__cell"></th>
                 <th class="table__cell">Visibilidad</th>
-                <th class="table__cell">Fecha</th>
+                <th class="table__cell">Precio</th>
                 <th class="table__cell"></th>
             </tr>
         </thead>
         <tbody>
-            <tr class="table__row">
+            <tr class="table__row" *ngFor="let illustration of illustrationList; index as i">
                 <td class="table__cell table__cell--small">
                     <mat-checkbox></mat-checkbox>
                 </td>
-                <td class="table__cell">cell</td>
-                <td class="table__cell">cell</td>
-                <td class="table__cell">cell</td>
-                <td class="table__cell">cell</td>
+                <td class="table__cell">foto</td>
+                <td class="table__cell">{{illustration.name}}</td>
+                <td class="table__cell">{{illustration.visibility}}</td>
+                <td class="table__cell"></td>
                 <td class="table__cell">
                     <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                         <mat-icon>more_horiz</mat-icon>

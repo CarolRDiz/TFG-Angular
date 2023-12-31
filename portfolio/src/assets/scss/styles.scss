@@ -1,47 +1,55 @@
 @charset "UTF-8";
 
 // 1. Configuration and helpers
-@import
-  'abstracts/variables',
-  'abstracts/functions',
-  'abstracts/mixins';
+@import 'abstracts/variables',
+'abstracts/functions',
+'abstracts/mixins';
 
 // 2. Vendors
-@import
-  'vendors/normalize';
+@import 'vendors/normalize';
 
 // 3. Base stuff
-@import
-  'base/base',
-  'base/fonts',
-  'base/typography',
-  'base/helpers';
+@import 'base/base',
+'base/fonts',
+'base/typography',
+'base/helpers';
 
 // 4. Layout-related sections
-@import
-  'layout/header',
-  'layout/footer',
-  'layout/content';
+@import 'layout/header',
+'layout/footer',
+'layout/content',
+'layout/top-header';
 
 // 5. Components
-@import
-  'components/button',
-  'components/gallery',
-  'components/icon',
-  'components/lightbox',
-  './components/modal',
-  'components/navigation',
-  'components/search-bar',
-  'components/table';
+@import 
+'components/add-image',
+'components/button',
+'components/gallery',
+'components/icon',
+'components/lightbox',
+'./components/modal',
+'components/navigation',
+'components/search-bar',
+'components/selected-image',
+'components/table',
+'components/form';
+
 
 
 // 6. Page-specific styles
-@import
-  'pages/home';
+@import 'pages/home',
+'pages/create-illustration';
 
 // 7. Themes
-@import
-  'themes/default';
+@import 'themes/default';
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

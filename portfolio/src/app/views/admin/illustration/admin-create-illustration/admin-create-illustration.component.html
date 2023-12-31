@@ -1,0 +1,78 @@
+<main class="content">
+    <div class="create-illustration">
+        <div class="top-header">
+            <div class="top-header__title">
+                <h1>Crear ilustración</h1>
+            </div>
+            <div class="top-header__options">
+                <button mat-icon-button aria-label="Example icon-button with a menu">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
+                <button class="button" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                    Guardar <mat-icon>expand_more</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <button form="form" mat-menu-item>
+                        <span>Guardar</span>
+                    </button>
+                    <button mat-menu-item>
+                        <span>Publicar</span>
+                    </button>
+                </mat-menu>
+            </div>
+        </div>
+        <div class="create-illustration__content">
+            <form id="form" [formGroup]="createForm" (submit)="submitCreateForm()" class="form">
+                <!--IMAGE-->
+
+                <fieldset formGroupName="images" class="form__group">
+                    <legend class="form__legend">Imagen</legend>
+                    <!--SELECTED IMAGE-->
+                    <div *ngIf="getShow() else elseBlock">
+                        <div class="selected-image">
+                            <img class="selected-image__image" [src]="getFileUrl()" alt="">
+                            <div class="selected-image__buttons">
+                                <button mat-icon-button aria-label="Example icon-button with a menu">
+                                    <mat-icon>open_in_full</mat-icon>
+                                </button>
+                                <button mat-icon-button aria-label="Example icon-button with a menu"
+                                    (click)="deleteImage()" type="button">
+                                    <mat-icon class="icon--red">delete</mat-icon>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <!--ADD IMAGE-->
+                    <ng-template #elseBlock>
+                        <app-add-image [parentForm]="images" ></app-add-image>
+                    </ng-template>
+                </fieldset>
+
+                <!--DETAILS-->
+                <fieldset formGroupName="details" class="form__group">
+                    <legend class="form__legend">Detalles</legend>
+                    <!--NAME-->
+                    <div class="form__field">
+                        <label class="label" for="name">Nombre del producto </label>
+                        <div class="refillable-field">
+                            <div class="refillable-field__content">
+                                <input formControlName="name" id="name" type="text" class="refillable-field__input"
+                                    placeholder="Buscar por productos, categorías, etiquetas">
+                            </div>
+                        </div>
+                    </div>
+                    <!--DESCRIPTION-->
+                    <div class="form__field">
+                        <label class="label" for="description">Descripción</label>
+                        <div class="refillable-field">
+                            <div class="refillable-field__content">
+                                <textarea id="description" formControlName="description" class="refillable-field__input"
+                                    placeholder="Describe tu ilustración"> </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</main>

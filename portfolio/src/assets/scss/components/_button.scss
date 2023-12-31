@@ -3,10 +3,14 @@
 // -----------------------------------------------------------------------------
 
 .button {
-    padding: 20px;
+    padding: 10px;
     border: none;
     width: fit-content;
     height: fit-content;
     background-color: var(--color-text);
     color: var(--color-dark-gray);
+    cursor: pointer;
+    display: flex;
+    column-gap: 5px;
+    align-items: center;
 }
