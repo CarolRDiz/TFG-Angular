@@ -5,6 +5,8 @@ import { ControlContainer, FormControl, FormGroup, Validators } from '@angular/f
 import { IllustrationService } from 'src/app/illustration.service';
 import { Illustration } from 'src/app/illustration';
 import { IllustrationCreate } from 'src/app/illustration-create';
+import { Router } from '@angular/router';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin-create-illustration',
@@ -13,7 +15,7 @@ import { IllustrationCreate } from 'src/app/illustration-create';
 })
 export class AdminCreateIllustrationComponent {
 
-  constructor(private viewportScroller: ViewportScroller) {
+  constructor(private viewportScroller: ViewportScroller, private router: Router, private _snackBar: MatSnackBar) {
   }
   ngOnInit() {
     // this.onChanges();
@@ -23,10 +25,10 @@ export class AdminCreateIllustrationComponent {
   illustrationService: IllustrationService = inject(IllustrationService);
 
   //  EVENTS
-  @Output() closeEvent = new EventEmitter<void>();
+  // @Output() closeEvent = new EventEmitter<void>();
 
   // VARIABLES
-  private file: File | null = null;
+  // private file: File | null = null;
   private fileUrl: String | null = null;
   public show: boolean | null = false;
 
@@ -40,7 +42,8 @@ export class AdminCreateIllustrationComponent {
     details: new FormGroup({
       name: new FormControl('', Validators.required),
       // name: new FormControl('')
-      description: new FormControl('')
+      description: new FormControl(''),
+      visibility: new FormControl(false)
     }),
     images: this.images
   })
@@ -53,15 +56,15 @@ export class AdminCreateIllustrationComponent {
   get image(): any {
     return this.images.get('image');
   }
-  getFile(): any {
-    return this.file;
-  }
-  getFileName() {
-    if (this.file) {
-      return this.file.name;
-    }
-    return "nada"
-  }
+  // getFile(): any {
+  //   return this.file;
+  // }
+  // getFileName() {
+  //   if (this.file) {
+  //     return this.file.name;
+  //   }
+  //   return "nada"
+  // }
   getFileUrl() {
     if (this.fileUrl) {
       return this.fileUrl;
@@ -72,11 +75,11 @@ export class AdminCreateIllustrationComponent {
     return this.show;
   }
 
-  //  METHODS
-  close() {
-    this.closeEvent.emit();
-    console.log("CLOSE")
-  }
+  // //  METHODS
+  // close() {
+  //   this.closeEvent.emit();
+  //   console.log("CLOSE")
+  // }
   anchorScrolling(id: string): void {
     this.viewportScroller.scrollToAnchor(id);
   }
@@ -88,15 +91,56 @@ export class AdminCreateIllustrationComponent {
     this.fileUrl = null;
   }
 
-  submitCreateForm() {
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
+  save(){
+    console.log("save")
+    this.createForm.patchValue({
+      details: {
+        visibility: false
+      }
+    })
+    this.submitCreateForm();
+  }
+  publish(){
+    this.createForm.patchValue({
+      details: {
+        visibility: true
+      }
+    })
+    this.submitCreateForm();
+  }
+
+  async submitCreateForm() {
     console.log(this.createForm)
-    const illustration : IllustrationCreate = {
-      "name": this.createForm.value.details?.name??'',
-      "description": this.createForm.value.details?.description??'',
+    const illustration: IllustrationCreate = {
+      "name": this.createForm.value.details?.name ?? '',
+      "description": this.createForm.value.details?.description ?? '',
       "image": this.createForm.value.images?.image,
-      "visibility": false
+      "visibility": this.createForm.value.details?.visibility ?? false
     }
-    this.illustrationService.postIllustration(illustration);
+    var success: boolean = false;
+    await this.illustrationService.postIllustration(illustration)
+      .then(({ status }) => {
+        console.log(status);
+        success = true;
+      }
+      );
+    if (success) {
+      this.router.navigate(['/', 'admin', 'illustration'])
+        .then(nav => {
+          console.log(nav); // true if navigation is successful
+        }, err => {
+          console.log(err) // when there's an error
+        });
+      this.openSnackBar("Creado con éxito", "Ver")
+      
+    }
+    else {
+      
+    }
   }
 
   //  ON CHANGE

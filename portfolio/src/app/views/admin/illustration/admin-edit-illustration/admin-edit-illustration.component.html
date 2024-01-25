@@ -2,7 +2,7 @@
     <div class="create-illustration">
         <div class="top-header">
             <div class="top-header__title">
-                <h1>Crear ilustración</h1>
+                <h1>Editar ilustración</h1>
             </div>
             <div class="top-header__options">
                 <button mat-icon-button aria-label="Example icon-button with a menu">
@@ -12,28 +12,24 @@
                     Guardar <mat-icon>expand_more</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <!-- <button form="form" mat-menu-item>
-                        <span>Guardar</span>
-                    </button> -->
-                    <button (click)="save()" mat-menu-item>
+                    <button form="form" mat-menu-item>
                         <span>Guardar</span>
                     </button>
-                    <button (click)="publish()" mat-menu-item>
+                    <button mat-menu-item>
                         <span>Publicar</span>
                     </button>
                 </mat-menu>
             </div>
         </div>
         <div class="create-illustration__content">
-            <form id="form" [formGroup]="createForm" (submit)="submitCreateForm()" class="form">
+            <form id="form" [formGroup]="editForm" (submit)="submitEditForm()" class="form">
                 <!--IMAGE-->
-
                 <fieldset formGroupName="images" class="form__group">
                     <legend class="form__legend">Imagen</legend>
                     <!--SELECTED IMAGE-->
-                    <div *ngIf="getShow() else elseBlock">
+                    <div *ngIf="this.fileUrl else elseBlock">
                         <div class="selected-image">
-                            <img class="selected-image__image" [src]="getFileUrl()" alt="">
+                            <img class="selected-image__image" [src]="this.fileUrl" alt="">
                             <div class="selected-image__buttons">
                                 <button type="button" mat-icon-button aria-label="Example icon-button with a menu">
                                     <mat-icon>open_in_full</mat-icon>
@@ -47,7 +43,7 @@
                     </div>
                     <!--ADD IMAGE-->
                     <ng-template #elseBlock>
-                        <app-add-image [parentForm]="images" ></app-add-image>
+                        <app-add-image [parentForm]="images"></app-add-image>
                     </ng-template>
                 </fieldset>
 
@@ -56,7 +52,7 @@
                     <legend class="form__legend">Detalles</legend>
                     <!--NAME-->
                     <div class="form__field">
-                        <label class="label" for="name">Nombre del producto </label>
+                        <label class="label" for="name">Nombre de la ilustración </label>
                         <div class="refillable-field">
                             <div class="refillable-field__content">
                                 <input formControlName="name" id="name" type="text" class="refillable-field__input"
@@ -74,8 +70,18 @@
                             </div>
                         </div>
                     </div>
+                    <!--VISIBILITY-->
+                    <div class="form__field">
+                        <label class="label" for="name">Visibilidad </label> 
+                        <div class="field">
+                            <div class="field__toggle-content">
+                                <span>Público</span><mat-slide-toggle [aria-label]="'isPublic'" formControlName="visibility"></mat-slide-toggle>
+                            </div>        
+                        </div>
+                    </div>
                 </fieldset>
             </form>
         </div>
     </div>
+
 </main>

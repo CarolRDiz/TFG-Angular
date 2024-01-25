@@ -18,13 +18,18 @@ import { AdminIllustrationComponent } from './views/admin/illustration/admin-ill
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatMenuModule} from '@angular/material/menu'; 
 import {MatButtonModule} from '@angular/material/button'; 
+import {MatSnackBarModule} from '@angular/material/snack-bar'; 
 
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { AdminCreateIllustrationComponent } from './views/admin/illustration/admin-create-illustration/admin-create-illustration.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { AddImageComponent } from './components/add-image/add-image.component';
-
+import { AdminEditIllustrationComponent } from './views/admin/illustration/admin-edit-illustration/admin-edit-illustration.component';
+import { HttpClientModule } from '@angular/common/http';
+import {MatSelectModule} from '@angular/material/select';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { AdminProductsComponent } from './views/admin/products/admin-products/admin-products.component'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,6 +45,8 @@ import { AddImageComponent } from './components/add-image/add-image.component';
     AdminCreateIllustrationComponent,
     SearchBarComponent,
     AddImageComponent,
+    AdminEditIllustrationComponent,
+    AdminProductsComponent,
     
   ],
   imports: [
@@ -53,8 +60,13 @@ import { AddImageComponent } from './components/add-image/add-image.component';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
+    MatSelectModule,
+    MatSnackBarModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    HttpClientModule,
+    MatSlideToggleModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

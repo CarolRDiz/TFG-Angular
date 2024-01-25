@@ -3,9 +3,13 @@
         <mat-icon class="material-symbols-outlined search-bar__icon">
             search
         </mat-icon>
-        <input type="text" class="search-bar__input" placeholder="Buscar por productos, categorías, etiquetas">
-        <mat-icon class="material-symbols-outlined search-bar__close-icon">
-            close
-        </mat-icon>
+        <input type="text" class="search-bar__input" placeholder="Buscar por nombre" (input)="searchChange()"
+            [(ngModel)]="search">
+        <button (click)="clear()" class="button--text">
+            <mat-icon class="material-symbols-outlined search-bar__close-icon">
+                close
+            </mat-icon>
+        </button>
     </div>
+
 </div>

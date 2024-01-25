@@ -6,6 +6,8 @@ import { PublicComponent } from './views/public/public/public.component';
 import { AdminViewComponent } from './views/admin/admin-view/admin-view.component';
 import { AdminIllustrationComponent } from './views/admin/illustration/admin-illustration/admin-illustration.component';
 import { AdminCreateIllustrationComponent } from './views/admin/illustration/admin-create-illustration/admin-create-illustration.component';
+import { AdminEditIllustrationComponent } from './views/admin/illustration/admin-edit-illustration/admin-edit-illustration.component';
+import { AdminProductsComponent } from './views/admin/products/admin-products/admin-products.component';
 
 const routes: Routes = [
   {
@@ -31,7 +33,15 @@ const routes: Routes = [
       { 
         path: 'create-illustration',
         component: AdminCreateIllustrationComponent
-      }
+      },
+      { 
+        path: 'edit-illustration/:id',
+        component: AdminEditIllustrationComponent
+      },
+      { 
+        path: 'products',
+        component: AdminProductsComponent
+      },
     ]
   }
 ];

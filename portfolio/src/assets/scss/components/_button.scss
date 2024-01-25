@@ -14,3 +14,10 @@
     column-gap: 5px;
     align-items: center;
 }
+.button--text {
+    width: fit-content;
+    height: fit-content;
+    background: none;
+    border: none;
+    cursor: pointer;
+}

@@ -1,6 +1,5 @@
-export interface IllustrationCreate {
+export interface IllustrationEdit {
     name: string | null,
-    image: File | null | undefined,
     description: string | null,
     visibility: boolean
 }

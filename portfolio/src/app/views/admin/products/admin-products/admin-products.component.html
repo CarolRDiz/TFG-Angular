@@ -1,13 +1,13 @@
 <main class="content">
     <div class="content__top">
-        <h1 class="content__title">Illustration</h1>
-        <button class="button" routerLink="/admin/create-illustration">Agregar ilustración</button>
+        <h1 class="content__title">Productos</h1>
+        <button class="button" routerLink="/admin/create-illustration">Agregar productos</button>
     </div>
-    <app-search-bar (searchEvent)="search($event)"></app-search-bar>
+    <app-search-bar></app-search-bar>
     <div class="table">
         <div class="table__header">
                 <th class="table__cell table__cell--small"></th>
-                <th class="table__cell table__cell--medium--click" (click)="sortName()">Illustration
+                <th class="table__cell table__cell--medium--click" (click)="sortName()">Producto
                     <mat-icon *ngIf="!this.visibilitySort" class="material-symbols-outlined">
                         arrow_drop_down
                     </mat-icon>
@@ -28,7 +28,7 @@
                 <th class="table__cell table__cell--small"></th>
         </div>
         <ul class="table__body">
-            <li class="table__row" *ngFor="let illustration of illustrationListModified; index as i">
+            <li class="table__row" *ngFor="let illustration of illustrationList; index as i">
                 <div class="table__cell table__cell--small">
                     <mat-checkbox></mat-checkbox>
                 </div>
