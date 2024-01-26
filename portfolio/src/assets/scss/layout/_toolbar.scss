@@ -1,0 +1,28 @@
+.toolbar {
+    align-items: center;
+    background-color: var(--color-dark-gray);
+    bottom: 0;
+    display: flex;
+    height: 80px;
+    justify-content: space-between;
+    left: 0;
+    padding: 30px 90px;
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+
+.toolbar__options {
+    align-items: center;
+    column-gap: 30px;
+    display: flex;
+}
+
+.toolbar__selection {
+    align-items: center;
+    display: flex;
+    color: var(--color-light-gray);
+}
+.toolbar__button {
+    text-transform: uppercase;
+}

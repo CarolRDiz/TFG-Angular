@@ -11,18 +11,22 @@ import { Router } from '@angular/router';
 export class AdminIllustrationComponent {
   illustrationList: Illustration[] = [];
   illustrationListModified: Illustration[];
-  visibilitySort : Boolean = false;
-  nameSort : Boolean = false;
+  visibilitySort: Boolean = false;
+  nameSort: Boolean = false;
+  
+  illustrationSelectedArray: Number[] = [];
+  
+
   constructor(
-    private illustrationService: IllustrationService, 
+    private illustrationService: IllustrationService,
     private router: Router
-    ) {
+  ) {
   }
   ngOnInit(): void {
     this.illustrationService.getAllIllustrations().subscribe((illustrations) => {
       this.illustrationList = illustrations;
       this.illustrationListModified = illustrations;
-      }
+    }
     )
   }
   // SERVICES
@@ -46,24 +50,80 @@ export class AdminIllustrationComponent {
     this.router.navigate(['/', 'admin', 'edit-illustration', id])
   }
 
-  sortVisibility(){
-    console.log('sort visibility')
+  sortVisibility() {
     this.visibilitySort = !this.visibilitySort
     // this.illustrationList.sort((a, b) => (a.name > b.name ) ? 1 : -1)
-    this.illustrationListModified.sort((a, b) => (a.visibility == this.visibilitySort ) ? 1 : -1)
+    this.illustrationListModified.sort((a, b) => (a.visibility == this.visibilitySort) ? 1 : -1)
   }
-  sortName(){
-    console.log('sort visibility')
+  sortName() {
     this.nameSort = !this.nameSort
-    if(this.nameSort){
-      this.illustrationListModified.sort((a, b) => (a.name > b.name ) ? 1 : -1)
+    if (this.nameSort) {
+      this.illustrationListModified.sort((a, b) => (a.name > b.name) ? 1 : -1)
+    }
+    else {
+      this.illustrationListModified.sort((a, b) => (a.name < b.name) ? 1 : -1)
+    }
+  }
+  search(value: any) {
+    console.log(value)
+    this.illustrationListModified = this.illustrationList.filter((illustration) => illustration.name.includes(value));
+  }
+  async deleteIllustration(id: any) {
+    let success;
+    await this.illustrationService.deleteIllustration(id)
+      .then(({ status }) => {
+        console.log(status);
+        success = true;
+      }
+      );
+    if (success) {
+      this.illustrationService.getAllIllustrations().subscribe((illustrations) => {
+        this.illustrationList = illustrations;
+        this.illustrationListModified = illustrations;
+      }
+      )
+    }
+  }
+  async deleteIllustrationList() {
+    //TODO
+    // ARE YOU SURE
+    let success;
+    await this.illustrationService.deleteIllustrationList(this.illustrationSelectedArray)
+      .then(({ status }) => {
+        console.log(status);
+        success = true;
+      }
+      );
+    if (success) {
+      this.illustrationService.getAllIllustrations().subscribe((illustrations) => {
+        this.illustrationList = illustrations;
+        this.illustrationListModified = illustrations;
+        this.illustrationSelectedArray = [];
+      }
+      )
+    }
+  }
+
+  //SELECTED ILLUSTRATIONS
+  onIllustrationPressed($event: any){
+    let id: string = $event.source.value;
+    if($event.checked){
+      this.illustrationSelectedArray.push(parseInt(id));
     }
     else{
-      this.illustrationListModified.sort((a, b) => (a.name < b.name ) ? 1 : -1)
+      this.illustrationSelectedArray = this.illustrationSelectedArray.filter((checkedId)=> checkedId!=parseInt(id))
     }
   }
-  search(value:any){
-    console.log(value)
-    this.illustrationListModified = this.illustrationList.filter((illustration)=>illustration.name.includes(value));
+  selectAllIllustrations(){
+    this.illustrationSelectedArray = this.illustrationListModified.map((illustration)=>illustration.id)
+    console.log(this.illustrationListModified.map((illustration)=>illustration.id.toString()))
+    console.log(this.illustrationSelectedArray)
+  }
+  unselectAllIllustrations(){
+    this.illustrationSelectedArray = [];
+  }
+  isIllustrationChecked(id: Number){
+    console.log(this.illustrationSelectedArray.includes(id))
+    return this.illustrationSelectedArray.includes(id);
   }
 }

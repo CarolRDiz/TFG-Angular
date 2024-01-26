@@ -31,20 +31,37 @@ $text-color: rgb(232, 232, 232) !default;
 /// @type Color
 $brand-color: rgb(27, 210, 198) !default;
 
+// White
+/// @type Color
+$white: rgb(255, 255, 255);
+
 /// Light grey
 /// @type Color
-$light-gray: rgb(150, 150, 150) !default;
+$light-gray: rgb(138, 142, 154) !default;
+
+/// Light grey
+/// @type Color
+$mid-light-gray: rgb(75, 79, 83) !default;
 
 /// Medium grey
 /// @type Color
-$mid-gray: rgb(97, 97, 97) !default;
+$mid-gray: rgb(54,57,62) !default;
+
+/// Medium grey
+/// @type Color
+$mid-dark-gray: rgb(41, 45, 49) !default;
 
 /// Dark grey
 /// @type Color
-$dark-gray: rgb(46, 46, 46) !default;
+$dark-gray: rgb(30,33,36) !default;
 
+/// BLack
+/// @type Color
+$black: rgb(36, 36, 36) !default;
 
-$black: rgb(31, 31, 31) !default;
+/// Warn
+/// @type Color
+$warn: rgb(255, 85, 0) !default;
 
 
 /// Container's maximum width

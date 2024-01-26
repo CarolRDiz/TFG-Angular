@@ -8,7 +8,7 @@
                 <button mat-icon-button aria-label="Example icon-button with a menu">
                     <mat-icon>content_copy</mat-icon>
                 </button>
-                <button class="button" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <button class="button button--white" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                     Guardar <mat-icon>expand_more</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
@@ -56,11 +56,11 @@
                     <legend class="form__legend">Detalles</legend>
                     <!--NAME-->
                     <div class="form__field">
-                        <label class="label" for="name">Nombre del producto </label>
+                        <label class="label" for="name">Nombre de la ilustración </label>
                         <div class="refillable-field">
                             <div class="refillable-field__content">
                                 <input formControlName="name" id="name" type="text" class="refillable-field__input"
-                                    placeholder="Buscar por productos, categorías, etiquetas">
+                                    placeholder="Sonic Fanart">
                             </div>
                         </div>
                     </div>

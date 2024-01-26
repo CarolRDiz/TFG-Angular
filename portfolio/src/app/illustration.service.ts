@@ -64,4 +64,19 @@ export class IllustrationService {
       illustration
     )
   }
+  deleteIllustration(id: number) {
+    const url = `${this.baseUrl}${id}/`;
+    // this.http.patch<any>(url, illustration).subscribe((data) => {
+    //   console.log("patch request: ", data);
+    // });
+    return axios.delete(url)
+  }
+  deleteIllustrationList(idList: Number[]) {
+    const url = `${this.baseUrl}?ids=${idList}`;
+
+    // this.http.patch<any>(url, illustration).subscribe((data) => {
+    //   console.log("patch request: ", data);
+    // });
+    return axios.delete(url)
+  }
 }

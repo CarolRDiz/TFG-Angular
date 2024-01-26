@@ -95,11 +95,9 @@ export class AdminEditIllustrationComponent {
   }
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
+    //TODO
+    //CLOSE SNACKBAR
   }
-  // close() {
-  //   this.closeEvent.emit();
-  //   console.log("CLOSE")
-  // }
   anchorScrolling(id: string): void {
     this.viewportScroller.scrollToAnchor(id);
   }
@@ -146,19 +144,8 @@ export class AdminEditIllustrationComponent {
     }
     catch (error) {
       console.log(error)
-      //TODO
-      //Reintentar
-      this.openSnackBar("No se ha podido guardar", "Reintentar")
+      this.openSnackBar("No se ha podido guardar", "Está bien")
     }
-
-    // if (success) {
-    //   this.router.navigate(['/', 'admin', 'illustration'])
-    //     .then(nav => {
-    //       console.log(nav); // true if navigation is successful
-    //     }, err => {
-    //       console.log(err) // when there's an error
-    //     });
-    // }
   }
 
   // async getIllustration() {

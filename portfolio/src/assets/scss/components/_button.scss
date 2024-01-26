@@ -1,8 +1,10 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
-
 .button {
+
+}
+.button[class*="--white"]{
     padding: 10px;
     border: none;
     width: fit-content;
@@ -14,10 +16,23 @@
     column-gap: 5px;
     align-items: center;
 }
-.button--text {
+.button[class*="--text"] {
     width: fit-content;
     height: fit-content;
     background: none;
     border: none;
     cursor: pointer;
+}
+.button[class*="--icon"] {
+    width: fit-content;
+    height: fit-content;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+.button[class*="--light"]{
+    color: var(--color-light-gray);
+}
+.button[class*="--warn"]{
+    color: var(--color-warn);
 }
