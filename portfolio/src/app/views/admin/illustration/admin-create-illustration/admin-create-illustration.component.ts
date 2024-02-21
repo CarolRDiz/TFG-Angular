@@ -2,11 +2,11 @@ import { Component, Input, inject, HostListener } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import { ControlContainer, FormControl, FormGroup, Validators } from '@angular/forms';
-import { IllustrationService } from 'src/app/illustration.service';
+import { IllustrationService } from 'src/app/services/illustration.service';
 import { Illustration } from 'src/app/illustration';
 import { IllustrationCreate } from 'src/app/illustration-create';
 import { Router } from '@angular/router';
-import {MatSnackBar} from '@angular/material/snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin-create-illustration',
@@ -18,20 +18,16 @@ export class AdminCreateIllustrationComponent {
   constructor(private viewportScroller: ViewportScroller, private router: Router, private _snackBar: MatSnackBar) {
   }
   ngOnInit() {
-    // this.onChanges();
   }
 
   // SERVICES
   illustrationService: IllustrationService = inject(IllustrationService);
 
-  //  EVENTS
-  // @Output() closeEvent = new EventEmitter<void>();
 
   // VARIABLES
-  // private file: File | null = null;
   private fileUrl: String | null = null;
   public show: boolean | null = false;
-
+  public loading: boolean = false;
 
   //  FORM
   images = new FormGroup({
@@ -56,15 +52,7 @@ export class AdminCreateIllustrationComponent {
   get image(): any {
     return this.images.get('image');
   }
-  // getFile(): any {
-  //   return this.file;
-  // }
-  // getFileName() {
-  //   if (this.file) {
-  //     return this.file.name;
-  //   }
-  //   return "nada"
-  // }
+
   getFileUrl() {
     if (this.fileUrl) {
       return this.fileUrl;
@@ -75,11 +63,6 @@ export class AdminCreateIllustrationComponent {
     return this.show;
   }
 
-  // //  METHODS
-  // close() {
-  //   this.closeEvent.emit();
-  //   console.log("CLOSE")
-  // }
   anchorScrolling(id: string): void {
     this.viewportScroller.scrollToAnchor(id);
   }
@@ -94,8 +77,8 @@ export class AdminCreateIllustrationComponent {
   openSnackBar(message: string, action: string) {
     this._snackBar.open(message, action);
   }
-
-  save(){
+  //  SAVE ILLUSTRATION WITH VISIBILITY=FALSE
+  save() {
     console.log("save")
     this.createForm.patchValue({
       details: {
@@ -104,7 +87,8 @@ export class AdminCreateIllustrationComponent {
     })
     this.submitCreateForm();
   }
-  publish(){
+  //  SAVE ILLUSTRATION WITH VISIBILITY=TRUE
+  publish() {
     this.createForm.patchValue({
       details: {
         visibility: true
@@ -112,35 +96,29 @@ export class AdminCreateIllustrationComponent {
     })
     this.submitCreateForm();
   }
-
-  async submitCreateForm() {
-    console.log(this.createForm)
+  //  SAVE ILLUSTRATION
+  submitCreateForm() {
+    this.loading = true
     const illustration: IllustrationCreate = {
       "name": this.createForm.value.details?.name ?? '',
       "description": this.createForm.value.details?.description ?? '',
       "image": this.createForm.value.images?.image,
       "visibility": this.createForm.value.details?.visibility ?? false
     }
-    var success: boolean = false;
-    await this.illustrationService.postIllustration(illustration)
-      .then(({ status }) => {
+    this.illustrationService.postIllustration(illustration)
+      .then(({ status, data }) => {
         console.log(status);
-        success = true;
-      }
-      );
-    if (success) {
-      this.router.navigate(['/', 'admin', 'illustration'])
-        .then(nav => {
-          console.log(nav); // true if navigation is successful
-        }, err => {
-          console.log(err) // when there's an error
-        });
-      this.openSnackBar("Creado con éxito", "Ver")
-      
-    }
-    else {
-      
-    }
+        this.router.navigate(['/', 'admin', 'illustration'])
+          .then(nav => {
+            console.log(nav); // true if navigation is successful
+          }, err => {
+            console.log(err) // when there's an error
+          });
+        this.openSnackBar("Creado con éxito", "Ver")
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
   //  ON CHANGE

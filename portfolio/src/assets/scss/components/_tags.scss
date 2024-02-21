@@ -1,0 +1,15 @@
+.tags {
+    align-items: center;
+    column-gap: 10px;
+    display: flex;
+}
+.tag {
+    align-items: center;
+    background-color: rgb(140, 140, 140);
+    border-radius: 10px;
+    color: rgb(255, 255, 255);
+    display: flex;
+    height: fit-content;
+    padding: 5px;
+    
+}

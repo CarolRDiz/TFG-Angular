@@ -1,13 +1,20 @@
 import { Component, Input } from '@angular/core';
 import { Illustration } from 'src/app/illustration';
 import { IllustrationService } from 'src/app/services/illustration.service';
-
+import {
+  CdkDragDrop,
+  CdkDrag,
+  CdkDropList,
+  CdkDropListGroup,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 @Component({
-  selector: 'app-gallery',
-  templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.scss']
+  selector: 'app-sort-gallery',
+  templateUrl: './sort-gallery.component.html',
+  styleUrls: ['./sort-gallery.component.scss']
 })
-export class GalleryComponent {
+export class SortGalleryComponent {
   @Input() illustrations: Illustration[];
 
   currentImage = ""
@@ -15,6 +22,7 @@ export class GalleryComponent {
   //images = ["../../assets/images/gallery/PANTALLA_Gaelo_JPG_50porciento_RGB.jpg", "../../assets/images/gallery/3.png", "../../assets/images/gallery/2.jpg", "../../assets/images/gallery/4.jpeg", "../../assets/images/gallery/6.jpg", "../../assets/images/gallery/5.jpg", "../../assets/images/gallery/9.jpg", "../../assets/images/gallery/10.jpg", "../../assets/images/gallery/11.jpg", "../../assets/images/gallery/15.jpg", "../../assets/images/gallery/8.jpg", "../../assets/images/gallery/14.webp", "../../assets/images/gallery/1.jpeg"]
   images: string[] = [];
   illustrationList: Illustration[] = [];
+  imageColumns: string[][] = [];
   constructor(
     private illustrationService: IllustrationService
   ) {}
@@ -25,28 +33,25 @@ export class GalleryComponent {
       console.log(data);
       this.illustrationList = data;
       this.images = this.illustrationList.map((illustration) => `http://localhost:8080/images/${illustration.image_id}`);
+      this.imageColumns = this.getImageColumns();
     })
     .catch(function (error) {
       console.log(error);
     })
-
-    
-
   }
-
-  // getPublicIllustrations(){
-  //   this.illustrationService.getIllustrationsPublic()
-  //     .then(({ status, data }) => {
-  //       console.log(status);
-  //       console.log(data);
-  //       this.illustrationList = data;
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     })
-    
-  // }
-  getImagesColumn() {
+  drop(event: CdkDragDrop<string[]>) {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex,
+      );
+    }
+  }
+  getImageColumns() {
     let countImages = this.images.length;
     let third = Math.floor(countImages / 3);
     var threeColums = []
@@ -63,6 +68,12 @@ export class GalleryComponent {
     }
     return threeColums;
   }
+
+
+
+
+
+
   selectImage(image: string) {
     this.currentImage = image;
     this.lightboxOpen = true

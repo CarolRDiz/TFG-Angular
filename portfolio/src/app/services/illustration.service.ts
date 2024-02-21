@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { Injectable } from '@angular/core';
-import { Illustration } from './illustration';
-import { IllustrationCreate } from './illustration-create';
+import { Illustration } from '../illustration';
+import { IllustrationCreate } from '../illustration-create';
 import { HttpClient } from '@angular/common/http';
-import { IllustrationEdit } from './illustration-edit';
+import { IllustrationEdit } from '../illustration-edit';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +37,12 @@ export class IllustrationService {
     return this.http.get<Illustration>(`${this.baseUrl}${id}/`);
     // return axios.get(`http://localhost:8080/illustrations/${id}/`, )
   }
+
+  getIllustrationsPublic(){
+    const url = `${this.baseUrl}public/`;
+    return axios.get(url);
+  }
+
   deleteIllustrationImage(id: number){
     const url = `${this.baseUrl}delete/image/${id}/`;
     const body = {};

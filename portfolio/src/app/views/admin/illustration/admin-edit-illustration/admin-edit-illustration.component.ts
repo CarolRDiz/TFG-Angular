@@ -2,7 +2,7 @@ import { Component, Input, inject, HostListener } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 import { ViewportScroller } from '@angular/common';
 import { ControlContainer, FormControl, FormGroup, Validators } from '@angular/forms';
-import { IllustrationService } from 'src/app/illustration.service';
+import { IllustrationService } from 'src/app/services/illustration.service';
 import { Illustration } from 'src/app/illustration';
 import { IllustrationCreate } from 'src/app/illustration-create';
 import { IllustrationEdit } from 'src/app/illustration-edit';
@@ -18,6 +18,7 @@ export class AdminEditIllustrationComponent {
 
   // private file: File | null = null;
   fileUrl: String | null = null;
+  public loading: boolean = false;
 
   illustration: Illustration
   id: number;
@@ -112,8 +113,7 @@ export class AdminEditIllustrationComponent {
     this.illustrationService.updateIllustrationImage(this.illustration.id, this.editForm.value.images.image)
   }
   async submitEditForm() {
-    console.log("EDIT FORM")
-    console.log(this.editForm)
+    this.loading = true;
 
     const illustration: IllustrationEdit = {
       "name": this.editForm.value.details?.name ?? '',

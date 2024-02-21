@@ -1,33 +1,80 @@
-.selected-image {
-    position: relative;
+.multiple-images {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(150px, 1fr));
+
+  .add-image {
+    height: auto;
+  }
+}
+
+.multiple-images__item {
+  .selected-image {
+    // object-fit: cover;
     width: 100%;
+    height: 100%;
+
+    .selected-image__image {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.selected-image {
+  position: relative;
+  width: 100%;
 }
 
 .selected-image__image {
-    opacity: 1;
-    display: block;
-    width: 100%;
-    height: auto;
-    transition: .5s ease;
-    backface-visibility: hidden;
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.selected-image__bottom {
+
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  width: 100%;
+
+}
+
+.selected-image__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+.selected-image__buttons {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  opacity: 0;
+  padding: 10px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  transition: .5s ease;
+  width: 100%;
+
+  button {
+    background-color: rgba(0, 0, 0, 0.304);
+    color: white;
   }
-  
-  .selected-image__buttons {
-    transition: .5s ease;
-    opacity: 0;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    display: flex;
-    padding: 20px;
-    justify-content: flex-end;
-    width: 100%;
-  }
-  
-  .selected-image:hover .selected-image__image {
-    opacity: 0.3;
-  }
-  
-  .selected-image:hover .selected-image__buttons {
-    opacity: 1;
-  }
+}
+
+.selected-image:hover .selected-image__image {
+  opacity: 0.3;
+}
+
+.selected-image:hover .selected-image__buttons {
+  opacity: 1;
+}

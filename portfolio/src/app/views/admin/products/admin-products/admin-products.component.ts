@@ -1,65 +1,141 @@
+
 import { Component, inject } from '@angular/core';
 import { Illustration } from 'src/app/illustration';
-import { IllustrationService } from 'src/app/illustration.service';
 import { Router } from '@angular/router';
+import { ProductService } from 'src/app/services/product.service';
+import { Product } from 'src/app/product';
 @Component({
   selector: 'app-admin-products',
   templateUrl: './admin-products.component.html',
   styleUrls: ['./admin-products.component.scss']
 })
 export class AdminProductsComponent {
-  illustrationList: Illustration[] = [];
+  productsList: Product[] = [];
+  illustrationListModified: Illustration[];
+  visibilitySort: Boolean = false;
+  nameSort: Boolean = false;
+  illustrationSelectedArray: Number[] = [];
 
-  visibilitySort : Boolean = false;
-  nameSort : Boolean = false;
   constructor(
-    private illustrationService: IllustrationService, 
+    private productService: ProductService,
+
     private router: Router
-    ) {
-    // this.illustrationList = this.illustrationService.getAllIllustrations();
-    // this.getIllustrations();
+  ) {
   }
   ngOnInit(): void {
-    this.illustrationService.getAllIllustrations().subscribe((illustrations) => {
-      this.illustrationList = illustrations;
-      }
-    )
+    this.getProducts()
+    // this.illustrationService.getAllIllustrations().subscribe((illustrations) => {
+    //   this.illustrationList = illustrations;
+    //   this.illustrationListModified = illustrations;
+    // }
+    // )
   }
   // SERVICES
   // illustrationService: IllustrationService = inject(IllustrationService);
 
   // METHODS
-  getIllustrations() {
-    // this.illustrationService.getAllIllustrations()
-    //   .then(({ status, data }) => {
-    //     if (status == 200) {
-    //       this.illustrationList = data;
-    //     };
-    //   })
-    this.illustrationService.getAllIllustrations().subscribe((illustrations) => {
-      this.illustrationList = illustrations;
-    })
+  getProducts() {
+    this.productService.getAllProducts()
+      .then(({ status, data }) => {
+        console.log(status);
+        console.log(data)
+        this.productsList = data;
+        console.log(this.productsList)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+
+    // this.illustrationService.getAllIllustrations().subscribe((illustrations) => {
+    //   this.illustrationList = illustrations;
+    //   this.illustrationListModified = illustrations;
+    // })
   }
 
   editar(id: Number) {
     this.router.navigate(['/', 'admin', 'edit-illustration', id])
   }
 
-  sortVisibility(){
-    console.log('sort visibility')
+  sortVisibility() {
     this.visibilitySort = !this.visibilitySort
     // this.illustrationList.sort((a, b) => (a.name > b.name ) ? 1 : -1)
-    this.illustrationList.sort((a, b) => (a.visibility == this.visibilitySort ) ? 1 : -1)
+    this.illustrationListModified.sort((a, b) => (a.visibility == this.visibilitySort) ? 1 : -1)
   }
-  sortName(){
-    console.log('sort visibility')
+  sortName() {
     this.nameSort = !this.nameSort
-    if(this.nameSort){
-      this.illustrationList.sort((a, b) => (a.name > b.name ) ? 1 : -1)
+    if (this.nameSort) {
+      this.illustrationListModified.sort((a, b) => (a.name > b.name) ? 1 : -1)
     }
-    else{
-      this.illustrationList.sort((a, b) => (a.name < b.name ) ? 1 : -1)
+    else {
+      this.illustrationListModified.sort((a, b) => (a.name < b.name) ? 1 : -1)
     }
-    
+  }
+  search(value: any) {
+    // let illustrationListWithName = this.illustrationList.map((illustration) => {
+    //   if (!illustration.name) {
+    //     illustration.name = '';
+    //   }
+    //   return illustration;
+    // })
+    // this.illustrationListModified = illustrationListWithName.filter((illustration) => illustration.name.includes(value));
+  }
+  async deleteIllustration(id: any) {
+    // let success;
+    // await this.illustrationService.deleteIllustration(id)
+    //   .then(({ status }) => {
+    //     console.log(status);
+    //     success = true;
+    //   }
+    //   );
+    // if (success) {
+    //   this.illustrationService.getAllIllustrations().subscribe((illustrations) => {
+    //     this.illustrationList = illustrations;
+    //     this.illustrationListModified = illustrations;
+    //   }
+    //   )
+    // }
+  }
+  async deleteIllustrationList() {
+    // //TODO
+    // // ARE YOU SURE
+    // let success;
+    // await this.illustrationService.deleteIllustrationList(this.illustrationSelectedArray)
+    //   .then(({ status }) => {
+    //     console.log(status);
+    //     success = true;
+    //   }
+    //   );
+    // if (success) {
+    //   this.illustrationService.getAllIllustrations().subscribe((illustrations) => {
+    //     this.illustrationList = illustrations;
+    //     this.illustrationListModified = illustrations;
+    //     this.illustrationSelectedArray = [];
+    //   }
+    //   )
+    // }
+  }
+
+  //SELECTED ILLUSTRATIONS
+  onIllustrationPressed($event: any) {
+    let id: string = $event.source.value;
+    if ($event.checked) {
+      this.illustrationSelectedArray.push(parseInt(id));
+    }
+    else {
+      this.illustrationSelectedArray = this.illustrationSelectedArray.filter((checkedId) => checkedId != parseInt(id))
+    }
+  }
+  selectAllIllustrations() {
+    this.illustrationSelectedArray = this.illustrationListModified.map((illustration) => illustration.id)
+    console.log(this.illustrationListModified.map((illustration) => illustration.id.toString()))
+    console.log(this.illustrationSelectedArray)
+  }
+  unselectAllIllustrations() {
+    this.illustrationSelectedArray = [];
+  }
+  isIllustrationChecked(id: Number) {
+    console.log(this.illustrationSelectedArray.includes(id))
+    return this.illustrationSelectedArray.includes(id);
   }
 }
+

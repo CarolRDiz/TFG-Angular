@@ -1,5 +1,5 @@
 @charset "UTF-8";
-
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
 // 1. Configuration and helpers
 @import 'abstracts/variables',
 'abstracts/functions',
@@ -22,8 +22,7 @@
 'layout/top-header';
 
 // 5. Components
-@import 
-'components/add-image',
+@import 'components/add-image',
 'components/button',
 'components/gallery',
 'components/icon',
@@ -32,8 +31,13 @@
 'components/navigation',
 'components/search-bar',
 'components/selected-image',
-'components/table',
-'components/form';
+'components/table', 
+'components/loader',
+'components/form',
+'components/thumbnail-image',
+'components/tags',
+'components/modal';
+
 
 
 

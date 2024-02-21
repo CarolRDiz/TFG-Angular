@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Illustration } from 'src/app/illustration';
-import { IllustrationService } from 'src/app/illustration.service';
+import { IllustrationService } from 'src/app/services/illustration.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,9 +13,7 @@ export class AdminIllustrationComponent {
   illustrationListModified: Illustration[];
   visibilitySort: Boolean = false;
   nameSort: Boolean = false;
-  
   illustrationSelectedArray: Number[] = [];
-  
 
   constructor(
     private illustrationService: IllustrationService,
@@ -65,8 +63,13 @@ export class AdminIllustrationComponent {
     }
   }
   search(value: any) {
-    console.log(value)
-    this.illustrationListModified = this.illustrationList.filter((illustration) => illustration.name.includes(value));
+    let illustrationListWithName = this.illustrationList.map((illustration)=> {
+      if(!illustration.name){
+        illustration.name = '';
+      }
+      return illustration;
+    })
+    this.illustrationListModified = illustrationListWithName.filter((illustration) => illustration.name.includes(value));
   }
   async deleteIllustration(id: any) {
     let success;

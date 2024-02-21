@@ -8,6 +8,7 @@ import { AdminIllustrationComponent } from './views/admin/illustration/admin-ill
 import { AdminCreateIllustrationComponent } from './views/admin/illustration/admin-create-illustration/admin-create-illustration.component';
 import { AdminEditIllustrationComponent } from './views/admin/illustration/admin-edit-illustration/admin-edit-illustration.component';
 import { AdminProductsComponent } from './views/admin/products/admin-products/admin-products.component';
+import { AdminCreateProductComponent } from './views/admin/products/admin-create-product/admin-create-product.component';
 
 const routes: Routes = [
   {
@@ -41,6 +42,10 @@ const routes: Routes = [
       { 
         path: 'products',
         component: AdminProductsComponent
+      },
+      { 
+        path: 'create-product',
+        component: AdminCreateProductComponent
       },
     ]
   }

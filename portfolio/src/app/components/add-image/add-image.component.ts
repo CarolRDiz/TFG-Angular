@@ -10,7 +10,7 @@ import { Output, EventEmitter } from '@angular/core';
 export class AddImageComponent {
   @Output() selectImageEvent = new EventEmitter<File>();
   @Input() parentForm: FormGroup;
-
+  @Input() maxFiles: number;
   private file: File | null = null;
   private fileUrl: String | null = null;
 

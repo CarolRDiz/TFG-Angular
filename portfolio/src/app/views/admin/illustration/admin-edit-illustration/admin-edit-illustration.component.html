@@ -1,3 +1,4 @@
+<app-loader *ngIf="loading" [message]="'Guardando la ilustración'"></app-loader>
 <main class="content">
     <div class="create-illustration">
         <div class="top-header">
@@ -8,7 +9,7 @@
                 <button mat-icon-button aria-label="Example icon-button with a menu">
                     <mat-icon>content_copy</mat-icon>
                 </button>
-                <button class="button" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <button class="button button--white" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
                     Guardar <mat-icon>expand_more</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
@@ -43,7 +44,7 @@
                     </div>
                     <!--ADD IMAGE-->
                     <ng-template #elseBlock>
-                        <app-add-image [parentForm]="images"></app-add-image>
+                        <app-add-image [parentForm]="images" [maxFiles]="1"></app-add-image>
                     </ng-template>
                 </fieldset>
 

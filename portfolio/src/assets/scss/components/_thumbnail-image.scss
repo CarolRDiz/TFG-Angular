@@ -1,0 +1,15 @@
+.thumbnail-image {
+    align-items: center;
+    column-gap: 10px;
+    display: flex;
+    height: 40px;
+}
+.thumbnail-image__frame {
+    height: 40px;
+    width: 40px;
+}
+.thumbnail-image__image {
+    height: 100%;
+    object-fit: cover;
+    width: 100%;
+}

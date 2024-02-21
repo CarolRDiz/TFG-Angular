@@ -19,13 +19,33 @@
     padding-bottom: 20px;
     width: 100%;
 }
+.form__row {
+    column-gap: 20px;
+    display: flex;
+    max-width: 800px;
+    width: 100%;
+}
+// .form__row--only-column{
+//     max-width: 800px;
+//     width: 100%;
+// }
 
 .label {
+
+    display: flex;
+    flex-direction: column;
+    
+}
+.label--small {
     color: var(--color-light-gray);
     font-size: small;
     text-transform: uppercase;
 }
-
+.hint-label {
+    color: var(--color-light-gray);
+    font-size: small;
+    height: fit-content;
+}
 .refillable-field {
     background-color: var(--color-mid-light-gray);
     border-bottom: 1px solid var(--color-light-gray);
@@ -49,10 +69,12 @@
 }
 .field {
     border-bottom: 1px solid var(--color-light-gray);
-    padding: 15px 10px;
+    // padding: 15px 10px;
+    padding: 15px 0;
     width: 100%;
 }
-.field__toggle-content{
+.field__button-content{
+    align-items: center;
     display: flex;
     justify-content: space-between;
 }

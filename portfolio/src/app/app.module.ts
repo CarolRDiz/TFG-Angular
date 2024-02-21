@@ -9,27 +9,33 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { IllustrationComponent } from './views/public/illustration/illustration.component';
 import { StoreComponent } from './views/public/store/store.component';
 import { LightboxComponent } from './components/lightbox/lightbox.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PublicComponent } from './views/public/public/public.component';
 import { AdminViewComponent } from './views/admin/admin-view/admin-view.component';
 import { AdminHeaderComponent } from './layout/admin-header/admin-header.component';
 import { AdminIllustrationComponent } from './views/admin/illustration/admin-illustration/admin-illustration.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatMenuModule} from '@angular/material/menu'; 
-import {MatButtonModule} from '@angular/material/button'; 
-import {MatSnackBarModule} from '@angular/material/snack-bar'; 
-
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {DragDropModule} from '@angular/cdk/drag-drop'; 
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { AdminCreateIllustrationComponent } from './views/admin/illustration/admin-create-illustration/admin-create-illustration.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { AddImageComponent } from './components/add-image/add-image.component';
 import { AdminEditIllustrationComponent } from './views/admin/illustration/admin-edit-illustration/admin-edit-illustration.component';
 import { HttpClientModule } from '@angular/common/http';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import { AdminProductsComponent } from './views/admin/products/admin-products/admin-products.component'; 
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AdminProductsComponent } from './views/admin/products/admin-products/admin-products.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { LoaderComponent } from './components/loader/loader.component';
+import { SortGalleryComponent } from './components/sort-gallery/sort-gallery.component';
+import { AdminCreateProductComponent } from './views/admin/products/admin-create-product/admin-create-product.component';
+import { CategoryDialogComponent } from './components/category-dialog/category-dialog.component';
+import { ModalModule } from './components/modal/modal.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,9 +53,14 @@ import { AdminProductsComponent } from './views/admin/products/admin-products/ad
     AddImageComponent,
     AdminEditIllustrationComponent,
     AdminProductsComponent,
-    
+    LoaderComponent,
+    SortGalleryComponent,
+    AdminCreateProductComponent,
+    CategoryDialogComponent,
+
   ],
   imports: [
+    MatDialogModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
@@ -66,7 +77,10 @@ import { AdminProductsComponent } from './views/admin/products/admin-products/ad
     CommonModule,
     HttpClientModule,
     MatSlideToggleModule,
-    
+    DragDropModule
+  ],
+  exports: [
+    SearchBarComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
