@@ -1,19 +1,31 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { IllustrationComponent } from './views/public/illustration/illustration.component';
-import { StoreComponent } from './views/public/store/store.component';
-import { PublicComponent } from './views/public/public/public.component';
+import { IllustrationComponent } from './illustrations/components/illustration/illustration.component';
+import { StoreComponent } from './products/components/store/store.component';
+// import { PublicComponent } from './views/public/public/public.component';
 import { AdminViewComponent } from './views/admin/admin-view/admin-view.component';
-import { AdminIllustrationComponent } from './views/admin/illustration/admin-illustration/admin-illustration.component';
-import { AdminCreateIllustrationComponent } from './views/admin/illustration/admin-create-illustration/admin-create-illustration.component';
-import { AdminEditIllustrationComponent } from './views/admin/illustration/admin-edit-illustration/admin-edit-illustration.component';
-import { AdminProductsComponent } from './views/admin/products/admin-products/admin-products.component';
-import { AdminCreateProductComponent } from './views/admin/products/admin-create-product/admin-create-product.component';
+import { AdminIllustrationComponent } from './illustrations/components/admin-illustration/admin-illustration.component';
+import { AdminCreateIllustrationComponent } from './illustrations/components/admin-create-illustration/admin-create-illustration.component';
+import { AdminEditIllustrationComponent } from './illustrations/components/admin-edit-illustration/admin-edit-illustration.component';
+import { AdminProductsComponent } from './products/components/admin-products/admin-products.component';
+import { AdminCreateProductComponent } from './products/components/admin-create-product/admin-create-product.component';
 
 const routes: Routes = [
+  // {
+  //   path: '',
+  //   component: PublicComponent,
+  //   children: [
+  //     {
+  //       path: '', component: IllustrationComponent
+  //     },
+  //     {
+  //       path: 'store', component: StoreComponent
+  //     }
+  //   ]
+  // },
   {
     path: '',
-    component: PublicComponent,
+    // component: PublicComponent,
     children: [
       {
         path: '', component: IllustrationComponent
