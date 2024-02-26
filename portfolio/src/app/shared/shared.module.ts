@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
-import { ModalModule } from './components/modal/modal.module';
 import { LoaderComponent } from './components/loader/loader.component';
 import { LightboxComponent } from './components/lightbox/lightbox.component';
-import { CategoryDialogComponent } from './components/category-dialog/category-dialog.component';
 import { AddImageComponent } from './components/add-image/add-image.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
@@ -24,22 +22,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { AdminPageContainerComponent } from './components/admin-page-container/admin-page-container.component';
+import { ModalService } from './services/modal.service';
+import { ModalComponent } from './components/modal/modal.component';
+import { CategoriesService } from './services/categories.service';
 
 @NgModule({
   declarations: [
     AddImageComponent,
     AdminHeaderComponent,
     AdminPageContainerComponent,
-    CategoryDialogComponent,
     HeaderComponent,
     LoaderComponent,
     LightboxComponent,
     SearchBarComponent,
     AdminPageContainerComponent,
+    ModalComponent
   ],
   imports: [
     CommonModule,
-    ModalModule,
     MatIconModule,
     FormsModule,
     MatDialogModule,
@@ -61,13 +61,12 @@ import { AdminPageContainerComponent } from './components/admin-page-container/a
     AddImageComponent,
     AdminHeaderComponent,
     AdminPageContainerComponent,
-    CategoryDialogComponent,
     HeaderComponent,
     LoaderComponent,
     LightboxComponent,
     SearchBarComponent,
     CommonModule,
-    ModalModule,
+    ModalComponent,
     MatIconModule,
     FormsModule,
     MatDialogModule,
@@ -84,6 +83,10 @@ import { AdminPageContainerComponent } from './components/admin-page-container/a
     HttpClientModule,
     MatSlideToggleModule,
     DragDropModule
+  ],
+  providers: [
+    ModalService,
+    CategoriesService
   ]
 })
 export class SharedModule { }

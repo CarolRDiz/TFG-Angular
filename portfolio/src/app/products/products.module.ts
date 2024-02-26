@@ -6,6 +6,7 @@ import { AdminProductsComponent } from './components/admin-products/admin-produc
 import { SharedModule } from '../shared/shared.module';
 import { ProductService } from './services/product.service';
 import { CategoriesModalComponent } from './components/categories-modal/categories-modal.component';
+import { ModalService } from './services/modal.service';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,6 @@ import { CategoriesModalComponent } from './components/categories-modal/categori
     AdminCreateProductComponent,
     AdminProductsComponent,
     CategoriesModalComponent,
-
   ],
   exports: [
     StoreComponent,
@@ -26,7 +26,8 @@ import { CategoriesModalComponent } from './components/categories-modal/categori
     
   ],
   providers: [
-    ProductService
+    ProductService,
+    ModalService
   ]
 })
 export class ProductsModule { }

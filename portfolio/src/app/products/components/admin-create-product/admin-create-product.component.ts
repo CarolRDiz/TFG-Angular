@@ -7,11 +7,11 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductCreate } from '../../product-create';
 import { ProductService } from '../../services/product.service';
-import { ModalService } from 'src/app/shared/components/modal/services/modal.service';
+import { ModalService } from '../../services/modal.service';
 import {
   MatDialog
 } from '@angular/material/dialog';
-import { CategoryDialogComponent } from 'src/app/shared/components/category-dialog/category-dialog.component';
+
 @Component({
   selector: 'app-admin-create-product',
   templateUrl: './admin-create-product.component.html',
@@ -185,13 +185,7 @@ export class AdminCreateProductComponent {
     this.tags = this.tags.filter((tag) => tag!=value);
     console.log(this.tags)
   }
-  openDialog(): void {
-    const dialogRef = this.dialog.open(CategoryDialogComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
 
   //  ON CHANGE
   @HostListener('change', ['$event.target.files'])
