@@ -5,11 +5,16 @@
         </mat-icon>
         <input type="text" class="search-bar__input" placeholder="{{placeholder}}" (input)="searchChange()"
             [(ngModel)]="search">
-        <button (click)="clear()" class="button button--icon">
+        <button *ngIf="!addButton; else addOption;" (click)="clear()" class="button button--icon" >
             <mat-icon class="material-symbols-outlined search-bar__close-icon">
                 close
             </mat-icon>
         </button>
+        <ng-template #addOption>
+            <button (click)="add()">
+                Añadir
+            </button>
+        </ng-template>
     </div>
 
 </div>

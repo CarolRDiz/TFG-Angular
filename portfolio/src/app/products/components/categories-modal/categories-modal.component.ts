@@ -5,6 +5,8 @@ import {
   Input,
   Output,
 } from '@angular/core';
+import { CategoriesService } from '../../services/categories.service';
+import { Category } from '../../category';
 
 @Component({
   selector: 'app-categories-modal',
@@ -18,7 +20,22 @@ export class CategoriesModalComponent {
   @Output() closeEvent = new EventEmitter();
   @Output() submitEvent = new EventEmitter();
 
-  constructor(private elementRef: ElementRef) {}
+  categoriesList: Category[] = [];
+  categoriesListModified: Category[];
+
+  constructor(
+      private categoriesService : CategoriesService,
+      private elementRef: ElementRef
+    ) {}
+
+  ngOnInit(): void {
+    this.categoriesService.getAllCategories().subscribe((categories) => {
+      this.categoriesList = categories;
+      this.categoriesListModified = categories;
+      console.log(this.categoriesListModified);
+    }
+    )
+  }
 
   close(): void {
     this.elementRef.nativeElement.remove();
@@ -28,5 +45,15 @@ export class CategoriesModalComponent {
   submit(): void {
     this.elementRef.nativeElement.remove();
     this.submitEvent.emit();
+  }
+
+  search(value: any) {
+    console.log(value)
+    this.categoriesListModified = this.categoriesList.filter((category) => category.name.includes(value));
+  }
+
+  addCategory(value: any) {
+    console.log("añadir "+ value)
+
   }
 }

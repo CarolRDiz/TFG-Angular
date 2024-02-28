@@ -24,7 +24,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AdminPageContainerComponent } from './components/admin-page-container/admin-page-container.component';
 import { ModalService } from './services/modal.service';
 import { ModalComponent } from './components/modal/modal.component';
-import { CategoriesService } from './services/categories.service';
 
 @NgModule({
   declarations: [
@@ -85,8 +84,7 @@ import { CategoriesService } from './services/categories.service';
     DragDropModule
   ],
   providers: [
-    ModalService,
-    CategoriesService
+    ModalService
   ]
 })
 export class SharedModule { }

@@ -8,8 +8,10 @@ import { Component, Input, Output, EventEmitter,HostListener } from '@angular/co
 })
 export class SearchBarComponent {
   @Input() placeholder: string;
+  @Input() addButton: boolean;
   @Output() searchEvent = new EventEmitter<String>();
-  search: String 
+  @Output() addEvent = new EventEmitter<String>();
+  search: String
 
   searchChange(){
     this.searchEvent.emit(this.search);
@@ -17,5 +19,8 @@ export class SearchBarComponent {
   clear(){
     this.search = '';
     this.searchEvent.emit(this.search);
+  }
+  add(){
+    this.addEvent.emit(this.search);
   }
 }

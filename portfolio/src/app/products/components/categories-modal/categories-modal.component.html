@@ -6,10 +6,17 @@
         </mat-icon>
     </div>
     <div class="modal__content">
-        <app-search-bar [placeholder]="'Añadir una categoría'"></app-search-bar>
+        <app-search-bar [placeholder]="'Añade o busca una categoría'" [addButton]="true" (searchEvent)="search($event)" (addEvent)="addCategory($event)"></app-search-bar>
+        {{categoriesListModified}}
+        <span *ngIf="!categoriesListModified">safdsafdsaf</span>
+        <ul >
+            <li *ngFor="let category of categoriesListModified; let i=index;">
+                aaa
+            </li>
+        </ul>
     </div>
     <div class="modal__footer">
-        <button (click)="submit()">Submit</button>
+        
     </div>
 </div>
 <div class="modal__backdrop" (click)="close()"></div>
