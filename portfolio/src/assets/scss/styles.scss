@@ -36,14 +36,18 @@
 'components/form',
 'components/thumbnail-image',
 'components/tags',
-'components/modal';
+'components/modal',
+'components/categories-modal',
+'components/cart';
 
 
 
 
 // 6. Page-specific styles
 @import 'pages/home',
-'pages/create-illustration';
+'pages/create-illustration',
+'pages/store',
+'pages/product';
 
 // 7. Themes
 @import 'themes/default';

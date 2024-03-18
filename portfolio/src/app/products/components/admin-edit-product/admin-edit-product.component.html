@@ -1,0 +1,165 @@
+<app-loader *ngIf="loading" [message]="'Guardando la ilustración'"></app-loader>
+<main class="content">
+    <div class="edit-illustration">
+        <div class="top-header">
+            <div class="top-header__title">
+                <h1>Editar producto</h1>
+            </div>
+            <div class="top-header__options">
+                <button mat-icon-button aria-label="Example icon-button with a menu">
+                    <mat-icon>content_copy</mat-icon>
+                </button>
+                <button class="button button--white" [matMenuTriggerFor]="menu"
+                    aria-label="Example icon-button with a menu">
+                    Guardar <mat-icon>expand_more</mat-icon>
+                </button>
+                <mat-menu #menu="matMenu">
+                    <!-- <button form="form" mat-menu-item>
+                        <span>Guardar</span>
+                    </button> -->
+                    <button (click)="save()" mat-menu-item>
+                        <span>Guardar</span>
+                    </button>
+                    <button (click)="publish()" mat-menu-item>
+                        <span>Publicar</span>
+                    </button>
+                </mat-menu>
+            </div>
+        </div>
+        <div class="create-illustration__content">
+            <form id="form" [formGroup]="editForm" (submit)="submitEditForm()" class="form">
+                <div class="form__row">
+                    <!--DETAILS-->
+                    <fieldset formGroupName="details" class="form__group">
+                        <legend class="form__legend">Detalles</legend>
+                        <!--NAME-->
+                        <div class="form__field">
+                            <label class="label label--small" for="name">Nombre de la ilustración </label>
+                            <div class="refillable-field">
+                                <div class="refillable-field__content">
+                                    <input formControlName="name" id="name" type="text" class="refillable-field__input"
+                                        placeholder="Sonic Fanart">
+                                </div>
+                            </div>
+                        </div>
+                        <!--DESCRIPTION-->
+                        <div class="form__field">
+                            <label class="label label--small" for="description">Descripción</label>
+                            <div class="refillable-field">
+                                <div class="refillable-field__content">
+                                    <textarea id="description" formControlName="description"
+                                        class="refillable-field__input"
+                                        placeholder="Describe tu ilustración"> </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="form__row">
+                    <!--IMAGE-->
+                    <fieldset formGroupName="images" class="form__group">
+                        <legend class="form__legend">Imágenes</legend>
+                        <!--SELECTED IMAGE-->
+                        <div *ngIf="getImageIds() else elseBlock" class="multiple-images">
+                            <div class="" *ngFor="let image of getImageIds(); let i=index;" class="multiple-images__item">
+                                <div class="selected-image">
+                                    <img class="selected-image__image" [src]="getImagePath(image)" alt="">
+                                    <div class="selected-image__buttons">
+                                        <div class="selected-image__top">
+                                            <button type="button" mat-icon-button
+                                                aria-label="Example icon-button with a menu">
+                                                <mat-icon>open_in_full</mat-icon>
+                                            </button>
+                                            <button type="button" mat-icon-button
+                                                aria-label="Example icon-button with a menu"
+                                                (click)="deleteImage(image)">
+                                                <mat-icon class="icon--red">delete</mat-icon>
+                                            </button>
+                                        </div>
+
+                                        <button type="button" (click)="selectThumbnail(image)"
+                                            class="selected-image__bottom">
+                                            Establecer como imagen en miniatura
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <label class="add-image" for="image">
+                                <input id="image" type="file" multiple class="add-image__input">
+                                <div class="add-image__circle">
+                                    <mat-icon class="add-image__icon material-symbols-outlined">
+                                        add
+                                    </mat-icon>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="thumbnail-image">
+                            <div class="thumbnail-image__frame">
+                                <img class="thumbnail-image__image" [src]="getThumbnailImage()" alt="">
+                            </div>
+                            <span class="thumbnail-image__label">Imagen destacada</span>
+                        </div>
+                        <!--ADD IMAGE-->
+                        <ng-template #elseBlock>
+                            <app-add-image [parentForm]="images" [maxFiles]="20"></app-add-image>
+                        </ng-template>
+                    </fieldset>
+                </div>
+                <div class="form__row">
+                    <!--INVENTORY-->
+                    <fieldset formGroupName="inventory" class="form__group">
+                        <legend class="form__legend">Inventario</legend>
+                        <!--PRICE-->
+                        <app-price-field [parentForm]="inventory"></app-price-field>
+                    </fieldset>
+                </div>
+                <div class="form__row">
+                    <fieldset formGroupName="organization" class="form__group">
+                        <legend class="form__legend">Organización</legend>
+                        <!--VISIBILITY-->
+                        <div class="form__field">
+                            <label class="label label--small" for="name">Visibilidad </label>
+                            <div class="field">
+                                <div class="field__button-content">
+                                    <span>Público</span><mat-slide-toggle [aria-label]="'isPublic'"
+                                        formControlName="visibility"></mat-slide-toggle>
+                                </div>
+                            </div>
+                        </div>
+                        <!--CATEGORIES-->
+                        <div class="form__field">
+
+                            <div class="field">
+                                <div class="field__button-content">
+                                    <label class="label" for="name">Categorías<span class="hint-label">Crea
+                                            categorías para agrupar los productos. Las categorías
+                                            aparecerán en la navegación de la tienda.</span></label>
+                                    <button mat-icon-button aria-label="Example icon-button with a menu" type="button"
+                                        (click)="openModal()">
+                                        <mat-icon>add</mat-icon>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--TAGS-->
+                        <div class="form__field">
+                            <label class="label" for="name">Etiquetas </label>
+                            <div class="refillable-field">
+                                <div class="refillable-field__content tags">
+                                    <div class="tag" *ngFor="let tag of tags; let i=index;">
+                                        <span>{{tag}}</span>
+                                        <button type="button" class="button button--text"
+                                            (click)="deleteTag(tag)">x</button>
+                                    </div>
+                                    <input type="text" #newTag (keyup.enter)="addTag(newTag.value)"
+                                        class="refillable-field__input">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </form>
+        </div>
+    </div>
+    <app-categories-modal *ngIf="categoriesModal" [selectedCategories]="getCategories()" (closeEvent)="closeModal()" (selectEvent)="selectCategories($event)"></app-categories-modal>
+</main>

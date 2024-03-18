@@ -7,10 +7,11 @@ import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductCreate } from '../../product-create';
 import { ProductService } from '../../services/product.service';
-import { ModalService } from '../../services/modal.service';
 import {
   MatDialog
 } from '@angular/material/dialog';
+import { CategoriesService } from '../../services/categories.service';
+import { Category } from '../../category';
 
 @Component({
   selector: 'app-admin-create-product',
@@ -24,19 +25,21 @@ export class AdminCreateProductComponent {
     private router: Router, 
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private modalService: ModalService
+    private categoriesService : CategoriesService,
     ) {
   }
 
-  openModal(modalTemplate: TemplateRef<any>) {
-    this.modalService
-      .open(modalTemplate, { size: 'lg', title: 'Selecciona una categoría' })
-      .subscribe((action) => {
-        console.log('modalAction', action);
-      });
+  categoriesModal: boolean = false;
+
+  openModal() {
+    this.categoriesModal = true;
+  }
+  closeModal() {
+    this.categoriesModal = false;
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    
   }
 
   // SERVICES
@@ -44,7 +47,7 @@ export class AdminCreateProductComponent {
   productService: ProductService = inject(ProductService);
 
   // VARIABLES
-  fileUrl: String[] = [];
+  imagePaths: String[] = [];
   public show: boolean | null = false;
   public loading: boolean = false;
   public tags: string[] = [];
@@ -52,12 +55,15 @@ export class AdminCreateProductComponent {
   images = new FormGroup({
     image: new FormControl<Array<File>>([]),
     thumbnailIndex: new FormControl<number>(0)
-  })
+  });
   organization = new FormGroup({
     visibility: new FormControl(false),
-    //categories: new FormControl<Array<number>>([]),
-    tags:  new FormControl<Array<string>>(this.tags)
-  })
+    categories: new FormControl<Array<number>>([]),
+    tags:  new FormControl<Array<string>>(this.tags),
+  });
+  inventory = new FormGroup({
+    price: new FormControl("0")
+  });
   createForm = new FormGroup({
     details: new FormGroup({
       name: new FormControl('', Validators.required),
@@ -66,21 +72,21 @@ export class AdminCreateProductComponent {
       //visibility: new FormControl(false)
     }),
     images: this.images,
-    organization: this.organization
+    organization: this.organization,
+    inventory: this.inventory
   })
 
-  // SETTERS
-  updateImages(files: FileList) {
-    
-  }
   // GETTERS
   get image(): any {
     return this.images.get('image');
   }
+  getCategories(): any{
+    return this.organization.get('categories')?.value;
+  }
 
-  getFileUrl() {
-    if (this.fileUrl) {
-      return this.fileUrl;
+  getimagePaths() {
+    if (this.imagePaths) {
+      return this.imagePaths;
     }
     return null
   }
@@ -89,7 +95,7 @@ export class AdminCreateProductComponent {
   }
   getThumbnailImage(){
     let index = this.createForm.value.images?.thumbnailIndex ?? 0
-    return this.fileUrl[index];
+    return this.imagePaths[index];
   }
 
   anchorScrolling(id: string): void {
@@ -98,14 +104,37 @@ export class AdminCreateProductComponent {
 
   deleteImage(image: any) {
     console.log("DELETE");
-    let index = this.fileUrl.indexOf(image);
+    let index = this.imagePaths.indexOf(image);
     let filesArray = this.image.value;
     filesArray.splice(index, 1);
     this.image.setValue(filesArray);
     console.log(this.image.value)
     console.log("REMOVE URL")
-    this.fileUrl = this.fileUrl.filter(url => url!=image)
-    console.log(this.fileUrl);
+    this.imagePaths = this.imagePaths.filter(url => url!=image)
+    console.log(this.imagePaths);
+  }
+
+  validatePrice($event: any){
+    let price = this.createForm.value.inventory?.price?.toString()??'';
+    const exRegPrice = /^\d+\.?\d{0,2}$/g;
+    if (!exRegPrice.test(price)) {
+      price = price.slice(0,-1);
+      if(price == '')price="0"
+      this.createForm.patchValue({
+        inventory: {
+          price: price
+        }
+      })
+    };
+  }
+  completePrice(){
+    let price = this.createForm.value.inventory?.price?.toString()??'';
+    if(price=='') price='0';
+    this.createForm.patchValue({
+      inventory: {
+        price: parseFloat(price).toFixed(2).toString()
+      }
+    })
   }
 
   openSnackBar(message: string, action: string) {
@@ -133,20 +162,15 @@ export class AdminCreateProductComponent {
   //  SAVE ILLUSTRATION
   submitCreateForm() {
     this.loading = true
-    // const illustration: IllustrationCreate = {
-    //   "name": this.createForm.value.details?.name ?? '',
-    //   "description": this.createForm.value.details?.description ?? '',
-    //   "image": this.createForm.value.images?.image,
-    //   "visibility": this.createForm.value.details?.visibility ?? false
-    // }
     const product: ProductCreate = {
       "name": this.createForm.value.details?.name ?? '',
       "description": this.createForm.value.details?.description ?? '',
       "visibility": this.createForm.value.organization?.visibility ?? false,
-      "category_ids": [],
+      "category_ids": this.createForm.value.organization?.categories??[],
       "images": this.createForm.value.images?.image ?? [],
       "thumbnail_index": this.createForm.value.images?.thumbnailIndex ?? 0,
-      "tags": this.createForm.value.organization?.tags ?? []
+      "tags": this.createForm.value.organization?.tags ?? [],
+      "price": this.createForm.value.inventory?.price ??'0'
     }
     console.log(product);
     this.productService.postProduct(product)
@@ -186,6 +210,14 @@ export class AdminCreateProductComponent {
     console.log(this.tags)
   }
 
+  selectCategories($event: any){
+    console.log($event);
+    this.createForm.patchValue({
+      organization: {
+        categories: $event
+      }
+    })
+  }
 
   //  ON CHANGE
   @HostListener('change', ['$event.target.files'])
@@ -200,12 +232,12 @@ export class AdminCreateProductComponent {
       let filesArray = this.image.value;
       for(let i=0; i<files.length; i++){
         let file: any = files.item(i);
-        this.fileUrl.push(URL.createObjectURL(file));
+        this.imagePaths.push(URL.createObjectURL(file));
         filesArray.push(file);
       }
       this.image.setValue(filesArray);
       console.log(this.image.value);
-      console.log(this.fileUrl);
+      console.log(this.imagePaths);
       this.show = true;
     }
   }

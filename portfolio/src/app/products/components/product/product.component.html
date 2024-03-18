@@ -1,0 +1,15 @@
+<main class="content">
+    <section class="product">
+        <div class="product__left">
+            <img [src]="'http://localhost:8080/images/'+product.thumbnail_id" class="product__image">
+        </div>
+        <div class="product__right">
+            <h1 class="product__name">{{product.name}}</h1>
+            <span>{{product.price}}</span>
+            
+            <p class="product__description">{{product.description}}</p>
+            <button (click)="addToCart(product.id)">Add to cart</button>
+        </div>
+    </section>
+
+</main>

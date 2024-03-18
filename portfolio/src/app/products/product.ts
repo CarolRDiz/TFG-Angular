@@ -7,4 +7,5 @@ export interface Product {
     tags: Array<string>,
     price: number,
     thumbnail_id: string,
+    category_ids: Array<Number>
 }

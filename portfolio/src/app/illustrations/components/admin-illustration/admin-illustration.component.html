@@ -30,12 +30,14 @@
         <ul class="table__body">
             <li class="table__row" *ngFor="let illustration of illustrationListModified; index as i">
                 <div class="table__cell table__cell--small">
-                    <mat-checkbox value="{{illustration.id}}" (change)="onIllustrationPressed($event)" [ngModel]="isIllustrationChecked(illustration.id)"></mat-checkbox>
+                    <mat-checkbox value="{{illustration.id}}" (change)="onIllustrationPressed($event)"
+                        [ngModel]="isIllustrationChecked(illustration.id)"></mat-checkbox>
                 </div>
                 <div class="table__cell table__cell--medium"><img class="table__image"
                         [src]="'http://localhost:8080/images/'+illustration.image_id" alt=""></div>
                 <div class="table__cell table__cell--large">{{illustration.name}}</div>
-                <div class="table__cell table__cell--medium">{{illustration.visibility == true? "Público": "Oculto"}}
+                <div class="table__cell table__cell--medium">{{illustration.visibility == true? "Público":
+                    "Oculto"}}
                 </div>
                 <div class="table__cell"></div>
                 <div class="table__cell table__cell--small">
@@ -54,7 +56,8 @@
     </div>
     <div class="toolbar" *ngIf="illustrationSelectedArray.length>0">
         <div class="toolbar__selection">
-            <button (click)="unselectAllIllustrations()" mat-icon-button aria-label="Example icon button with a home icon">
+            <button (click)="unselectAllIllustrations()" mat-icon-button
+                aria-label="Example icon button with a home icon">
                 <mat-icon>deselect</mat-icon>
             </button>
             <span>{{illustrationSelectedArray.length}} seleccionado</span>
@@ -62,7 +65,8 @@
         <div class="toolbar__options">
             <button class="toolbar__button button button--text--light" (click)="selectAllIllustrations()">
                 Seleccionar todo</button>
-            <button (click)="deleteIllustrationList()" class="toolbar__button button button--text--warn">Eliminar</button>
+            <button (click)="deleteIllustrationList()"
+                class="toolbar__button button button--text--warn">Eliminar</button>
         </div>
     </div>
     <!-- <h2 class="content__title">Ordenar ilustraciones</h2>

@@ -126,7 +126,6 @@ export class AdminIllustrationComponent {
     this.illustrationSelectedArray = [];
   }
   isIllustrationChecked(id: Number){
-    console.log(this.illustrationSelectedArray.includes(id))
     return this.illustrationSelectedArray.includes(id);
   }
 }

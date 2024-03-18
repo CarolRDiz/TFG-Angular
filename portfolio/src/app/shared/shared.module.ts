@@ -24,6 +24,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AdminPageContainerComponent } from './components/admin-page-container/admin-page-container.component';
 import { ModalService } from './services/modal.service';
 import { ModalComponent } from './components/modal/modal.component';
+import { PublicPageContainerComponent } from './components/public-page-container/public-page-container.component';
+import { RouterModule } from '@angular/router';
+import { PriceFieldComponent } from './components/price-field/price-field.component';
+
 
 @NgModule({
   declarations: [
@@ -35,9 +39,12 @@ import { ModalComponent } from './components/modal/modal.component';
     LightboxComponent,
     SearchBarComponent,
     AdminPageContainerComponent,
-    ModalComponent
+    ModalComponent,
+    PublicPageContainerComponent,
+    PriceFieldComponent
   ],
   imports: [
+    RouterModule,
     CommonModule,
     MatIconModule,
     FormsModule,
@@ -57,6 +64,7 @@ import { ModalComponent } from './components/modal/modal.component';
     DragDropModule
   ],
   exports: [
+    PriceFieldComponent,
     AddImageComponent,
     AdminHeaderComponent,
     AdminPageContainerComponent,
@@ -81,7 +89,9 @@ import { ModalComponent } from './components/modal/modal.component';
     ReactiveFormsModule,
     HttpClientModule,
     MatSlideToggleModule,
-    DragDropModule
+    DragDropModule,
+    PublicPageContainerComponent,
+    RouterModule
   ],
   providers: [
     ModalService

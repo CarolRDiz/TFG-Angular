@@ -1,0 +1,12 @@
+<!--PRICE-->
+<ng-container [formGroup]="parentForm">
+    <div class="form__field">
+        <label class="label label--small" for="name">Precio</label>
+        <div class="refillable-field">
+            <div class="refillable-field__content">
+                <input formControlName="price" id="price" type="text" class="refillable-field__input" placeholder="10"
+                    (input)="validatePrice($event)" (blur)="completePrice()">
+            </div>
+        </div>
+    </div>
+</ng-container>

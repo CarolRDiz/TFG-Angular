@@ -1,22 +1,32 @@
-<div class="modal {{size}}">
+<div class="modal ">
     <div class="modal__header">
-        {{title}}
+        Selecciona una categoría
         <mat-icon class="material-symbols-outlined search-bar__close-icon" (click)="close()">
             close
         </mat-icon>
     </div>
     <div class="modal__content">
-        <app-search-bar [placeholder]="'Añade o busca una categoría'" [addButton]="true" (searchEvent)="search($event)" (addEvent)="addCategory($event)"></app-search-bar>
-        {{categoriesListModified}}
-        <span *ngIf="!categoriesListModified">safdsafdsaf</span>
-        <ul >
-            <li *ngFor="let category of categoriesListModified; let i=index;">
-                aaa
+        <app-search-bar [placeholder]="'Añade o busca una categoría'" [addButton]="true" (searchEvent)="search($event)"
+            (addEvent)="addCategory($event)"></app-search-bar>
+        <ul class="categories-modal__categories">
+            <li class="categories-modal__category" *ngFor="let category of categoriesListModified; let i=index;">
+                {{category.name}}
+                <div class="categories-modal__category-buttons">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item>Editar</button>
+                        <button mat-menu-item>Eliminar</button>
+                    </mat-menu>
+                    <mat-checkbox value="{{category.id}}" (change)="onCategoryPressed($event)" [ngModel]="isCategoryChecked(category.id)"></mat-checkbox>
+                </div>
+
             </li>
         </ul>
     </div>
     <div class="modal__footer">
-        
+
     </div>
 </div>
 <div class="modal__backdrop" (click)="close()"></div>

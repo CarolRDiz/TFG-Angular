@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CartService } from './products/services/cart.service';
 
 @Component({
   selector: 'app-root',
@@ -6,6 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
+  cartService: CartService = inject(CartService);
+
+  ngOnInit(){
+    this.cartService.loadCart();
+  }
+
   title = 'portfolio';
   private edad = 17;
   //PROPIEDAD PARA BINDING

@@ -23,7 +23,7 @@ export class AdminProductsComponent {
   ) {
   }
   ngOnInit(): void {
-    this.getProducts()
+    this.getProducts();
     // this.illustrationService.getAllIllustrations().subscribe((illustrations) => {
     //   this.illustrationList = illustrations;
     //   this.illustrationListModified = illustrations;
@@ -35,17 +35,9 @@ export class AdminProductsComponent {
 
   // METHODS
   getProducts() {
-    this.productService.getAllProducts()
-      .then(({ status, data }) => {
-        console.log(status);
-        console.log(data)
-        this.productsList = data;
-        console.log(this.productsList)
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-
+    this.productService.getAllProducts().subscribe((data) => {
+      this.productsList = data;
+    })
     // this.illustrationService.getAllIllustrations().subscribe((illustrations) => {
     //   this.illustrationList = illustrations;
     //   this.illustrationListModified = illustrations;
@@ -53,7 +45,7 @@ export class AdminProductsComponent {
   }
 
   editar(id: Number) {
-    this.router.navigate(['/', 'admin', 'edit-illustration', id])
+    this.router.navigate(['/', 'admin', 'edit-product', id])
   }
 
   sortVisibility() {
@@ -115,6 +107,7 @@ export class AdminProductsComponent {
     // }
   }
 
+  //TODO
   //SELECTED ILLUSTRATIONS
   onIllustrationPressed($event: any) {
     let id: string = $event.source.value;
@@ -134,7 +127,6 @@ export class AdminProductsComponent {
     this.illustrationSelectedArray = [];
   }
   isIllustrationChecked(id: Number) {
-    console.log(this.illustrationSelectedArray.includes(id))
     return this.illustrationSelectedArray.includes(id);
   }
 }

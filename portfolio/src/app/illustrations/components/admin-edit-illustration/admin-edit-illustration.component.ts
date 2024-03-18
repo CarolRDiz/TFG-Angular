@@ -107,7 +107,6 @@ export class AdminEditIllustrationComponent {
     this.illustrationService.deleteIllustrationImage(this.illustration.id)
     this.images.reset();
     this.fileUrl = '';
-
   }
   updateIllustrationImage() {
     this.illustrationService.updateIllustrationImage(this.illustration.id, this.editForm.value.images.image)

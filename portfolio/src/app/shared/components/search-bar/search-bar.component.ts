@@ -22,5 +22,6 @@ export class SearchBarComponent {
   }
   add(){
     this.addEvent.emit(this.search);
+    this.clear();
   }
 }
