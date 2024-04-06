@@ -10,6 +10,7 @@ import { AdminEditProductComponent } from './components/admin-edit-product/admin
 import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
+import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
     ProductComponent,
     CartComponent,
     CheckoutComponent,
+    ConfirmationComponent,
   ],
   exports: [
     StoreComponent,

@@ -1,0 +1,19 @@
+<div class="checkout__field">
+    <label [for]="name" class="checkout__label">{{getLabel}}</label>
+    <div class="checkout__refillable-field">
+        <div class="checkout__input-container">
+            <input [formControl]="formControl" type="text" class="checkout__input" [name]="name"
+                [placeholder]="placeholder" [mask]="mask">
+            <div *ngIf="showError">
+                <!-- <mat-error *ngIf="ngControl.errors?.['required']">Rellene este campo</mat-error> -->
+                <span class="input__error" *ngIf="ngControl.errors?.['required']">Rellene este campo</span>
+                <span class="input__error" *ngIf="ngControl.errors">{{ngControl.errors.message}}</span>
+                <!-- <span class="input__error" *ngIf="ngControl.errors?.['invalidEmail']">{{ngControl.errors?.message}}</span>
+                <span class="input__error" *ngIf="ngControl.errors?.['invalidPostalCode']">{{ngControl.errors?.message}}</span>
+                <span class="input__error" *ngIf="ngControl.errors?.['invalidCity']">{{ngControl.errors?.message}}</span>
+                <span class="input__error" *ngIf="ngControl.errors?.['invalidPhone']">{{ngControl.errors?.message}}</span> -->
+
+            </div>
+        </div>
+    </div>
+</div>

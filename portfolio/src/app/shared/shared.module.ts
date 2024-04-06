@@ -27,6 +27,9 @@ import { ModalComponent } from './components/modal/modal.component';
 import { PublicPageContainerComponent } from './components/public-page-container/public-page-container.component';
 import { RouterModule } from '@angular/router';
 import { PriceFieldComponent } from './components/price-field/price-field.component';
+import {MatRadioModule} from '@angular/material/radio';
+import { InputComponent } from './components/form-components/input/input.component';
+import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 
 
 @NgModule({
@@ -41,7 +44,8 @@ import { PriceFieldComponent } from './components/price-field/price-field.compon
     AdminPageContainerComponent,
     ModalComponent,
     PublicPageContainerComponent,
-    PriceFieldComponent
+    PriceFieldComponent,
+    InputComponent
   ],
   imports: [
     RouterModule,
@@ -61,7 +65,10 @@ import { PriceFieldComponent } from './components/price-field/price-field.compon
     ReactiveFormsModule,
     HttpClientModule,
     MatSlideToggleModule,
-    DragDropModule
+    DragDropModule,
+    MatRadioModule,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
   exports: [
     PriceFieldComponent,
@@ -91,10 +98,15 @@ import { PriceFieldComponent } from './components/price-field/price-field.compon
     MatSlideToggleModule,
     DragDropModule,
     PublicPageContainerComponent,
-    RouterModule
+    RouterModule,
+    MatRadioModule,
+    InputComponent,
+    NgxMaskDirective,
+    NgxMaskPipe
   ],
   providers: [
-    ModalService
+    ModalService,
+    provideNgxMask()
   ]
 })
 export class SharedModule { }

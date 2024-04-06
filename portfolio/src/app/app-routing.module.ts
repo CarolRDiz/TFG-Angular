@@ -15,6 +15,7 @@ import { AdminEditProductComponent } from './products/components/admin-edit-prod
 import { ProductComponent } from './products/components/product/product.component';
 import { CartComponent } from './products/components/cart/cart.component';
 import { CheckoutComponent } from './products/components/checkout/checkout.component';
+import { ConfirmationComponent } from './products/components/confirmation/confirmation.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,9 @@ const routes: Routes = [
       },
       {
         path: 'checkout', component: CheckoutComponent
+      },
+      {
+        path: 'confirmation', component: ConfirmationComponent
       }
     ]
   },

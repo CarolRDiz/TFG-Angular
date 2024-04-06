@@ -1,4 +1,112 @@
 <main class="content">
-    <h1>Finalizar compra</h1>
-    <div #paymentRef></div>
+    <h1>Checkout</h1>
+    <div class="checkout__container">
+        <form id="form" [formGroup]="checkoutForm" class="checkout__form">
+            <section class="checkout__section">
+                <div class="checkout__section-header">
+                    <h2>Contacto</h2>
+                    <button *ngIf="step!=1" (click)="editFormGroup(1)" mat-icon-button aria-label="Example icon-button with a menu">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+                <fieldset *ngIf="step==1" formGroupName="contact" class="checkout__form-group">
+                    <app-input formControlName="email" [label]="'Correo electrónico'"
+                        [placeholder]="'micorreo@gmail.com'" [name]="'email'" [required]="true"></app-input>
+                    <div class="checkout__row">
+                        <app-input formControlName="first_name" [label]="'Nombre'" [placeholder]="'Rocío'"
+                            [name]="'first_name'" [required]="true"></app-input>
+                        <app-input formControlName="last_name" [label]="'Apellidos'" [placeholder]="'Rodríguez Díaz'"
+                            [name]="'last_name'" [required]="true"></app-input>
+                    </div>
+                    <button (click)="saveStep()" class="checkout__save">Guardar</button>
+                </fieldset>
+            </section>
+            <section class="checkout__section">
+                <div class="checkout__section-header">
+                    <h2>Entrega</h2>
+                    <button (click)="editFormGroup(2)" mat-icon-button aria-label="Example icon-button with a menu">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                </div>
+                <fieldset *ngIf="step==2" formGroupName="shipping_address" class="checkout__form-group">
+                    <app-input formControlName="address" [label]="'Dirección 1'" [placeholder]="'Calle Sagasta, nº18'"
+                        [name]="'address'"></app-input>
+                    <app-input formControlName="address2" [label]="'Dirección 2'" [placeholder]="'Primer piso, A'"
+                        [name]="'address2'"></app-input>
+                    <div class="checkout__row">
+                        <app-input formControlName="city" [label]="'Población'" [placeholder]="'ej. Jerez de la Forntera'"
+                            [name]="'city'"></app-input>
+                        <app-input formControlName="postal_code" [label]="'Código Postal'" [placeholder]="'11130'"
+                            [name]="'postal_code'" [mask]="'00000'"></app-input>
+                    </div>
+                    <app-input formControlName="phone" [label]="'Número de móvil'" [placeholder]="'643 57 89 21'"
+                        [name]="'phone'" [mask]="'000 00 00 00'"></app-input>
+                    <button (click)="saveStep()" class="checkout__save">Guardar</button>
+                </fieldset>
+            </section>
+            <section class="checkout__section">
+                <div class="checkout__section-header">
+                    <h2>Pago</h2>
+                    <!-- <button (click)="editFormGroup(3)" mat-icon-button aria-label="Example icon-button with a menu">
+                        <mat-icon>edit</mat-icon>
+                    </button> -->
+                </div>
+                <div *ngIf="step==3"  #paymentRef></div>
+                <!-- <fieldset *ngIf="step==3" formGroupName="payment" class="checkout__form-group">
+                    <div class="checkout__accordion">
+                        <div class="checkout__accordion-item">
+                            <button (click)="switchPaymentMethod(false)" [ngClass]="{'checkout__accordion-button--checked': !getPaypalOption()}" class="checkout__accordion-button ">
+                                <span class="checkout__accordion-radio-container">
+                                    <mat-icon *ngIf="getPaypalOption()">radio_button_unchecked</mat-icon>
+                                    <mat-icon *ngIf="!getPaypalOption()">radio_button_checked</mat-icon>
+                                    <span>Tarjeta</span>
+                                </span>
+                                <span>visa</span>
+                            </button>
+                            <div class="checkout__accordion-content" *ngIf="!getPaypalOption()">
+                                <fieldset formGroupName="card" class="checkout__form-group">
+                                    <div class="checkout__row">
+                                        <app-input formControlName="first_name_card" [label]="'Nombre'" [placeholder]="'Rocío'"
+                                            [name]="'first_name_card'" [required]="true"></app-input>
+                                        <app-input formControlName="last_name_card" [label]="'Apellidos'" [placeholder]="'Rodríguez Díaz'"
+                                            [name]="'last_name_card'" [required]="true"></app-input>
+                                    </div>
+                                    <app-input formControlName="card_number" [label]="'Tarjeta nº.'" [placeholder]="'1234 5678 9012 3456'"
+                                        [name]="'card_number'" [mask]="'0000 0000 0000 0000 0000'"></app-input>
+                                    <div class="checkout__row">
+                                        <app-input formControlName="expiration_date" [label]="'Fecha de caducidad'"
+                                            [placeholder]="'MM/AA'" [name]="'expiration_date'" [mask]="'00/00'"></app-input>
+                                        <app-input formControlName="cvv_cvc" [label]="'CVV/CVC'" [placeholder]="'3-4 dígitos'"
+                                            [name]="'cvv_cvc'" [mask]="'0000'"></app-input>
+                                    </div>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <div class="checkout__accordion-item">
+                            <button (click)="switchPaymentMethod(true)" [ngClass]="{'checkout__accordion-button--checked': getPaypalOption()}" class="checkout__accordion-button">
+                                <span class="checkout__accordion-radio-container">
+                                    <mat-icon *ngIf="!getPaypalOption()">radio_button_unchecked</mat-icon>
+                                    <mat-icon *ngIf="getPaypalOption()">radio_button_checked</mat-icon>
+                                    <span>Paypal</span>
+                                </span>
+                                <span>paypal</span>
+                            </button>
+                            <div class="checkout__accordion-content" *ngIf="getPaypalOption()">
+                                <p>Después de hacer clic en “Completar la compra”, aparecerá una ventana emergente que
+                                    te pedirá que inicies sesión en tu cuenta de PayPal. Revisa el pago y los detalles
+                                    de envío para completar la compra. A continuación, irás a la página de confirmación
+                                    del pedido de H&M.</p>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset> -->
+            </section>
+            <!-- <div #paymentRef></div> -->
+        </form>
+        <div class="checkout__aside">
+            total: 12$
+            <button>Finalizar compra</button>
+        </div>
+    </div>
+
 </main>
