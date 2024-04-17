@@ -18,22 +18,21 @@ export class StoreComponent {
       this.products = data;
     })
   }
-  categoriesModal: boolean = false;
+  cartModal: boolean = false;
+  loginModal: boolean = false;
 
-  openModal() {
-    this.categoriesModal = true;
+  openCartModal() {
+    this.cartModal = true;
   }
-  closeModal() {
-    this.categoriesModal = false;
+  closeCartModal() {
+    this.cartModal = false;
   }
-  goToCart() {
-    this.categoriesModal = true;
-    // this.router.navigate(['/', 'cart'])
-    //   .then(nav => {
-    //     console.log(nav); // true if navigation is successful
-    //   }, err => {
-    //     console.log(err) // when there's an error
-    //   });
+
+  openLoginModal() {
+    this.loginModal = true;
+  }
+  closeLoginModal() {
+    this.loginModal = false;
   }
 
 }

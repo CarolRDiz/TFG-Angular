@@ -1,2 +1,53 @@
-<p>confirmation works!</p>
+<main class="content">
+    <h1>Gracias por tu pedido</h1><span>
+        #{{this.order.id}}
+    </span>
+    <h2>Email de confirmación del pedido</h2>
+    <p>Pronto recibirás un email de confirmación con el número de tu pedido</p>
+    <h2>Actualizaciones del pedido</h2>
+    <p>Recibirás las actualizaciones del envío y la entrega por email.</p>
+    <h2>Tu pedido #{{this.order.id}}</h2>
+    <ul>
+        <li>
+            <h3>INFORMACION DE CONTACTO</h3>
+            <ul>
+                <li>
+                    <span>Nombre: </span> <span>{{this.order.firstName}} {{this.order.lastName}}</span>
+                </li>
+                <li>
+                    <span>Email: </span> <span>{{this.order.email}}</span>
+                </li>
+                <li>
+                    <span>Teléfono: </span><span>{{this.order.phone}}</span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h3>DIRECCION DE ENTREGA</h3>
+            <ul>
+                <li>
+                    <span>Nombre: </span> <span>{{this.order.firstName}}</span>
+                </li>
+                <li>
+                    <span>Dirección: </span>
+                    <span>{{this.order.address}}</span>
+                    <span>{{this.order.secondAddress}}</span>
+                </li>
+                <li>
+                    <span>Teléfono: </span><span>{{this.order.phone}}</span>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <h3>METODO DE PAGO</h3>
+            <ul>
+                <li>
+                    <span>Paypal</span>
+                </li>
+                <li>
+            </ul>
+        </li>
+    </ul>
 Su compra se ha completado: {{transactionID}}
+</main>
+

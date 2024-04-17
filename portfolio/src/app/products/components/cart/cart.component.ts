@@ -11,6 +11,7 @@ import { CartService } from '../../services/cart.service';
 import { Product } from '../../product';
 import { CartProduct } from '../../cart-product';
 import { Router } from '@angular/router';
+import { CartItem } from '../../cart-item';
 
 @Component({
   selector: 'app-cart',
@@ -23,7 +24,7 @@ export class CartComponent {
   products: Product[]
   /*
     CartProducts
-    Contains all product data plus quantity 
+    Contains all product data plus amount 
   */
   cartProducts: any = [];
   totalPrice: number = 0;
@@ -33,30 +34,33 @@ export class CartComponent {
 
   constructor(private router: Router){}
   ngOnInit() {
+
     let cartItems = this.cartService.getItems();
-    let cartIds = cartItems.map((item: any) => item.id);
+    let cartIds = cartItems.map((item: CartItem) => item.product_id);
+
     this.productService.getListProducts(cartIds).subscribe(products => {
       this.products = products;
       cartItems.forEach((cartItem: any) => {
-        let product: any = this.products.find((product) => product.id == cartItem.id);
-        product = { ...product, quantity: cartItem.quantity }
+        let product: any = this.products.find((product) => product.id == cartItem.product_id);
+        product = { ...product, amount: cartItem.amount }
         this.cartProducts.push(product);
       });
       this.calculateTotal();
     });
     
   }
+  
   calculateTotal() {
     this.totalPrice = this.cartProducts.reduce((total: any, item: any) => {
-      return total + (item.quantity * item.price)
+      return total + (item.amount * item.price)
     }, 0)
   }
   refreshCart() {
     this.cartProducts = [];
     let cartItems = this.cartService.getItems();
-    cartItems.forEach((cartItem: any) => {
-      let product: any = this.products.find((product) => product.id == cartItem.id);
-      product = { ...product, quantity: cartItem.quantity }
+    cartItems.forEach((cartItem: CartItem) => {
+      let product: any = this.products.find((product) => product.id == cartItem.product_id);
+      product = { ...product, amount: cartItem.amount }
       this.cartProducts.push(product);
     });
     this.calculateTotal();

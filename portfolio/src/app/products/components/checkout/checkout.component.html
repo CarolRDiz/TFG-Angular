@@ -5,7 +5,7 @@
             <section class="checkout__section">
                 <div class="checkout__section-header">
                     <h2>Contacto</h2>
-                    <button *ngIf="step!=1" (click)="editFormGroup(1)" mat-icon-button aria-label="Example icon-button with a menu">
+                    <button *ngIf="isEditable(1)" (click)="editFormGroup(1)" mat-icon-button aria-label="Example icon-button with a menu">
                         <mat-icon>edit</mat-icon>
                     </button>
                 </div>
@@ -13,10 +13,10 @@
                     <app-input formControlName="email" [label]="'Correo electrónico'"
                         [placeholder]="'micorreo@gmail.com'" [name]="'email'" [required]="true"></app-input>
                     <div class="checkout__row">
-                        <app-input formControlName="first_name" [label]="'Nombre'" [placeholder]="'Rocío'"
-                            [name]="'first_name'" [required]="true"></app-input>
-                        <app-input formControlName="last_name" [label]="'Apellidos'" [placeholder]="'Rodríguez Díaz'"
-                            [name]="'last_name'" [required]="true"></app-input>
+                        <app-input formControlName="firstName" [label]="'Nombre'" [placeholder]="'Rocío'"
+                            [name]="'firstName'" [required]="true"></app-input>
+                        <app-input formControlName="lastName" [label]="'Apellidos'" [placeholder]="'Rodríguez Díaz'"
+                            [name]="'lastName'" [required]="true"></app-input>
                     </div>
                     <button (click)="saveStep()" class="checkout__save">Guardar</button>
                 </fieldset>
@@ -24,20 +24,20 @@
             <section class="checkout__section">
                 <div class="checkout__section-header">
                     <h2>Entrega</h2>
-                    <button (click)="editFormGroup(2)" mat-icon-button aria-label="Example icon-button with a menu">
+                    <button *ngIf="isEditable(2)" (click)="editFormGroup(2)" mat-icon-button aria-label="Example icon-button with a menu">
                         <mat-icon>edit</mat-icon>
                     </button>
                 </div>
                 <fieldset *ngIf="step==2" formGroupName="shipping_address" class="checkout__form-group">
                     <app-input formControlName="address" [label]="'Dirección 1'" [placeholder]="'Calle Sagasta, nº18'"
                         [name]="'address'"></app-input>
-                    <app-input formControlName="address2" [label]="'Dirección 2'" [placeholder]="'Primer piso, A'"
-                        [name]="'address2'"></app-input>
+                    <app-input formControlName="secondAddress" [label]="'Dirección 2'" [placeholder]="'Primer piso, A'"
+                        [name]="'secondAddress'"></app-input>
                     <div class="checkout__row">
                         <app-input formControlName="city" [label]="'Población'" [placeholder]="'ej. Jerez de la Forntera'"
                             [name]="'city'"></app-input>
-                        <app-input formControlName="postal_code" [label]="'Código Postal'" [placeholder]="'11130'"
-                            [name]="'postal_code'" [mask]="'00000'"></app-input>
+                        <app-input formControlName="postalCode" [label]="'Código Postal'" [placeholder]="'11130'"
+                            [name]="'postalCode'" [mask]="'00000'"></app-input>
                     </div>
                     <app-input formControlName="phone" [label]="'Número de móvil'" [placeholder]="'643 57 89 21'"
                         [name]="'phone'" [mask]="'000 00 00 00'"></app-input>
@@ -51,7 +51,12 @@
                         <mat-icon>edit</mat-icon>
                     </button> -->
                 </div>
-                <div *ngIf="step==3"  #paymentRef></div>
+                <div [hidden]="step!=3"> 
+                    <div #paymentRef></div>
+                    <button (click)="createOrder()">Comprar</button>
+                </div>
+
+                
                 <!-- <fieldset *ngIf="step==3" formGroupName="payment" class="checkout__form-group">
                     <div class="checkout__accordion">
                         <div class="checkout__accordion-item">
@@ -66,10 +71,10 @@
                             <div class="checkout__accordion-content" *ngIf="!getPaypalOption()">
                                 <fieldset formGroupName="card" class="checkout__form-group">
                                     <div class="checkout__row">
-                                        <app-input formControlName="first_name_card" [label]="'Nombre'" [placeholder]="'Rocío'"
-                                            [name]="'first_name_card'" [required]="true"></app-input>
-                                        <app-input formControlName="last_name_card" [label]="'Apellidos'" [placeholder]="'Rodríguez Díaz'"
-                                            [name]="'last_name_card'" [required]="true"></app-input>
+                                        <app-input formControlName="firstName_card" [label]="'Nombre'" [placeholder]="'Rocío'"
+                                            [name]="'firstName_card'" [required]="true"></app-input>
+                                        <app-input formControlName="lastName_card" [label]="'Apellidos'" [placeholder]="'Rodríguez Díaz'"
+                                            [name]="'lastName_card'" [required]="true"></app-input>
                                     </div>
                                     <app-input formControlName="card_number" [label]="'Tarjeta nº.'" [placeholder]="'1234 5678 9012 3456'"
                                         [name]="'card_number'" [mask]="'0000 0000 0000 0000 0000'"></app-input>
@@ -104,8 +109,24 @@
             <!-- <div #paymentRef></div> -->
         </form>
         <div class="checkout__aside">
-            total: 12$
-            <button>Finalizar compra</button>
+            <table class="checkout-table">
+                <tbody class="checkout-table__body">
+                    <tr class="checkout-table__row">
+                        <th class="checkout-table__header">Valor del pedido:</th>
+                        <td class="checkout-table__cell">12</td>
+                    </tr>
+                    <tr class="checkout-table__row">
+                        <th class="checkout-table__header">Entrega:</th>
+                        <td class="checkout-table__cell">4</td>
+                    </tr>
+                </tbody>
+                <tfoot class="checkout-table__foot">
+                    <tr class="checkout-table__row">
+                        <th class="checkout-table__header">Total:</th>
+                        <td class="checkout-table__cell">{{amount}}</td>
+                    </tr>
+                </tfoot>
+            </table>
         </div>
     </div>
 

@@ -1,7 +1,11 @@
 <main class="content">
     <div>
-        <button>User</button>
-        <button (click)="goToCart()">Cart</button>
+        <button (click)="openLoginModal()" mat-icon-button aria-label="Example icon-button with a menu">
+            <mat-icon>person</mat-icon>
+        </button>
+        <button (click)="openCartModal()" mat-icon-button aria-label="Example icon-button with a menu">
+            <mat-icon>shopping_bag</mat-icon>
+        </button>
     </div>
     <h1>Store</h1>
     <section class="products-list">
@@ -12,6 +16,6 @@
 
         </a>
     </section>
-    <app-cart *ngIf="categoriesModal" (closeEvent)="closeModal()" ></app-cart>
-
+    <app-cart *ngIf="cartModal" (closeEvent)="closeCartModal()" ></app-cart>
+    <app-login-modal *ngIf="loginModal" (closeEvent)="closeLoginModal()"></app-login-modal>
 </main>

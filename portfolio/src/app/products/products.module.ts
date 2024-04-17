@@ -11,6 +11,7 @@ import { ProductComponent } from './components/product/product.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
+import { CartService } from './services/cart.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
     
   ],
   providers: [
-    ProductService
+    ProductService,
+    CartService
   ]
 })
 export class ProductsModule { }

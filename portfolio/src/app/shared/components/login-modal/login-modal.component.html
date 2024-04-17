@@ -1,0 +1,36 @@
+<div class="modal ">
+    <div class="modal__header">
+        <h2 class="login-modal__title">Iniciar sesión</h2>
+        <mat-icon class="material-symbols-outlined" (click)="close()">
+            close
+        </mat-icon>
+    </div>
+    <div class="modal__content">
+        <ul class="login-modal__benefits-list">
+            <li class="login-modal__benefit">
+                <mat-icon class="material-symbols-outlined search-bar__close-icon" (click)="close()">
+                    check_circle
+                </mat-icon>
+                Recibe notificaciones sobre el estado de tus pedidos
+            </li>
+            <li class="login-modal__benefit">
+                <mat-icon class="material-symbols-outlined search-bar__close-icon" (click)="close()">
+                    check_circle
+                </mat-icon>
+                Mira tu historial de pedidos y vuelve a pedir más rápido</li>
+        </ul>
+
+        <form id="form" [formGroup]="loginForm" class="form__group">
+            <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="'micorreo@gmail.com'"
+                [name]="'email'" [required]="true"></app-input>
+            <app-input formControlName="password" [label]="'Contraseña'" [name]="'password'"
+                [required]="true"></app-input>
+            <button (click)="login()" class="login-modal__submit-button button button--large--filled">Iniciar sesión</button>
+        </form>
+        <button class="login-modal__register-button button button--large--empty">Registrarse</button>
+    </div>
+    <div class="modal__footer">
+
+    </div>
+</div>
+<div class="modal__backdrop" (click)="close()"></div>

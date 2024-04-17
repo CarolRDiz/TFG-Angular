@@ -30,6 +30,7 @@ import { PriceFieldComponent } from './components/price-field/price-field.compon
 import {MatRadioModule} from '@angular/material/radio';
 import { InputComponent } from './components/form-components/input/input.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { LoginModalComponent } from './components/login-modal/login-modal.component';
 
 
 @NgModule({
@@ -39,13 +40,15 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     AdminPageContainerComponent,
     HeaderComponent,
     LoaderComponent,
+    LoginModalComponent,
     LightboxComponent,
     SearchBarComponent,
     AdminPageContainerComponent,
     ModalComponent,
     PublicPageContainerComponent,
     PriceFieldComponent,
-    InputComponent
+    InputComponent,
+    LoginModalComponent
   ],
   imports: [
     RouterModule,
@@ -77,6 +80,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
     AdminPageContainerComponent,
     HeaderComponent,
     LoaderComponent,
+    LoginModalComponent,
     LightboxComponent,
     SearchBarComponent,
     CommonModule,
