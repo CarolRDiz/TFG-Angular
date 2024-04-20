@@ -2,8 +2,9 @@ import axios from 'axios';
 import { Injectable } from '@angular/core';
 import { ProductCreate } from '../product-create';
 import { Product } from '../product';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ProductEdit } from '../product-edit';
+import { catchError, throwError as ObservableThrowError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -48,7 +49,20 @@ export class ProductService {
   // }
   getAllProducts() {
     //return axios.get('http://localhost:8080/products/')
-    return this.http.get<Product[]>(`${this.baseUrl}`);
+    return this.http
+    .get<Product[]>(`${this.baseUrl}`)
+    .pipe(
+      catchError(this.errorHandler)
+    );
+  }
+  errorHandler(error: HttpErrorResponse){
+    if(error.status===0){
+      console.error("Error: "+error.error);
+    } else {
+      console.error("Respuesta: "+ error.status + ' '+error.error )
+    }
+    return throwError(()=>new Error('Algo ha fallado'))
+  
   }
 
   getProductById(id: Number) {

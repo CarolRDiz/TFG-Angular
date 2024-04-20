@@ -25,6 +25,7 @@
                 [name]="'email'" [required]="true"></app-input>
             <app-input formControlName="password" [label]="'Contraseña'" [name]="'password'"
                 [required]="true"></app-input>
+            <span *ngIf="loginError">{{loginError}}</span>
             <button (click)="login()" class="login-modal__submit-button button button--large--filled">Iniciar sesión</button>
         </form>
         <button class="login-modal__register-button button button--large--empty">Registrarse</button>

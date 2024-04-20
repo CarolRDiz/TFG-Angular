@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Login } from '../modals/login';
 import { Registration } from '../modals/registration';
+import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
+import { User } from '../modals/user';
 
 
 @Injectable({
@@ -9,16 +11,56 @@ import { Registration } from '../modals/registration';
 })
 export class AuthService {
 
+  currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  currentToken: BehaviorSubject<String> = new BehaviorSubject<String>("")
+
   private baseUrl = 'http://localhost:8080/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.currentUserLoginOn = new BehaviorSubject<boolean>(sessionStorage.getItem("token")!=null);
+    this.currentToken = new BehaviorSubject<String>(sessionStorage.getItem("token") || "");
+  }
 
   signUp(formData: Registration){
     return this.http.post<any>(`${this.baseUrl}registration/`, formData);
   }
-  login(formData: Login){
+  login(formData: Login): Observable<any>{
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
-    return this.http.post(`${this.baseUrl}token`, formData,  {responseType: 'text'});
+    return this.http
+    .post(`${this.baseUrl}token`, formData,  {responseType: 'text'})
+    .pipe(
+      tap( (token: string) => {
+        sessionStorage.setItem("token", token);
+        this.currentToken.next(token)
+        this.currentUserLoginOn.next(true)
+      }),
+      catchError(this.handlerError)
+    );
+  }
+
+  logout(){
+    sessionStorage.removeItem("token");
+    this.currentUserLoginOn.next(false);
+  }
+
+  setToken(token: string) {
+    localStorage.setItem('token', token);
+  }
+  getToken() {
+    return localStorage.getItem('token');
+  }
+  
+  get userToken():String{
+    return this.currentToken.value;
+  }
+
+  private handlerError(error: HttpErrorResponse){
+    if(error.status===0){
+      console.error("Error: "+error.error);
+    } else {
+      console.error("Respuesta: "+ error.status + ' '+error.error )
+    }
+    return throwError(()=>new Error('La contraseña o el correo electrónico son incorrectos. Inténtalo de nuevo.'))
   }
 
 }

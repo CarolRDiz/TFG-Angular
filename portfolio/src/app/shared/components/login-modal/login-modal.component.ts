@@ -14,6 +14,8 @@ export class LoginModalComponent {
   @Output() closeEvent = new EventEmitter();
   //@Output() submitEvent = new EventEmitter();
 
+  loginError: string = "";
+
   loginForm = new FormGroup({
     email: new FormControl("", [Validators.required, AppValidator.emailValidator()]),
     password: new FormControl("", [Validators.required])
@@ -38,10 +40,30 @@ export class LoginModalComponent {
       "email": this.loginForm.value.email??'',
       "password": this.loginForm.value.password??''
     }
+    this.authService.login(formData).subscribe({
+      next: (data) => {
+        this.authService.setToken(data);
+      },
+      error: (errorData) => {
+        console.log(errorData);
+        this.loginError = errorData;
+
+      },
+      complete: () => {
+        console.info("Login completado");
+      }
+    })
+    /*
     this.authService.login(formData).subscribe(response => {
       console.log(response);
+      if(response){
+        this.authService.setToken(response);
+      }
+      else {
+        this.loginError = true;
+      }
     }
-    )
+    )*/
   }
 
   // submit(): void {

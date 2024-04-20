@@ -12,6 +12,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { CartService } from './services/cart.service';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CartService } from './services/cart.service';
     CartComponent,
     CheckoutComponent,
     ConfirmationComponent,
+    UserComponent,
   ],
   exports: [
     StoreComponent,
