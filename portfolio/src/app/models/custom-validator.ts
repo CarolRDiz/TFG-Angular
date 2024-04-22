@@ -37,6 +37,16 @@ export class AppValidator {
     //     };
     // }
 
+    static confirmPasswordValidator = (password: AbstractControl) => {
+        return (control: AbstractControl) => {
+            if (control.value) {
+                const valid: boolean = control.value == password.value;
+                if (!valid) return { invalidConfirmPassword: true, message: 'No coincide con la contraseña' };
+            }
+            return null;
+        };
+    }
+
     static emailValidator() {
         return (control: AbstractControl) => {
             if (control.value) {

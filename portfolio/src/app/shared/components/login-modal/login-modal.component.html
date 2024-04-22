@@ -1,6 +1,9 @@
 <div class="modal ">
     <div class="modal__header">
-        <h2 class="login-modal__title">Iniciar sesión</h2>
+        <h2 *ngIf="loginMode; else registerTitle" class="login-modal__title">Iniciar sesión</h2>
+        <ng-template #registerTitle>
+            <h2 class="login-modal__title">Registrarse</h2>
+        </ng-template>
         <mat-icon class="material-symbols-outlined" (click)="close()">
             close
         </mat-icon>
@@ -17,21 +20,42 @@
                 <mat-icon class="material-symbols-outlined search-bar__close-icon" (click)="close()">
                     check_circle
                 </mat-icon>
-                Mira tu historial de pedidos y vuelve a pedir más rápido</li>
+                Mira tu historial de pedidos y vuelve a pedir más rápido
+            </li>
         </ul>
-
-        <form id="form" [formGroup]="loginForm" class="form__group">
-            <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="'micorreo@gmail.com'"
+        <form *ngIf="loginMode; else registerMode" [formGroup]="loginForm" class="form__group">
+            <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"
                 [name]="'email'" [required]="true"></app-input>
             <app-input formControlName="password" [label]="'Contraseña'" [name]="'password'"
-                [required]="true"></app-input>
+                [required]="true" [placeholder]="''"></app-input>
             <span *ngIf="loginError">{{loginError}}</span>
-            <button (click)="login()" class="login-modal__submit-button button button--large--filled">Iniciar sesión</button>
+            <button (click)="login()" class="login-modal__submit-button button button--large--filled">Iniciar
+                sesión</button>
         </form>
-        <button class="login-modal__register-button button button--large--empty">Registrarse</button>
-    </div>
-    <div class="modal__footer">
+        <ng-template #registerMode>
+            <form [formGroup]="registerForm" class="form__group">
+                <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"
+                    [name]="'email'" [required]="true"></app-input>
+                <app-input formControlName="password" [label]="'Contraseña'" [name]="'password'"
+                    [required]="true" [placeholder]="''"></app-input>
+                <app-input formControlName="confirmPassword" [label]="'Confirma la contraseña'" [name]="'repeat_password'"
+                    [required]="true" [placeholder]="''"></app-input>
+                <span *ngIf="loginError">{{loginError}}</span>
+                <button (click)="register()"
+                    class="login-modal__submit-button button button--large--filled">Registrarse</button>
+            </form>
+        </ng-template>
 
+
+        <button (click)="switchMode()" *ngIf="loginMode; else loginButton"
+            class="login-modal__register-button button button--large--empty">Registrarse</button>
+        <ng-template #loginButton>
+            <button (click)="switchMode()" class="login-modal__register-button button button--large--empty">Iniciar
+                sesión</button>
+        </ng-template>
     </div>
+    <!-- <div class="modal__footer">
+
+    </div> -->
 </div>
 <div class="modal__backdrop" (click)="close()"></div>

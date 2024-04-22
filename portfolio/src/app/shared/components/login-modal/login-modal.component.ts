@@ -1,6 +1,7 @@
 import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Login } from 'src/app/core/modals/login';
+import { Registration } from 'src/app/core/modals/registration';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AppValidator } from 'src/app/models/custom-validator';
 
@@ -14,11 +15,19 @@ export class LoginModalComponent {
   @Output() closeEvent = new EventEmitter();
   //@Output() submitEvent = new EventEmitter();
 
+  loginMode: boolean = true;
+
   loginError: string = "";
 
   loginForm = new FormGroup({
     email: new FormControl("", [Validators.required, AppValidator.emailValidator()]),
     password: new FormControl("", [Validators.required])
+  });
+
+  registerForm = new FormGroup({
+    email: new FormControl("", [Validators.required, AppValidator.emailValidator()]),
+    password: new FormControl("", [Validators.required]),
+    confirmPassword: new FormControl("", [Validators.required])
   });
 
   constructor(
@@ -29,12 +38,35 @@ export class LoginModalComponent {
   }
 
   ngOnInit(): void {
+    this.registerForm.controls.confirmPassword.addValidators(AppValidator.confirmPasswordValidator(this.registerForm.controls.password))
   }
 
   close(): void {
     this.closeEvent.emit();
   }
+  switchMode(){
+    this.loginMode = !this.loginMode;
+  }
+  register(){
 
+    let formData: Registration = {
+      "email": this.registerForm.value.email??'',
+      "password": this.registerForm.value.password??''
+    }
+    this.authService.signUp(formData).subscribe({
+      next: (data) => {
+      },
+      error: (errorData) => {
+        console.log(errorData);
+        this.loginError = errorData;
+
+      },
+      complete: () => {
+        this.loginMode = true;
+        console.info("SignUp completado");
+      }
+    })
+  }
   login(){
     let formData: Login = {
       "email": this.loginForm.value.email??'',
@@ -42,7 +74,7 @@ export class LoginModalComponent {
     }
     this.authService.login(formData).subscribe({
       next: (data) => {
-        this.authService.setToken(data);
+        console.log("Logueado");
       },
       error: (errorData) => {
         console.log(errorData);
@@ -51,6 +83,7 @@ export class LoginModalComponent {
       },
       complete: () => {
         console.info("Login completado");
+        this.close();
       }
     })
     /*

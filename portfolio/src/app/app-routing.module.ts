@@ -16,6 +16,8 @@ import { ProductComponent } from './products/components/product/product.componen
 import { CartComponent } from './products/components/cart/cart.component';
 import { CheckoutComponent } from './products/components/checkout/checkout.component';
 import { ConfirmationComponent } from './products/components/confirmation/confirmation.component';
+import { UserComponent } from './products/components/user/user.component';
+import { ContactComponent } from './contact/components/contact/contact.component';
 
 const routes: Routes = [
   {
@@ -39,6 +41,12 @@ const routes: Routes = [
       },
       {
         path: 'confirmation', component: ConfirmationComponent
+      },
+      {
+        path: 'user', component: UserComponent
+      },
+      {
+        path: 'contact', component: ContactComponent
       }
     ]
   },

@@ -6,6 +6,6 @@ export interface Product {
     visibility: boolean,
     tags: Array<string>,
     price: number,
-    thumbnail_id: string,
+    thumbnail_image_id: string,
     category_ids: Array<Number>
 }

@@ -1,1 +1,101 @@
-<p>user works!</p>
+<main class="content">
+    <span *ngIf="loading; else content">loading </span>
+    <ng-template #content>
+        <div class="user__title">
+            <h1>Bienvenid@ 
+                <span *ngIf="user.firstName">{{user.firstName}}</span>
+                <span *ngIf="!user.firstName">{{user.email}}</span>
+            </h1>
+            <button type="button" mat-icon-button aria-label="Example icon-button with a menu">
+                <mat-icon>settings</mat-icon>
+            </button>
+        </div>
+
+        <ul>
+            <li>
+                Pedidos
+            </li>
+            <li>
+                Ajustes
+            </li>
+        </ul>
+        <h2>Pedidos</h2>
+        <ul class="orders">
+            <li class="order" *ngFor="let order of user.orders; let i=index;">
+                <div class="order__info">
+                    <div class="order__info-item">
+                        <span class="order__info-item-title">Pedido:</span>
+                        <span>{{order.date}}</span>
+                    </div>
+                    <div class="order__info-item">
+                        <span class="order__info-item-title">Nº pedido:</span>
+                        <span>{{order.id}}</span>
+                    </div>
+                    <div>
+                        <span *ngIf="order.shipped==1">Completado</span>
+                        <span *ngIf="order.shipped==0">En proceso</span>
+                    </div>
+                </div>
+
+                <ul>
+                    <li class="order-item" *ngFor="let orderItem of order.items; let i=index;">
+                        <div class="order-item__image-frame">
+                            <img class="order-item__image"
+                                [src]="'http://localhost:8080/images/'+orderItem.product.thumbnail_image_id" alt="">
+                        </div>
+
+                        <div class="order-item__data">
+                            <a class="order-item__name" [routerLink]="'/product/'+ orderItem.product.id">
+                                {{orderItem.product.name}}
+                            </a>
+                            <span class="order-item__price">{{orderItem.product.price}} $</span>
+                            <span class="order-item__amount">X{{orderItem.amount}} Unidad(es)</span>
+                        </div>
+
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+
+        <form id="form" [formGroup]="userForm" class="checkout__form">
+            <section class="checkout__section">
+                <div class="checkout__section-header">
+                    <h2>Contacto</h2>
+                </div>
+                <fieldset formGroupName="contact" class="checkout__form-group">
+                    <app-input formControlName="email" [label]="'Correo electrónico'"
+                        [placeholder]="'micorreo@gmail.com'" [name]="'email'" [required]="true"></app-input>
+                    <div class="checkout__row">
+                        <app-input formControlName="firstName" [label]="'Nombre'" [placeholder]="'Rocío'"
+                            [name]="'firstName'" [required]="true"></app-input>
+                        <app-input formControlName="lastName" [label]="'Apellidos'" [placeholder]="'Rodríguez Díaz'"
+                            [name]="'lastName'" [required]="true"></app-input>
+                    </div>
+                </fieldset>
+            </section>
+            <section class="checkout__section">
+                <div class="checkout__section-header">
+                    <h2>Entrega</h2>
+                </div>
+                <fieldset formGroupName="shipping_address" class="checkout__form-group">
+                    <app-input formControlName="address" [label]="'Dirección 1'" [placeholder]="'Calle Sagasta, nº18'"
+                        [name]="'address'"></app-input>
+                    <app-input formControlName="secondAddress" [label]="'Dirección 2'" [placeholder]="'Primer piso, A'"
+                        [name]="'secondAddress'"></app-input>
+                    <div class="checkout__row">
+                        <app-input formControlName="city" [label]="'Población'"
+                            [placeholder]="'ej. Jerez de la Forntera'" [name]="'city'"></app-input>
+                        <app-input formControlName="postalCode" [label]="'Código Postal'" [placeholder]="'11130'"
+                            [name]="'postalCode'" [mask]="'00000'"></app-input>
+                    </div>
+                    <app-input formControlName="phone" [label]="'Número de móvil'" [placeholder]="'643 57 89 21'"
+                        [name]="'phone'" [mask]="'000 00 00 00'"></app-input>
+                </fieldset>
+            </section>
+            <button (click)="updateUser()" class="button button--filled--medium">Guardar</button>
+
+        </form>
+    </ng-template>
+
+</main>

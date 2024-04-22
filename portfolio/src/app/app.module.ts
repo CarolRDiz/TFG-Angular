@@ -10,6 +10,8 @@ import { CoreModule } from './core/core.module';
 import { IllustrationsModule } from './illustrations/illustrations.module';
 import { ProductsModule } from './products/products.module';
 import { PublicViewComponent } from './shared/components/views/public-view/public-view.component';
+import { ContactModule } from './contact/contact.module';
+import { AboutMeModule } from './about-me/about-me.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,8 @@ import { PublicViewComponent } from './shared/components/views/public-view/publi
     CoreModule,
     AppRoutingModule,
     CommonModule,
-    
+    ContactModule,
+    AboutMeModule
   ],
   exports: [
   ],

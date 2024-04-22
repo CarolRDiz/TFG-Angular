@@ -11,9 +11,17 @@ export class UsersService {
 
   constructor(private http: HttpClient) {}
 
-  getUser(id: number): Observable<User>{
+  getUser(): Observable<User>{
     return this.http
-    .get<User>(`${environment.urlApi}users`)
+    .get<User>(`${environment.urlApi}users/principal/`)
+    .pipe(
+      catchError(this.handlerError)
+    );
+  }
+  
+  updateUser(user: User): Observable<User>{
+    return this.http
+    .patch<User>(`${environment.urlApi}users/`, user)
     .pipe(
       catchError(this.handlerError)
     );

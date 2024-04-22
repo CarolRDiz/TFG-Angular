@@ -43,12 +43,12 @@ export class AuthService {
     this.currentUserLoginOn.next(false);
   }
 
-  setToken(token: string) {
-    localStorage.setItem('token', token);
-  }
-  getToken() {
-    return localStorage.getItem('token');
-  }
+  // setToken(token: string) {
+  //   localStorage.setItem('token', token);
+  // }
+  // getToken() {
+  //   return localStorage.getItem('token');
+  // }
   
   get userToken():String{
     return this.currentToken.value;

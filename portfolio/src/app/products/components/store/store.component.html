@@ -3,6 +3,9 @@
         <button (click)="openLoginModal()" mat-icon-button aria-label="Example icon-button with a menu">
             <mat-icon>person</mat-icon>
         </button>
+        <button (click)="goToUser()" mat-icon-button aria-label="Example icon-button with a menu">
+            <mat-icon>person</mat-icon> Mi cuenta 
+        </button>
         <button (click)="openCartModal()" mat-icon-button aria-label="Example icon-button with a menu">
             <mat-icon>shopping_bag</mat-icon>
         </button>
@@ -11,7 +14,7 @@
     <section class="products-list">
         <a [routerLink]="'/product/'+ product.id" class="products-list__product"
             *ngFor="let product of products; index as i">
-            <img class="products-list__image" [src]="'http://localhost:8080/images/'+product.thumbnail_id" alt="">
+            <img class="products-list__image" [src]="'http://localhost:8080/images/'+product.thumbnail_image_id" alt="">
             {{product.name}}
 
         </a>

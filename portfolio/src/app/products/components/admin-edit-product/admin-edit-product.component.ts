@@ -138,7 +138,7 @@ export class AdminEditProductComponent {
             categories: product.category_ids
           },
           images: {
-            thumbnail_image_id: product.thumbnail_id
+            thumbnail_image_id: product.thumbnail_image_id
           },
           inventory: {
             price: product.price.toString()

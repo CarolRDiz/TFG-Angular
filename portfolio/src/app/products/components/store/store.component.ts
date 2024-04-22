@@ -34,5 +34,13 @@ export class StoreComponent {
   closeLoginModal() {
     this.loginModal = false;
   }
+  goToUser(){
+    this.router.navigate(['/', 'user'])
+      .then(nav => {
+        console.log(nav); // true if navigation is successful
+      }, err => {
+        console.log(err) // when there's an error
+      });
+  }
 
 }

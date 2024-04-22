@@ -8,7 +8,7 @@
     <div class="modal__content">
         <div *ngFor="let product of cartProducts; let i=index;" class="cart__item">
             <div class="cart__item-side">
-                <img class="cart__image" [src]="'http://localhost:8080/images/'+product.thumbnail_id" alt="">
+                <img class="cart__image" [src]="'http://localhost:8080/images/'+product.thumbnail_image_id" alt="">
                 <span>{{product.name}}</span>
             </div>
             <div class="cart__item-side">
