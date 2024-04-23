@@ -18,6 +18,7 @@ import { CheckoutComponent } from './products/components/checkout/checkout.compo
 import { ConfirmationComponent } from './products/components/confirmation/confirmation.component';
 import { UserComponent } from './products/components/user/user.component';
 import { ContactComponent } from './contact/components/contact/contact.component';
+import { AboutMeComponent } from './about-me/components/about-me/about-me.component';
 
 const routes: Routes = [
   {
@@ -47,6 +48,9 @@ const routes: Routes = [
       },
       {
         path: 'contact', component: ContactComponent
+      },
+      {
+        path: 'about-me', component: AboutMeComponent
       }
     ]
   },
