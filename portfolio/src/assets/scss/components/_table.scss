@@ -21,7 +21,7 @@
     height: 80px;
 }
 .table__row:hover {
-    background-color: var(--color-mid-gray);
+    background-color: var(--color-primary-light);
 }
 .table__cell {
     align-items: center;
@@ -47,7 +47,7 @@
     justify-content: flex-start;
 }
 .table__header .table__cell {
-    color: var(--color-light-gray);
+    color: var(--color-mid-gray);
     font-weight: 200;
     font-size:medium;
     height: 40px;

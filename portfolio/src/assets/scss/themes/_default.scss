@@ -8,9 +8,17 @@
 // $text-size-medium: 18px;
 // $text-size-large: 24px;
 
+
 // Theme dark
 .theme{
-    --color-text: #{$text-color};
+    --color-primary: #{$primary-color};
+    --color-primary-light: #{$primary-light-color};
+    --color-dark-light: #{$primary-dark-color};
+
+    --color-background: #{$secondary-color};
+    --color-translucent-dark: #{$translucent-dark-color};
+    --color-translucent-light: #{$translucent-dark-color};
+    --color-text: #{$mid-gray};
     --color-light-gray: #{$light-gray}; 
     --color-mid-light-gray: #{$mid-light-gray}; 
     --color-mid-gray: #{$mid-gray};
@@ -24,7 +32,17 @@
     // --mdc-checkbox-disabled-unselected-icon-color: #{$text-color};
     // --mdc-checkbox-unselected-pressed-icon-color: #{$text-color};
     // Theme light
-    &--light{
+    &--dark{
+        --color-primary: #{$primary-color};
+        --color-background: #{$mid-gray};
+        --color-text: #{$text-color};
+        --color-light-gray: #{$light-gray}; 
+        --color-mid-light-gray: #{$mid-light-gray}; 
+        --color-mid-gray: #{$mid-gray};
+        --color-mid-dark-gray: #{$mid-dark-gray};
+        --color-dark-gray: #{$dark-gray};
+        --color-icon: #{$text-color};
+        --color-warn: #{$warn};
     }
 }
 .mdc-checkbox__background{

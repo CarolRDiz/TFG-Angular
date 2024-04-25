@@ -24,7 +24,7 @@
 .button[class*="--filled"] {
     border: none;
     background-color: var(--color-text);
-    color: var(--color-dark-gray);
+    color: var(--color-background);
     cursor: pointer;
 }
 .button[class*="--empty"] {
@@ -39,8 +39,8 @@
     border: none;
     width: fit-content;
     height: fit-content;
-    background-color: var(--color-text);
-    color: var(--color-dark-gray);
+    background-color: var(--color-dark-light);
+    color: white;
     cursor: pointer;
     display: flex;
     column-gap: 5px;

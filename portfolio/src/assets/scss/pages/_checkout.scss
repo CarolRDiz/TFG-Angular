@@ -6,27 +6,12 @@
 
 }
 
-.checkout__label {}
 
 .checkout__form {
     display: flex;
     flex-direction: column;
     row-gap: 30px;
     width: 70%;
-}
-
-.checkout__input {
-    background-color: var(--color-mid-light-gray);
-    border: 1px solid var(--color-light-gray);
-    border-radius: 5px;
-    color: var(--color-text);
-    outline: none;
-    padding: 10px 15px;
-    width: 100%;
-}
-
-.checkout__field {
-    width: 100%;
 }
 
 .checkout__row {

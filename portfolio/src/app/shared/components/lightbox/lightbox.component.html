@@ -1,16 +1,19 @@
 <div class="lightbox">
-    <mat-icon class="lightbox__close material-symbols-outlined" (click)="close()">
-        close
-    </mat-icon>
+    <div class="lightbox__button lightbox__close" (click)="close()">
+        <mat-icon>
+            close
+        </mat-icon>
+    </div>
+
     <!-- <CloseIcon @click="closeLightbox()" class="lightbox__close svg-icon--black"></CloseIcon> -->
-    <div class="lightbox__slide prev" (click)="slideLeft()">
-        <mat-icon class="material-symbols-outlined" >
+    <div class="lightbox__button lightbox__slide prev" (click)="slideLeft()">
+        <mat-icon>
             chevron_left
         </mat-icon>
         <!-- <ArrowLeftIcon @click="prevImage()" class="svg-icon--black" ></ArrowLeftIcon> -->
     </div>
-    <div class="lightbox__slide next" (click)="slideRight()">
-        <mat-icon class="material-symbols-outlined">
+    <div class="lightbox__button lightbox__slide next" (click)="slideRight()">
+        <mat-icon>
             chevron_right
         </mat-icon>
         <!-- <ArrowRightIcon @click="nextImage()" class="svg-icon--black"></ArrowRightIcon> -->

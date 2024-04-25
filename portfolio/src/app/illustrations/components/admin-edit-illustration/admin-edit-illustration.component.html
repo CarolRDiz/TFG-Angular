@@ -29,7 +29,9 @@
                     <legend class="form__legend">Imagen</legend>
                     <!--SELECTED IMAGE-->
                     <div *ngIf="this.fileUrl else elseBlock">
-                        <div class="selected-image">
+                        <app-selected-image [fileUrl]="this.fileUrl" (deleteImageEvent)="deleteImage()"></app-selected-image>
+
+                        <!-- <div class="selected-image">
                             <img class="selected-image__image" [src]="this.fileUrl" alt="">
                             <div class="selected-image__buttons">
                                 <button type="button" mat-icon-button aria-label="Example icon-button with a menu">
@@ -40,7 +42,7 @@
                                     <mat-icon class="icon--red">delete</mat-icon>
                                 </button>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     <!--ADD IMAGE-->
                     <ng-template #elseBlock>

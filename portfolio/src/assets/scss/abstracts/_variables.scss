@@ -2,8 +2,11 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
+//MAIN
+$padding-bottom-page: 150px;
+
 // HEADER
-$header-width: 200px;
+$header-width: 270px;
 
 // TOP HEADER
 $top-header-height: 110px;
@@ -21,7 +24,17 @@ $code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
 
 $border-bottom: 1px solid var(--color-light-gray);
 
+/// @type Color
+$primary-color: #28a698;
 
+/// @type Color
+$primary-light-color: #c3d7d5;
+
+/// @type Color
+$primary-dark-color: #294b49;
+
+/// @type Color
+$secondary-color: #e3dad6;
 
 /// Copy text color
 /// @type Color
@@ -33,7 +46,15 @@ $brand-color: rgb(27, 210, 198) !default;
 
 // White
 /// @type Color
-$white: rgb(255, 255, 255);
+$white-color: rgb(255, 255, 255);
+
+// Translucent Dark
+/// @type Color
+$translucent-dark-color: hwb(30 8% 90% / 0.945);
+
+// Translucent Light
+/// @type Color
+$translucent-light-color: hwb(17 54% 40% / 0.737);
 
 /// Light grey
 /// @type Color

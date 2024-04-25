@@ -1,5 +1,6 @@
 .content {
-    background-color: var(--color-mid-gray);
+    align-items: center;
+    background-color: var(--color-background);
     display: flex;
     flex-direction: column;
     margin-left: $header-width;
@@ -7,15 +8,19 @@
     padding-left: $padding-sides;
     padding-right: $padding-sides;
     padding-top: $padding-top;
+    padding-bottom: $padding-bottom-page;
     position: relative;
     row-gap: 30px;
 }
-.content__top{
+
+.content__top {
+    align-items: center;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    width: 100%;
     //margin-bottom: 20px;
 }
+
 .content--padding-top {
     padding-top: $padding-top;
 }

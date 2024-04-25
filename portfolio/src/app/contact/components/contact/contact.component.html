@@ -1,7 +1,6 @@
 <main class="content">
-    <h1>Contact me</h1>
-    <form id="form" [formGroup]="contactForm" class="checkout__form">
-        <section class="checkout__section">
+    <h1>Contacto</h1>
+    <form id="form" [formGroup]="contactForm" class="form">
             <app-input formControlName="name" [label]="'Nombre'" [placeholder]="'Tu nombre...'" [name]="'name'"
             [required]="true"></app-input>
 
@@ -12,7 +11,6 @@
             <app-input formControlName="message" [label]="'Mensaje'" [placeholder]="'Tu mensaje...'"
                 [name]="'message'" [required]="true"></app-input>
 
-            <button (click)="send()" class="checkout__save">Guardar</button>
-        </section>
+            <button (click)="send()" class="save">Guardar</button>
     </form>
 </main>

@@ -31,6 +31,7 @@ import {MatRadioModule} from '@angular/material/radio';
 import { InputComponent } from './components/form-components/input/input.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
+import { SelectedImageComponent } from './components/selected-image/selected-image.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
     PublicPageContainerComponent,
     PriceFieldComponent,
     InputComponent,
-    LoginModalComponent
+    LoginModalComponent,
+    SelectedImageComponent
   ],
   imports: [
     RouterModule,
@@ -106,7 +108,8 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
     MatRadioModule,
     InputComponent,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
+    SelectedImageComponent
   ],
   providers: [
     ModalService,

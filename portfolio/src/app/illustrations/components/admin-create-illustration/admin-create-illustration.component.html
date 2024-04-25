@@ -9,7 +9,8 @@
                 <button mat-icon-button aria-label="Example icon-button with a menu">
                     <mat-icon>content_copy</mat-icon>
                 </button>
-                <button class="button button--white" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <button class="button button--white" [matMenuTriggerFor]="menu"
+                    aria-label="Example icon-button with a menu">
                     Guardar <mat-icon>expand_more</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
@@ -33,18 +34,22 @@
                     <legend class="form__legend">Imagen</legend>
                     <!--SELECTED IMAGE-->
                     <div *ngIf="getShow() else elseBlock">
-                        <div class="selected-image">
-                            <img class="selected-image__image" [src]="getFileUrl()" alt="">
-                            <div class="selected-image__buttons">
-                                <button type="button" mat-icon-button aria-label="Example icon-button with a menu">
-                                    <mat-icon>open_in_full</mat-icon>
-                                </button>
-                                <button type="button" mat-icon-button aria-label="Example icon-button with a menu"
-                                    (click)="deleteImage()" type="button">
-                                    <mat-icon class="icon--red">delete</mat-icon>
-                                </button>
+                        <app-selected-image [fileUrl]="getFileUrl()??''" (deleteImageEvent)="deleteImage()"></app-selected-image>
+                        <!-- <div class="selected-image__container">
+                            <div class="selected-image">
+                                <img class="selected-image__image" [src]="getFileUrl()" alt="">
+                                <div class="selected-image__buttons">
+                                    <button type="button" mat-icon-button aria-label="Example icon-button with a menu">
+                                        <mat-icon>open_in_full</mat-icon>
+                                    </button>
+                                    <button type="button" mat-icon-button aria-label="Example icon-button with a menu"
+                                        (click)="deleteImage()" type="button">
+                                        <mat-icon class="icon--red">delete</mat-icon>
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        </div> -->
+
                     </div>
                     <!--ADD IMAGE-->
                     <ng-template #elseBlock>
@@ -79,5 +84,5 @@
             </form>
         </div>
     </div>
-    
+
 </main>
