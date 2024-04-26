@@ -14,11 +14,11 @@
 }
 
 .cart {
-  background-color: var(--color-mid-dark-gray);
+  background-color: var(--color-background);
   border-radius: 5px;
-  height: 100%;
+  height: fit-content;
   left: 50%;
-  max-height: 400px;
+  max-height: 600px;
   overflow: auto;
   padding: 20px;
   position: fixed;
@@ -53,6 +53,18 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
+}
+.cart__subtotal {
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+}
+
+.cart__footer {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  width: 400px;
 }
 
 .modal__header {

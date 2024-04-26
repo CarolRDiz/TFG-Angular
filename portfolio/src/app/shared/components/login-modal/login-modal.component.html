@@ -25,8 +25,8 @@
         </ul>
         <form *ngIf="loginMode; else registerMode" [formGroup]="loginForm" class="form__group">
             <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"
-                [name]="'email'" [required]="true"></app-input>
-            <app-input formControlName="password" [label]="'Contraseña'" [name]="'password'"
+                 [required]="true"></app-input>
+            <app-input formControlName="password" [label]="'Contraseña'" 
                 [required]="true" [placeholder]="''"></app-input>
             <span *ngIf="loginError">{{loginError}}</span>
             <button (click)="login()" class="login-modal__submit-button button button--large--filled">Iniciar
@@ -35,10 +35,10 @@
         <ng-template #registerMode>
             <form [formGroup]="registerForm" class="form__group">
                 <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"
-                    [name]="'email'" [required]="true"></app-input>
-                <app-input formControlName="password" [label]="'Contraseña'" [name]="'password'"
+                     [required]="true"></app-input>
+                <app-input formControlName="password" [label]="'Contraseña'" 
                     [required]="true" [placeholder]="''"></app-input>
-                <app-input formControlName="confirmPassword" [label]="'Confirma la contraseña'" [name]="'repeat_password'"
+                <app-input formControlName="confirmPassword" [label]="'Confirma la contraseña'"
                     [required]="true" [placeholder]="''"></app-input>
                 <span *ngIf="loginError">{{loginError}}</span>
                 <button (click)="register()"

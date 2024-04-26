@@ -10,7 +10,11 @@
     padding-top: $padding-top;
     padding-bottom: $padding-bottom-page;
     position: relative;
-    row-gap: 30px;
+    //row-gap: 30px;
+}
+.content__title {
+    margin-bottom: 40px;
+    text-align: center;
 }
 
 .content__top {

@@ -54,6 +54,10 @@ export class AuthService {
     return this.currentToken.value;
   }
 
+  get userLoginOn(): Observable<boolean>{
+    return this.currentUserLoginOn.asObservable();
+  }
+
   private handlerError(error: HttpErrorResponse){
     if(error.status===0){
       console.error("Error: "+error.error);

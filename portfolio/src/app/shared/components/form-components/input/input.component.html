@@ -1,8 +1,8 @@
 <div class="field">
-    <label [for]="name" class="label">{{getLabel}}</label>
+    <label [for]="formControl" class="label">{{getLabel}}</label>
     <div class="refillable-field">
         <div class="input-container">
-            <input [formControl]="formControl" type="text" class="input" [name]="name"
+            <input [formControl]="formControl" type="text" class="input" 
                 [placeholder]="placeholder" [mask]="mask">
             <div *ngIf="showError">
                 <!-- <mat-error *ngIf="ngControl.errors?.['required']">Rellene este campo</mat-error> -->

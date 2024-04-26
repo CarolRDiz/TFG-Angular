@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 
 //MAIN
-$padding-bottom-page: 150px;
+$padding-bottom-page: 100px;
 
 // HEADER
 $header-width: 270px;
@@ -12,7 +12,7 @@ $header-width: 270px;
 $top-header-height: 110px;
 
 $padding-top: 33px;
-$padding-sides:33px;
+$padding-sides:53px;
 
 /// Regular font family
 /// @type List
@@ -35,6 +35,9 @@ $primary-dark-color: #294b49;
 
 /// @type Color
 $secondary-color: #e3dad6;
+
+/// @type Colorrgb(243, 238, 236)
+$secondary-light-color: #f2ebe7;
 
 /// Copy text color
 /// @type Color

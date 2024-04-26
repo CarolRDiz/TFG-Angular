@@ -2,7 +2,7 @@
     <span *ngIf="loading; else content">loading </span>
     <ng-template #content>
         <div class="user__title">
-            <h1>Bienvenid@ 
+            <h1>Bienvenid@
                 <span *ngIf="user.firstName">{{user.firstName}}</span>
                 <span *ngIf="!user.firstName">{{user.email}}</span>
             </h1>
@@ -65,12 +65,12 @@
                 </div>
                 <fieldset formGroupName="contact" class="checkout__form-group">
                     <app-input formControlName="email" [label]="'Correo electrónico'"
-                        [placeholder]="'micorreo@gmail.com'" [name]="'email'" [required]="true"></app-input>
+                        [placeholder]="'micorreo@gmail.com'" [required]="true"></app-input>
                     <div class="checkout__row">
                         <app-input formControlName="firstName" [label]="'Nombre'" [placeholder]="'Rocío'"
-                            [name]="'firstName'" [required]="true"></app-input>
+                            [required]="true"></app-input>
                         <app-input formControlName="lastName" [label]="'Apellidos'" [placeholder]="'Rodríguez Díaz'"
-                            [name]="'lastName'" [required]="true"></app-input>
+                            [required]="true"></app-input>
                     </div>
                 </fieldset>
             </section>
@@ -79,18 +79,18 @@
                     <h2>Entrega</h2>
                 </div>
                 <fieldset formGroupName="shipping_address" class="checkout__form-group">
-                    <app-input formControlName="address" [label]="'Dirección 1'" [placeholder]="'Calle Sagasta, nº18'"
-                        [name]="'address'"></app-input>
-                    <app-input formControlName="secondAddress" [label]="'Dirección 2'" [placeholder]="'Primer piso, A'"
-                        [name]="'secondAddress'"></app-input>
+                    <app-input formControlName="address" [label]="'Dirección 1'"
+                        [placeholder]="'Calle Sagasta, nº18'"></app-input>
+                    <app-input formControlName="secondAddress" [label]="'Dirección 2'"
+                        [placeholder]="'Primer piso, A'"></app-input>
                     <div class="checkout__row">
                         <app-input formControlName="city" [label]="'Población'"
-                            [placeholder]="'ej. Jerez de la Forntera'" [name]="'city'"></app-input>
+                            [placeholder]="'ej. Jerez de la Forntera'"></app-input>
                         <app-input formControlName="postalCode" [label]="'Código Postal'" [placeholder]="'11130'"
-                            [name]="'postalCode'" [mask]="'00000'"></app-input>
+                            [mask]="'00000'"></app-input>
                     </div>
                     <app-input formControlName="phone" [label]="'Número de móvil'" [placeholder]="'643 57 89 21'"
-                        [name]="'phone'" [mask]="'000 00 00 00'"></app-input>
+                        [mask]="'000 00 00 00'"></app-input>
                 </fieldset>
             </section>
             <button (click)="updateUser()" class="button button--filled--medium">Guardar</button>

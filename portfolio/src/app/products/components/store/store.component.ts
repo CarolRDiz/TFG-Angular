@@ -2,6 +2,7 @@ import { Component, TemplateRef, Input, inject, HostListener } from '@angular/co
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../product';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-store',
@@ -11,15 +12,21 @@ import { Router } from '@angular/router';
 export class StoreComponent {
   productService: ProductService = inject(ProductService);
   products: Product[];
+  cartModal: boolean = false;
+  loginModal: boolean = false;
+  userLoginOn: boolean = false;
 
-  constructor(private router: Router){}
+  constructor(private router: Router, private authService: AuthService) { }
   ngOnInit() {
     this.productService.getAllProducts().subscribe((data) => {
       this.products = data;
     })
+    this.authService.userLoginOn.subscribe({
+      next: (userLoginOn) => {
+        this.userLoginOn = userLoginOn;
+      }
+    })
   }
-  cartModal: boolean = false;
-  loginModal: boolean = false;
 
   openCartModal() {
     this.cartModal = true;
@@ -34,7 +41,7 @@ export class StoreComponent {
   closeLoginModal() {
     this.loginModal = false;
   }
-  goToUser(){
+  goToUser() {
     this.router.navigate(['/', 'user'])
       .then(nav => {
         console.log(nav); // true if navigation is successful

@@ -9,7 +9,8 @@
                 <button mat-icon-button aria-label="Example icon-button with a menu">
                     <mat-icon>content_copy</mat-icon>
                 </button>
-                <button class="button button--white" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                <button class="button button--white" [matMenuTriggerFor]="menu"
+                    aria-label="Example icon-button with a menu">
                     Guardar <mat-icon>expand_more</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
@@ -25,13 +26,15 @@
         <div class="create-illustration__content">
             <form id="form" [formGroup]="editForm" (submit)="submitEditForm()" class="form">
                 <!--IMAGE-->
-                <fieldset formGroupName="images" class="form__group">
-                    <legend class="form__legend">Imagen</legend>
-                    <!--SELECTED IMAGE-->
-                    <div *ngIf="this.fileUrl else elseBlock">
-                        <app-selected-image [fileUrl]="this.fileUrl" (deleteImageEvent)="deleteImage()"></app-selected-image>
+                <div class="form__row">
+                    <fieldset formGroupName="images" class="form__group">
+                        <legend class="form__legend">Imagen</legend>
+                        <!--SELECTED IMAGE-->
+                        <div *ngIf="this.fileUrl else elseBlock">
+                            <app-selected-image [fileUrl]="this.fileUrl"
+                                (deleteImageEvent)="deleteImage()"></app-selected-image>
 
-                        <!-- <div class="selected-image">
+                            <!-- <div class="selected-image">
                             <img class="selected-image__image" [src]="this.fileUrl" alt="">
                             <div class="selected-image__buttons">
                                 <button type="button" mat-icon-button aria-label="Example icon-button with a menu">
@@ -43,18 +46,23 @@
                                 </button>
                             </div>
                         </div> -->
-                    </div>
-                    <!--ADD IMAGE-->
-                    <ng-template #elseBlock>
-                        <app-add-image [parentForm]="images" [maxFiles]="1"></app-add-image>
-                    </ng-template>
-                </fieldset>
+                        </div>
+                        <!--ADD IMAGE-->
+                        <ng-template #elseBlock>
+                            <app-add-image [parentForm]="images" [maxFiles]="1"></app-add-image>
+                        </ng-template>
+                    </fieldset>
+                </div>
+
 
                 <!--DETAILS-->
-                <fieldset formGroupName="details" class="form__group">
-                    <legend class="form__legend">Detalles</legend>
-                    <!--NAME-->
-                    <div class="form__field">
+                <div class="form__row">
+                    <fieldset formGroupName="details" class="form__group">
+                        <legend class="form__legend">Detalles</legend>
+                        <!--NAME-->
+                        <app-input formControlName="name" [label]="'Nombre de la ilustración'"
+                            [placeholder]="'Sonic Fanart'" [required]="false"></app-input>
+                        <!-- <div class="form__field">
                         <label class="label" for="name">Nombre de la ilustración </label>
                         <div class="refillable-field">
                             <div class="refillable-field__content">
@@ -62,9 +70,11 @@
                                     placeholder="Buscar por productos, categorías, etiquetas">
                             </div>
                         </div>
-                    </div>
-                    <!--DESCRIPTION-->
-                    <div class="form__field">
+                    </div> -->
+                        <!--DESCRIPTION-->
+                        <app-input formControlName="description" [label]="'Descripción'"
+                            [placeholder]="'Describe tu ilustración'" [required]="false"></app-input>
+                        <!-- <div class="form__field">
                         <label class="label" for="description">Descripción</label>
                         <div class="refillable-field">
                             <div class="refillable-field__content">
@@ -72,17 +82,20 @@
                                     placeholder="Describe tu ilustración"> </textarea>
                             </div>
                         </div>
-                    </div>
-                    <!--VISIBILITY-->
-                    <div class="form__field">
-                        <label class="label" for="name">Visibilidad </label> 
-                        <div class="field">
-                            <div class="field__toggle-content">
-                                <span>Público</span><mat-slide-toggle [aria-label]="'isPublic'" formControlName="visibility"></mat-slide-toggle>
-                            </div>        
+                    </div> -->
+                        <!--VISIBILITY-->
+                        <div class="form__field">
+                            <label class="label" for="name">Visibilidad </label>
+                            <div class="field">
+                                <div class="field__toggle-content">
+                                    <span>Público</span><mat-slide-toggle [aria-label]="'isPublic'"
+                                        formControlName="visibility"></mat-slide-toggle>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </fieldset>
+                    </fieldset>
+                </div>
+
             </form>
         </div>
     </div>

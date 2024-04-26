@@ -1,24 +1,29 @@
 <main class="content">
-    <div>
-        <button (click)="openLoginModal()" mat-icon-button aria-label="Example icon-button with a menu">
+    <div class="store__top-header">
+        <button *ngIf="!userLoginOn; else userLogged" (click)="openLoginModal()" mat-icon-button
+            aria-label="Example icon-button with a menu">
             <mat-icon>person</mat-icon>
         </button>
-        <button (click)="goToUser()" mat-icon-button aria-label="Example icon-button with a menu">
-            <mat-icon>person</mat-icon> Mi cuenta 
-        </button>
+        <ng-template #userLogged>
+            <button (click)="goToUser()" mat-icon-button aria-label="Example icon-button with a menu">
+                <mat-icon>person</mat-icon> Mi cuenta
+            </button>
+        </ng-template>
+
         <button (click)="openCartModal()" mat-icon-button aria-label="Example icon-button with a menu">
             <mat-icon>shopping_bag</mat-icon>
         </button>
     </div>
-    <h1>Store</h1>
-    <section class="products-list">
+    
+    <router-outlet></router-outlet>
+    <!-- <section class="products-list">
         <a [routerLink]="'/product/'+ product.id" class="products-list__product"
             *ngFor="let product of products; index as i">
             <img class="products-list__image" [src]="'http://localhost:8080/images/'+product.thumbnail_image_id" alt="">
             {{product.name}}
 
         </a>
-    </section>
-    <app-cart *ngIf="cartModal" (closeEvent)="closeCartModal()" ></app-cart>
+    </section> -->
+    <app-cart *ngIf="cartModal" (closeEvent)="closeCartModal()"></app-cart>
     <app-login-modal *ngIf="loginModal" (closeEvent)="closeLoginModal()"></app-login-modal>
 </main>

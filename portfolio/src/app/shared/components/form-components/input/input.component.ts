@@ -22,7 +22,6 @@ import {
 export class InputComponent implements ControlValueAccessor {
   //@Input() parentForm: FormGroup;
   @Input() label: string;
-  @Input() name: string;
   @Input() required: boolean;
   @Input() placeholder: string;
   @Input() mask: string;

@@ -1,0 +1,12 @@
+<h1 class="content__title">Store</h1>
+<section class="products-list">
+    <div class="products-list__product" *ngFor="let product of products; index as i">
+        <a [routerLink]="'/store/'+ product.id" class="products-list__image-link">
+            <img class="products-list__image" [src]="'http://localhost:8080/images/'+product.thumbnail_image_id" alt="">
+        </a>
+        <a [routerLink]="'/store/'+ product.id" class="products-list__name">
+            product.name
+        </a>
+        <span class="products-list__price">{{product.price}} €</span>
+    </div>
+</section>

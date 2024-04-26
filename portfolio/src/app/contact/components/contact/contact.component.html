@@ -1,15 +1,15 @@
 <main class="content">
     <h1>Contacto</h1>
     <form id="form" [formGroup]="contactForm" class="form">
-            <app-input formControlName="name" [label]="'Nombre'" [placeholder]="'Tu nombre...'" [name]="'name'"
+            <app-input formControlName="name" [label]="'Nombre'" [placeholder]="'Tu nombre...'"
             [required]="true"></app-input>
 
             <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="'Tu correo electrónico...'"
-                [name]="'email'" [required]="true"></app-input>
+                [required]="true"></app-input>
 
             
             <app-input formControlName="message" [label]="'Mensaje'" [placeholder]="'Tu mensaje...'"
-                [name]="'message'" [required]="true"></app-input>
+                [required]="true"></app-input>
 
             <button (click)="send()" class="save">Guardar</button>
     </form>

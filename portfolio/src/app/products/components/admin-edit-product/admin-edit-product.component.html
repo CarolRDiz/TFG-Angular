@@ -33,7 +33,9 @@
                     <fieldset formGroupName="details" class="form__group">
                         <legend class="form__legend">Detalles</legend>
                         <!--NAME-->
-                        <div class="form__field">
+                        <app-input formControlName="name" [label]="'Nombre del producto'"
+                        [placeholder]="'Sonic Fanart'" [required]="false"></app-input>
+                        <!-- <div class="form__field">
                             <label class="label label--small" for="name">Nombre de la ilustración </label>
                             <div class="refillable-field">
                                 <div class="refillable-field__content">
@@ -41,9 +43,11 @@
                                         placeholder="Sonic Fanart">
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!--DESCRIPTION-->
-                        <div class="form__field">
+                        <app-input formControlName="description" [label]="'Descripción'"
+                        [placeholder]="'Describe tu producto'" [required]="false"></app-input>
+                        <!-- <div class="form__field">
                             <label class="label label--small" for="description">Descripción</label>
                             <div class="refillable-field">
                                 <div class="refillable-field__content">
@@ -52,7 +56,7 @@
                                         placeholder="Describe tu ilustración"> </textarea>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </fieldset>
                 </div>
                 <div class="form__row">

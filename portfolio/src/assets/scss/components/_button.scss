@@ -1,7 +1,9 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
-.button {}
+.button {
+    cursor: pointer;
+}
 
 .button[class*="--large"] {
     column-gap: 5px;
@@ -37,11 +39,9 @@
 .button[class*="--white"] {
     padding: 10px;
     border: none;
-    width: fit-content;
-    height: fit-content;
     background-color: var(--color-dark-light);
     color: white;
-    cursor: pointer;
+    
     display: flex;
     column-gap: 5px;
     align-items: center;

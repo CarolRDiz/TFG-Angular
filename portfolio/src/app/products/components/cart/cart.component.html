@@ -1,9 +1,12 @@
 <div class="cart">
     <div class="modal__header">
         Selecciona una categoría
-        <mat-icon class="material-symbols-outlined search-bar__close-icon" (click)="close()">
-            close
-        </mat-icon>
+        <button (click)="close()" mat-icon-button aria-label="Example icon-button with a menu">
+            <mat-icon class="material-symbols-outlined search-bar__close-icon">
+                close
+            </mat-icon>
+        </button>
+
     </div>
     <div class="modal__content">
         <div *ngFor="let product of cartProducts; let i=index;" class="cart__item">
@@ -14,12 +17,12 @@
             <div class="cart__item-side">
                 <div class="cart__quantity">
                     <button mat-icon-button aria-label="Example icon-button with a menu"
-                    (click)="addMoreItem(product.id)">
+                        (click)="addMoreItem(product.id)">
                         <mat-icon>add</mat-icon>
                     </button>
                     <span>{{product.quantity}}</span>
                     <button mat-icon-button aria-label="Example icon-button with a menu"
-                    (click)="reduceItem(product.id)">
+                        (click)="reduceItem(product.id)">
                         <mat-icon>remove</mat-icon>
                     </button>
                 </div>
@@ -32,8 +35,13 @@
         </div>
     </div>
     <div class="modal__footer">
-        {{totalPrice}}
-        <button (click)="checkout()">CHECKOUT</button>
+        <div class="cart__footer">
+            <div class="cart__subtotal">
+                <span>Subtotal</span><span>{{totalPrice}}€</span>
+            </div>
+            <button class="button button--white--large" (click)="checkout()">CHECKOUT</button>
+        </div>
+
     </div>
 </div>
 <div class="modal__backdrop" (click)="close()"></div>

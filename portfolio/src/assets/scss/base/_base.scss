@@ -25,16 +25,16 @@ html {
  * Basic styles for links
  */
 a {
-  color: $brand-color;
+  color: var(--color-text);
   text-decoration: none;
 
   @include on-event {
-    color: $text-color;
+    color: var(--color-text);
     text-decoration: underline;
   }
 }
 a:hover{
-  text-decoration: none;
+  text-decoration: underline;
 }
 h1 {
   padding: 0;

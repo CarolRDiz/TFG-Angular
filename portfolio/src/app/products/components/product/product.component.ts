@@ -13,7 +13,7 @@ export class ProductComponent {
 
   id: number;
   product: Product;
-
+  selectedImage: string;
   productService: ProductService = inject(ProductService);
   cartService: CartService = inject(CartService);
 
@@ -29,9 +29,14 @@ export class ProductComponent {
   getProduct() {
     this.productService.getProductById(this.id).subscribe((data) => {
       this.product = data;
+      this.selectedImage = this.product.thumbnail_image_id;
     });
   }
   addToCart(id: number){
     this.cartService.addToCart(id, 1);
+  }
+  selectImage(image_id: string) {
+    console.log
+    this.selectedImage = image_id;
   }
 }

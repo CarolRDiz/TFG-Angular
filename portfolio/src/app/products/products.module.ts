@@ -13,6 +13,7 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { CartService } from './services/cart.service';
 import { UserComponent } from './components/user/user.component';
+import { StoreCatalogComponent } from './components/store-catalog/store-catalog.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { UserComponent } from './components/user/user.component';
     CheckoutComponent,
     ConfirmationComponent,
     UserComponent,
+    StoreCatalogComponent,
   ],
   exports: [
     StoreComponent,

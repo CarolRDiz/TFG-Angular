@@ -19,6 +19,7 @@ import { ConfirmationComponent } from './products/components/confirmation/confir
 import { UserComponent } from './products/components/user/user.component';
 import { ContactComponent } from './contact/components/contact/contact.component';
 import { AboutMeComponent } from './about-me/components/about-me/about-me.component';
+import { StoreCatalogComponent } from './products/components/store-catalog/store-catalog.component';
 
 const routes: Routes = [
   {
@@ -29,11 +30,17 @@ const routes: Routes = [
         path: '', component: IllustrationComponent
       },
       {
-        path: 'store', component: StoreComponent
+        path: 'store', component: StoreComponent,
+        children: [
+          {
+            path: '', component: StoreCatalogComponent
+          },
+          {
+            path: ':id', component: ProductComponent
+          },
+        ]
       },
-      {
-        path: 'product/:id', component: ProductComponent
-      },
+      
       {
         path: 'cart', component: CartComponent
       },

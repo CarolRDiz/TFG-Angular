@@ -11,12 +11,12 @@
                 </div>
                 <fieldset *ngIf="step==1" formGroupName="contact" class="checkout__form-group">
                     <app-input formControlName="email" [label]="'Correo electrónico'"
-                        [placeholder]="'micorreo@gmail.com'" [name]="'email'" [required]="true"></app-input>
+                        [placeholder]="'micorreo@gmail.com'"  [required]="true"></app-input>
                     <div class="checkout__row">
                         <app-input formControlName="firstName" [label]="'Nombre'" [placeholder]="'Rocío'"
-                            [name]="'firstName'" [required]="true"></app-input>
+                             [required]="true"></app-input>
                         <app-input formControlName="lastName" [label]="'Apellidos'" [placeholder]="'Rodríguez Díaz'"
-                            [name]="'lastName'" [required]="true"></app-input>
+                             [required]="true"></app-input>
                     </div>
                     <button (click)="saveStep()" class="checkout__save">Guardar</button>
                 </fieldset>
@@ -30,17 +30,17 @@
                 </div>
                 <fieldset *ngIf="step==2" formGroupName="shipping_address" class="checkout__form-group">
                     <app-input formControlName="address" [label]="'Dirección 1'" [placeholder]="'Calle Sagasta, nº18'"
-                        [name]="'address'"></app-input>
+                       ></app-input>
                     <app-input formControlName="secondAddress" [label]="'Dirección 2'" [placeholder]="'Primer piso, A'"
-                        [name]="'secondAddress'"></app-input>
+                        ></app-input>
                     <div class="checkout__row">
                         <app-input formControlName="city" [label]="'Población'" [placeholder]="'ej. Jerez de la Forntera'"
-                            [name]="'city'"></app-input>
+                            ></app-input>
                         <app-input formControlName="postalCode" [label]="'Código Postal'" [placeholder]="'11130'"
-                            [name]="'postalCode'" [mask]="'00000'"></app-input>
+                         [mask]="'00000'"></app-input>
                     </div>
                     <app-input formControlName="phone" [label]="'Número de móvil'" [placeholder]="'643 57 89 21'"
-                        [name]="'phone'" [mask]="'000 00 00 00'"></app-input>
+                         [mask]="'000 00 00 00'"></app-input>
                     <button (click)="saveStep()" class="checkout__save">Guardar</button>
                 </fieldset>
             </section>
