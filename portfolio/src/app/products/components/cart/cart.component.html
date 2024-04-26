@@ -1,37 +1,33 @@
 <div class="cart">
     <div class="modal__header">
-        Selecciona una categoría
-        <button (click)="close()" mat-icon-button aria-label="Example icon-button with a menu">
-            <mat-icon class="material-symbols-outlined search-bar__close-icon">
-                close
-            </mat-icon>
-        </button>
-
+        <h2 class="modal__title">Tu carrito</h2>
+        <mat-icon (click)="close()" class="modal__close material-symbols-outlined">
+            close
+        </mat-icon>
     </div>
     <div class="modal__content">
         <div *ngFor="let product of cartProducts; let i=index;" class="cart__item">
-            <div class="cart__item-side">
+            <div class="cart__section">
                 <img class="cart__image" [src]="'http://localhost:8080/images/'+product.thumbnail_image_id" alt="">
                 <span>{{product.name}}</span>
             </div>
-            <div class="cart__item-side">
-                <div class="cart__quantity">
-                    <button mat-icon-button aria-label="Example icon-button with a menu"
-                        (click)="addMoreItem(product.id)">
-                        <mat-icon>add</mat-icon>
-                    </button>
-                    <span>{{product.quantity}}</span>
-                    <button mat-icon-button aria-label="Example icon-button with a menu"
-                        (click)="reduceItem(product.id)">
-                        <mat-icon>remove</mat-icon>
-                    </button>
-                </div>
-                <button mat-icon-button aria-label="Example icon-button with a menu">
-                    <mat-icon>cancel</mat-icon>
-                </button>
 
-                <span>{{product.amount * product.price}}</span>
+            <div class="cart__section">
+                <button mat-icon-button aria-label="Example icon-button with a menu" (click)="addMoreItem(product.id)">
+                    <mat-icon>add</mat-icon>
+                </button>
+                <span>{{product.amount}}</span>
+                <button mat-icon-button aria-label="Example icon-button with a menu" (click)="reduceItem(product.id)">
+                    <mat-icon>remove</mat-icon>
+                </button>
             </div>
+            <div class="cart__section">
+                <span>{{product.amount * product.price}}€</span>
+                <button mat-icon-button aria-label="Example icon-button with a menu">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+
         </div>
     </div>
     <div class="modal__footer">

@@ -86,5 +86,5 @@ export class CartComponent {
     this.cartService.addToCart(id, -1);
     this.refreshCart();
   }
-
+  //TODO: deleteItemCart
 }
