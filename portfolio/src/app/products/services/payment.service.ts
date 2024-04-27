@@ -10,6 +10,7 @@ export class PaymentService {
 
   transactionID: any;
   totalAmount: number = 10;
+  delivery: number = 4;
   private order: Order;
   private baseUrl = 'http://localhost:8080/order';
 

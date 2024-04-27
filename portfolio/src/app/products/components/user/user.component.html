@@ -1,4 +1,4 @@
-<main class="content">
+<main class="content user-page">
     <span *ngIf="loading; else content">loading </span>
     <ng-template #content>
         <div class="user__title">
@@ -10,7 +10,7 @@
                 <mat-icon>settings</mat-icon>
             </button>
         </div>
-
+<!-- 
         <ul>
             <li>
                 Pedidos
@@ -18,7 +18,7 @@
             <li>
                 Ajustes
             </li>
-        </ul>
+        </ul> -->
         <h2>Pedidos</h2>
         <ul class="orders">
             <li class="order" *ngFor="let order of user.orders; let i=index;">

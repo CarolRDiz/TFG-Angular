@@ -1,3 +1,8 @@
+.user-page {
+    background-color: var(--color-primary-light);
+    //background-color: var(--color-secondary-light);
+
+}
 .user__title {
     align-items: center;
     display: flex;
@@ -10,7 +15,8 @@
     row-gap: 20px;
 }
 .order {
-    border: 1px solid var(--color-light-gray);
+    background-color: var(--color-secondary-light);
+    //border: 1px solid var(--color-light-gray);
     border-radius: 10px;
     padding: 15px;
 }

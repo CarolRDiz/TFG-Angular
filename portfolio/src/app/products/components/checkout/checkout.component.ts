@@ -18,8 +18,9 @@ export class CheckoutComponent {
 
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
+  totalAmount: number;
   amount: number;
-
+  delivery: number;
   steps = 3;
   step = 1;
   products: Product[];
@@ -66,7 +67,7 @@ export class CheckoutComponent {
   })
 
   ngOnInit() {
-
+    this.delivery = this.paymentService.delivery;
     this.cartItems = this.cartService.getItems();
     let cartIds = this.cartItems.map((item: CartItem) => item.product_id);
 
@@ -147,6 +148,7 @@ export class CheckoutComponent {
     this.amount = this.cartProducts.reduce((total: any, item: any) => {
       return total + (item.amount * item.price)
     }, 0)
+    this.totalAmount = this.amount + this.paymentService.delivery;
   }
 
   // getPaypalOption(){

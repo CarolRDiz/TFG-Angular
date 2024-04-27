@@ -1,6 +1,8 @@
-<main class="content">
-    <h1>Contacto</h1>
-    <form id="form" [formGroup]="contactForm" class="form">
+<main class="content contact">
+    
+    
+    <form id="form" [formGroup]="contactForm" class="form form__row contactForm">
+        <h1>Contacto</h1>
             <app-input formControlName="name" [label]="'Nombre'" [placeholder]="'Tu nombre...'"
             [required]="true"></app-input>
 
@@ -11,6 +13,6 @@
             <app-input formControlName="message" [label]="'Mensaje'" [placeholder]="'Tu mensaje...'"
                 [required]="true"></app-input>
 
-            <button (click)="send()" class="save">Guardar</button>
+            <button class="button button--white" (click)="send()">Enviar</button>
     </form>
 </main>

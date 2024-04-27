@@ -1,0 +1,16 @@
+.contact {
+    background-color: var(--color-background);
+    //background-color: var(--color-secondary-light);
+
+    background-size: 60px 60px;
+    background-image: linear-gradient(var(--color-primary) 1px, transparent 1px), linear-gradient(to right, var(--color-primary) 1px, var(--color-background) 1px);
+    //background-image: linear-gradient(var(--color-primary) 1px, transparent 1px), linear-gradient(to right, var(--color-primary) 1px, var(--color-secondary-light) 1px);
+
+    //background-image:  repeating-linear-gradient(0deg, var(--color-primary), var(--color-primary) 3px, var(--color-background) 3px, var(--color-background));
+
+}
+
+
+.contactForm {
+    box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}

@@ -3,6 +3,7 @@
 // -----------------------------------------------------------------------------
 .button {
     cursor: pointer;
+    padding: 10px;
 }
 
 .button[class*="--large"] {
@@ -18,7 +19,7 @@
     display: flex;
     height: fit-content;
     justify-content: center;
-    padding: 10px;
+    padding: 10px 60px;
     width: fit-content;
 }
 
@@ -37,7 +38,6 @@
 }
 
 .button[class*="--white"] {
-    padding: 10px;
     border: none;
     background-color: var(--color-dark-light);
     color: white;
