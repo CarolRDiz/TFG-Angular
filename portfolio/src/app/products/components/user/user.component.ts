@@ -15,7 +15,8 @@ export class UserComponent {
   errorMessage: string = "";
   user: User;
   loading: boolean = false;
-
+  settingsSection: boolean = false;
+  ordersSection: boolean = false;
   //  FORM
   contact: FormGroup;
   shipping_address: FormGroup;
@@ -114,5 +115,11 @@ export class UserComponent {
       //SPAIN
       shipping_address: this.shipping_address,
     })
+  }
+  settingsSectionOn(){
+    this.settingsSection = true;
+  }
+  ordesSectionOn(){
+    this.ordersSection = true;
   }
 }
