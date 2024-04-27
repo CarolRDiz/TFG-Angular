@@ -1,18 +1,35 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the header of the site/application.
 // -----------------------------------------------------------------------------
+// .header {
+//     margin: 0;
+//     padding: $padding-top $padding-sides;
+//     width: $header-width;
+//     background-color: var(--color-background);
+//     position: fixed;
+//     height: 100%;
+//     overflow: auto;
+//     z-index: $second-level;
+// }
+
 .header {
-    margin: 0;
-    padding: $padding-top $padding-sides;
-    width: $header-width;
     background-color: var(--color-background);
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    
     position: fixed;
-    height: 100%;
     overflow: auto;
+    width: 100%;
     z-index: $second-level;
 }
 .header__logo{
-    height: 200px;
-    margin-bottom: 20px;
-    width: 100%;
+    width: 40px;
+    margin: 0 35px;
 }
+
+// .header__logo{
+//     height: 200px;
+//     margin-bottom: 20px;
+//     width: 100%;
+// }
