@@ -4,6 +4,7 @@ import { environment } from 'src/app/environments/environment';
 import { User } from 'src/app/core/modals/user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppValidator } from 'src/app/models/custom-validator';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -22,7 +23,7 @@ export class UserComponent {
   shipping_address: FormGroup;
   userForm: FormGroup;
 
-  constructor(private userService: UsersService) { }
+  constructor(private userService: UsersService, private router: Router,) { }
 
   ngOnInit() {
     this.initializeForm()
@@ -41,14 +42,14 @@ export class UserComponent {
               lastName: this.user.lastName,
             },
             shipping_address: {
-              
+
               address: this.user.address,
               secondAddress: this.user.secondAddress,
               city: this.user.city,
               postalCode: this.user.postalCode,
               phone: this.user.phone
             },
-            userForm :{
+            userForm: {
               contact: this.contact,
               //SPAIN
               shipping_address: this.shipping_address,
@@ -64,25 +65,25 @@ export class UserComponent {
         this.loading = false;
       }
     });
-    
+
   }
 
-  updateUser(){
+  updateUser() {
     this.loading = true;
     let userData: User = {
-      "email": this.userForm.value.contact?.email??'',
-      "firstName": this.userForm.value.contact?.firstName??'',
-      "lastName": this.userForm.value.contact?.lastName??'',
-      "address": this.userForm.value.shipping_address?.address??'',
-      "secondAddress":this.userForm.value.shipping_address?.secondAddress??'',
-      "city": this.userForm.value.shipping_address?.city??'',
-      "postalCode": this.userForm.value.shipping_address?.postalCode??'',
-      "phone": this.userForm.value.shipping_address?.phone??'',
+      "email": this.userForm.value.contact?.email ?? '',
+      "firstName": this.userForm.value.contact?.firstName ?? '',
+      "lastName": this.userForm.value.contact?.lastName ?? '',
+      "address": this.userForm.value.shipping_address?.address ?? '',
+      "secondAddress": this.userForm.value.shipping_address?.secondAddress ?? '',
+      "city": this.userForm.value.shipping_address?.city ?? '',
+      "postalCode": this.userForm.value.shipping_address?.postalCode ?? '',
+      "phone": this.userForm.value.shipping_address?.phone ?? '',
     }
     this.userService.updateUser(userData).subscribe(
       {
         next: (user) => {
-          this.user = user  
+          this.user = user
         },
         error: (errorData) => {
           this.errorMessage = errorData;
@@ -116,10 +117,22 @@ export class UserComponent {
       shipping_address: this.shipping_address,
     })
   }
-  settingsSectionOn(){
+  settingsSectionOn() {
     this.settingsSection = true;
   }
-  ordesSectionOn(){
+  ordesSectionOn() {
     this.ordersSection = true;
+  }
+  back() {
+    this.settingsSection = false;
+    this.ordersSection = false;
+  }
+  backToStore() {
+    this.router.navigate(['/','store'])
+      .then(nav => {
+        console.log(nav); // true if navigation is successful
+      }, err => {
+        console.log(err) // when there's an error
+      });
   }
 }

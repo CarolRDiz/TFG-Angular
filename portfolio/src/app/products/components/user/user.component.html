@@ -2,6 +2,15 @@
     <span *ngIf="loading; else content">loading </span>
     <ng-template #content>
         <div class="user__title">
+            <mat-icon (click)="back()" class="user__back"
+                *ngIf="settingsSection || ordersSection; else continueShopping">chevron_left</mat-icon>
+            <ng-template #continueShopping>
+                <div (click)="backToStore()"class="user__back">
+                    <mat-icon  >chevron_left</mat-icon>
+                    <span>Continuar comprando</span>
+                </div>
+
+            </ng-template>
             <h2>Bienvenid@
                 <span *ngIf="user.firstName">{{user.firstName}}</span>
                 <span *ngIf="!user.firstName">{{user.email}}</span>

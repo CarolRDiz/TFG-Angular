@@ -3,20 +3,31 @@
     //background-color: var(--color-secondary-light);
 
 }
+
+.user__back {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    left: 0;
+    position: absolute;
+}
+
 .user__dashboard {
     display: flex;
     flex-direction: column;
     max-width: 650px;
     width: 100%;
 }
+
 .user__sections {
     display: flex;
     flex-direction: column;
     margin-bottom: 50px;
     max-width: 650px;
     width: 100%;
-    
+
 }
+
 .user__logout-button {
     align-self: center;
 }
@@ -52,6 +63,7 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    position: relative;
     width: 100%;
 }
 
