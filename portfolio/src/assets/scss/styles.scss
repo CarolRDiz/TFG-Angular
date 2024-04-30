@@ -39,7 +39,8 @@
 'components/modal',
 'components/categories-modal',
 'components/cart',
-'components/login-modal';
+'components/login-modal',
+'components/section';
 
 
 
@@ -52,7 +53,10 @@
 'pages/user',
 'pages/checkout',
 'pages/about-me',
-'pages/contact';
+'pages/contact',
+'pages/orders',
+'pages/order',
+'pages/confirmation';
 
 // 7. Themes
 @import 'themes/default';

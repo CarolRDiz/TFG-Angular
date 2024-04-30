@@ -1,0 +1,30 @@
+<main class="content">
+    <div class="top-header">
+        <div class="top-header__title order__top-header">
+            <h1 class="order__id">Pedido <span >#{{order.id}}</span></h1>
+            <span class="order__state order__state--completed" *ngIf="order.shipped == 1; else pending">
+                Completado
+            </span>
+            <ng-template #pending>
+                <span class="order__state order__state--pending">
+                    Pendiente
+                </span>
+            </ng-template>
+            <span class="order__date">{{order.date | date}}</span>
+        </div>
+        <div class="top-header__options">
+            <button (click)="updateStatusOrder()" *ngIf="order.shipped == 1; else pendingButton" class="button button--white" aria-label="Example icon-button with a menu">
+                Marcar como pendiente
+            </button>
+            <ng-template #pendingButton>
+                <button (click)="updateStatusOrder()" class="button button--white" aria-label="Example icon-button with a menu">
+                    Marcar como completo
+                </button>
+            </ng-template>
+        </div>
+    </div>
+    <div class="create-illustration__content">
+        <app-order-summary [order]="order"></app-order-summary>
+    </div>
+
+</main>

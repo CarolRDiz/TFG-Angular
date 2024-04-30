@@ -1,0 +1,79 @@
+<section class="order__summary">
+    <article class="order__section">
+        <h3>INFORMACION DE CONTACTO</h3>
+        <div class="order__data">
+            <span>{{order.firstName}} {{order.lastName}}</span>
+            <span>{{order.email}}</span>
+            <span>{{order.phone}}</span>
+        </div>
+    </article>
+    <article class="order__section">
+        <h3>Dirección de envío</h3>
+        <div class="order__data">
+            <span>{{order.address}}</span>
+            <span>{{order.secondAddress}}</span>
+            <span>{{order.city}}</span>
+            <span>{{order.postalCode}}</span>
+        </div>
+    </article>
+    <article class="order__section">
+        <h3>Método de pago</h3>
+        <div class="order__data">
+            <span>Paypal</span>
+            <span>{{order.totalPrice}}€</span>
+        </div>
+    </article>
+    <article class="order__section">
+        <h3>Items</h3>
+        <div class="table">
+            <div class="table__header">
+                <!--1 COLUMNA IMAGE-->
+                <div class="table__cell table__cell--medium">
+
+                </div>
+                <!--1 COLUMNA NAME-->
+                <div class="table__cell table__cell--large">
+                    Producto
+                </div>
+                <!--2 COLUMNA QUANTITY-->
+                <div class="table__cell table__cell--medium">
+                    Cantidad
+                </div>
+                <!--3 COLUMNA PRICE-->
+                <div class="table__cell table__cell--medium">
+                    Precio
+                </div>
+                <!--4 COLUMNA SUBTOTAL-->
+                <div class="table__cell table__cell--medium">
+                    Subtotal
+                </div>
+            </div>
+            <ul class="table__body">
+                <li class="table__row" *ngFor="let item of order.items">
+                    <!--0 COLUMNA IMAGE-->
+                    <div class="table__cell table__cell--medium">
+                        <img class="table__image"
+                            [src]="'http://localhost:8080/images/'+item.product.thumbnail_image_id" alt="">
+
+                    </div>
+                    <!--1 COLUMNA NAME-->
+                    <div class="table__cell table__cell--large">
+                        {{item.product.name}}
+                    </div>
+                    <!--2 COLUMNA QUANTITY-->
+                    <div class="table__cell table__cell--medium">
+                        {{item.amount}}
+                    </div>
+                    <!--3 COLUMNA PRICE-->
+                    <div class="table__cell table__cell--medium">
+                        {{item.product.price}}€
+                    </div>
+                    <!--4 COLUMNA SUBTOTAL-->
+                    <div class="table__cell table__cell--medium">
+                        {{item.product.price * item.amount}}€
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </article>
+</section>

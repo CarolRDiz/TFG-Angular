@@ -15,3 +15,8 @@
 .icon--red {
   color : red;
 }
+.svg-icon {
+  path {
+    fill: var(--color-text);
+  }
+}

@@ -19,3 +19,13 @@
     margin-bottom: 20px;
     width: 100%;
 }
+.header__social {
+    column-gap: 10px;
+    display: flex;
+    margin-top: 50px;
+}
+.header__email {
+    color: rgb(93, 93, 93);
+    font-size: 14px;
+    font-weight: 600;
+}

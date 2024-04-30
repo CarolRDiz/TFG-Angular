@@ -1,0 +1,117 @@
+<main class="content">
+    <div class="content__top">
+        <h1 class="content__title">Pedidos</h1>
+        <!-- <button class="button button--white" routerLink="/admin/create-product">Agregar producto</button> -->
+    </div>
+    <!-- <app-search-bar (searchEvent)="search($event)" [placeholder]="'Buscar por nombre'"></app-search-bar> -->
+    <app-search-bar [placeholder]="'Buscar por nombre'"></app-search-bar>
+
+    <div class="table">
+        <div class="table__header">
+            <!--1 COLUMNA CHECKBOX-->
+            <div class="table__cell table__cell--small"></div>
+            <!--2 COLUMNA PEDIDO #-->
+            <div class="table__cell table__cell--medium--click" (click)="sortById()">Pedido
+                <mat-icon *ngIf="!this.idSort" class="material-symbols-outlined">
+                    arrow_drop_down
+                </mat-icon>
+                <mat-icon *ngIf="this.idSort" class="material-symbols-outlined">
+                    arrow_drop_up
+                </mat-icon>
+            </div>
+            <!--3 COLUMNA FECHA-->
+            <div class="table__cell table__cell--medium">Realizada el</div>
+            <!--4 COLUMNA NAME-->
+            <div class="table__cell table__cell--medium">Nombre</div>
+            <!--5 COLUMNA EMAIL-->
+            <div class="table__cell table__cell--large">Email</div>
+            <!--6 COLUMNA TOTAL-->
+            <div class="table__cell table__cell--medium">Total</div>
+            <!--7 COLUMNA ENTREGA-->
+            <div class="table__cell table__cell--medium--click" (click)="sortById()">Entrega
+                <mat-icon *ngIf="!this.idSort" class="material-symbols-outlined">
+                    arrow_drop_down
+                </mat-icon>
+                <mat-icon *ngIf="this.idSort" class="material-symbols-outlined">
+                    arrow_drop_up
+                </mat-icon>
+            </div>
+            <!--8 COLUMNA SETTINGS-->
+            <div class="table__cell table__cell--small"></div>
+        </div>
+        <ul class="table__body">
+            <li class="table__row" *ngFor="let item of orderListModified; index as i">
+                 <!--1 COLUMNA CHECKBOX-->
+                <div class="table__cell table__cell--small">
+                    <mat-checkbox value="{{item.id}}" (change)="onOrderPressed($event)"
+                        [ngModel]="isOrderChecked(item.id)"></mat-checkbox>
+                </div>
+                <!--2 COLUMNA PEDIDO #-->
+                <div class="table__cell table__cell--medium">
+                    {{item.id}}
+                </div>
+                <!--3 COLUMNA FECHA-->
+                <div class="table__cell table__cell--medium">
+                    {{item.date | date}}
+                </div>
+                <!--4 COLUMNA NAME-->
+                <div class="table__cell table__cell--medium">
+                    {{item.firstName}}
+                    <!-- {{item.visibility == true? "Público": "Oculto"}} -->
+                </div>
+                <!--5 COLUMNA EMAIL-->
+                <div class="table__cell table__cell--large">
+                    {{item.email}}
+                </div>
+                <!--6 COLUMNA TOTAL-->
+                <div class="table__cell table__cell--medium">
+                    {{item.totalPrice}}€
+                </div>
+                <!--7 COLUMNA ENTREGA-->
+                <div class="table__cell table__cell--medium">
+                    <span class="order__state order__state--completed" *ngIf="item.shipped == 1; else pending">
+                        Completado
+                    </span>
+                    <ng-template #pending>
+                        <span class="order__state order__state--pending">
+                            Pendiente
+                        </span>
+                    </ng-template>
+                </div>
+                <!--8 COLUMNA SETTINGS-->
+                <div class="table__cell table__cell--small">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        
+                        <button mat-menu-item (click)="goToOrder(item.id)">Ver</button>
+                        <button mat-menu-item *ngIf="item.shipped== 0; else completed" (click)="updateStatusOrder(item.id, 1)">Marcar como completado</button>
+                        <ng-template #completed>
+                            <button mat-menu-item (click)="updateStatusOrder(item.id, 0)">Marcar como pendiente</button>
+                        </ng-template>
+                        <!-- <button mat-menu-item>Duplicar</button>
+                        <button mat-menu-item (click)="deleteOrder(item.id)">Eliminar</button> -->
+                    </mat-menu>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="toolbar" *ngIf="orderSelectedArray.length>0">
+        <div class="toolbar__selection">
+            <button (click)="unselectAllOrders()" mat-icon-button
+                aria-label="Example icon button with a home icon">
+                <mat-icon>deselect</mat-icon>
+            </button>
+            <span>{{orderSelectedArray.length}} seleccionado</span>
+        </div>
+        <div class="toolbar__options">
+            <button class="toolbar__button button button--text--light" (click)="updateSelectedOrders()">
+                Marcar como completado</button>
+            <button class="toolbar__button button button--text--light" (click)="selectAllOrders()">
+                Seleccionar todo</button>
+            <!-- <button (click)="deleteOrderList()"
+                class="toolbar__button button button--text--warn">Eliminar</button> -->
+        </div>
+    </div>
+</main>

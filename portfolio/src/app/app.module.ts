@@ -12,6 +12,7 @@ import { ProductsModule } from './products/products.module';
 import { PublicViewComponent } from './shared/components/views/public-view/public-view.component';
 import { ContactModule } from './contact/contact.module';
 import { AboutMeModule } from './about-me/about-me.module';
+import { AdminModule } from './admin/admin.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { AboutMeModule } from './about-me/about-me.module';
     AppRoutingModule,
     CommonModule,
     ContactModule,
-    AboutMeModule
+    AboutMeModule,
+    AdminModule
   ],
   exports: [
   ],

@@ -1,53 +1,25 @@
 <main class="content">
-    <h1>Gracias por tu pedido</h1><span>
+    <h1>Gracias por tu pedido</h1>
+    <p class="confirmation__important">Hemos recibido tu pedido <span
+        class="confirmation__id">#{{this.order.id}}</span> y está en proceso.</p>
+    <!-- <span>
         #{{this.order.id}}
-    </span>
-    <h2>Email de confirmación del pedido</h2>
-    <p>Pronto recibirás un email de confirmación con el número de tu pedido</p>
-    <h2>Actualizaciones del pedido</h2>
-    <p>Recibirás las actualizaciones del envío y la entrega por email.</p>
-    <h2>Tu pedido #{{this.order.id}}</h2>
-    <ul>
-        <li>
-            <h3>INFORMACION DE CONTACTO</h3>
-            <ul>
-                <li>
-                    <span>Nombre: </span> <span>{{this.order.firstName}} {{this.order.lastName}}</span>
-                </li>
-                <li>
-                    <span>Email: </span> <span>{{this.order.email}}</span>
-                </li>
-                <li>
-                    <span>Teléfono: </span><span>{{this.order.phone}}</span>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <h3>DIRECCION DE ENTREGA</h3>
-            <ul>
-                <li>
-                    <span>Nombre: </span> <span>{{this.order.firstName}}</span>
-                </li>
-                <li>
-                    <span>Dirección: </span>
-                    <span>{{this.order.address}}</span>
-                    <span>{{this.order.secondAddress}}</span>
-                </li>
-                <li>
-                    <span>Teléfono: </span><span>{{this.order.phone}}</span>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <h3>METODO DE PAGO</h3>
-            <ul>
-                <li>
-                    <span>Paypal</span>
-                </li>
-                <li>
-            </ul>
-        </li>
-    </ul>
-Su compra se ha completado: {{transactionID}}
-</main>
+    </span> -->
+    <p class="confirmation__message">Pronto recibirás por email la confirmación con el número de tu pedido y las actualizaciones del envío y la entrega.</p>
+    <!-- <p>Recibirás las actualizaciones del envío y la entrega por email.</p> -->
+    <!-- <section class="confirmation__message">
+        
+        <article>
+            <h2>Email de confirmación del pedido</h2>
+           
+        </article>
+        <article>
+            <h2>Actualizaciones del pedido</h2>
+            
+        </article>
+    </section> -->
 
+    <!-- <h2>Tu pedido <span class="confirmation__id">#{{this.order.id}}</span></h2> -->
+    <app-order-summary [order]="order"></app-order-summary>
+    <!-- Su compra se ha completado: {{transactionID}} -->
+</main>

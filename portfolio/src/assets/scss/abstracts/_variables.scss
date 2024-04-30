@@ -2,6 +2,12 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
+$section-bg-color: var(--color-secondary-light);
+$section-padding: 30px 20px;
+$section-border-radius: 5px;
+$section-max-width: 900px;
+
+
 //MAIN
 $padding-bottom-page: 100px;
 
@@ -25,7 +31,7 @@ $code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono',
 $border-bottom: 1px solid var(--color-light-gray);
 
 /// @type Color
-$primary-color: #28a698;
+$primary-color: #009A93;
 
 /// @type Color
 $primary-light-color: #c3d7d5;

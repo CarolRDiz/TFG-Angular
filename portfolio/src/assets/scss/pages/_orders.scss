@@ -1,0 +1,11 @@
+.order__state {
+    border-radius: 25px;
+    padding: 10px;
+}
+.order__state--pending {
+    background-color: rgb(238, 206, 194);
+}
+.order__state--completed {
+    background-color: rgb(197, 236, 201);
+}
+

@@ -1,0 +1,40 @@
+.order__summary {
+    @extend .section;
+}
+
+.order__top-header {
+    column-gap: 15px;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: "id status"
+        "date date";
+
+    .order__state {
+        grid-area: status;
+    }
+
+    .order__date {
+        grid-area: date;
+    }
+
+    .order__id {
+        grid-area: id;
+    }
+}
+
+.order__section {
+    border-bottom: 1px solid var(--color-light-gray);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+
+    .order__data {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.order__section:last-child {
+    border-bottom: none;
+}

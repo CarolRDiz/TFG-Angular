@@ -32,7 +32,7 @@ import { InputComponent } from './components/form-components/input/input.compone
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { SelectedImageComponent } from './components/selected-image/selected-image.component';
-
+import { DATE_PIPE_DEFAULT_OPTIONS } from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -113,7 +113,11 @@ import { SelectedImageComponent } from './components/selected-image/selected-ima
   ],
   providers: [
     ModalService,
-    provideNgxMask()
+    provideNgxMask(),
+    {
+      provide: DATE_PIPE_DEFAULT_OPTIONS,
+      useValue: { dateFormat: "short" }
+    } 
   ]
 })
 export class SharedModule { }

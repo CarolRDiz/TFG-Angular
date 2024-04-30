@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { StoreComponent } from './components/store/store.component';
 import { AdminCreateProductComponent } from './components/admin-create-product/admin-create-product.component';
 import { AdminProductsComponent } from './components/admin-products/admin-products.component';
@@ -14,6 +13,9 @@ import { ConfirmationComponent } from './components/confirmation/confirmation.co
 import { CartService } from './services/cart.service';
 import { UserComponent } from './components/user/user.component';
 import { StoreCatalogComponent } from './components/store-catalog/store-catalog.component';
+import { AdminOrdersComponent } from './components/admin-orders/admin-orders.component';
+import { AdminOrderComponent } from './components/admin-order/admin-order.component';
+import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,9 @@ import { StoreCatalogComponent } from './components/store-catalog/store-catalog.
     ConfirmationComponent,
     UserComponent,
     StoreCatalogComponent,
+    AdminOrdersComponent,
+    AdminOrderComponent,
+    OrderSummaryComponent,
   ],
   exports: [
     StoreComponent,

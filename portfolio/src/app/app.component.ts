@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CartService } from './products/services/cart.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,9 +9,11 @@ import { CartService } from './products/services/cart.service';
 })
 export class AppComponent {
 
+  
+
   cartService: CartService = inject(CartService);
 
-  ngOnInit(){
+  ngOnInit() {
     this.cartService.loadCart();
   }
 
@@ -18,18 +21,18 @@ export class AppComponent {
   private edad = 17;
   //PROPIEDAD PARA BINDING
   disableProperty = true;
-  getEdad(){
+  getEdad() {
     return this.edad;
   }
-  llamaEmpresa(value:String){
+  llamaEmpresa(value: String) {
   }
 
   registrado = false;
   //FUNCION PARA REGISTRARSE
-  getRegistroUsuario(){
+  getRegistroUsuario() {
     this.registrado = true;
   }
-  mostrarAlerta(){
+  mostrarAlerta() {
     alert("ALERTAAA")
   }
   bidireccional = "bidireccional"

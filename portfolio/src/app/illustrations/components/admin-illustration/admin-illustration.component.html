@@ -6,26 +6,26 @@
     <app-search-bar (searchEvent)="search($event)"></app-search-bar>
     <div class="table">
         <div class="table__header">
-            <th class="table__cell table__cell--small"></th>
-            <th class="table__cell table__cell--medium--click" (click)="sortName()">Illustration
+            <div class="table__cell table__cell--small"></div>
+            <div class="table__cell table__cell--medium--click" (click)="sortName()">Illustration
                 <mat-icon *ngIf="!this.visibilitySort" class="material-symbols-rounded">
                     arrow_drop_down
                 </mat-icon>
                 <mat-icon *ngIf="this.visibilitySort" class="material-symbols-rounded">
                     arrow_drop_up
                 </mat-icon>
-            </th>
-            <th class="table__cell table__cell--large"></th>
-            <th class="table__cell table__cell--medium--click" (click)="sortVisibility()">Visibilidad
+            </div>
+            <div class="table__cell table__cell--large"></div>
+            <div class="table__cell table__cell--medium--click" (click)="sortVisibility()">Visibilidad
                 <mat-icon *ngIf="!this.visibilitySort" class="material-symbols-rounded">
                     arrow_drop_down
                 </mat-icon>
                 <mat-icon *ngIf="this.visibilitySort" class="material-symbols-rounded">
                     arrow_drop_up
                 </mat-icon>
-            </th>
-            <th class="table__cell"></th>
-            <th class="table__cell table__cell--small"></th>
+            </div>
+            <div class="table__cell"></div>
+            <div class="table__cell table__cell--small"></div>
         </div>
         <ul class="table__body">
             <li class="table__row" *ngFor="let illustration of illustrationListModified; index as i">

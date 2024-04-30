@@ -5,7 +5,7 @@
         class="example-list"
         (cdkDropListDropped)="drop($event)"
         class="gallery__column" 
-        *ngFor="let column of imageColumns; let i=index;">
+        *="let column of imageColumns; let i=index;">
         <img cdkDrag class="gallery__img" [src]="image" alt="" *ngFor="let image of column; let i=index;">
     </div>
     <app-lightbox  [image]="currentImage" *ngIf="lightboxOpen" (slideLeftEvent)="slideLeft()" (slideRightEvent)="slideRight()" (closeEvent)="closeLightbox()"></app-lightbox>

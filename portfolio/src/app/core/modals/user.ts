@@ -9,5 +9,6 @@ export interface User {
     city: string,
     postalCode: string,
     phone: string,
-    orders?: Order[]
+    orders?: Order[],
+    admin?: boolean
 }

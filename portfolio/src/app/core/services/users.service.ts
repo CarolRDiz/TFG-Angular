@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, catchError, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, catchError, throwError } from 'rxjs';
 import { User } from 'src/app/core/modals/user';
 import { environment } from 'src/app/environments/environment';
 
@@ -8,6 +8,10 @@ import { environment } from 'src/app/environments/environment';
   providedIn: 'root'
 })
 export class UsersService {
+
+  currentUser: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
+
+
 
   constructor(private http: HttpClient) {}
 
@@ -18,7 +22,18 @@ export class UsersService {
       catchError(this.handlerError)
     );
   }
-  
+  setUser(user: User){
+    this.currentUser.next(user);
+  }
+
+  checkAdmin(){
+    return this.currentUser.value.admin
+  }
+
+  // getRole(){
+  //   return this.currentUser.value.admin
+  // }
+
   updateUser(user: User): Observable<User>{
     return this.http
     .patch<User>(`${environment.urlApi}users/`, user)

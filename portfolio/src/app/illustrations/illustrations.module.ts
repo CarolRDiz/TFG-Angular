@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { IllustrationComponent } from './components/illustration/illustration.component';
 import { IllustrationService } from './services/illustration.service';
 import { AdminCreateIllustrationComponent } from './components/admin-create-illustration/admin-create-illustration.component';

@@ -3,7 +3,8 @@
     background-color: var(--color-background);
     //border-bottom: 5px dotted white;
     display: flex;
-    height: $top-header-height;
+    //height: $top-header-height;
+    height: fit-content;
     justify-content: space-between;
     left:0;
     padding-left: $header-width + $padding-sides;

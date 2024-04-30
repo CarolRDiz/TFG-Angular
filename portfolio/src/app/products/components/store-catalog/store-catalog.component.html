@@ -5,7 +5,7 @@
             <img class="products-list__image" [src]="'http://localhost:8080/images/'+product.thumbnail_image_id" alt="">
         </a>
         <a [routerLink]="'/store/'+ product.id" class="products-list__name">
-            product.name
+            {{product.name}}
         </a>
         <span class="products-list__price">{{product.price}} €</span>
     </div>

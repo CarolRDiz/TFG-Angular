@@ -20,6 +20,10 @@ import { UserComponent } from './products/components/user/user.component';
 import { ContactComponent } from './contact/components/contact/contact.component';
 import { AboutMeComponent } from './about-me/components/about-me/about-me.component';
 import { StoreCatalogComponent } from './products/components/store-catalog/store-catalog.component';
+import { AdminOrdersComponent } from './products/components/admin-orders/admin-orders.component';
+import { AdminOrderComponent } from './products/components/admin-order/admin-order.component';
+import { AdminLoginComponent } from './admin/components/admin-login/admin-login.component';
+import { isAdminGuard } from './core/guards/is-admin.guard';
 
 const routes: Routes = [
   {
@@ -62,9 +66,18 @@ const routes: Routes = [
     ]
   },
   {
+    path: 'admin-login',
+    component: AdminLoginComponent
+  },
+  {
     path: 'admin',
     component: AdminPageContainerComponent,
+    canActivate:[isAdminGuard],
     children: [
+      // {
+      //   path: '',
+      //   component: AdminLoginComponent
+      // },
       { 
         path: 'illustration',
         component: AdminIllustrationComponent
@@ -81,7 +94,7 @@ const routes: Routes = [
         path: 'products',
         component: AdminProductsComponent
       },
-      { 
+      {
         path: 'create-product',
         component: AdminCreateProductComponent
       },
@@ -89,6 +102,14 @@ const routes: Routes = [
         path: 'edit-product/:id',
         component: AdminEditProductComponent
       },
+      {
+        path: 'orders',
+        component: AdminOrdersComponent
+      },
+      {
+        path: 'order/:id',
+        component: AdminOrderComponent
+      }
     ]
   }
 ];

@@ -1,0 +1,12 @@
+<main class="content">
+    <form id="form" [formGroup]="loginForm" class="form form__row contactForm">
+        <h1>Inicia sesión como administrador</h1>
+            <app-input formControlName="email" [label]="'Email'" [placeholder]="'Tu email...'"
+            [required]="true"></app-input>
+
+            <app-input formControlName="password" [label]="'Contraseña'" [placeholder]="'Contraseña...'"
+                [required]="true"></app-input>
+
+            <button class="button button--white" (click)="login()">Enviar</button>
+    </form>
+</main>

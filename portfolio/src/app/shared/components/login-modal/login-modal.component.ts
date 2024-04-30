@@ -1,4 +1,4 @@
-import { Component, ElementRef, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Login } from 'src/app/core/modals/login';
 import { Registration } from 'src/app/core/modals/registration';
@@ -31,7 +31,6 @@ export class LoginModalComponent {
   });
 
   constructor(
-    private elementRef: ElementRef,
     private authService: AuthService
   ) { 
 
@@ -86,17 +85,6 @@ export class LoginModalComponent {
         this.close();
       }
     })
-    /*
-    this.authService.login(formData).subscribe(response => {
-      console.log(response);
-      if(response){
-        this.authService.setToken(response);
-      }
-      else {
-        this.loginError = true;
-      }
-    }
-    )*/
   }
 
   // submit(): void {

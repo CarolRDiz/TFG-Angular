@@ -105,6 +105,7 @@ export class AdminCreateIllustrationComponent {
       "image": this.createForm.value.images?.image,
       "visibility": this.createForm.value.details?.visibility ?? false
     }
+    //TODO
     this.illustrationService.postIllustration(illustration)
       .then(({ status, data }) => {
         console.log(status);
