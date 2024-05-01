@@ -1,0 +1,57 @@
+<main class="login">
+    <section class="login__content">
+        <div class="login__title">
+            <h1 *ngIf="loginMode; else registerTitle" class="login-modal__title">Iniciar sesión</h1>
+            <ng-template #registerTitle>
+                <h1 class="login-modal__title">Registrarse</h1>
+            </ng-template>
+        </div>
+        <div class="modal__content">
+            <ul class="login-modal__benefits-list">
+                <li class="login-modal__benefit">
+                    <mat-icon class="material-symbols-outlined search-bar__close-icon">
+                        check_circle
+                    </mat-icon>
+                    Recibe notificaciones sobre el estado de tus pedidos
+                </li>
+                <li class="login-modal__benefit">
+                    <mat-icon class="material-symbols-outlined search-bar__close-icon">
+                        check_circle
+                    </mat-icon>
+                    Mira tu historial de pedidos y vuelve a pedir más rápido
+                </li>
+            </ul>
+            <form *ngIf="loginMode; else registerMode" [formGroup]="loginForm" class="form__group">
+                <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"
+                    [required]="true"></app-input>
+                <app-input formControlName="password" [label]="'Contraseña'" [required]="true"
+                    [placeholder]="''"></app-input>
+                <span *ngIf="loginError">{{loginError}}</span>
+                <button (click)="login()" class="login-modal__submit-button button button--large--filled">Iniciar
+                    sesión</button>
+            </form>
+            <ng-template #registerMode>
+                <form [formGroup]="registerForm" class="form__group">
+                    <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"
+                        [required]="true"></app-input>
+                    <app-input formControlName="password" [label]="'Contraseña'" [required]="true"
+                        [placeholder]="''"></app-input>
+                    <app-input formControlName="confirmPassword" [label]="'Confirma la contraseña'" [required]="true"
+                        [placeholder]="''"></app-input>
+                    <span *ngIf="loginError">{{loginError}}</span>
+                    <button (click)="register()"
+                        class="login-modal__submit-button button button--large--filled">Registrarse</button>
+                </form>
+            </ng-template>
+
+
+            <button (click)="switchMode()" *ngIf="loginMode; else loginButton"
+                class="login-modal__register-button button button--large--empty">Registrarse</button>
+            <ng-template #loginButton>
+                <button (click)="switchMode()" class="login-modal__register-button button button--large--empty">Iniciar
+                    sesión</button>
+            </ng-template>
+        </div>
+    </section>
+
+</main>

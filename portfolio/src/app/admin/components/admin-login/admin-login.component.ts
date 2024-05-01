@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/core/modals/login';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { UsersService } from 'src/app/core/services/users.service';
 import { AppValidator } from 'src/app/models/custom-validator';
 
 @Component({
@@ -14,20 +15,21 @@ export class AdminLoginComponent {
 
   constructor(
     private authService: AuthService,
+    private userService: UsersService,
     private router: Router
   ) { }
 
   loginError: string = "";
 
   loginForm = new FormGroup({
-    email: new FormControl("", [Validators.required, AppValidator.emailValidator()]),
+    email: new FormControl("", [Validators.required]),
     password: new FormControl("", [Validators.required])
   });
-  
-  login(){
+
+  login() {
     let formData: Login = {
-      "email": this.loginForm.value.email??'',
-      "password": this.loginForm.value.password??''
+      "email": this.loginForm.value.email ?? '',
+      "password": this.loginForm.value.password ?? ''
     }
     this.authService.login(formData).subscribe({
       next: (data) => {
@@ -39,13 +41,23 @@ export class AdminLoginComponent {
 
       },
       complete: () => {
-        console.info("Login completado");
-        this.router.navigate(['/', 'admin', 'illustration'])
-          .then(nav => {
-            console.log(nav); // true if navigation is successful
-          }, err => {
-            console.log(err) // when there's an error
-          });
+        this.userService.getUser().subscribe({
+          next: (data) => {
+            this.userService.setUser(data);
+          },
+          error: (errorData) => {
+            console.log(errorData);
+            this.loginError = errorData;
+          },
+          complete: () => {
+            this.router.navigate(['/', 'admin', 'illustration'])
+              .then(nav => {
+                console.log(nav); // true if navigation is successful
+              }, err => {
+                console.log(err) // when there's an error
+              });
+          }
+        });
       }
     })
   }

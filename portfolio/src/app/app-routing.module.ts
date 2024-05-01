@@ -24,6 +24,8 @@ import { AdminOrdersComponent } from './products/components/admin-orders/admin-o
 import { AdminOrderComponent } from './products/components/admin-order/admin-order.component';
 import { AdminLoginComponent } from './admin/components/admin-login/admin-login.component';
 import { isAdminGuard } from './core/guards/is-admin.guard';
+import { isAuthenticatedGuard } from './core/guards/is-authenticated.guard';
+import { LoginPageComponent } from './login/components/login-page/login-page.component';
 
 const routes: Routes = [
   {
@@ -44,7 +46,6 @@ const routes: Routes = [
           },
         ]
       },
-      
       {
         path: 'cart', component: CartComponent
       },
@@ -55,7 +56,8 @@ const routes: Routes = [
         path: 'confirmation', component: ConfirmationComponent
       },
       {
-        path: 'user', component: UserComponent
+        path: 'user', component: UserComponent,
+        canActivate:[isAuthenticatedGuard],
       },
       {
         path: 'contact', component: ContactComponent
@@ -68,6 +70,10 @@ const routes: Routes = [
   {
     path: 'admin-login',
     component: AdminLoginComponent
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent,
   },
   {
     path: 'admin',

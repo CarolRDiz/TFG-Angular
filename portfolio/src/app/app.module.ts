@@ -13,6 +13,7 @@ import { PublicViewComponent } from './shared/components/views/public-view/publi
 import { ContactModule } from './contact/contact.module';
 import { AboutMeModule } from './about-me/about-me.module';
 import { AdminModule } from './admin/admin.module';
+import { LoginModule } from './login/login.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { AdminModule } from './admin/admin.module';
     CommonModule,
     ContactModule,
     AboutMeModule,
-    AdminModule
+    AdminModule,
+    LoginModule
   ],
   exports: [
   ],
