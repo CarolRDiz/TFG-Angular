@@ -1,13 +1,16 @@
 <main class="login">
     <section class="login__content">
+        <a [routerLink]="'/'" class="login__logo">
+            <img  src="../../assets/images/logo.svg" alt="">
+        </a>
         <div class="login__title">
             <h1 *ngIf="loginMode; else registerTitle" class="login-modal__title">Iniciar sesión</h1>
             <ng-template #registerTitle>
                 <h1 class="login-modal__title">Registrarse</h1>
             </ng-template>
         </div>
-        <div class="modal__content">
-            <ul class="login-modal__benefits-list">
+        <div class="login__form">
+            <!-- <ul class="login-modal__benefits-list">
                 <li class="login-modal__benefit">
                     <mat-icon class="material-symbols-outlined search-bar__close-icon">
                         check_circle
@@ -20,7 +23,7 @@
                     </mat-icon>
                     Mira tu historial de pedidos y vuelve a pedir más rápido
                 </li>
-            </ul>
+            </ul> -->
             <form *ngIf="loginMode; else registerMode" [formGroup]="loginForm" class="form__group">
                 <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"
                     [required]="true"></app-input>

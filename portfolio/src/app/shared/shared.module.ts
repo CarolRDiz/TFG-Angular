@@ -33,6 +33,7 @@ import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
 import { SelectedImageComponent } from './components/selected-image/selected-image.component';
 import { DATE_PIPE_DEFAULT_OPTIONS } from "@angular/common";
+import { SelectComponent } from './components/select/select.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { DATE_PIPE_DEFAULT_OPTIONS } from "@angular/common";
     PriceFieldComponent,
     InputComponent,
     LoginModalComponent,
-    SelectedImageComponent
+    SelectedImageComponent,
+    SelectComponent
   ],
   imports: [
     RouterModule,
@@ -109,7 +111,8 @@ import { DATE_PIPE_DEFAULT_OPTIONS } from "@angular/common";
     InputComponent,
     NgxMaskDirective,
     NgxMaskPipe,
-    SelectedImageComponent
+    SelectedImageComponent,
+    SelectComponent
   ],
   providers: [
     ModalService,

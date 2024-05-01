@@ -1,0 +1,16 @@
+<div class="select">
+    <div class="select__content">
+        <span class="select__selected">{{label}}</span>
+        <mat-icon class="material-symbols-outlined underlined-input__icon underlined-input__icon--right">
+            expand_more
+        </mat-icon>
+    </div>
+    <ul class="select__dropdown">
+        <li (click)="select(predetermined)" class="select__item">
+            {{predetermined}}
+        </li>
+        <li (click)="select(item.name)" class="select__item" *ngFor="let item of items; index as i">
+            {{item.name}}
+        </li>
+    </ul>
+</div>

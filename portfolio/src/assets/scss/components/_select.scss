@@ -1,0 +1,29 @@
+.select {
+    @extend .underlined-input;
+    
+    cursor: pointer;
+    max-width: 170px;
+    position: relative;
+    width: 100%;
+}
+.select:hover .select__dropdown {
+    display: block;
+}
+.select__content {
+    position: relative;
+    padding-right: 30px;
+}
+.select__dropdown {
+    display: none;
+    background-color: var(--color-background);
+    position: absolute;
+    min-width: 170px;
+    max-width: 200px;
+    margin-top: 10px;
+}
+.select__item {
+    padding: 10px;
+}
+.select__item:hover {
+    backdrop-filter: brightness(95%);
+}

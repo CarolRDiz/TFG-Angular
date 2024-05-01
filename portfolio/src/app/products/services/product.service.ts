@@ -55,6 +55,17 @@ export class ProductService {
       catchError(this.errorHandler)
     );
   }
+  getFilterProducts(category: String) {
+    //return axios.get('http://localhost:8080/products/')
+    return this.http
+    .get<Product[]>(`${this.baseUrl}filter?category=${category}`)
+    .pipe(
+      catchError(this.errorHandler)
+    );
+  }
+
+
+
   errorHandler(error: HttpErrorResponse){
     if(error.status===0){
       console.error("Error: "+error.error);
@@ -67,6 +78,11 @@ export class ProductService {
 
   getProductById(id: Number) {
     return this.http.get<Product>(`${this.baseUrl}${id}/`);
+    // return axios.get(`http://localhost:8080/illustrations/${id}/`, )
+  }
+
+  getProductByIdPublic(id: Number) {
+    return this.http.get<Product>(`${this.baseUrl}public/${id}/`);
     // return axios.get(`http://localhost:8080/illustrations/${id}/`, )
   }
 

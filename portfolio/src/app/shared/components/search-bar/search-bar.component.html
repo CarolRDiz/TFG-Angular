@@ -1,20 +1,18 @@
 <div class="search-bar">
     <div class="search-bar__content">
-        <mat-icon class="material-symbols-outlined search-bar__icon">
+        <mat-icon class="material-symbols-outlined underlined-input__icon underlined-input__icon--left">
             search
         </mat-icon>
         <input type="text" class="search-bar__input" placeholder="{{placeholder}}" (input)="searchChange()"
             [(ngModel)]="search">
-        <button *ngIf="!addButton; else addOption;" (click)="clear()" class="button button--icon" >
-            <mat-icon class="material-symbols-outlined search-bar__close-icon">
+        <button *ngIf="!addButton && search" (click)="clear()" class="button button--icon">
+            <mat-icon class="material-symbols-outlined underlined-input__icon--right">
                 close
             </mat-icon>
         </button>
-        <ng-template #addOption>
-            <button (click)="add()">
-                Añadir
-            </button>
-        </ng-template>
+        <button *ngIf="addButton" (click)="add()">
+            Añadir
+        </button>
     </div>
 
 </div>

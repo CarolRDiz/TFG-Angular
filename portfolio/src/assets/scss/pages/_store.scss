@@ -1,26 +1,3 @@
-.products-list {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: repeat(3, 1fr);
-
-}
-
-.products-list__product {
-    align-items: center;
-
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-
-.products-list__image {
-    background-color: white;
-    object-fit: cover;
-    width: 100%;
-    height: 300px;
-}
-
 .store__top-header {
     position: fixed;
     top: 0;

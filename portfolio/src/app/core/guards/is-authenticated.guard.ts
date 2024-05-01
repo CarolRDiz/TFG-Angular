@@ -10,7 +10,7 @@ export const isAuthenticatedGuard: CanActivateFn = (
   const router = inject(Router);
 
   // const isAuthorized = this.userService.currentUser.admin.includes(route.data.role);
-  const isAuthorized = authService.currentUserLoginOn;
+  const isAuthorized = authService.currentUserLoginOn.value;
 
   if (!isAuthorized) {
     // redirect

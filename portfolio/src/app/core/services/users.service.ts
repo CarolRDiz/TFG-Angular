@@ -12,8 +12,9 @@ export class UsersService {
   currentUser: BehaviorSubject<User> = new BehaviorSubject<User>({} as User);
 
 
-
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { 
+    this.currentUser = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem("user")||"{}")as User || {} as User);
+  }
 
   getUser(): Observable<User>{
     return this.http
@@ -24,6 +25,7 @@ export class UsersService {
   }
   setUser(user: User){
     this.currentUser.next(user);
+    sessionStorage.setItem("user", JSON.stringify(user));
   }
 
   checkAdmin(){
