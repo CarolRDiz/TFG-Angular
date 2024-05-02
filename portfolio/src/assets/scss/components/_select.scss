@@ -6,15 +6,12 @@
     position: relative;
     width: 100%;
 }
-.select:hover .select__dropdown {
-    display: block;
-}
+
 .select__content {
     position: relative;
     padding-right: 30px;
 }
 .select__dropdown {
-    display: none;
     background-color: var(--color-background);
     position: absolute;
     min-width: 170px;

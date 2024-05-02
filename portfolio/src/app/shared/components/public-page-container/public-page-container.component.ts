@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./public-page-container.component.scss']
 })
 export class PublicPageContainerComponent {
+  mobileNavOn: boolean = false;
 
+  mobileNavSwitch(){
+    this.mobileNavOn = !this.mobileNavOn;
+  }
 }

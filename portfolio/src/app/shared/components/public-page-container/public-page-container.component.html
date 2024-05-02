@@ -1,2 +1,4 @@
 <app-header></app-header>
+<app-header-mobile (openEvent)="mobileNavSwitch()"></app-header-mobile>
+<app-navigation-mobile *ngIf="mobileNavOn" (closeEvent)="mobileNavSwitch()"></app-navigation-mobile>
 <router-outlet></router-outlet>

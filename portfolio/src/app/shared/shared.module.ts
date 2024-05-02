@@ -37,6 +37,8 @@ import { ToggleInputComponent } from './components/form-components/toggle-input/
 import { PriceInputComponent } from './components/form-components/price-input/price-input.component';
 import { TagsInputComponent } from './components/form-components/tags-input/tags-input.component';
 import { CategoriesInputComponent } from './components/form-components/categories-input/categories-input.component';
+import { HeaderMobileComponent } from './components/header-mobile/header-mobile.component';
+import { NavigationMobileComponent } from './components/navigation-mobile/navigation-mobile.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { CategoriesInputComponent } from './components/form-components/categorie
     SelectComponent,
     ToggleInputComponent,
     TagsInputComponent,
-    CategoriesInputComponent
+    CategoriesInputComponent,
+    HeaderMobileComponent,
+    NavigationMobileComponent,
   ],
   imports: [
     RouterModule,
@@ -121,7 +125,9 @@ import { CategoriesInputComponent } from './components/form-components/categorie
     SelectComponent,
     ToggleInputComponent,
     TagsInputComponent,
-    CategoriesInputComponent
+    CategoriesInputComponent,
+    HeaderMobileComponent,
+    NavigationMobileComponent
   ],
   providers: [
     ModalService,

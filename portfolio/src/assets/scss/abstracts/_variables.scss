@@ -20,6 +20,11 @@ $top-header-height: 110px;
 $padding-top: 33px;
 $padding-sides:53px;
 
+// MOBILE
+$mobile-padding-top: 10px;
+$mobile-padding-sides: 30px;
+$mobile-header-height: 100px;
+
 /// Regular font family
 /// @type List
 $text-font-stack: 'Open Sans', 'Helvetica Neue Light', 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif !default;
@@ -66,7 +71,7 @@ $translucent-dark-color: hwb(30 8% 90% / 0.945);
 
 // Translucent Light
 /// @type Color
-$translucent-light-color: hwb(17 54% 40% / 0.737);
+$translucent-light-color: hwb(15 87% 5% / 0.737);
 
 /// Light grey
 /// @type Color
@@ -105,14 +110,21 @@ $max-width: 1180px !default;
 
 
 
-/// Breakpoints map
-/// @prop {String} keys - Keys are identifiers mapped to a given length
-/// @prop {Map} values - Values are actual breakpoints expressed in pixels
-$breakpoints: (
-  'small': 320px,
-  'medium': 768px,
-  'large': 1024px,
-) !default;
+// /// Breakpoints map
+// /// @prop {String} keys - Keys are identifiers mapped to a given length
+// /// @prop {Map} values - Values are actual breakpoints expressed in pixels
+// $breakpoints: (
+//   // 'small': 320px,
+//   // 'medium': 768px,
+//   // 'large': 1024px,
+//   'small': 640px,
+//   'medium': 900px,
+//   'large': 1800px,
+// ) !default;
+
+$breakpoint-mobile: 640px;
+$breakpoint-tablet: 900px;
+$breakpoint-desktop: 1800px;
 
 
 

@@ -1,0 +1,36 @@
+.navigation-mobile {
+    background-color: var(--color-translucent-light);
+    backdrop-filter: blur(1px);
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: $second-level;
+
+    .navigation-mobile__content {
+        align-items: flex-start;
+        background-color: var(--color-background);
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: $mobile-padding-top $mobile-padding-sides;
+        position: relative;
+        width: 80%;
+    }
+    .navigation-mobile__close {
+        position: absolute;
+        top: $mobile-padding-sides;
+        right: $mobile-padding-sides;
+    }
+    .header-mobile__logo {
+        margin-bottom: 40px;
+    }
+    .nav__list {
+        row-gap: 20px;
+    }
+    .nav__link {
+        font-size: 24px;
+    }
+}

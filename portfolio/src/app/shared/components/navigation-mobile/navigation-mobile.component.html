@@ -1,0 +1,60 @@
+<div class="navigation-mobile">
+    <div class="navigation-mobile__content">
+        <button (click)="close()" class="navigation-mobile__close"  mat-icon-button aria-label="Example icon button with a menu icon">
+            <mat-icon>close</mat-icon>
+        </button>
+
+        <a [routerLink]="'/'">
+            <img class="header-mobile__logo" src="../../assets/images/logo.svg" alt="">
+        </a>
+
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__element">
+                    <a class="nav__link" routerLink="/">Illustration</a>
+                </li>
+                <li class="nav__element">
+                    <a class="nav__link" routerLink="/store">Store</a>
+                </li>
+                <li class="nav__element">
+                    <a class="nav__link" routerLink="/contact">Contacto</a>
+                </li>
+                <li class="nav__element">
+                    <a class="nav__link" routerLink="/about-me">About me</a>
+                </li>
+            </ul>
+        </nav>
+        <ul class="header__social">
+            <li>
+                <a href="mailto: rodiz.lau@gmail.com" target="_blank">
+                    <mat-icon svgIcon="email"></mat-icon>
+                </a>
+
+            </li>
+            <li>
+                <a href="https://www.instagram.com/lau.rodiz/" target="_blank">
+                    <mat-icon svgIcon="instagram"></mat-icon>
+                </a>
+            </li>
+            <li>
+                <a href="https://twitter.com/LauRodiz" target="_blank">
+                    <mat-icon svgIcon="twitter"></mat-icon>
+                </a>
+
+            </li>
+            <li>
+                <a href="https://www.tiktok.com/@lau.rodiz" target="_blank">
+                    <mat-icon svgIcon="tik-tok"></mat-icon>
+                </a>
+
+            </li>
+            <li>
+                <a href="https://www.twitch.tv/laurodiz" target="_blank">
+                    <mat-icon svgIcon="twitch"></mat-icon>
+                </a>
+
+            </li>
+        </ul>
+        <span class="header__email">laurodiz@gmail.com</span>
+    </div>
+</div>
