@@ -26,6 +26,7 @@ export class JwtInterceptorService implements HttpInterceptor {
         }
       );
     }
+    console.log("NO TOKEN")
     return next.handle(req);
   }
 }

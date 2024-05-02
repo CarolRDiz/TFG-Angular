@@ -22,6 +22,18 @@ export class HeaderComponent {
       "email",
       this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/images/icons/email.svg")
     );
+    this.matIconRegistry.addSvgIcon(
+      "twitter",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/images/icons/twitter.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "tik-tok",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/images/icons/tik-tok.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "twitch",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("/assets/images/icons/twitch.svg")
+    );
   }
 
 

@@ -8,6 +8,8 @@ import { CartService } from '../../services/cart.service';
 import { ProductService } from '../../services/product.service';
 import { OrderCreate } from '../../order-create';
 import { CartItem } from '../../cart-item';
+import { AuthService } from 'src/app/core/services/auth.service';
+import { UsersService } from 'src/app/core/services/users.service';
 
 @Component({
   selector: 'app-checkout',
@@ -18,6 +20,8 @@ export class CheckoutComponent {
 
   @ViewChild('paymentRef', { static: true }) paymentRef!: ElementRef;
 
+  userLoginOn: boolean = false;
+
   totalAmount: number;
   amount: number;
   delivery: number;
@@ -26,50 +30,34 @@ export class CheckoutComponent {
   products: Product[];
   cartProducts: any = [];
   cartItems: CartItem[] = [];
+  // FormGroups
+  contact: FormGroup;
+  shipping_address: FormGroup;
+  checkoutForm: FormGroup;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private payment: PaymentService,
+    private authService: AuthService,
     private cartService: CartService,
     private productService: ProductService,
-    private paymentService: PaymentService
-  ) { }
+    private paymentService: PaymentService,
+    private userService: UsersService
+  ) {
+    this.authService.userLoginOn.subscribe({
+      next: (userLoginOn) => {
+        this.userLoginOn = userLoginOn;
+      }
+    })
+  }
 
-  //  FORM
-  contact = new FormGroup({
-    email: new FormControl("", [Validators.required, AppValidator.emailValidator()]),
-    firstName: new FormControl('', Validators.required),
-    lastName: new FormControl('', Validators.required),
-  });
-  shipping_address = new FormGroup({
-    //country: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
-    secondAddress: new FormControl(''),
-    city: new FormControl('', [Validators.required, AppValidator.cityValidator()]),
-    postalCode: new FormControl('', [Validators.required, AppValidator.postalCodeValidator()]),
-    phone: new FormControl('', [Validators.required, AppValidator.phoneValidator()])
-  });
-  checkoutForm = new FormGroup({
-    contact: this.contact,
-    //SPAIN
-    shipping_address: this.shipping_address,
-    // payment: new FormGroup({
-    //   paypal_option: new FormControl(false),
-    //   card: new FormGroup({
-    //     firstName_card: new FormControl('', Validators.required),
-    //     lastName_card: new FormControl('', Validators.required),
-    //     card_number: new FormControl('', [Validators.required, AppValidator.luhnValidator()]),
-    //     expiration_date: new FormControl(''),
-    //     cvv_cvc: new FormControl('')
-    //   }),
-    // })
-
-  })
 
   ngOnInit() {
     this.delivery = this.paymentService.delivery;
     this.cartItems = this.cartService.getItems();
     let cartIds = this.cartItems.map((item: CartItem) => item.product_id);
+
+    this.initializeForm()
 
     this.productService.getListProducts(cartIds).subscribe(products => {
 
@@ -80,12 +68,10 @@ export class CheckoutComponent {
         product = { ...product, amount: cartItem.amount }
         this.cartProducts.push(product);
       });
-      
+
       this.calculateTotal()
     });
-
-
-    //this.amount = this.payment.totalAmount;
+    this.getUser();
 
     window.paypal.Buttons(
       {
@@ -117,7 +103,7 @@ export class CheckoutComponent {
                 this.paymentService.setOrder(response);
                 this.router.navigate(['confirmation'])
               });
-              
+
             }
           })
         },
@@ -128,16 +114,78 @@ export class CheckoutComponent {
     ).render(this.paymentRef.nativeElement);
   }
 
-  createOrder(){
+  initializeForm() {
+    //  FORM
+    this.contact = new FormGroup({
+      email: new FormControl("", [Validators.required, AppValidator.emailValidator()]),
+      firstName: new FormControl('', Validators.required),
+      lastName: new FormControl('', Validators.required),
+    });
+    this.shipping_address = new FormGroup({
+      //country: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      secondAddress: new FormControl(''),
+      city: new FormControl('', [Validators.required, AppValidator.cityValidator()]),
+      postalCode: new FormControl('', [Validators.required, AppValidator.postalCodeValidator()]),
+      phone: new FormControl('', [Validators.required, AppValidator.phoneValidator()])
+    });
+    this.checkoutForm = new FormGroup({
+      contact: this.contact,
+      //SPAIN
+      shipping_address: this.shipping_address,
+      // payment: new FormGroup({
+      //   paypal_option: new FormControl(false),
+      //   card: new FormGroup({
+      //     firstName_card: new FormControl('', Validators.required),
+      //     lastName_card: new FormControl('', Validators.required),
+      //     card_number: new FormControl('', [Validators.required, AppValidator.luhnValidator()]),
+      //     expiration_date: new FormControl(''),
+      //     cvv_cvc: new FormControl('')
+      //   }),
+      // })
+    })
+  }
+
+  getUser() {
+    console.log("getUser()")
+    if (this.userLoginOn) {
+      console.log("userLoginOn: true")
+      this.userService.getUser().subscribe(
+        {
+          next: (user) => {
+            console.log(user)
+            this.checkoutForm.patchValue(
+              {
+                contact: {
+                  email: user.email,
+                  firstName: user.firstName,
+                  lastName: user.lastName,
+                },
+                shipping_address: {
+                  address: user.address,
+                  secondAddress: user.secondAddress,
+                  city: user.city,
+                  postalCode: user.postalCode,
+                  phone: user.phone
+                }
+              }
+            )
+          }
+        }
+      )
+    }
+  }
+
+  createOrder() {
     let order: OrderCreate = {
-      "email": this.checkoutForm.value.contact?.email??'',
-      "firstName": this.checkoutForm.value.contact?.firstName??'',
-      "lastName": this.checkoutForm.value.contact?.lastName??'',
-      "address": this.checkoutForm.value.shipping_address?.address??'',
-      "secondAddress":this.checkoutForm.value.shipping_address?.secondAddress??'',
-      "city": this.checkoutForm.value.shipping_address?.city??'',
-      "postalCode": this.checkoutForm.value.shipping_address?.postalCode??'',
-      "phone": this.checkoutForm.value.shipping_address?.phone??'',
+      "email": this.checkoutForm.value.contact?.email ?? '',
+      "firstName": this.checkoutForm.value.contact?.firstName ?? '',
+      "lastName": this.checkoutForm.value.contact?.lastName ?? '',
+      "address": this.checkoutForm.value.shipping_address?.address ?? '',
+      "secondAddress": this.checkoutForm.value.shipping_address?.secondAddress ?? '',
+      "city": this.checkoutForm.value.shipping_address?.city ?? '',
+      "postalCode": this.checkoutForm.value.shipping_address?.postalCode ?? '',
+      "phone": this.checkoutForm.value.shipping_address?.phone ?? '',
       "cartItems": this.cartItems,
       "totalPrice": this.amount
     }
@@ -160,7 +208,7 @@ export class CheckoutComponent {
     if (this.step == 1 && this.contact.valid) {
       console.log(this.checkoutForm.value);
       this.step += 1;
-    } else if (this.step == 2 && this.shipping_address.valid){
+    } else if (this.step == 2 && this.shipping_address.valid) {
       this.step += 1;
       console.log(this.step)
     }
@@ -176,16 +224,16 @@ export class CheckoutComponent {
   //   })
   // }
   isEditable(step: number) {
-    if(this.step==1){
+    if (this.step == 1) {
       return false
     }
-    if(this.step==2) {
-      if(step==2)return false
-      if(step==1) return true
+    if (this.step == 2) {
+      if (step == 2) return false
+      if (step == 1) return true
     }
-    if(this.step==3) {
-      if(step==2)return true
-      if(step==1) return true
+    if (this.step == 3) {
+      if (step == 2) return true
+      if (step == 1) return true
     }
     return false
   }

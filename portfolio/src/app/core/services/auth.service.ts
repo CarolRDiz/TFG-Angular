@@ -22,7 +22,9 @@ export class AuthService {
   }
 
   signUp(formData: Registration){
-    return this.http.post<any>(`${this.baseUrl}registration/`, formData);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http
+    .post(`${this.baseUrl}registration/`, formData);
   }
   login(formData: Login): Observable<any>{
     let headers = new HttpHeaders().set('Content-Type', 'application/json');

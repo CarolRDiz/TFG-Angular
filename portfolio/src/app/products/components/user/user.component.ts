@@ -84,6 +84,7 @@ export class UserComponent {
       {
         next: (user) => {
           this.user = user
+          this.userService.setUser(user);
         },
         error: (errorData) => {
           this.errorMessage = errorData;
