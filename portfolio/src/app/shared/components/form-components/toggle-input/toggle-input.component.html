@@ -1,0 +1,8 @@
+<div class="form__field">
+    <label class="label label--small">Visibilidad </label>
+    <div class="field__content field__content--button">
+        <span>{{ngControl.value ? ifTrue : ifFalse}}</span>
+        <mat-slide-toggle [aria-label]="'isPublic'"
+        [formControl]="formControl"></mat-slide-toggle>
+    </div>
+</div>

@@ -1,0 +1,11 @@
+<!--PRICE-->
+<ng-container [formGroup]="parentForm">
+    <div class="form__field">
+        <label class="label label--small">Precio</label>
+        <div class="field__content">
+            <input formControlName="price" type="text" class="field__input" placeholder="10"
+                (input)="validatePrice($event)" (blur)="completePrice()">
+
+        </div>
+    </div>
+</ng-container>

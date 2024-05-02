@@ -183,8 +183,8 @@ export class AdminEditProductComponent {
     }
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+  openSnackBar(message: string) {
+    this._snackBar.open(message);
   }
   //  SAVE ILLUSTRATION WITH VISIBILITY=FALSE
   save() {
@@ -238,7 +238,7 @@ export class AdminEditProductComponent {
         }, err => {
           console.log(err) // when there's an error
         });
-      this.openSnackBar("Creado con éxito", "Ver")
+      this.openSnackBar("Editado con éxito")
     })
   }
   selectThumbnail(imageId: String) {
@@ -251,17 +251,8 @@ export class AdminEditProductComponent {
   }
 
   //TAGS
-  addTag(newTag: string) {
-    if (newTag != '' && !this.tags.includes(newTag)) {
-      console.log(newTag)
-      this.tags.push(newTag);
-    }
-    console.log(this.editForm.value.organization?.tags);
-  }
-  deleteTag(value: string) {
-    console.log(value);
-    this.tags = this.tags.filter((tag) => tag != value);
-    console.log(this.tags)
+  updateTags(value: any){
+    this.tags = value;
   }
 
   //CATEGORIES MODAL

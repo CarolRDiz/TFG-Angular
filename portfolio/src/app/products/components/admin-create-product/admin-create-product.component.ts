@@ -137,8 +137,8 @@ export class AdminCreateProductComponent {
     })
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+  openSnackBar(message: string) {
+    this._snackBar.open(message);
   }
   //  SAVE ILLUSTRATION WITH VISIBILITY=FALSE
   save() {
@@ -182,7 +182,7 @@ export class AdminCreateProductComponent {
           }, err => {
             console.log(err) // when there's an error
           });
-        this.openSnackBar("Creado con éxito", "Ver")
+        this.openSnackBar("Creado con éxito")
       })
       .catch(function (error) {
         console.log(error);
@@ -197,17 +197,8 @@ export class AdminCreateProductComponent {
     console.log(i);
     console.log(this.createForm);
   }
-  addTag(newTag: string){
-    if(newTag!='' && !this.tags.includes(newTag)){
-      console.log(newTag)
-      this.tags.push(newTag);
-    }
-    console.log(this.createForm.value.organization?.tags);
-  }
-  deleteTag(value: string){
-    console.log(value);
-    this.tags = this.tags.filter((tag) => tag!=value);
-    console.log(this.tags)
+  updateTags(value: any){
+    this.tags = value;
   }
 
   selectCategories($event: any){

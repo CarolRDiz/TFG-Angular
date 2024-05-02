@@ -17,7 +17,7 @@ export class StoreCatalogComponent {
   categories: Category[];
   category: string = '';
   predetermined: string = 'Todas';
-
+  searchValue: string ='';
   constructor(
     private router: Router,
     private authService: AuthService,
@@ -38,6 +38,7 @@ export class StoreCatalogComponent {
     })
   }
   search(value: any) {
+    this.searchValue = value;
     this.productsFiltered = this.products.filter((product) => product.name.includes(value));
   }
   selectCategory(value: any) {

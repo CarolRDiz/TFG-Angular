@@ -2,11 +2,11 @@ import { Component, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-price-field',
-  templateUrl: './price-field.component.html',
-  styleUrls: ['./price-field.component.scss']
+  selector: 'app-price-input',
+  templateUrl: './price-input.component.html',
+  styleUrls: ['./price-input.component.scss']
 })
-export class PriceFieldComponent {
+export class PriceInputComponent {
   @Input() parentForm: FormGroup;
   
   validatePrice($event: any){

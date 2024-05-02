@@ -10,7 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
 import {DragDropModule} from '@angular/cdk/drag-drop'; 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -26,7 +26,6 @@ import { ModalService } from './services/modal.service';
 import { ModalComponent } from './components/modal/modal.component';
 import { PublicPageContainerComponent } from './components/public-page-container/public-page-container.component';
 import { RouterModule } from '@angular/router';
-import { PriceFieldComponent } from './components/price-field/price-field.component';
 import {MatRadioModule} from '@angular/material/radio';
 import { InputComponent } from './components/form-components/input/input.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
@@ -34,6 +33,10 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
 import { SelectedImageComponent } from './components/selected-image/selected-image.component';
 import { DATE_PIPE_DEFAULT_OPTIONS } from "@angular/common";
 import { SelectComponent } from './components/select/select.component';
+import { ToggleInputComponent } from './components/form-components/toggle-input/toggle-input.component';
+import { PriceInputComponent } from './components/form-components/price-input/price-input.component';
+import { TagsInputComponent } from './components/form-components/tags-input/tags-input.component';
+import { CategoriesInputComponent } from './components/form-components/categories-input/categories-input.component';
 
 @NgModule({
   declarations: [
@@ -48,11 +51,14 @@ import { SelectComponent } from './components/select/select.component';
     AdminPageContainerComponent,
     ModalComponent,
     PublicPageContainerComponent,
-    PriceFieldComponent,
+    PriceInputComponent,
     InputComponent,
     LoginModalComponent,
     SelectedImageComponent,
-    SelectComponent
+    SelectComponent,
+    ToggleInputComponent,
+    TagsInputComponent,
+    CategoriesInputComponent
   ],
   imports: [
     RouterModule,
@@ -78,7 +84,7 @@ import { SelectComponent } from './components/select/select.component';
     NgxMaskPipe
   ],
   exports: [
-    PriceFieldComponent,
+    PriceInputComponent,
     AddImageComponent,
     AdminHeaderComponent,
     AdminPageContainerComponent,
@@ -112,7 +118,10 @@ import { SelectComponent } from './components/select/select.component';
     NgxMaskDirective,
     NgxMaskPipe,
     SelectedImageComponent,
-    SelectComponent
+    SelectComponent,
+    ToggleInputComponent,
+    TagsInputComponent,
+    CategoriesInputComponent
   ],
   providers: [
     ModalService,
@@ -120,7 +129,8 @@ import { SelectComponent } from './components/select/select.component';
     {
       provide: DATE_PIPE_DEFAULT_OPTIONS,
       useValue: { dateFormat: "short" }
-    } 
+    },
+    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}
   ]
 })
 export class SharedModule { }

@@ -1,0 +1,10 @@
+<div class="form__field">
+    <label class="label" for="name">Etiquetas </label>
+    <div class="field__content tags">
+        <div class="tag" *ngFor="let tag of tags; let i=index;">
+            <span>{{tag}}</span>
+            <button type="button" class="button button--text" (click)="deleteTag(tag)">x</button>
+        </div>
+        <input placeholder="Añadir..." type="text" [(ngModel)]="tag" (keyup.enter)="addTag(tag)" class="field__input">
+    </div>
+</div>

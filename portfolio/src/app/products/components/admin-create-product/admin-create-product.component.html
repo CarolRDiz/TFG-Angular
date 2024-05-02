@@ -14,9 +14,6 @@
                     Guardar <mat-icon>expand_more</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <!-- <button form="form" mat-menu-item>
-                        <span>Guardar</span>
-                    </button> -->
                     <button (click)="save()" mat-menu-item>
                         <span>Guardar</span>
                     </button>
@@ -35,28 +32,10 @@
                         <!--NAME-->
                         <app-input formControlName="name" [label]="'Nombre del producto'"
                         [placeholder]="'Sonic Fanart'" [required]="false"></app-input>
-                        <!-- <div class="form__field">
-                            <label class="label label--small" for="name">Nombre del producto </label>
-                            <div class="refillable-field">
-                                <div class="refillable-field__content">
-                                    <input formControlName="name" id="name" type="text" class="refillable-field__input"
-                                        placeholder="Sonic Fanart">
-                                </div>
-                            </div>
-                        </div> -->
+
                         <!--DESCRIPTION-->
                         <app-input formControlName="description" [label]="'Descripción'"
                         [placeholder]="'Describe tu producto'" [required]="false"></app-input>
-                        <!-- <div class="form__field">
-                            <label class="label label--small" for="description">Descripción</label>
-                            <div class="refillable-field">
-                                <div class="refillable-field__content">
-                                    <textarea id="description" formControlName="description"
-                                        class="refillable-field__input"
-                                        placeholder="Describe tu ilustración"> </textarea>
-                                </div>
-                            </div>
-                        </div> -->
                     </fieldset>
                 </div>
                 <div class="form__row">
@@ -114,52 +93,19 @@
                     <fieldset formGroupName="inventory" class="form__group">
                         <legend class="form__legend">Inventario</legend>
                         <!--PRICE-->
-                        <app-price-field [parentForm]="inventory"></app-price-field>
+                        <app-price-input [parentForm]="inventory"></app-price-input>
                     </fieldset>
                 </div>
                 <div class="form__row">
                     <fieldset formGroupName="organization" class="form__group">
                         <legend class="form__legend">Organización</legend>
                         <!--VISIBILITY-->
-                        <div class="form__field">
-                            <label class="label label--small" for="name">Visibilidad </label>
-                            <div class="field">
-                                <div class="field__button-content">
-                                    <span>Público</span><mat-slide-toggle [aria-label]="'isPublic'"
-                                        formControlName="visibility"></mat-slide-toggle>
-                                </div>
-                            </div>
-                        </div>
+                        <app-toggle-input formControlName="visibility" [label]="'Visibilidad'" [ifTrue]="'Público'" [ifFalse]="'Oculto'"></app-toggle-input>
                         <!--CATEGORIES-->
-                        <div class="form__field">
-
-                            <div class="field">
-                                <div class="field__button-content">
-                                    <label class="label" for="name">Categorías<span class="hint-label">Crea
-                                            categorías para agrupar los productos. Las categorías
-                                            aparecerán en la navegación de la tienda.</span></label>
-                                    <button mat-icon-button aria-label="Example icon-button with a menu" type="button"
-                                        (click)="openModal()">
-                                        <mat-icon>add</mat-icon>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
+                        <app-categories-input (openModalEvent)="openModal()"></app-categories-input>
                         <!--TAGS-->
-                        <div class="form__field">
-                            <label class="label" for="name">Etiquetas </label>
-                            <div class="refillable-field">
-                                <div class="refillable-field__content tags">
-                                    <div class="tag" *ngFor="let tag of tags; let i=index;">
-                                        <span>{{tag}}</span>
-                                        <button type="button" class="button button--text"
-                                            (click)="deleteTag(tag)">x</button>
-                                    </div>
-                                    <input type="text" #newTag (keyup.enter)="addTag(newTag.value)"
-                                        class="refillable-field__input">
-                                </div>
-                            </div>
-                        </div>
+                        <app-tags-input (tagsEvent)="updateTags($event)" [tags]="tags"></app-tags-input>
+
                     </fieldset>
                 </div>
                 

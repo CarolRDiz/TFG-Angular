@@ -2,7 +2,7 @@ import axios from 'axios';
 import { Injectable } from '@angular/core';
 import { Illustration } from '../illustration';
 import { IllustrationCreate } from '../illustration-create';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { IllustrationEdit } from '../illustration-edit';
 
 @Injectable({
@@ -21,9 +21,14 @@ export class IllustrationService {
     if(newIllustration.visibility) formData.append("visibility", newIllustration.visibility.toString());
     console.log(formData)
     
-    return axios.post(this.baseUrl, 
-      formData
-    )
+    // return axios.post(this.baseUrl, 
+    //   formData
+    // )
+    // let headers = new HttpHeaders().set('Content-Type', 'undefined');
+    // return this.http
+    // .post<any>(`${this.baseUrl}`, formData, {headers: headers})
+    return this.http
+    .post<any>(`${this.baseUrl}`, formData)
   }
   // getAllIllustrations(): Illustration[] {
   //   return axios.get('http://localhost:8080/illustrations/', 
@@ -66,9 +71,7 @@ export class IllustrationService {
     // this.http.patch<any>(url, illustration).subscribe((data) => {
     //   console.log("patch request: ", data);
     // });
-    return axios.patch(url, 
-      illustration
-    )
+    return this.http.patch<any>(url, illustration)
   }
   deleteIllustration(id: number) {
     const url = `${this.baseUrl}${id}/`;

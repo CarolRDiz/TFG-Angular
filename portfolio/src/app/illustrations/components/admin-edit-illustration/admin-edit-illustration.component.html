@@ -14,10 +14,10 @@
                     Guardar <mat-icon>expand_more</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                    <button form="form" mat-menu-item>
+                    <button (click)="save()" mat-menu-item>
                         <span>Guardar</span>
                     </button>
-                    <button mat-menu-item>
+                    <button (click)="publish()" mat-menu-item>
                         <span>Publicar</span>
                     </button>
                 </mat-menu>
@@ -84,15 +84,15 @@
                         </div>
                     </div> -->
                         <!--VISIBILITY-->
-                        <div class="form__field">
-                            <label class="label" for="name">Visibilidad </label>
-                            <div class="field">
-                                <div class="field__toggle-content">
-                                    <span>Público</span><mat-slide-toggle [aria-label]="'isPublic'"
-                                        formControlName="visibility"></mat-slide-toggle>
-                                </div>
+                        <!-- <div class="form__field">
+                            <label class="label label--small">Visibilidad </label>
+                            <div class="field__content field__content--button">
+                                <span>{{editForm.value.details.visibility ? 'Público' : 'Oculto'}}</span>
+                                <mat-slide-toggle [aria-label]="'isPublic'"
+                                    formControlName="visibility"></mat-slide-toggle>
                             </div>
-                        </div>
+                        </div> -->
+                        <app-toggle-input formControlName="visibility" [label]="'Visibilidad'" [ifTrue]="'Público'" [ifFalse]="'Oculto'"></app-toggle-input>
                     </fieldset>
                 </div>
 

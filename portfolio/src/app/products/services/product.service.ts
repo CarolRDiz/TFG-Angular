@@ -81,11 +81,6 @@ export class ProductService {
     // return axios.get(`http://localhost:8080/illustrations/${id}/`, )
   }
 
-  getProductByIdPublic(id: Number) {
-    return this.http.get<Product>(`${this.baseUrl}public/${id}/`);
-    // return axios.get(`http://localhost:8080/illustrations/${id}/`, )
-  }
-
   getListProducts(ids: number[]){
     return this.http.get<Product[]>(`${this.baseUrl}list?ids=${ids}`);
   }

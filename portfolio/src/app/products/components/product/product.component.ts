@@ -27,7 +27,7 @@ export class ProductComponent {
   }
 
   getProduct() {
-    this.productService.getProductByIdPublic(this.id).subscribe((data) => {
+    this.productService.getProductById(this.id).subscribe((data) => {
       this.product = data;
       this.selectedImage = this.product.thumbnail_image_id;
     });

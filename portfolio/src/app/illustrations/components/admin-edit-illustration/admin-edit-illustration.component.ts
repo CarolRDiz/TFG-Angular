@@ -94,8 +94,8 @@ export class AdminEditIllustrationComponent {
       images: this.images
     })
   }
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+  openSnackBar(message: string) {
+    this._snackBar.open(message);
     //TODO
     //CLOSE SNACKBAR
   }
@@ -121,30 +121,36 @@ export class AdminEditIllustrationComponent {
       // Dar a elegir la visibilidad
       "visibility": this.editForm.value.details?.visibility ?? false,
     }
-
-    try {
-      let success: boolean = false;
-      // this.illustrationService.updateIllustration(this.illustration.id, illustration)
-      await this.illustrationService.updateIllustration(this.illustration.id, illustration)
-        .then(({ status }) => {
-          console.log(status);
-          success = true;
-        }
-        );
-      if (success) {
+    // this.illustrationService.updateIllustration(this.illustration.id, illustration)
+    this.illustrationService.updateIllustration(this.illustration.id, illustration).subscribe({
+      next: (data) => {
+        console.log(data)
+      },
+      error: (errorData) => {
+        console.log(errorData)
+        this.openSnackBar("No se ha podido guardar")
+      },
+      complete: () => {
         this.router.navigate(['/', 'admin', 'illustration'])
           .then(nav => {
             console.log(nav); // true if navigation is successful
           }, err => {
             console.log(err) // when there's an error
           });
-        this.openSnackBar("Guardado con éxito", "Ver")
+        this.openSnackBar("Editado con éxito")
       }
-    }
-    catch (error) {
-      console.log(error)
-      this.openSnackBar("No se ha podido guardar", "Está bien")
-    }
+    })
+  }
+  publish() {
+    this.editForm.patchValue({
+      details: {
+        visibility: true
+      }
+    })
+    this.submitEditForm();
+  }
+  save() {
+    this.submitEditForm();
   }
 
   // async getIllustration() {

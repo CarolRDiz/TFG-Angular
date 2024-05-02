@@ -74,8 +74,8 @@ export class AdminCreateIllustrationComponent {
     this.fileUrl = null;
   }
 
-  openSnackBar(message: string, action: string) {
-    this._snackBar.open(message, action);
+  openSnackBar(message: string) {
+    this._snackBar.open(message,'', {duration: 3000});
   }
   //  SAVE ILLUSTRATION WITH VISIBILITY=FALSE
   save() {
@@ -106,22 +106,24 @@ export class AdminCreateIllustrationComponent {
       "visibility": this.createForm.value.details?.visibility ?? false
     }
     //TODO
-    this.illustrationService.postIllustration(illustration)
-      .then(({ status, data }) => {
-        console.log(status);
+    this.illustrationService.postIllustration(illustration).subscribe({
+      next: (data) => {
+        console.log("creado");
+      },
+      error: (errorData) => {
+        console.log(errorData);
+      },
+      complete: () => {
         this.router.navigate(['/', 'admin', 'illustration'])
           .then(nav => {
             console.log(nav); // true if navigation is successful
           }, err => {
             console.log(err) // when there's an error
           });
-        this.openSnackBar("Creado con éxito", "Ver")
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+        this.openSnackBar("Creado con éxito")
+      }
+    })
   }
-
   //  ON CHANGE
   @HostListener('change', ['$event.target.files'])
   emitFiles(event: FileList) {
