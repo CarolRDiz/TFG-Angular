@@ -7,12 +7,11 @@
     </div>
     <div class="modal__content">
         <div *ngFor="let product of cartProducts; let i=index;" class="cart__item">
-            <div class="cart__section">
+            <div class="cart__section cart__section--principal">
                 <img class="cart__image" [src]="'http://localhost:8080/images/'+product.thumbnail_image_id" alt="">
                 <span>{{product.name}}</span>
             </div>
-
-            <div class="cart__section">
+            <div class="cart__section cart__section--quantity">
                 <button mat-icon-button aria-label="Example icon-button with a menu" (click)="addMoreItem(product.id)">
                     <mat-icon>add</mat-icon>
                 </button>
@@ -21,7 +20,7 @@
                     <mat-icon>remove</mat-icon>
                 </button>
             </div>
-            <div class="cart__section">
+            <div class="cart__section cart__section--price">
                 <span>{{product.amount * product.price}}€</span>
                 <button mat-icon-button aria-label="Example icon-button with a menu">
                     <mat-icon>close</mat-icon>
