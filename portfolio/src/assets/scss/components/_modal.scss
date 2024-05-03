@@ -26,6 +26,9 @@
   transform: translate(-50%, -50%);
   width: 500px;
   z-index: 100;
+  @include mobile {
+    width: calc(100% - ($mobile-padding-sides * 2));
+  }
 }
 
 .modal__header {

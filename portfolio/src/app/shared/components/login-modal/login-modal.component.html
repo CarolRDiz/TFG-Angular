@@ -11,16 +11,16 @@
     <div class="modal__content">
         <ul class="login-modal__benefits-list">
             <li class="login-modal__benefit">
-                <mat-icon class="material-symbols-outlined search-bar__close-icon">
+                <mat-icon class="material-symbols-outlined">
                     check_circle
                 </mat-icon>
-                Recibe notificaciones sobre el estado de tus pedidos
+                <p>Recibe notificaciones sobre el estado de tus pedidos</p>
             </li>
             <li class="login-modal__benefit">
-                <mat-icon class="material-symbols-outlined search-bar__close-icon">
+                <mat-icon class="material-symbols-outlined">
                     check_circle
                 </mat-icon>
-                Mira tu historial de pedidos y vuelve a pedir más rápido
+                <p>Mira tu historial de pedidos y vuelve a pedir más rápido</p>
             </li>
         </ul>
         <form *ngIf="loginMode; else registerMode" [formGroup]="loginForm" class="form__group">

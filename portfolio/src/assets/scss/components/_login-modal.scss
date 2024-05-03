@@ -8,6 +8,9 @@
         align-items: center;
         column-gap: 5px;
         display: flex;
+        p {
+            flex-shrink: 6;
+        }
     }
 }
 .login-modal__submit-button {

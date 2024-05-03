@@ -5,6 +5,13 @@ body {
   color: var(--color-text);
   font: normal 125% / 1.4 $text-font-stack;
 }
+
 h2 {
   font-size: 23px;
+}
+
+p {
+  font-size: 15px;
+  letter-spacing: .06em;
+  line-height: 1.8em;
 }
