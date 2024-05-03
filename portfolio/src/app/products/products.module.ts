@@ -7,7 +7,6 @@ import { ProductService } from './services/product.service';
 import { CategoriesModalComponent } from './components/categories-modal/categories-modal.component';
 import { AdminEditProductComponent } from './components/admin-edit-product/admin-edit-product.component';
 import { ProductComponent } from './components/product/product.component';
-import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ConfirmationComponent } from './components/confirmation/confirmation.component';
 import { CartService } from './services/cart.service';
@@ -25,7 +24,6 @@ import { OrderSummaryComponent } from './components/order-summary/order-summary.
     CategoriesModalComponent,
     AdminEditProductComponent,
     ProductComponent,
-    CartComponent,
     CheckoutComponent,
     ConfirmationComponent,
     UserComponent,

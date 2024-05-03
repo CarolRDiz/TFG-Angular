@@ -2,7 +2,27 @@
     <a [routerLink]="'/'">
         <img class="header-mobile__logo" src="../../assets/images/logo.svg" alt="">
     </a>
-    <button (click)="open()" mat-icon-button aria-label="Example icon button with a menu icon">
-        <mat-icon>menu</mat-icon>
-    </button>
+
+    <div>
+        <button *ngIf="!userLoginOn; else userLogged" (click)="openLoginModal()" mat-icon-button
+            aria-label="Example icon-button with a menu">
+            <mat-icon>person</mat-icon>
+        </button>
+        <ng-template #userLogged>
+            <a [routerLink]="'/user'" mat-icon-button>
+                <mat-icon>person</mat-icon>
+            </a>
+        </ng-template>
+
+        <button (click)="openCartModal()" mat-icon-button aria-label="Example icon-button with a menu">
+            <mat-icon>shopping_bag</mat-icon>
+        </button>
+
+        <button (click)="open()" mat-icon-button aria-label="Example icon button with a menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+    </div>
+
 </header>
+<app-cart *ngIf="cartModal" (closeEvent)="closeCartModal()"></app-cart>
+<app-login-modal *ngIf="loginModal" (closeEvent)="closeLoginModal()"></app-login-modal>

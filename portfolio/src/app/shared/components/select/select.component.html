@@ -2,7 +2,7 @@
     <div (click)="switch()" class="select__content">
         <span class="select__selected">{{label}}</span>
         <mat-icon class="material-symbols-outlined underlined-input__icon underlined-input__icon--right">
-            expand_more
+            {{!isOpen?'expand_more':'expand_less'}}
         </mat-icon>
     </div>
     <ul class="select__dropdown" [hidden]="!isOpen">

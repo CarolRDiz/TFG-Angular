@@ -39,6 +39,8 @@ import { TagsInputComponent } from './components/form-components/tags-input/tags
 import { CategoriesInputComponent } from './components/form-components/categories-input/categories-input.component';
 import { HeaderMobileComponent } from './components/header-mobile/header-mobile.component';
 import { NavigationMobileComponent } from './components/navigation-mobile/navigation-mobile.component';
+import { NavigationMobileBottomComponent } from './components/navigation-mobile-bottom/navigation-mobile-bottom.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +65,8 @@ import { NavigationMobileComponent } from './components/navigation-mobile/naviga
     CategoriesInputComponent,
     HeaderMobileComponent,
     NavigationMobileComponent,
+    NavigationMobileBottomComponent,
+    CartComponent
   ],
   imports: [
     RouterModule,
@@ -127,7 +131,8 @@ import { NavigationMobileComponent } from './components/navigation-mobile/naviga
     TagsInputComponent,
     CategoriesInputComponent,
     HeaderMobileComponent,
-    NavigationMobileComponent
+    NavigationMobileComponent,
+    CartComponent
   ],
   providers: [
     ModalService,

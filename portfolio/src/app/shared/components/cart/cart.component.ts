@@ -6,12 +6,12 @@ import {
   inject,
   Output,
 } from '@angular/core';
-import { ProductService } from '../../services/product.service';
-import { CartService } from '../../services/cart.service';
-import { Product } from '../../product';
-import { CartProduct } from '../../cart-product';
+import { ProductService } from '../../../products/services/product.service';
+import { CartService } from '../../../products/services/cart.service';
+import { Product } from '../../../products/product';
+import { CartProduct } from '../../../products/cart-product';
 import { Router } from '@angular/router';
-import { CartItem } from '../../cart-item';
+import { CartItem } from '../../../products/cart-item';
 
 @Component({
   selector: 'app-cart',

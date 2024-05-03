@@ -1,5 +1,6 @@
 <section class="product">
-    <div class="product__left">
+    <h1 class="product__name--tablet">{{product.name}}</h1>
+    <div class="product__column-1">
         <img [src]="'http://localhost:8080/images/'+selectedImage" class="product__selected-image">
         <div class="product__images">
             <div (click)="selectImage(image_id)" class="product__image-box"
@@ -8,11 +9,13 @@
             </div>
         </div>
     </div>
-    <div class="product__right">
+    <div class="product__column-2">
         <h1 class="product__name">{{product.name}}</h1>
         <span class="product__price">{{product.price}}€</span>
-        <button class="button button--white" (click)="addToCart(product.id)">Add to cart</button>
         <p class="product__description">{{product.description}}</p>
-
+        <button class="product__button button button--white--large" (click)="addToCart(product.id)">
+            <mat-icon>shopping_cart</mat-icon>
+            <span>Añadir</span>
+        </button>
     </div>
 </section>

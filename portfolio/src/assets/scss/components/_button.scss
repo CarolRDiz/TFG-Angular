@@ -2,23 +2,21 @@
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
 .button {
+    align-items: center;
+    column-gap: 10px;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
     padding: 10px;
 }
 
-.button[class*="--large"] {
-    column-gap: 5px;
-    display: flex;
-    height: fit-content;
-    justify-content: center;
-    padding: 10px;
+.button[class*="--large"] {    
+    height: fit-content;    
+    padding: 15px;
     width: 100%;
 }
 .button[class*="--medium"] {
-    column-gap: 5px;
-    display: flex;
     height: fit-content;
-    justify-content: center;
     padding: 10px 60px;
     width: fit-content;
 }
@@ -41,10 +39,6 @@
     border: none;
     background-color: var(--color-dark-light);
     color: white;
-    
-    display: flex;
-    column-gap: 5px;
-    align-items: center;
 }
 
 .button[class*="--text"] {

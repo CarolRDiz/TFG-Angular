@@ -37,9 +37,12 @@ export class ProductService {
     //INVENTORY
     formData.append("price", newproduct.price)
     console.log(formData)
-    return axios.post(this.baseUrl,
-      formData
-    )
+
+    return this.http
+    .post<any>(`${this.baseUrl}`, formData)
+    .pipe(
+      catchError(this.errorHandler)
+    );
   }
 
 

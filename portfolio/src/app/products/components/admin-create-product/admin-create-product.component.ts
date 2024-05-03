@@ -21,12 +21,12 @@ import { Category } from '../../category';
 export class AdminCreateProductComponent {
 
   constructor(
-    private viewportScroller: ViewportScroller, 
-    private router: Router, 
+    private viewportScroller: ViewportScroller,
+    private router: Router,
     private _snackBar: MatSnackBar,
     public dialog: MatDialog,
-    private categoriesService : CategoriesService,
-    ) {
+    private categoriesService: CategoriesService,
+  ) {
   }
 
   categoriesModal: boolean = false;
@@ -39,7 +39,7 @@ export class AdminCreateProductComponent {
   }
 
   ngOnInit(): void {
-    
+
   }
 
   // SERVICES
@@ -59,7 +59,7 @@ export class AdminCreateProductComponent {
   organization = new FormGroup({
     visibility: new FormControl(false),
     categories: new FormControl<Array<number>>([]),
-    tags:  new FormControl<Array<string>>(this.tags),
+    tags: new FormControl<Array<string>>(this.tags),
   });
   inventory = new FormGroup({
     price: new FormControl("0")
@@ -80,7 +80,7 @@ export class AdminCreateProductComponent {
   get image(): any {
     return this.images.get('image');
   }
-  getCategories(): any{
+  getCategories(): any {
     return this.organization.get('categories')?.value;
   }
 
@@ -93,7 +93,7 @@ export class AdminCreateProductComponent {
   getShow() {
     return this.show;
   }
-  getThumbnailImage(){
+  getThumbnailImage() {
     let index = this.createForm.value.images?.thumbnailIndex ?? 0
     return this.imagePaths[index];
   }
@@ -110,16 +110,16 @@ export class AdminCreateProductComponent {
     this.image.setValue(filesArray);
     console.log(this.image.value)
     console.log("REMOVE URL")
-    this.imagePaths = this.imagePaths.filter(url => url!=image)
+    this.imagePaths = this.imagePaths.filter(url => url != image)
     console.log(this.imagePaths);
   }
 
-  validatePrice($event: any){
-    let price = this.createForm.value.inventory?.price?.toString()??'';
+  validatePrice($event: any) {
+    let price = this.createForm.value.inventory?.price?.toString() ?? '';
     const exRegPrice = /^\d+\.?\d{0,2}$/g;
     if (!exRegPrice.test(price)) {
-      price = price.slice(0,-1);
-      if(price == '')price="0"
+      price = price.slice(0, -1);
+      if (price == '') price = "0"
       this.createForm.patchValue({
         inventory: {
           price: price
@@ -127,9 +127,9 @@ export class AdminCreateProductComponent {
       })
     };
   }
-  completePrice(){
-    let price = this.createForm.value.inventory?.price?.toString()??'';
-    if(price=='') price='0';
+  completePrice() {
+    let price = this.createForm.value.inventory?.price?.toString() ?? '';
+    if (price == '') price = '0';
     this.createForm.patchValue({
       inventory: {
         price: parseFloat(price).toFixed(2).toString()
@@ -166,16 +166,23 @@ export class AdminCreateProductComponent {
       "name": this.createForm.value.details?.name ?? '',
       "description": this.createForm.value.details?.description ?? '',
       "visibility": this.createForm.value.organization?.visibility ?? false,
-      "category_ids": this.createForm.value.organization?.categories??[],
+      "category_ids": this.createForm.value.organization?.categories ?? [],
       "images": this.createForm.value.images?.image ?? [],
       "thumbnail_index": this.createForm.value.images?.thumbnailIndex ?? 0,
       "tags": this.createForm.value.organization?.tags ?? [],
-      "price": this.createForm.value.inventory?.price ??'0'
+      "price": this.createForm.value.inventory?.price ?? '0'
     }
     console.log(product);
-    this.productService.postProduct(product)
-      .then(({ status, data }) => {
-        console.log(status);
+    this.productService.postProduct(product).subscribe({
+      next: (data) => {
+        console.log(data);
+
+      },
+      error: (errorData) => {
+        console.log(errorData);
+        this.openSnackBar("Ha ocurrido un error")
+      },
+      complete: () => {
         this.router.navigate(['/', 'admin', 'products'])
           .then(nav => {
             console.log(nav); // true if navigation is successful
@@ -183,12 +190,10 @@ export class AdminCreateProductComponent {
             console.log(err) // when there's an error
           });
         this.openSnackBar("Creado con éxito")
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+      }
+    })
   }
-  selectThumbnail(i: any){
+  selectThumbnail(i: any) {
     this.createForm.patchValue({
       images: {
         thumbnailIndex: i
@@ -197,11 +202,11 @@ export class AdminCreateProductComponent {
     console.log(i);
     console.log(this.createForm);
   }
-  updateTags(value: any){
+  updateTags(value: any) {
     this.tags = value;
   }
 
-  selectCategories($event: any){
+  selectCategories($event: any) {
     console.log($event);
     this.createForm.patchValue({
       organization: {
@@ -221,7 +226,7 @@ export class AdminCreateProductComponent {
       //this.updateImages(files);
       // SET URL FILE
       let filesArray = this.image.value;
-      for(let i=0; i<files.length; i++){
+      for (let i = 0; i < files.length; i++) {
         let file: any = files.item(i);
         this.imagePaths.push(URL.createObjectURL(file));
         filesArray.push(file);

@@ -15,6 +15,9 @@
     top: 0;
     width: 100%;
     z-index: $third-level;
+    @include tablet {
+        display: none;
+    }
 }
 .top-header__options{
     display: flex;

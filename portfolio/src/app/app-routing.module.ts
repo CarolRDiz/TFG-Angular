@@ -13,7 +13,7 @@ import { PublicPageContainerComponent } from './shared/components/public-page-co
 import { AdminPageContainerComponent } from './shared/components/admin-page-container/admin-page-container.component';
 import { AdminEditProductComponent } from './products/components/admin-edit-product/admin-edit-product.component';
 import { ProductComponent } from './products/components/product/product.component';
-import { CartComponent } from './products/components/cart/cart.component';
+import { CartComponent } from './shared/components/cart/cart.component';
 import { CheckoutComponent } from './products/components/checkout/checkout.component';
 import { ConfirmationComponent } from './products/components/confirmation/confirmation.component';
 import { UserComponent } from './products/components/user/user.component';
