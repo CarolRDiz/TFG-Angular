@@ -1,45 +1,34 @@
 <main class="content user-page">
-    <span *ngIf="loading; else content">loading </span>
-    <ng-template #content>
-        <div class="user__title">
-            <mat-icon (click)="back()" class="user__back"
-                *ngIf="settingsSection || ordersSection; else continueShopping">chevron_left</mat-icon>
-            <ng-template #continueShopping>
-                <div (click)="backToStore()"class="user__back">
-                    <mat-icon  >chevron_left</mat-icon>
-                    <span>Continuar comprando</span>
+    <div class="user__title">
+        <div *ngIf="settingsSection || ordersSection" (click)="back()" class="user__back">
+            <mat-icon>chevron_left</mat-icon> </div>
+        <h2>Hola {{user.firstName? user.firstName : user.email}}!
+        </h2>
+    </div>
+    <div *ngIf="!settingsSection && !ordersSection" class="user__dashboard">
+        <h3>Tu cuenta</h3>
+        <div class="user__sections">
+            <div class="user__section" (click)="ordesSectionOn()">
+                <mat-icon class="user__section-icon material-symbols-rounded">shopping_bag</mat-icon>
+                <div class="user__section-description">
+                    <span>Historial de pedidos</span>
+                    <span>Mira y sigue tus pedidos</span>
                 </div>
-
-            </ng-template>
-            <h2>Bienvenid@
-                <span *ngIf="user.firstName">{{user.firstName}}</span>
-                <span *ngIf="!user.firstName">{{user.email}}</span>
-            </h2>
-        </div>
-        <div *ngIf="!settingsSection && !ordersSection" class="user__dashboard">
-            <h3>Tu cuenta</h3>
-            <div class="user__sections">
-                <div class="user__section" (click)="ordesSectionOn()">
-                    <mat-icon class="user__section-icon material-symbols-rounded">shopping_bag</mat-icon>
-                    <div class="user__section-description">
-                        <span>Historial de pedidos</span>
-                        <span>Mira y sigue tus pedidos</span>
-                    </div>
-                    <mat-icon class="user__section-icon user__section-right-icon">chevron_right</mat-icon>
-                </div>
-                <div class="user__section" (click)="settingsSectionOn()">
-                    <mat-icon class="user__section-icon material-symbols-rounded">settings</mat-icon>
-                    <div class="user__section-description">
-                        <span>Configuración de la cuenta</span>
-                        <span>Gestiona tu cuenta</span>
-                    </div>
-                    <mat-icon class="user__section-icon user__section-right-icon">chevron_right</mat-icon>
-                </div>
+                <mat-icon class="user__section-icon user__section-right-icon">chevron_right</mat-icon>
             </div>
-            <button class="button user__logout-button button--white--medium">Cerrar sesión</button>
+            <div class="user__section" (click)="settingsSectionOn()">
+                <mat-icon class="user__section-icon material-symbols-rounded">settings</mat-icon>
+                <div class="user__section-description">
+                    <span>Configuración de la cuenta</span>
+                    <span>Gestiona tu cuenta</span>
+                </div>
+                <mat-icon class="user__section-icon user__section-right-icon">chevron_right</mat-icon>
+            </div>
         </div>
+        <button (click)="logout()" class="button user__logout-button button--white--medium">Cerrar sesión</button>
+    </div>
 
-        <!-- 
+    <!-- 
         <ul>
             <li>
                 Pedidos
@@ -48,52 +37,51 @@
                 Ajustes
             </li>
         </ul> -->
-        <section *ngIf="ordersSection">
-            <h2>Pedidos</h2>
-            <ul class="orders">
-                <li class="order" *ngFor="let order of user.orders; let i=index;">
-                    <div class="order__info">
-                        <div class="order__info-item">
-                            <span class="order__info-item-title">Pedido:</span>
-                            <span>{{order.date}}</span>
-                        </div>
-                        <div class="order__info-item">
-                            <span class="order__info-item-title">Nº pedido:</span>
-                            <span>{{order.id}}</span>
-                        </div>
-                        <div>
-                            <span *ngIf="order.shipped==1">Completado</span>
-                            <span *ngIf="order.shipped==0">En proceso</span>
-                        </div>
+    <section class="user__section-content" *ngIf="ordersSection">
+        <h3>Pedidos</h3>
+        <ul class="orders">
+            <li class="order" *ngFor="let order of user.orders; let i=index;">
+                <div class="order__info">
+                    <div class="order__info-item">
+                        <span class="order__info-item-title">Pedido:</span>
+                        <span>{{order.date}}</span>
                     </div>
+                    <div class="order__info-item">
+                        <span class="order__info-item-title">Nº pedido:</span>
+                        <span>{{order.id}}</span>
+                    </div>
+                    <div>
+                        <span *ngIf="order.shipped==1">Completado</span>
+                        <span *ngIf="order.shipped==0">En proceso</span>
+                    </div>
+                </div>
+                <ul>
+                    <li class="order-item" *ngFor="let orderItem of order.items; let i=index;">
+                        <div class="order-item__image-frame">
+                            <img class="order-item__image" [src]="imageUrl+orderItem.product.thumbnail_image_id" alt="">
+                        </div>
 
-                    <ul>
-                        <li class="order-item" *ngFor="let orderItem of order.items; let i=index;">
-                            <div class="order-item__image-frame">
-                                <img class="order-item__image"
-                                    [src]="'http://localhost:8080/images/'+orderItem.product.thumbnail_image_id" alt="">
-                            </div>
+                        <div class="order-item__data">
+                            <a class="order-item__name" [routerLink]="'/product/'+ orderItem.product.id">
+                                {{orderItem.product.name}}
+                            </a>
+                            <span class="order-item__price">{{orderItem.product.price}} $</span>
+                            <span class="order-item__amount">X{{orderItem.amount}} Unidad(es)</span>
+                        </div>
 
-                            <div class="order-item__data">
-                                <a class="order-item__name" [routerLink]="'/product/'+ orderItem.product.id">
-                                    {{orderItem.product.name}}
-                                </a>
-                                <span class="order-item__price">{{orderItem.product.price}} $</span>
-                                <span class="order-item__amount">X{{orderItem.amount}} Unidad(es)</span>
-                            </div>
-
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </section>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <section class="user__section-content" *ngIf="settingsSection">
+        <form id="form" [formGroup]="userForm" class="form">
+            <section class="form__row">
+                <div class="form__group">
 
 
-        <section *ngIf="settingsSection">
-            <form id="form" [formGroup]="userForm" class="checkout__form">
-                <section class="checkout__section">
                     <div class="checkout__section-header">
-                        <h2>Contacto</h2>
+                        <h3>Contacto</h3>
                     </div>
                     <fieldset formGroupName="contact" class="checkout__form-group">
                         <app-input formControlName="email" [label]="'Correo electrónico'"
@@ -105,10 +93,12 @@
                                 [required]="true"></app-input>
                         </div>
                     </fieldset>
-                </section>
-                <section class="checkout__section">
+                </div>
+            </section>
+            <section class="form__row">
+                <div class="form__group">
                     <div class="checkout__section-header">
-                        <h2>Entrega</h2>
+                        <h3>Entrega</h3>
                     </div>
                     <fieldset formGroupName="shipping_address" class="checkout__form-group">
                         <app-input formControlName="address" [label]="'Dirección 1'"
@@ -124,12 +114,10 @@
                         <app-input formControlName="phone" [label]="'Número de móvil'" [placeholder]="'643 57 89 21'"
                             [mask]="'000 00 00 00'"></app-input>
                     </fieldset>
-                </section>
-                <button (click)="updateUser()" class="button button--filled--medium">Guardar</button>
+                </div>
+            </section>
+            <button (click)="updateUser()" class="button button--filled--medium">Guardar</button>
 
-            </form>
-        </section>
-
-    </ng-template>
-
+        </form>
+    </section>
 </main>

@@ -15,6 +15,7 @@ import { Category } from '../../category';
 import { Product } from '../../product';
 import { ProductEdit } from '../../product-edit';
 import { ProductCategoryService } from '../../services/product-category.service';
+import { environment } from 'src/app/environments/environment';
 
 interface ImageData {
   id: String,
@@ -40,7 +41,7 @@ export class AdminEditProductComponent {
   // imagesData: ImageData[] = [];
   // imagePaths: String[] = [];
   imageIds: String[] = [];
-  imageURL: string = "http://localhost:8080/images/";
+  imageUrl = environment.urlApiImage;
   oldCategoryIds: Number[];
 
   // SERVICES
@@ -89,11 +90,11 @@ export class AdminEditProductComponent {
   }
 
   getImagePath(imageId: String) {
-    return this.imageURL + imageId;
+    return this.imageUrl + imageId;
   }
 
   getThumbnailImage() {
-    return this.imageURL.concat(this.editForm.value.images.thumbnail_image_id);
+    return this.imageUrl.concat(this.editForm.value.images.thumbnail_image_id);
   }
 
   initializeForm() {
@@ -132,10 +133,10 @@ export class AdminEditProductComponent {
           details: {
             name: product.name,
             description: product.description,
-            visibility: product.visibility
           },
           organization: {
-            categories: product.category_ids
+            categories: product.category_ids,
+            visibility: product.visibility
           },
           images: {
             thumbnail_image_id: product.thumbnail_image_id

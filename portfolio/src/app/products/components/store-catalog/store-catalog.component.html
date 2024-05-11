@@ -1,6 +1,6 @@
 <h1 class="content__title">Store</h1>
 <div class="store-catalog__filters">
-    <app-search-bar (searchEvent)="search($event)"></app-search-bar>
+    <app-search-bar [placeholder]="'Buscar...'" (searchEvent)="search($event)"></app-search-bar>
     <app-select [predetermined]="predetermined" (selectEvent)="selectCategory($event)" [label]="'Categorías'" [items]="categories"></app-select>
 </div>
 
@@ -19,7 +19,7 @@
     <section class="products-list">
         <div class="products-list__product" *ngFor="let product of productsFiltered; index as i">
             <a [routerLink]="'/store/'+ product.id" class="products-list__image-link">
-                <img class="products-list__image" [src]="'http://localhost:8080/images/'+product.thumbnail_image_id"
+                <img class="products-list__image easeload" onload="this.style.opacity=1" [src]="imageUrl+product.thumbnail_image_id"
                     alt="">
             </a>
             <a [routerLink]="'/store/'+ product.id" class="products-list__name">

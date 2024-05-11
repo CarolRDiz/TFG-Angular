@@ -3,8 +3,10 @@
         <h1>Illustration</h1>
         <button class="button button--white" routerLink="/admin/create-illustration">Agregar ilustración</button>
     </div>
-    <app-search-bar (searchEvent)="search($event)"></app-search-bar>
-    <div class="table">
+    <div class="filters">
+        <app-search-bar (searchEvent)="search($event)" [placeholder]="'Buscar por nombre...'"></app-search-bar>
+    </div>
+    <div class="table illustration-table">
         <div class="table__header">
             <div class="table__cell table__cell--small"></div>
             <div class="table__cell table__cell--medium--click" (click)="sortName()">Illustration
@@ -34,7 +36,7 @@
                         [ngModel]="isIllustrationChecked(illustration.id)"></mat-checkbox>
                 </div>
                 <div class="table__cell table__cell--medium"><img class="table__image"
-                        [src]="'http://localhost:8080/images/'+illustration.image_id" alt=""></div>
+                        [src]="imageUrl+illustration.image_id" alt=""></div>
                 <div class="table__cell table__cell--large">{{illustration.name}}</div>
                 <div class="table__cell table__cell--medium">{{illustration.visibility == true? "Público":
                     "Oculto"}}

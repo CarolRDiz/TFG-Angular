@@ -1,11 +1,11 @@
 <section class="product">
     <h1 class="product__name--tablet">{{product.name}}</h1>
     <div class="product__column-1">
-        <img [src]="'http://localhost:8080/images/'+selectedImage" class="product__selected-image">
+        <img [src]="imageUrl+selectedImage" class="product__selected-image">
         <div class="product__images">
             <div (click)="selectImage(image_id)" class="product__image-box"
                 *ngFor="let image_id of product.image_ids; index as i">
-                <img [src]="'http://localhost:8080/images/'+image_id" class="product__image">
+                <img [src]="imageUrl+image_id" class="product__image">
             </div>
         </div>
     </div>
@@ -19,3 +19,28 @@
         </button>
     </div>
 </section>
+
+<div *ngIf="confirmationOn" class="cart-confirmation">
+    <div class="modal__header">
+        <mat-icon class="material-symbols-outlined">
+            check_circle
+        </mat-icon>
+        <span> The item was added to the cart.</span>
+        <!-- <mat-icon (click)="close()" class="modal__close material-symbols-rounded">
+            close
+        </mat-icon> -->
+    </div>
+    <div class="modal__content">
+
+        <section class="cart-confirmation__product">
+            <img class="cart-confirmation__image" [src]="imageUrl+selectedImage">
+            <div class="cart-confirmation__product-info">
+                <span class="cart-confirmation__name">{{product.name}}</span>
+                <span >{{product.price}}€</span>
+            </div>
+        </section>
+        <button [routerLink]="['/', 'checkout']" class=" cart-confirmation__button button button--white--large">Continuar con el pago</button>
+        <button (click)="close()" class="button button--empty--large">Seguir comprando</button>
+    </div>
+</div>
+<div *ngIf="confirmationOn" class="modal__backdrop" (click)="close()"></div>

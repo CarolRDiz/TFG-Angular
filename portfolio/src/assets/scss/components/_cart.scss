@@ -80,4 +80,13 @@
   row-gap: 20px;
   width: 400px;
 }
+.cart__empty-image {
+  max-width: 300px;
+  width: 100%;
+}
+.cart__empty {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 
+}

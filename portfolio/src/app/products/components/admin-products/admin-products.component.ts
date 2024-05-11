@@ -4,6 +4,7 @@ import { Illustration } from 'src/app/illustrations/illustration';
 import { Router } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../product';
+import { environment } from 'src/app/environments/environment';
 @Component({
   selector: 'app-admin-products',
   templateUrl: './admin-products.component.html',
@@ -15,6 +16,7 @@ export class AdminProductsComponent {
   visibilitySort: Boolean = false;
   nameSort: Boolean = false;
   illustrationSelectedArray: Number[] = [];
+  imageUrl = environment.urlApiImage;
 
   constructor(
     private productService: ProductService,

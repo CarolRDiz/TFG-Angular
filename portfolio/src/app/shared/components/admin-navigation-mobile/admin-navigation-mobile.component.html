@@ -1,0 +1,25 @@
+<div class="navigation-mobile">
+    <div class="navigation-mobile__content">
+        <button (click)="close()" class="navigation-mobile__close"  mat-icon-button aria-label="Example icon button with a menu icon">
+            <mat-icon>close</mat-icon>
+        </button>
+
+        <a [routerLink]="'/'">
+            <img class="header-mobile__logo" src="../../assets/images/logo.svg" alt="">
+        </a>
+
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__element">
+                    <a class="nav__link" routerLink="/admin/illustration">Ilustraciones</a>
+                </li>
+                <li class="nav__element">
+                    <a class="nav__link" routerLink="/admin/products">Productos</a>
+                </li>
+                <li class="nav__element">
+                    <a class="nav__link" routerLink="/admin/orders">Pedidos</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</div>

@@ -2,10 +2,27 @@
     border-radius: 25px;
     padding: 10px;
 }
+
 .order__state--pending {
     background-color: rgb(238, 206, 194);
 }
+
 .order__state--completed {
     background-color: rgb(197, 236, 201);
 }
 
+.admin-orders {
+    @include tablet {
+        .table__cell:nth-child(3) {
+            
+        }
+        // .table__cell:nth-child(3) {
+        //     display: none;
+        // }
+        // .table__cell:nth-child(4) {
+        //     display: none;
+        // }
+    }
+
+    
+}

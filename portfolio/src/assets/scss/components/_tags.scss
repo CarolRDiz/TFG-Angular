@@ -2,14 +2,19 @@
     align-items: center;
     column-gap: 10px;
     display: flex;
+    row-gap: 10px;
+    flex-wrap: wrap;
 }
 .tag {
     align-items: center;
-    background-color: rgb(140, 140, 140);
+    background-color: var(--color-secondary-light);
+    border: 1px solid var(--color-light-gray);
     border-radius: 10px;
-    color: rgb(255, 255, 255);
+    color: var(--color-text);
+    column-gap: 5px;
     display: flex;
     height: fit-content;
-    padding: 5px;
-    
+    padding: 5px 10px;
+    flex: none;
+    width: fit-content;
 }

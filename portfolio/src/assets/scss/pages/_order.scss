@@ -28,6 +28,11 @@
     display: flex;
     flex-direction: column;
     padding-bottom: 20px;
+    margin-bottom: 20px;
+    h3 {
+        margin: 0;
+        margin-bottom: 20px;
+    }
 
     .order__data {
         display: flex;

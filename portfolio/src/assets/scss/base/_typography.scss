@@ -3,15 +3,158 @@
  */
 body {
   color: var(--color-text);
-  font: normal 125% / 1.4 $text-font-stack;
+  @extend .t-body1;
+}
+
+:root {
+  // --fs-900: 36px;
+  // --fs-800: 32px;
+  // --fs-700: 27px;
+
+  // --fs-xl: 93px;
+  --fs-xl: clamp(60px, 12vw + 16px, 93px);
+  // --fs-900: 58px;
+  --fs-900: clamp(40px, 8vw + 16px, 58px);
+  // --fs-800: 47px;
+  --fs-800: clamp(30px, 6vw + 16px, 40px);
+  //--fs-700: 33px;
+  --fs-700: clamp(23px, 2vw + 16px, 33px);
+  
+  --fs-600: 23px;
+  --fs-500: 19px;
+  --fs-400: 16px;
+  --fs-300: 14px;
+  --fs-200: 12px;
+  --fs-100: 10px;
+  @include mobile {
+    --fs-600: 20px;
+    --fs-500: 18px;
+    --fs-400: 16px;
+    --fs-300: 14px;
+    --fs-200: 12px;
+    --fs-100: 10px;
+  }
+  //--ff-head: "Rubik", sans-serif;
+  --ff-head: "Source Serif 4", serif;
+  //--ff-body: "Rubik", sans-serif;
+  --ff-body: "Source Sans 3", sans-serif;
+  --ls-head: 0.5px;
+  --lh-body: 1.6em;
+  
+
+}
+
+.font-headline {
+  font-family: var(--ff-head);
+  font-optical-sizing: auto;
+  font-style: normal;
+  
+}
+.font-body {
+  font-family: var(--ff-body);
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.t-headline1 {
+  letter-spacing: var(--ls-head);
+  @extend .font-headline;
+  font-size: var(--fs-xl);
+}
+.t-headline2 {
+  letter-spacing: var(--ls-head);
+  @extend .font-headline;
+  font-size: var(--fs-900);
+  color: var(--color-primary);
+}
+.t-headline3 {
+  @extend .font-headline;
+  font-size: var(--fs-800);
+}
+.t-headline4 {
+  @extend .font-headline;
+  font-size: var(--fs-700);
+  letter-spacing: 0.25px;
+}
+.t-headline5 {
+  @extend .font-headline;
+  font-size: var(--fs-600);
+}
+.t-headline6 {
+  @extend .font-headline;
+  font-size: var(--fs-500);
+}
+.t-body1 {
+  @extend .font-body;
+  font-size: var(--fs-400);
+  line-height: var(--lh-body);
+  letter-spacing: 0.8px;
+}
+.t-body2 {
+  @extend .font-body;
+  font-size: var(--fs-300);
+  letter-spacing: 0.25;
+}
+.t-subtitle1 {
+  @extend .font-body;
+  font-size: var(--fs-400);
+}
+.t-subtitle2 {
+  @extend .font-body;
+  font-size: var(--fs-300);
+}
+.t-button {
+  @extend .font-body;
+  font-size: var(--fs-300);
+}
+.t-overline {
+  @extend .font-body;
+  font-size: var(--fs-100);
+}
+.t-caption {
+  @extend .font-body;
+  font-size: var(--fs-200);
+}
+
+
+h1 {
+  // text-align: center;
+  @extend .t-headline2;
+  margin-top: 0
 }
 
 h2 {
-  font-size: 23px;
+  //font-size: 23px;
+  @extend .t-headline3;
+}
+h3 {
+  margin: 0;
+  //font-size: 23px;
+  @extend .t-headline4;
+}
+h4 {
+  //font-size: 23px;
+  @extend .t-headline5;
+}
+h5 {
+  //font-size: 23px;
+  @extend .t-headline6;
 }
 
+
 p {
-  font-size: 15px;
-  letter-spacing: .06em;
-  line-height: 1.8em;
+  // font-size: 15px;
+  // letter-spacing: .06em;
+  // line-height: 1.8em;
+  @extend .t-body1;
+}
+* {
+  @extend .t-body1;
+}
+.form__legend {
+  @extend .t-headline4;
+}
+.nav__link {
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }

@@ -2,8 +2,13 @@
     <label [for]="formControl" class="label">{{getLabel}}</label>
     <div class="refillable-field">
         <div class="input-container">
-            <input [formControl]="formControl" type="text" class="input" 
-                [placeholder]="placeholder" [mask]="mask">
+            <textarea *ngIf="textarea; else input" [formControl]="formControl" class="textarea" [placeholder]="placeholder"
+                [mask]="mask"></textarea>
+            <ng-template #input>
+                <input [formControl]="formControl" type="{{password? 'password': 'text'}}" class="input"
+                    [placeholder]="placeholder" [mask]="mask">
+            </ng-template>
+
             <div *ngIf="showError">
                 <!-- <mat-error *ngIf="ngControl.errors?.['required']">Rellene este campo</mat-error> -->
                 <span class="input__error" *ngIf="ngControl.errors?.['required']">Rellene este campo</span>

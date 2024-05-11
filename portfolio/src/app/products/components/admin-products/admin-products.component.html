@@ -3,8 +3,10 @@
         <h1>Productos</h1>
         <button class="button button--white" routerLink="/admin/create-product">Agregar producto</button>
     </div>
-    <app-search-bar (searchEvent)="search($event)" [placeholder]="'Buscar por nombre'"></app-search-bar>
-    <div class="table">
+    <div class="filters">
+            <app-search-bar (searchEvent)="search($event)" [placeholder]="'Buscar por nombre...'"></app-search-bar>
+    </div>
+    <div class="table product-table">
         <div class="table__header">
             <div class="table__cell table__cell--small"></div>
             <div class="table__cell table__cell--medium--click" (click)="sortName()">Illustration
@@ -35,7 +37,7 @@
                 </div>
                 <div class="table__cell table__cell--medium">
                     <img class="table__image"
-                        [src]="'http://localhost:8080/images/'+item.thumbnail_image_id" alt="">
+                        [src]="imageUrl+item.thumbnail_image_id" alt="">
                 </div>
                 <div class="table__cell table__cell--large">{{item.name}}</div>
                 <div class="table__cell table__cell--medium">{{item.visibility == true? "Público": "Oculto"}}

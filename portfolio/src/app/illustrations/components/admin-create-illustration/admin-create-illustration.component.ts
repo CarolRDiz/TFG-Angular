@@ -80,22 +80,22 @@ export class AdminCreateIllustrationComponent {
   //  SAVE ILLUSTRATION WITH VISIBILITY=FALSE
   save() {
     console.log("save")
-    this.createForm.patchValue({
-      details: {
-        visibility: false
-      }
-    })
+    // this.createForm.patchValue({
+    //   // details: {
+    //   //   visibility: false
+    //   // }
+    // })
     this.submitCreateForm();
   }
   //  SAVE ILLUSTRATION WITH VISIBILITY=TRUE
-  publish() {
-    this.createForm.patchValue({
-      details: {
-        visibility: true
-      }
-    })
-    this.submitCreateForm();
-  }
+  // publish() {
+  //   this.createForm.patchValue({
+  //     details: {
+  //       visibility: true
+  //     }
+  //   })
+  //   this.submitCreateForm();
+  // }
   //  SAVE ILLUSTRATION
   submitCreateForm() {
     this.loading = true

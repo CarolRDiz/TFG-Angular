@@ -30,7 +30,7 @@ import { OrderSummaryComponent } from './components/order-summary/order-summary.
     StoreCatalogComponent,
     AdminOrdersComponent,
     AdminOrderComponent,
-    OrderSummaryComponent,
+    OrderSummaryComponent
   ],
   exports: [
     StoreComponent,

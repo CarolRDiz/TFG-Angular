@@ -9,8 +9,6 @@ import { CartService } from './products/services/cart.service';
 })
 export class AppComponent {
 
-  
-
   cartService: CartService = inject(CartService);
 
   ngOnInit() {

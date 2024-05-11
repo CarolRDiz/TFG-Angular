@@ -85,6 +85,10 @@ const routes: Routes = [
       //   component: AdminLoginComponent
       // },
       { 
+        path: '',
+        component: AdminIllustrationComponent
+      },
+      { 
         path: 'illustration',
         component: AdminIllustrationComponent
       },

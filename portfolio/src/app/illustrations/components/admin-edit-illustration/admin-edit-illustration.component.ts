@@ -8,6 +8,7 @@ import { IllustrationCreate } from '../../illustration-create';
 import { IllustrationEdit } from '../../illustration-edit';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { environment } from 'src/app/environments/environment';
 
 @Component({
   selector: 'app-admin-edit-illustration',
@@ -25,6 +26,7 @@ export class AdminEditIllustrationComponent {
   private sub: any;
   images!: FormGroup;
   editForm!: FormGroup;
+  imageUrl = environment.urlApiImage;
 
   // SETTERS
   updateImage(file: File) {
@@ -96,8 +98,6 @@ export class AdminEditIllustrationComponent {
   }
   openSnackBar(message: string) {
     this._snackBar.open(message);
-    //TODO
-    //CLOSE SNACKBAR
   }
   anchorScrolling(id: string): void {
     this.viewportScroller.scrollToAnchor(id);
@@ -178,7 +178,7 @@ export class AdminEditIllustrationComponent {
           }
         })
       if (this.illustration.image_id) {
-        this.fileUrl = 'http://localhost:8080/images/' + this.illustration.image_id
+        this.fileUrl = this.imageUrl + this.illustration.image_id
       }
     })
   }

@@ -9,7 +9,7 @@ import { environment } from 'src/app/environments/environment';
 })
 export class OrderService {
 
-  private baseUrl = 'http://localhost:8080/order/';
+  private baseUrl = environment.urlApi+'order/';
 
   constructor(
     private http: HttpClient

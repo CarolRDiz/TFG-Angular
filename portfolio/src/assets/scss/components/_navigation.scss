@@ -8,11 +8,13 @@
         flex-direction: column;
         list-style: none;
         padding-left: 0;
+        row-gap: 5px;
         .nav__element{
             width: 100%;
             .nav__link{
                 color: var(--color-text);
-                //text-transform: uppercase;
+                // font-size: var();
+                text-transform: uppercase;
                 :visited {
                     color: var(--color-text);
                 }

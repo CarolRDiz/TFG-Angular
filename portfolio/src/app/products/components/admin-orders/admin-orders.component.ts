@@ -52,7 +52,8 @@ export class AdminOrdersComponent {
 
   sortById() {
     this.idSort = !this.idSort
-    this.orderListModified.sort((a, b) => (a.id > b.id) ? 1 : -1)
+    if(!this.idSort) this.orderListModified.sort((a, b) => (a.id < b.id) ? 1 : -1)
+    else this.orderListModified.sort((a, b) => (a.id > b.id) ? 1 : -1)
     //this.orderListModified.sort((a, b) => (a.visibility == this.idSort) ? 1 : -1)
   }
   sortName() {

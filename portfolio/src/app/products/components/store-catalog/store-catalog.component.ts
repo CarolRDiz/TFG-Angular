@@ -5,6 +5,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 import { Product } from '../../product';
 import { CategoriesService } from '../../services/categories.service';
 import { Category } from '../../category';
+import { environment } from 'src/app/environments/environment';
 
 @Component({
   selector: 'app-store-catalog',
@@ -18,6 +19,8 @@ export class StoreCatalogComponent {
   category: string = '';
   predetermined: string = 'Todas';
   searchValue: string ='';
+  imageUrl = environment.urlApiImage;
+
   constructor(
     private router: Router,
     private authService: AuthService,

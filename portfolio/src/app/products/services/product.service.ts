@@ -1,16 +1,16 @@
-import axios from 'axios';
 import { Injectable } from '@angular/core';
 import { ProductCreate } from '../product-create';
 import { Product } from '../product';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { ProductEdit } from '../product-edit';
 import { catchError, throwError as ObservableThrowError, throwError } from 'rxjs';
+import { environment } from 'src/app/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
-  private baseUrl = 'http://localhost:8080/products/';
+  private baseUrl = environment.urlApi+'products/';
   constructor(
     private http: HttpClient
   ) { }
@@ -44,14 +44,7 @@ export class ProductService {
       catchError(this.errorHandler)
     );
   }
-
-
-  // getAllIllustrations(): Illustration[] {
-  //   return axios.get('http://localhost:8080/illustrations/', 
-  //   )
-  // }
   getAllProducts() {
-    //return axios.get('http://localhost:8080/products/')
     return this.http
     .get<Product[]>(`${this.baseUrl}`)
     .pipe(
@@ -59,16 +52,12 @@ export class ProductService {
     );
   }
   getFilterProducts(category: String) {
-    //return axios.get('http://localhost:8080/products/')
     return this.http
     .get<Product[]>(`${this.baseUrl}filter?category=${category}`)
     .pipe(
       catchError(this.errorHandler)
     );
   }
-
-
-
   errorHandler(error: HttpErrorResponse){
     if(error.status===0){
       console.error("Error: "+error.error);
@@ -76,21 +65,15 @@ export class ProductService {
       console.error("Respuesta: "+ error.status + ' '+error.error )
     }
     return throwError(()=>new Error('Algo ha fallado'))
-  
   }
 
   getProductById(id: Number) {
     return this.http.get<Product>(`${this.baseUrl}${id}/`);
-    // return axios.get(`http://localhost:8080/illustrations/${id}/`, )
   }
 
   getListProducts(ids: number[]){
     return this.http.get<Product[]>(`${this.baseUrl}list?ids=${ids}`);
   }
-  // getIllustrationsPublic(){
-  //   const url = `${this.baseUrl}public/`;
-  //   return axios.get(url);
-  // }
 
   deleteProductImage(id: number, imageId: String) {
     const url = `${this.baseUrl}delete/image/${id}/${imageId}`;
@@ -109,21 +92,4 @@ export class ProductService {
     const url = `${this.baseUrl}${id}/`;
     return this.http.patch<any>(url, product);
   }
-
-
-  // deleteIllustration(id: number) {
-  //   const url = `${this.baseUrl}${id}/`;
-  //   // this.http.patch<any>(url, illustration).subscribe((data) => {
-  //   //   console.log("patch request: ", data);
-  //   // });
-  //   return axios.delete(url)
-  // }
-  // deleteIllustrationList(idList: Number[]) {
-  //   const url = `${this.baseUrl}?ids=${idList}`;
-
-  //   // this.http.patch<any>(url, illustration).subscribe((data) => {
-  //   //   console.log("patch request: ", data);
-  //   // });
-  //   return axios.delete(url)
-  // }
 }

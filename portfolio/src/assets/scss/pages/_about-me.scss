@@ -1,9 +1,12 @@
 .about-me {
-    padding-bottom: 0;
+    //padding-bottom: 0;
 }
 .about-me__title {
     text-align: center;
-    margin-bottom: 30px;
+    //margin-bottom: 30px;
+}
+.about-me__subtitle {
+    @extend .t-headline4
 }
 .about-me__portrait {
     //max-width:  600px;
@@ -16,7 +19,7 @@
     }
 }
 .about-me__portrait:hover {
-    filter: saturate(190%);
+    filter: saturate(210%);
     background-color: white;
     box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
 }   

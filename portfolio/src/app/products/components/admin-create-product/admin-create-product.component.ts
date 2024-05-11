@@ -143,11 +143,11 @@ export class AdminCreateProductComponent {
   //  SAVE ILLUSTRATION WITH VISIBILITY=FALSE
   save() {
     console.log("save")
-    this.createForm.patchValue({
-      organization: {
-        visibility: false
-      }
-    })
+    // this.createForm.patchValue({
+    //   organization: {
+    //     visibility: false
+    //   }
+    // })
     this.submitCreateForm();
   }
   //  SAVE ILLUSTRATION WITH VISIBILITY=TRUE

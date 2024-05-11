@@ -58,7 +58,7 @@ export class CheckoutComponent {
     let cartIds = this.cartItems.map((item: CartItem) => item.product_id);
 
     this.initializeForm()
-
+    //TODO
     this.productService.getListProducts(cartIds).subscribe(products => {
 
       this.products = products;

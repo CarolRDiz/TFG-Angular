@@ -1,5 +1,7 @@
 .add-image {
     align-items: center;
+    //background-color: var(--color-secondary-light);
+    background-color: var(--color-background);
     border:  3px dotted var(--color-light-gray);
     border-radius: 10px;
     cursor: pointer;

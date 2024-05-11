@@ -25,7 +25,8 @@ export class InputComponent implements ControlValueAccessor {
   @Input() required: boolean;
   @Input() placeholder: string;
   @Input() mask: string;
-
+  @Input() password: boolean = false;
+  @Input() textarea: boolean = false;
   //public formControl: FormControl = new FormControl();
 
   formControl!: FormControl;
@@ -59,6 +60,9 @@ export class InputComponent implements ControlValueAccessor {
   }
 
   writeValue(value: any) {
+    if (value === null) {
+      this.formControl.reset();
+  }
     if(value)
     this.formControl.patchValue(value);
   }

@@ -27,6 +27,10 @@ export class UsersService {
     this.currentUser.next(user);
     sessionStorage.setItem("user", JSON.stringify(user));
   }
+  logout(){
+    this.currentUser.next({} as User);
+    sessionStorage.removeItem("user");
+  }
 
   checkAdmin(){
     return this.currentUser.value.admin

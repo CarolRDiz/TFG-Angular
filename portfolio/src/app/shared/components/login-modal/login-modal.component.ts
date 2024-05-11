@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Login } from 'src/app/core/modals/login';
 import { Registration } from 'src/app/core/modals/registration';
 import { AuthService } from 'src/app/core/services/auth.service';
@@ -31,7 +32,8 @@ export class LoginModalComponent {
   });
 
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { 
 
   }
@@ -57,8 +59,7 @@ export class LoginModalComponent {
       },
       error: (errorData) => {
         console.log(errorData);
-        this.loginError = errorData;
-
+        this.loginError = "Este correo electrónico ya está en uso";
       },
       complete: () => {
         this.loginMode = true;
@@ -77,12 +78,17 @@ export class LoginModalComponent {
       },
       error: (errorData) => {
         console.log(errorData);
-        this.loginError = errorData;
-
+        this.loginError = "El correo electrónico o la contraseña son incorrectos.";
       },
       complete: () => {
         console.info("Login completado");
         this.close();
+        this.router.navigate(['/', 'user'])
+        .then(nav => {
+          console.log(nav); // true if navigation is successful
+        }, err => {
+          console.log(err) // when there's an error
+        });
       }
     })
   }

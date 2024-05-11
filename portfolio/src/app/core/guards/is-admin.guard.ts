@@ -14,7 +14,7 @@ export const isAdminGuard: CanActivateFn = (
 
   if (!isAuthorized) {
     // redirect
-    router.navigate(['/'])
+    router.navigate(['/admin-login'])
       .then(nav => {
         console.log(nav); // true if navigation is successful
       }, err => {

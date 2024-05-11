@@ -1,26 +1,17 @@
 <app-loader *ngIf="loading" [message]="'Guardando la ilustración'"></app-loader>
 <main class="content">
     <div class="create-illustration">
-        <div class="top-header">
+        <div class="content__top">
             <div class="top-header__title">
                 <h1>Editar ilustración</h1>
             </div>
             <div class="top-header__options">
-                <button mat-icon-button aria-label="Example icon-button with a menu">
+                <!-- <button mat-icon-button aria-label="Example icon-button with a menu">
                     <mat-icon>content_copy</mat-icon>
+                </button> -->
+                <button (click)="save()" class="button button--white" aria-label="Example icon-button with a menu">
+                    Guardar
                 </button>
-                <button class="button button--white" [matMenuTriggerFor]="menu"
-                    aria-label="Example icon-button with a menu">
-                    Guardar <mat-icon>expand_more</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu">
-                    <button (click)="save()" mat-menu-item>
-                        <span>Guardar</span>
-                    </button>
-                    <button (click)="publish()" mat-menu-item>
-                        <span>Publicar</span>
-                    </button>
-                </mat-menu>
             </div>
         </div>
         <div class="create-illustration__content">
@@ -73,7 +64,7 @@
                     </div> -->
                         <!--DESCRIPTION-->
                         <app-input formControlName="description" [label]="'Descripción'"
-                            [placeholder]="'Describe tu ilustración'" [required]="false"></app-input>
+                        [textarea]="true" [placeholder]="'Describe tu ilustración'" [required]="false"></app-input>
                         <!-- <div class="form__field">
                         <label class="label" for="description">Descripción</label>
                         <div class="refillable-field">

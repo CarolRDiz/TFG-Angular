@@ -4,6 +4,8 @@ import { Login } from '../modals/login';
 import { Registration } from '../modals/registration';
 import { BehaviorSubject, Observable, catchError, tap, throwError } from 'rxjs';
 import { User } from '../modals/user';
+import { UsersService } from './users.service';
+import { environment } from 'src/app/environments/environment';
 
 
 @Injectable({
@@ -14,11 +16,15 @@ export class AuthService {
   currentUserLoginOn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   currentToken: BehaviorSubject<String> = new BehaviorSubject<String>("")
 
-  private baseUrl = 'http://localhost:8080/';
+  private baseUrl = environment.urlApi;
 
-  constructor(private http: HttpClient) { 
+  constructor(
+    private http: HttpClient,
+    private userService: UsersService
+  ) { 
     this.currentUserLoginOn = new BehaviorSubject<boolean>(sessionStorage.getItem("token")!=null);
     this.currentToken = new BehaviorSubject<String>(sessionStorage.getItem("token") || "");
+    
   }
 
   signUp(formData: Registration){
@@ -43,6 +49,8 @@ export class AuthService {
   logout(){
     sessionStorage.removeItem("token");
     this.currentUserLoginOn.next(false);
+    this.userService.logout()
+    
   }
 
   // setToken(token: string) {

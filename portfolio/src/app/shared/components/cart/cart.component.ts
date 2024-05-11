@@ -12,6 +12,7 @@ import { Product } from '../../../products/product';
 import { CartProduct } from '../../../products/cart-product';
 import { Router } from '@angular/router';
 import { CartItem } from '../../../products/cart-item';
+import { environment } from 'src/app/environments/environment';
 
 @Component({
   selector: 'app-cart',
@@ -31,6 +32,7 @@ export class CartComponent {
 
   productService: ProductService = inject(ProductService);
   cartService: CartService = inject(CartService);
+  imageUrl = environment.urlApiImage;
 
   constructor(private router: Router){}
   ngOnInit() {

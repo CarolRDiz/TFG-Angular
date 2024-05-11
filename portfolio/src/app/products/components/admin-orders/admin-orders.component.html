@@ -1,10 +1,13 @@
-<main class="content">
+<main class="content admin-orders">
     <div class="content__top">
-        <h1 class="content__title">Pedidos</h1>
+        <h1>Pedidos</h1>
         <!-- <button class="button button--white" routerLink="/admin/create-product">Agregar producto</button> -->
     </div>
     <!-- <app-search-bar (searchEvent)="search($event)" [placeholder]="'Buscar por nombre'"></app-search-bar> -->
-    <app-search-bar [placeholder]="'Buscar por nombre'"></app-search-bar>
+    <div class="filters">
+        <app-search-bar [placeholder]="'Buscar por nombre...'"></app-search-bar>
+    </div>
+    
 
     <div class="table">
         <div class="table__header">
@@ -20,13 +23,13 @@
                 </mat-icon>
             </div>
             <!--3 COLUMNA FECHA-->
-            <div class="table__cell table__cell--medium">Realizada el</div>
-            <!--4 COLUMNA NAME-->
-            <div class="table__cell table__cell--medium">Nombre</div>
+            <div class="table__cell table__cell--medium">Fecha</div>
+            <!-- 4 COLUMNA NAME
+            <div class="table__cell table__cell--medium">Nombre</div> -->
             <!--5 COLUMNA EMAIL-->
             <div class="table__cell table__cell--large">Email</div>
             <!--6 COLUMNA TOTAL-->
-            <div class="table__cell table__cell--medium">Total</div>
+            <div class="table__cell table__cell--small">Total</div>
             <!--7 COLUMNA ENTREGA-->
             <div class="table__cell table__cell--medium--click" (click)="sortById()">Entrega
                 <mat-icon *ngIf="!this.idSort" class="material-symbols-outlined">
@@ -54,17 +57,16 @@
                 <div class="table__cell table__cell--medium">
                     {{item.date | date}}
                 </div>
-                <!--4 COLUMNA NAME-->
+                <!-- 4 COLUMNA NAME
                 <div class="table__cell table__cell--medium">
                     {{item.firstName}}
-                    <!-- {{item.visibility == true? "Público": "Oculto"}} -->
-                </div>
+                </div> -->
                 <!--5 COLUMNA EMAIL-->
                 <div class="table__cell table__cell--large">
                     {{item.email}}
                 </div>
                 <!--6 COLUMNA TOTAL-->
-                <div class="table__cell table__cell--medium">
+                <div class="table__cell table__cell--small">
                     {{item.totalPrice}}€
                 </div>
                 <!--7 COLUMNA ENTREGA-->

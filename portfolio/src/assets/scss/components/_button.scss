@@ -7,7 +7,15 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
-    padding: 10px;
+    padding: 15px 20px;
+}
+
+.button:disabled {
+    filter: saturate(40%) brightness(120%);
+    
+    cursor: auto;
+   
+    
 }
 
 .button[class*="--large"] {    
@@ -17,7 +25,7 @@
 }
 .button[class*="--medium"] {
     height: fit-content;
-    padding: 10px 60px;
+    padding: 15px 60px;
     width: fit-content;
 }
 
@@ -37,11 +45,16 @@
 
 .button[class*="--white"] {
     border: none;
-    background-color: var(--color-dark-light);
+    //background-color: var(--color-text);
+    background-color: var(--color-primary);
     color: white;
+    font-weight: 600;
+    
 }
 
+
 .button[class*="--text"] {
+    padding: 0;
     width: fit-content;
     height: fit-content;
     background: none;

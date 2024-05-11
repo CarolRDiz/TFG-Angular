@@ -83,3 +83,25 @@
         display: inline;
     }
 }
+.cart-confirmation {
+    @extend .modal;
+    max-width: 400px;
+    height: fit-content;
+    .cart-confirmation__product {
+        align-items: center;
+        display: flex;
+        column-gap: 20px;
+        margin-bottom: 30px;
+        .cart-confirmation__product-info {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    .cart-confirmation__button {
+        margin-bottom: 10px;
+    }
+    
+}
+.cart-confirmation__image {
+    height: 100px;
+}

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { OrderCreate } from '../order-create';
 import { Order } from '../order';
+import { environment } from 'src/app/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class PaymentService {
   totalAmount: number = 10;
   delivery: number = 4;
   private order: Order;
-  private baseUrl = 'http://localhost:8080/order';
+  private baseUrl = environment.urlApi+'order';
 
   constructor(
     private http: HttpClient

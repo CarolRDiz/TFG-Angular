@@ -13,7 +13,7 @@
 .theme{
     --color-primary: #{$primary-color};
     --color-primary-light: #{$primary-light-color};
-    --color-dark-light: #{$primary-dark-color};
+    //--color-dark-light: #{$primary-dark-color};
 
     --color-secondary: #{$secondary-color};
     --color-secondary-light: #{$secondary-light-color};
@@ -21,7 +21,7 @@
     --color-background: #{$secondary-color};
     --color-translucent-dark: #{$translucent-dark-color};
     --color-translucent-light: #{$translucent-light-color};
-    --color-text: #{$mid-dark-gray};
+    --color-text: #{$blue-dark-color};
     --color-light-gray: #{$light-gray}; 
     --color-mid-light-gray: #{$mid-light-gray}; 
     --color-mid-gray: #{$mid-gray};
@@ -29,6 +29,8 @@
     --color-dark-gray: #{$dark-gray};
     --color-icon: #{$text-color};
     --color-warn: #{$warn};
+
+    
     // --mdc-checkbox-unselected-icon-color: #{$text-color};
     // --mdc-checkbox-disabled-selected-icon-color: #{$text-color};
     // --mdc-checkbox-unselected-focus-icon-color: #{$text-color};

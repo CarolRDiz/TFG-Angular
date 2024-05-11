@@ -1,7 +1,7 @@
 <main class="content">
-    <div class="top-header">
+    <div class="content__top">
         <div class="top-header__title order__top-header">
-            <h1 class="order__id">Pedido <span >#{{order.id}}</span></h1>
+            <h1 class="order__id">Pedido #{{order.id}}</h1>
             <span class="order__state order__state--completed" *ngIf="order.shipped == 1; else pending">
                 Completado
             </span>

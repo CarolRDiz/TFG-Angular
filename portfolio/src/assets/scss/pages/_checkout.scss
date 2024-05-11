@@ -6,10 +6,11 @@
 
 
 .checkout__form {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    row-gap: 30px;
-    width: 100%;
+    row-gap: 40px;
+    width: 70%;
 }
 
 .checkout__row {
@@ -30,14 +31,27 @@
 }
 
 .checkout__section {
-    background-color: var(--color-secondary-light);
+    //background-color: var(--color-secondary-light);
     border-radius: 10px;
-    padding: 20px 20px;
+    padding: 0 20px;
+    width: 100%;
 
     .checkout__section-header {
         align-items: center;
         display: flex;
         justify-content: space-between;
+        margin-bottom: 20px;
+        h2 {
+            margin: 0;
+        }
+    }
+}
+.checkout__section--unselected {
+    //border: 1px solid var(--color-light-gray);
+    background-color: var(--color-secondary-light);
+    padding: 20px 20px;
+    .checkout__section-header {
+        margin: 0;
     }
 }
 

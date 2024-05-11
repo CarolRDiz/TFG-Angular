@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Illustration } from '../../illustration';
 import { IllustrationService } from '../../services/illustration.service';
+import { environment } from 'src/app/environments/environment';
 @Component({
   selector: 'app-gallery',
   templateUrl: './gallery.component.html',
@@ -14,37 +15,26 @@ export class GalleryComponent {
   //images = ["../../assets/images/gallery/PANTALLA_Gaelo_JPG_50porciento_RGB.jpg", "../../assets/images/gallery/3.png", "../../assets/images/gallery/2.jpg", "../../assets/images/gallery/4.jpeg", "../../assets/images/gallery/6.jpg", "../../assets/images/gallery/5.jpg", "../../assets/images/gallery/9.jpg", "../../assets/images/gallery/10.jpg", "../../assets/images/gallery/11.jpg", "../../assets/images/gallery/15.jpg", "../../assets/images/gallery/8.jpg", "../../assets/images/gallery/14.webp", "../../assets/images/gallery/1.jpeg"]
   images: string[] = [];
   illustrationList: Illustration[] = [];
+  imageUrl = environment.urlApiImage;
+
   constructor(
     private illustrationService: IllustrationService
-  ) {}
+  ) { }
   ngOnInit(): void {
-    this.illustrationService.getIllustrationsPublic()
-    .then(({ status, data }) => {
-      console.log(status);
-      console.log(data);
-      this.illustrationList = data;
-      this.images = this.illustrationList.map((illustration) => `http://localhost:8080/images/${illustration.image_id}`);
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-
-    
-
+    this.illustrationService.getIllustrationsPublic().subscribe(
+      {
+        next: (data) => {
+          this.illustrationList = data;
+          this.images = this.illustrationList.map((illustration) => `${this.imageUrl}${illustration.image_id}`);
+        },
+        error: (errorData) => {
+          console.log(errorData);
+        },
+        complete: () => {}
+      }
+    )
   }
 
-  // getPublicIllustrations(){
-  //   this.illustrationService.getIllustrationsPublic()
-  //     .then(({ status, data }) => {
-  //       console.log(status);
-  //       console.log(data);
-  //       this.illustrationList = data;
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     })
-    
-  // }
   getImagesColumn() {
     let countImages = this.images.length;
     let third = Math.floor(countImages / 3);
@@ -88,7 +78,7 @@ export class GalleryComponent {
     }
     this.currentImage = this.images[index]
   }
-  closeLightbox(){
+  closeLightbox() {
     this.lightboxOpen = false
   }
 }

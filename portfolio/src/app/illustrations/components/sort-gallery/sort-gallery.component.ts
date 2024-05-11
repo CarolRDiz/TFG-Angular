@@ -25,19 +25,18 @@ export class SortGalleryComponent {
   imageColumns: string[][] = [];
   constructor(
     private illustrationService: IllustrationService
-  ) {}
+  ) { }
   ngOnInit(): void {
-    this.illustrationService.getIllustrationsPublic()
-    .then(({ status, data }) => {
-      console.log(status);
-      console.log(data);
-      this.illustrationList = data;
-      this.images = this.illustrationList.map((illustration) => `http://localhost:8080/images/${illustration.image_id}`);
-      this.imageColumns = this.getImageColumns();
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
+    this.illustrationService.getIllustrationsPublic().subscribe(
+      {
+        next: (data) => {
+          this.illustrationList = data;
+          this.images = this.illustrationList.map((illustration) => `http://localhost:8080/images/${illustration.image_id}`);
+          this.imageColumns = this.getImageColumns();
+        },
+        error: (errorData) => {}
+      }
+    )
   }
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
@@ -68,12 +67,6 @@ export class SortGalleryComponent {
     }
     return threeColums;
   }
-
-
-
-
-
-
   selectImage(image: string) {
     this.currentImage = image;
     this.lightboxOpen = true
@@ -100,7 +93,7 @@ export class SortGalleryComponent {
     }
     this.currentImage = this.images[index]
   }
-  closeLightbox(){
+  closeLightbox() {
     this.lightboxOpen = false
   }
 }

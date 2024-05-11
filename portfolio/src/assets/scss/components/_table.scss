@@ -1,57 +1,113 @@
-.table{
+.table {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
+
 .table__body {
     display: flex;
     flex-direction: column;
     margin: 0;
     padding: 0;
 }
-.table__row, .table__header{
+
+.table__row,
+.table__header {
     display: flex;
     width: 100%;
     border-bottom: 1px solid var(--color-light-gray);
 }
+
 .table__header {
     height: 40px;
+    @include mobile {
+        display: none;
+    }
 }
+
 .table__row {
     height: 80px;
 }
+
 .table__row:hover {
     background-color: var(--color-primary-light);
 }
+
 .table__cell {
     align-items: center;
     display: flex;
     height: 80px;
     justify-content: center;
     padding: 10px;
+
+    @include mobile {
+        font-size: 14px;
+        padding: 5px;
+    }
 }
+
 // .table__cell--small {
 //     width: 60px;
 // }
-.table__cell[class*="--click"]{
-    cursor:pointer;
+.table__cell[class*="--click"] {
+    cursor: pointer;
 }
-.table__cell[class*="--small"]{
+
+.table__cell[class*="--small"] {
     width: 60px;
 }
+
 .table__cell[class*="--medium"] {
     width: 140px;
+
+    @include mobile {
+        
+    }
 }
+
+.illustration-table .table__cell:nth-child(2) {
+    @include mobile {
+        justify-content: flex-start;
+        flex-grow: 1;
+    }
+}
+.product-table .table__cell:nth-child(2) {
+    @include mobile {
+        justify-content: flex-start;
+        flex-grow: 1;
+    }
+}
+
 .table__cell[class*="--large"] {
     flex-grow: 1;
     justify-content: flex-start;
+
+    @include mobile {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 30px;
+        display: none;
+    }
 }
+
+// .table__cell[class*="--not-mobile"] {
+//     @include mobile {
+//         display: none;
+//     }
+// }
+
 .table__header .table__cell {
     color: var(--color-mid-gray);
     font-weight: 200;
-    font-size:medium;
+    font-size: medium;
     height: 40px;
+
+    @include mobile {
+        font-size: small;
+    }
 }
-.table__image{
+
+.table__image {
     height: 100%;
 }

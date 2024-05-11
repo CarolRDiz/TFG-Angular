@@ -5,6 +5,7 @@ import { User } from 'src/app/core/modals/user';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppValidator } from 'src/app/models/custom-validator';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/core/services/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -22,15 +23,19 @@ export class UserComponent {
   contact: FormGroup;
   shipping_address: FormGroup;
   userForm: FormGroup;
-
-  constructor(private userService: UsersService, private router: Router,) { }
+  imageUrl = environment.urlApiImage;
+  
+  constructor(
+    private userService: UsersService, 
+    private authService: AuthService,
+    private router: Router,) { }
 
   ngOnInit() {
     this.initializeForm()
     this.getUser();
   }
   getUser() {
-    this.loading = true;
+    // this.loading = true;
     this.userService.getUser().subscribe({
       next: (userData) => {
         this.user = userData
@@ -129,6 +134,15 @@ export class UserComponent {
     this.ordersSection = false;
   }
   backToStore() {
+    this.router.navigate(['/','store'])
+      .then(nav => {
+        console.log(nav); // true if navigation is successful
+      }, err => {
+        console.log(err) // when there's an error
+      });
+  }
+  logout(){
+    this.authService.logout();
     this.router.navigate(['/','store'])
       .then(nav => {
         console.log(nav); // true if navigation is successful

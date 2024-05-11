@@ -2,6 +2,8 @@ import { Component, inject } from '@angular/core';
 import { Illustration } from '../../illustration';
 import { IllustrationService } from '../../services/illustration.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/app/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin-illustration',
@@ -14,10 +16,13 @@ export class AdminIllustrationComponent {
   visibilitySort: Boolean = false;
   nameSort: Boolean = false;
   illustrationSelectedArray: Number[] = [];
+  imageUrl = environment.urlApiImage;
+
 
   constructor(
     private illustrationService: IllustrationService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {
   }
   ngOnInit(): void {
@@ -31,6 +36,10 @@ export class AdminIllustrationComponent {
   // illustrationService: IllustrationService = inject(IllustrationService);
 
   // METHODS
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message);
+  }
   getIllustrations() {
     // this.illustrationService.getAllIllustrations()
     //   .then(({ status, data }) => {
@@ -72,39 +81,36 @@ export class AdminIllustrationComponent {
     this.illustrationListModified = illustrationListWithName.filter((illustration) => illustration.name.includes(value));
   }
   async deleteIllustration(id: any) {
-    let success;
-    await this.illustrationService.deleteIllustration(id)
-      .then(({ status }) => {
-        console.log(status);
-        success = true;
+    this.illustrationService.deleteIllustration(id).subscribe(
+      {
+        next: (data) => {
+          this.getIllustrations();
+        },
+        error: (errorData) => {
+          console.log(errorData);
+        },
+        complete: () => {
+          this.openSnackBar("Ilustración eliminada con éxito")
+        }
       }
-      );
-    if (success) {
-      this.illustrationService.getAllIllustrations().subscribe((illustrations) => {
-        this.illustrationList = illustrations;
-        this.illustrationListModified = illustrations;
-      }
-      )
-    }
+    )
   }
   async deleteIllustrationList() {
     //TODO
-    // ARE YOU SURE
-    let success;
-    await this.illustrationService.deleteIllustrationList(this.illustrationSelectedArray)
-      .then(({ status }) => {
-        console.log(status);
-        success = true;
+    // ARE YOU SURE DIALOG
+    this.illustrationService.deleteIllustrationList(this.illustrationSelectedArray).subscribe(
+      {
+        next: (data) => {
+          this.getIllustrations();
+        },
+        error: (errorData) => {
+          console.log(errorData);
+        },
+        complete: () => {
+          this.openSnackBar("Ilustraciones eliminadas con éxito")
+        }
       }
-      );
-    if (success) {
-      this.illustrationService.getAllIllustrations().subscribe((illustrations) => {
-        this.illustrationList = illustrations;
-        this.illustrationListModified = illustrations;
-        this.illustrationSelectedArray = [];
-      }
-      )
-    }
+    )
   }
 
   //SELECTED ILLUSTRATIONS

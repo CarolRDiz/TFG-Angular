@@ -41,6 +41,8 @@ import { HeaderMobileComponent } from './components/header-mobile/header-mobile.
 import { NavigationMobileComponent } from './components/navigation-mobile/navigation-mobile.component';
 import { NavigationMobileBottomComponent } from './components/navigation-mobile-bottom/navigation-mobile-bottom.component';
 import { CartComponent } from './components/cart/cart.component';
+import { AdminHeaderMobileComponent } from './components/admin-header-mobile/admin-header-mobile.component';
+import { AdminNavigationMobileComponent } from './components/admin-navigation-mobile/admin-navigation-mobile.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,9 @@ import { CartComponent } from './components/cart/cart.component';
     HeaderMobileComponent,
     NavigationMobileComponent,
     NavigationMobileBottomComponent,
-    CartComponent
+    CartComponent,
+    AdminHeaderMobileComponent,
+    AdminNavigationMobileComponent
   ],
   imports: [
     RouterModule,

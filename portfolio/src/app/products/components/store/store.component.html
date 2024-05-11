@@ -2,7 +2,7 @@
     <div class="store__top-header">
         <button *ngIf="!userLoginOn; else userLogged" (click)="openLoginModal()" mat-icon-button
             aria-label="Example icon-button with a menu">
-            <mat-icon>person</mat-icon>
+            <mat-icon class="material-symbols-rounded">person</mat-icon>
         </button>
         <ng-template #userLogged>
             <button (click)="goToUser()" mat-icon-button aria-label="Example icon-button with a menu">

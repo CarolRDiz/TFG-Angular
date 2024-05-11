@@ -17,12 +17,12 @@ $header-width: 270px;
 // TOP HEADER
 $top-header-height: 110px;
 
-$padding-top: 33px;
+$padding-top: 53px;
 $padding-sides:53px;
 
 // MOBILE
 $mobile-padding-top: 10px;
-$mobile-padding-sides: 30px;
+$mobile-padding-sides: 20px;
 $mobile-header-height: 100px;
 
 /// Regular font family
@@ -45,13 +45,30 @@ $primary-light-color: #c3d7d5;
 $primary-dark-color: #294b49;
 
 /// @type Color
+$blue-light-color: #D5F2EE;
+
+/// @type Color
+$blue-dark-color: #02183B;
+
+/// @type Color
+$purple-color: #584183;
+
+/// @type Color
+$lime-color: #BBDE84;
+
+
+
+/// @type Color
 // $secondary-color: #e3dad6;
 // $secondary-color: #f6f2f0;
-$secondary-color: #fefcf5;;
+// $secondary-color: #fefcf5;
+$secondary-color: #fdf8f5;
+
 
 /// @type Colorrgb(243, 238, 236)
 // $secondary-light-color: #f2ebe7;
 $secondary-light-color: #ffffff;
+
 
 /// Copy text color
 /// @type Color
@@ -69,13 +86,15 @@ $white-color: rgb(255, 255, 255);
 /// @type Color
 $translucent-dark-color: hwb(30 8% 90% / 0.945);
 
+
 // Translucent Light
 /// @type Color
 $translucent-light-color: hwb(15 87% 5% / 0.737);
 
 /// Light grey
 /// @type Color
-$light-gray: rgb(138, 142, 154) !default;
+// $light-gray: #8a8e9a !default;
+$light-gray: #566c90 !default;
 
 /// Light grey
 /// @type Color
@@ -83,7 +102,8 @@ $mid-light-gray: rgb(75, 79, 83) !default;
 
 /// Medium grey
 /// @type Color
-$mid-gray: rgb(54,57,62) !default;
+// $mid-gray: #36393e !default;
+$mid-gray: #3f4b63 !default;
 
 /// Medium grey
 /// @type Color

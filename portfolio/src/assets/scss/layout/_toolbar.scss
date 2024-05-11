@@ -1,6 +1,7 @@
 .toolbar {
     align-items: center;
-    background-color: var(--color-dark-gray);
+    background-color: var(--color-background);
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     bottom: 0;
     display: flex;
     height: 80px;
@@ -21,7 +22,7 @@
 .toolbar__selection {
     align-items: center;
     display: flex;
-    color: var(--color-light-gray);
+    color: var(--color-text);
 }
 .toolbar__button {
     text-transform: uppercase;
