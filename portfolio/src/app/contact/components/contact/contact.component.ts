@@ -48,8 +48,7 @@ export class ContactComponent {
         this.contactForm.reset();
       },
       error: (errorData) => {
-        console.log(errorData);
-
+        this.openSnackBar("Ha ocurrido un error")
       },
       complete: () => {
         console.info("Enviado");

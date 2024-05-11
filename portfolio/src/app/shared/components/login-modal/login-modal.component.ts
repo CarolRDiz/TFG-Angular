@@ -58,7 +58,6 @@ export class LoginModalComponent {
       next: (data) => {
       },
       error: (errorData) => {
-        console.log(errorData);
         this.loginError = "Este correo electrónico ya está en uso";
       },
       complete: () => {
@@ -77,7 +76,6 @@ export class LoginModalComponent {
         console.log("Logueado");
       },
       error: (errorData) => {
-        console.log(errorData);
         this.loginError = "El correo electrónico o la contraseña son incorrectos.";
       },
       complete: () => {

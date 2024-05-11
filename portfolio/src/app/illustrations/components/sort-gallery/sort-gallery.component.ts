@@ -33,8 +33,7 @@ export class SortGalleryComponent {
           this.illustrationList = data;
           this.images = this.illustrationList.map((illustration) => `http://localhost:8080/images/${illustration.image_id}`);
           this.imageColumns = this.getImageColumns();
-        },
-        error: (errorData) => {}
+        }
       }
     )
   }

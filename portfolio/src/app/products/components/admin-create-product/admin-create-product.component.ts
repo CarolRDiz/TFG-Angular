@@ -179,7 +179,6 @@ export class AdminCreateProductComponent {
 
       },
       error: (errorData) => {
-        console.log(errorData);
         this.openSnackBar("Ha ocurrido un error")
       },
       complete: () => {

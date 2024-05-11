@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Order } from '../../order';
 import { OrderService } from '../../services/orders.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin-order',
@@ -17,12 +18,19 @@ export class AdminOrderComponent {
     private orderService: OrderService,
     private router: Router,
     private route: ActivatedRoute,
+    private _snackBar: MatSnackBar,
+
   ) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.params['id']
     this.getOrder();
   }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message);
+  }
+
   getOrder() {
     this.loading = true;
     this.orderService.getOrder(this.id).subscribe({
@@ -31,7 +39,6 @@ export class AdminOrderComponent {
         this.order = data
       },
       error: (errorData) => {
-        console.log(errorData);
 
       },
       complete: () => {
@@ -51,8 +58,7 @@ export class AdminOrderComponent {
           console.log("Actualizando Order: " + this.id);
         },
         error: (errorData) => {
-          console.log(errorData);
-
+          this.openSnackBar("Ha ocurrido un error")
         },
         complete: () => {
           console.info("Actualizado");

@@ -10,6 +10,7 @@ import { OrderCreate } from '../../order-create';
 import { CartItem } from '../../cart-item';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UsersService } from 'src/app/core/services/users.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-checkout',
@@ -42,7 +43,9 @@ export class CheckoutComponent {
     private cartService: CartService,
     private productService: ProductService,
     private paymentService: PaymentService,
-    private userService: UsersService
+    private userService: UsersService,
+    private _snackBar: MatSnackBar,
+
   ) {
     this.authService.userLoginOn.subscribe({
       next: (userLoginOn) => {
@@ -98,10 +101,21 @@ export class CheckoutComponent {
           return actions.order.capture().then((details: any) => {
             if (details.status === 'COMPLETED') {
               this.payment.transactionID = details.id;
-              this.createOrder().subscribe(response => {
-                console.log(response);
-                this.paymentService.setOrder(response);
-                this.router.navigate(['confirmation'])
+              // this.createOrder().subscribe(response => {
+              //   console.log(response);
+              //   this.paymentService.setOrder(response);
+              //   this.router.navigate(['confirmation'])
+              // });
+              this.createOrder().subscribe({
+                next: (data) => {
+                  this.paymentService.setOrder(data);
+                },
+                error: (errorData) => {
+                  this.openSnackBar("Ha ocurrido un error")
+                },
+                complete: () => {
+                  this.router.navigate(['confirmation'])
+                }
               });
 
             }
@@ -109,9 +123,14 @@ export class CheckoutComponent {
         },
         onError: (error: any) => {
           console.log(error);
+          this.openSnackBar("Ha ocurrido un error")
         }
       }
     ).render(this.paymentRef.nativeElement);
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message);
   }
 
   initializeForm() {

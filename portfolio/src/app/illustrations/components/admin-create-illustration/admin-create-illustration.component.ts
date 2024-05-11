@@ -105,13 +105,12 @@ export class AdminCreateIllustrationComponent {
       "image": this.createForm.value.images?.image,
       "visibility": this.createForm.value.details?.visibility ?? false
     }
-    //TODO
     this.illustrationService.postIllustration(illustration).subscribe({
       next: (data) => {
         console.log("creado");
       },
       error: (errorData) => {
-        console.log(errorData);
+        this.openSnackBar("Ha ocurrido un error");
       },
       complete: () => {
         this.router.navigate(['/', 'admin', 'illustration'])

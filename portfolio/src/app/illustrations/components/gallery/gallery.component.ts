@@ -27,9 +27,6 @@ export class GalleryComponent {
           this.illustrationList = data;
           this.images = this.illustrationList.map((illustration) => `${this.imageUrl}${illustration.image_id}`);
         },
-        error: (errorData) => {
-          console.log(errorData);
-        },
         complete: () => {}
       }
     )

@@ -87,7 +87,7 @@ export class AdminIllustrationComponent {
           this.getIllustrations();
         },
         error: (errorData) => {
-          console.log(errorData);
+          this.openSnackBar("Ha ocurrido un error")
         },
         complete: () => {
           this.openSnackBar("Ilustración eliminada con éxito")
@@ -104,7 +104,7 @@ export class AdminIllustrationComponent {
           this.getIllustrations();
         },
         error: (errorData) => {
-          console.log(errorData);
+          this.openSnackBar("Ha ocurrido un error")
         },
         complete: () => {
           this.openSnackBar("Ilustraciones eliminadas con éxito")

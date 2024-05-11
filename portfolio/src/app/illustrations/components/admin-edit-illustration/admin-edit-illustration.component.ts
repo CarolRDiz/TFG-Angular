@@ -59,27 +59,6 @@ export class AdminEditIllustrationComponent {
     console.log("3 Form")
     console.log(this.editForm)
   }
-  // async ngOnInit() {
-  //   this.sub = this.route.params.subscribe(params => {
-  //     (async () => {
-  //       this.id = +params['id'];  //(+) converts string 'id' to a number
-  //       await this.getIllustration();
-
-  //       this.images = new FormGroup({
-  //         image: new FormControl<File | null>(null)
-  //       })
-  //       this.editForm = new FormGroup({
-  //         details: new FormGroup({
-  //           name: new FormControl(this.illustration.name, Validators.required),
-  //           // name: new FormControl('')
-  //           description: new FormControl(this.illustration.description)
-  //         }),
-  //         images: this.images
-  //       })
-  //     })
-  //   })
-  // }
-
   //  METHODS
 
   initializeForm() {
@@ -117,18 +96,14 @@ export class AdminEditIllustrationComponent {
     const illustration: IllustrationEdit = {
       "name": this.editForm.value.details?.name ?? '',
       "description": this.editForm.value.details?.description ?? '',
-      //TODO
-      // Dar a elegir la visibilidad
       "visibility": this.editForm.value.details?.visibility ?? false,
     }
-    // this.illustrationService.updateIllustration(this.illustration.id, illustration)
     this.illustrationService.updateIllustration(this.illustration.id, illustration).subscribe({
       next: (data) => {
         console.log(data)
       },
       error: (errorData) => {
-        console.log(errorData)
-        this.openSnackBar("No se ha podido guardar")
+        this.openSnackBar("Ha ocurrido un error")
       },
       complete: () => {
         this.router.navigate(['/', 'admin', 'illustration'])
@@ -152,17 +127,6 @@ export class AdminEditIllustrationComponent {
   save() {
     this.submitEditForm();
   }
-
-  // async getIllustration() {
-  //   await this.illustrationService.getIllustrationById(this.id)
-  //     .then(({ status, data }) => {
-  //       if (status == 200) {
-  //         console.log(data)
-  //         this.illustration = data;
-  //         console.log(this.illustration)
-  //       };
-  //     })
-  // }
 
   getIllustration() {
     this.illustrationService.getIllustrationById(this.id).subscribe((data) => {

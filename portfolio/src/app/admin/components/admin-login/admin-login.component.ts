@@ -36,9 +36,7 @@ export class AdminLoginComponent {
         console.log("Logueado");
       },
       error: (errorData) => {
-        console.log(errorData);
-        this.loginError = errorData;
-
+        this.loginError = "La contraseña o el correo electrónico son incorrectos";
       },
       complete: () => {
         this.userService.getUser().subscribe({
@@ -47,7 +45,6 @@ export class AdminLoginComponent {
           },
           error: (errorData) => {
             console.log(errorData);
-            this.loginError = errorData;
           },
           complete: () => {
             this.router.navigate(['/', 'admin', 'illustration'])

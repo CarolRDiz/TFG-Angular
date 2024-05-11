@@ -9,7 +9,7 @@
     <div class="table product-table">
         <div class="table__header">
             <div class="table__cell table__cell--small"></div>
-            <div class="table__cell table__cell--medium--click" (click)="sortName()">Illustration
+            <div class="table__cell table__cell--medium--click" (click)="sortName()">Producto
                 <mat-icon *ngIf="!this.visibilitySort" class="material-symbols-outlined">
                     arrow_drop_down
                 </mat-icon>
@@ -30,10 +30,10 @@
             <div class="table__cell table__cell--small"></div>
         </div>
         <ul class="table__body">
-            <li class="table__row" *ngFor="let item of productsList; index as i">
+            <li class="table__row" *ngFor="let item of itemsListModified; index as i">
                 <div class="table__cell table__cell--small">
-                    <mat-checkbox value="{{item.id}}" (change)="onIllustrationPressed($event)"
-                        [ngModel]="isIllustrationChecked(item.id)"></mat-checkbox>
+                    <mat-checkbox value="{{item.id}}" (change)="onItemPressed($event)"
+                        [ngModel]="isItemChecked(item.id)"></mat-checkbox>
                 </div>
                 <div class="table__cell table__cell--medium">
                     <img class="table__image"
@@ -51,24 +51,24 @@
                         <button mat-menu-item (click)="editar(item.id)">Editar</button>
                         <button mat-menu-item>Vista previa</button>
                         <button mat-menu-item>Duplicar</button>
-                        <button mat-menu-item (click)="deleteIllustration(item.id)">Eliminar</button>
+                        <button mat-menu-item (click)="delete(item.id)">Eliminar</button>
                     </mat-menu>
                 </div>
             </li>
         </ul>
     </div>
-    <div class="toolbar" *ngIf="illustrationSelectedArray.length>0">
+    <div class="toolbar" *ngIf="selectedArray.length>0">
         <div class="toolbar__selection">
-            <button (click)="unselectAllIllustrations()" mat-icon-button
+            <button (click)="unselectAllItems()" mat-icon-button
                 aria-label="Example icon button with a home icon">
                 <mat-icon>deselect</mat-icon>
             </button>
-            <span>{{illustrationSelectedArray.length}} seleccionado</span>
+            <span>{{selectedArray.length}} seleccionado</span>
         </div>
         <div class="toolbar__options">
-            <button class="toolbar__button button button--text--light" (click)="selectAllIllustrations()">
+            <button class="toolbar__button button button--text--light" (click)="selectAllItems()">
                 Seleccionar todo</button>
-            <button (click)="deleteIllustrationList()"
+            <button (click)="deleteList()"
                 class="toolbar__button button button--text--warn">Eliminar</button>
         </div>
     </div>

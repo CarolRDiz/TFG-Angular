@@ -6,7 +6,7 @@
 
             <app-input formControlName="password" [password]="true" [label]="'Contraseña'" [placeholder]="'Contraseña...'"
                 [required]="true"></app-input>
-
+            <span class="input__error">{{loginError}}</span>
             <button class="button button--white" (click)="login()">Enviar</button>
     </form>
 </main>

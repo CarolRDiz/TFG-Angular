@@ -41,38 +41,50 @@ export class ProductService {
     return this.http
     .post<any>(`${this.baseUrl}`, formData)
     .pipe(
-      catchError(this.errorHandler)
+      catchError(this.handlerError)
     );
   }
   getAllProducts() {
     return this.http
     .get<Product[]>(`${this.baseUrl}`)
     .pipe(
-      catchError(this.errorHandler)
+      catchError(this.handlerError)
     );
   }
   getFilterProducts(category: String) {
     return this.http
     .get<Product[]>(`${this.baseUrl}filter?category=${category}`)
     .pipe(
-      catchError(this.errorHandler)
+      catchError(this.handlerError)
     );
-  }
-  errorHandler(error: HttpErrorResponse){
-    if(error.status===0){
-      console.error("Error: "+error.error);
-    } else {
-      console.error("Respuesta: "+ error.status + ' '+error.error )
-    }
-    return throwError(()=>new Error('Algo ha fallado'))
   }
 
   getProductById(id: Number) {
-    return this.http.get<Product>(`${this.baseUrl}${id}/`);
+    return this.http.get<Product>(`${this.baseUrl}${id}/`)
+    .pipe(
+      catchError(this.handlerError)
+    );
   }
 
   getListProducts(ids: number[]){
-    return this.http.get<Product[]>(`${this.baseUrl}list?ids=${ids}`);
+    return this.http.get<Product[]>(`${this.baseUrl}list?ids=${ids}`)
+    .pipe(
+      catchError(this.handlerError)
+    );
+  }
+  delete(id: Number){
+    const url = `${this.baseUrl}${id}/`;
+    return this.http.delete<any>(url)
+    .pipe(
+      catchError(this.handlerError)
+    );
+  }
+  deleteList(ids: number[]){
+    const url = `${this.baseUrl}?ids=${ids}`;
+    return this.http.delete<any>(url)
+    .pipe(
+      catchError(this.handlerError)
+    );
   }
 
   deleteProductImage(id: number, imageId: String) {
@@ -86,10 +98,26 @@ export class ProductService {
     const url = `${this.baseUrl}image/${id}/`;
     const formData = new FormData();
     formData.append("image", image);
-    return this.http.patch<any>(url, formData);
+    return this.http.patch<any>(url, formData)
+    .pipe(
+      catchError(this.handlerError)
+    );
   }
   updateProduct(id: number, product: ProductEdit) {
     const url = `${this.baseUrl}${id}/`;
-    return this.http.patch<any>(url, product);
+    return this.http.patch<any>(url, product)
+    .pipe(
+      catchError(this.handlerError)
+    );
   }
+
+  private handlerError(error: HttpErrorResponse){
+    if(error.status===0){
+      console.error("Error: "+error.error);
+    } else {
+      console.error("Respuesta: "+ error.status + ' '+error.error )
+    }
+    return throwError(()=>new Error('Ha ocurrido un error'))
+  }
+
 }

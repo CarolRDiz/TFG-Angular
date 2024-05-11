@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { OrderService } from '../../services/orders.service';
 import { Order } from '../../order';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-admin-orders',
@@ -19,7 +20,9 @@ export class AdminOrdersComponent {
 
   constructor(
     private orderService: OrderService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar,
+
   ) {
   }
   ngOnInit(): void {
@@ -34,6 +37,9 @@ export class AdminOrdersComponent {
   // orderService: orderService = inject(orderService);
 
   // METHODS
+  openSnackBar(message: string) {
+    this._snackBar.open(message);
+  }
   getOrders() {
     this.orderService.getOrders().subscribe((data) => {
       this.orderList = data;
@@ -91,8 +97,6 @@ export class AdminOrdersComponent {
     // }
   }
   async deleteOrderList() {
-    // //TODO
-    // // ARE YOU SURE
     // let success;
     // await this.orderService.deleteorderList(this.orderSelectedArray)
     //   .then(({ status }) => {
@@ -139,8 +143,7 @@ export class AdminOrdersComponent {
           console.log("Actualizando Orders");
         },
         error: (errorData) => {
-          console.log(errorData);
-
+          this.openSnackBar("Ha ocurrido un error")
         },
         complete: () => {
           console.info("Actualizado");
@@ -157,8 +160,7 @@ export class AdminOrdersComponent {
           console.log("Actualizando Order: " + id);
         },
         error: (errorData) => {
-          console.log(errorData);
-
+          this.openSnackBar("Ha ocurrido un error")
         },
         complete: () => {
           console.info("Actualizado");
