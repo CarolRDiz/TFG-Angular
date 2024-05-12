@@ -24,22 +24,20 @@
             </li>
         </ul>
         <form *ngIf="loginMode; else registerMode" [formGroup]="loginForm" class="form__group">
-            <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"
-                 [required]="true"></app-input>
-            <app-input formControlName="password" [label]="'Contraseña'" 
-                [required]="true" [placeholder]="''" [password]="true"></app-input>
+            <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"></app-input>
+            <app-input formControlName="password" [label]="'Contraseña'" [placeholder]="''"
+                [password]="true"></app-input>
             <span class="input__error" *ngIf="loginError">{{loginError}}</span>
             <button (click)="login()" class="login-modal__submit-button button button--large--filled">Iniciar
                 sesión</button>
         </form>
         <ng-template #registerMode>
             <form [formGroup]="registerForm" class="form__group">
-                <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"
-                     [required]="true"></app-input>
-                <app-input formControlName="password" [label]="'Contraseña'" 
-                    [required]="true" [placeholder]="''"  [password]="true"></app-input>
-                <app-input formControlName="confirmPassword" [label]="'Confirma la contraseña'"
-                    [required]="true" [placeholder]="''"  [password]="true"></app-input>
+                <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"></app-input>
+                <app-input formControlName="password" [label]="'Contraseña'" [placeholder]="''"
+                    [password]="true"></app-input>
+                <app-input formControlName="confirmPassword" [label]="'Confirma la contraseña'" [placeholder]="''"
+                    [password]="true"></app-input>
                 <span class="input__error" *ngIf="loginError">{{loginError}}</span>
                 <button (click)="register()"
                     class="login-modal__submit-button button button--large--filled">Registrarse</button>

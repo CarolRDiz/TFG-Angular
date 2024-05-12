@@ -68,7 +68,6 @@ export class AdminCreateIllustrationComponent {
   }
 
   deleteImage() {
-    console.log("DELETE");
     this.show = false;
     this.image.reset();
     this.fileUrl = null;
@@ -79,7 +78,6 @@ export class AdminCreateIllustrationComponent {
   }
   //  SAVE ILLUSTRATION WITH VISIBILITY=FALSE
   save() {
-    console.log("save")
     // this.createForm.patchValue({
     //   // details: {
     //   //   visibility: false
@@ -107,7 +105,6 @@ export class AdminCreateIllustrationComponent {
     }
     this.illustrationService.postIllustration(illustration).subscribe({
       next: (data) => {
-        console.log("creado");
       },
       error: (errorData) => {
         this.openSnackBar("Ha ocurrido un error");
@@ -128,12 +125,10 @@ export class AdminCreateIllustrationComponent {
   emitFiles(event: FileList) {
     const file = event && event.item(0);
     if (file) {
-      console.log(file)
       //  SET FILE
       this.updateImage(file);
       // SET URL FILE
       this.fileUrl = URL.createObjectURL(file);
-      console.log(this.fileUrl);
       this.show = true;
     }
   }

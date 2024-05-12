@@ -1,7 +1,8 @@
 <main class="content user-page">
     <div class="user__title">
         <div *ngIf="settingsSection || ordersSection" (click)="back()" class="user__back">
-            <mat-icon>chevron_left</mat-icon> </div>
+            <mat-icon>chevron_left</mat-icon>
+        </div>
         <h2>Hola {{user.firstName? user.firstName : user.email}}!
         </h2>
     </div>
@@ -85,12 +86,12 @@
                     </div>
                     <fieldset formGroupName="contact" class="checkout__form-group">
                         <app-input formControlName="email" [label]="'Correo electrónico'"
-                            [placeholder]="'micorreo@gmail.com'" [required]="true"></app-input>
+                            [placeholder]="'micorreo@gmail.com'"></app-input>
                         <div class="checkout__row">
-                            <app-input formControlName="firstName" [label]="'Nombre'" [placeholder]="'Rocío'"
-                                [required]="true"></app-input>
-                            <app-input formControlName="lastName" [label]="'Apellidos'" [placeholder]="'Rodríguez Díaz'"
-                                [required]="true"></app-input>
+                            <app-input formControlName="firstName" [label]="'Nombre'"
+                                [placeholder]="'Rocío'"></app-input>
+                            <app-input formControlName="lastName" [label]="'Apellidos'"
+                                [placeholder]="'Rodríguez Díaz'"></app-input>
                         </div>
                     </fieldset>
                 </div>

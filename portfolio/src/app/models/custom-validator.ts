@@ -76,6 +76,15 @@ export class AppValidator {
             return null;
         }
     }
+    static nameValidator() {
+        return (control: AbstractControl) => {
+            if (control.value) {
+                const valid: boolean = new RegExp(APP_CONSTS.nameRegex).test(control.value);
+                if (!valid) return { invalidNameCode: true, message: 'Los caracteres especiales no son aceptados' };
+            }
+            return null;
+        }
+    }
 
     static phoneValidator() {
         return (control: AbstractControl) => {

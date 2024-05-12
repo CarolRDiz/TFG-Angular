@@ -1,7 +1,7 @@
 <main class="login">
     <section class="login__content">
         <a [routerLink]="'/'" class="login__logo">
-            <img  src="../../assets/images/logo.svg" alt="">
+            <img src="../../assets/images/logo.svg" alt="">
         </a>
         <div class="login__title">
             <h1 *ngIf="loginMode; else registerTitle" class="login-modal__title">Iniciar sesión</h1>
@@ -25,9 +25,8 @@
                 </li>
             </ul> -->
             <form *ngIf="loginMode; else registerMode" [formGroup]="loginForm" class="form__group">
-                <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"
-                    [required]="true"></app-input>
-                <app-input [password]="true" formControlName="password" [label]="'Contraseña'" [required]="true"
+                <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"></app-input>
+                <app-input [password]="true" formControlName="password" [label]="'Contraseña'"
                     [placeholder]="''"></app-input>
                 <span *ngIf="loginError">{{loginError}}</span>
                 <button (click)="login()" class="login-modal__submit-button button button--large--filled">Iniciar
@@ -35,11 +34,10 @@
             </form>
             <ng-template #registerMode>
                 <form [formGroup]="registerForm" class="form__group">
-                    <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"
-                        [required]="true"></app-input>
-                    <app-input [password]="true" formControlName="password" [label]="'Contraseña'" [required]="true"
+                    <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="''"></app-input>
+                    <app-input [password]="true" formControlName="password" [label]="'Contraseña'"
                         [placeholder]="''"></app-input>
-                    <app-input [password]="true" formControlName="confirmPassword" [label]="'Confirma la contraseña'" [required]="true"
+                    <app-input [password]="true" formControlName="confirmPassword" [label]="'Confirma la contraseña'"
                         [placeholder]="''"></app-input>
                     <span *ngIf="loginError">{{loginError}}</span>
                     <button (click)="register()"

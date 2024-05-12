@@ -1,18 +1,17 @@
 <main class="content contact">
-    
-     <h1>Contacto</h1>
+
+    <h1>Contacto</h1>
     <form id="form" [formGroup]="contactForm" class="form form__row contactForm">
-       
-            <app-input formControlName="name" [label]="'Nombre'" [placeholder]="'Tu nombre...'"
-            [required]="true"></app-input>
 
-            <app-input formControlName="email" [label]="'Correo electrónico'" [placeholder]="'Tu correo electrónico...'"
-                [required]="true"></app-input>
+        <app-input formControlName="name" [label]="'Nombre'" [placeholder]="'Tu nombre...'"></app-input>
 
-            
-            <app-input formControlName="message" [label]="'Mensaje'" [textarea]="true" [placeholder]="'Tu mensaje...'"
-                [required]="true"></app-input>
+        <app-input formControlName="email" [label]="'Correo electrónico'"
+            [placeholder]="'Tu correo electrónico...'"></app-input>
 
-            <button class="button button--white" (click)="send()">Enviar</button>
+
+        <app-input formControlName="message" [label]="'Mensaje'" [textarea]="true"
+            [placeholder]="'Tu mensaje...'"></app-input>
+
+        <button class="button button--white" (click)="send()">Enviar</button>
     </form>
 </main>

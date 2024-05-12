@@ -11,11 +11,8 @@ export class JwtInterceptorService implements HttpInterceptor {
   constructor(private authService: AuthService) { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    console.log("---INTERCEPT---")
     let token:String=this.authService.userToken;
-    console.log(token);
     if (token!=""){
-      console.log(token);
       req=req.clone(
         {
           setHeaders: {
@@ -26,7 +23,6 @@ export class JwtInterceptorService implements HttpInterceptor {
         }
       );
     }
-    console.log("NO TOKEN")
     return next.handle(req);
   }
 }

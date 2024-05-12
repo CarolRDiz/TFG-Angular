@@ -33,7 +33,6 @@ export class AdminLoginComponent {
     }
     this.authService.login(formData).subscribe({
       next: (data) => {
-        console.log("Logueado");
       },
       error: (errorData) => {
         this.loginError = "La contraseña o el correo electrónico son incorrectos";
@@ -44,7 +43,6 @@ export class AdminLoginComponent {
             this.userService.setUser(data);
           },
           error: (errorData) => {
-            console.log(errorData);
           },
           complete: () => {
             this.router.navigate(['/', 'admin', 'illustration'])

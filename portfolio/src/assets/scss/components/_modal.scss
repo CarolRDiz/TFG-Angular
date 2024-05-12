@@ -39,6 +39,9 @@
   margin-bottom: 20px;
   padding: 10px 0;
   position: relative;
+  @include mobile { 
+    justify-content: start;
+  }
 }
 
 .modal__content {

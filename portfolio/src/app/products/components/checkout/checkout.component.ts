@@ -137,14 +137,14 @@ export class CheckoutComponent {
     //  FORM
     this.contact = new FormGroup({
       email: new FormControl("", [Validators.required, AppValidator.emailValidator()]),
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
+      firstName: new FormControl('', [Validators.required,  Validators.maxLength(150), AppValidator.nameValidator()]),
+      lastName: new FormControl('', [Validators.required, Validators.maxLength(150), AppValidator.nameValidator()]),
     });
     this.shipping_address = new FormGroup({
       //country: new FormControl('', Validators.required),
-      address: new FormControl('', Validators.required),
-      secondAddress: new FormControl(''),
-      city: new FormControl('', [Validators.required, AppValidator.cityValidator()]),
+      address: new FormControl('', [Validators.required, Validators.maxLength(150)]),
+      secondAddress: new FormControl('',[Validators.maxLength(150)]),
+      city: new FormControl('', [Validators.required, Validators.maxLength(150), AppValidator.cityValidator()]),
       postalCode: new FormControl('', [Validators.required, AppValidator.postalCodeValidator()]),
       phone: new FormControl('', [Validators.required, AppValidator.phoneValidator()])
     });
@@ -224,12 +224,29 @@ export class CheckoutComponent {
 
 
   saveStep() {
-    if (this.step == 1 && this.contact.valid) {
-      console.log(this.checkoutForm.value);
-      this.step += 1;
-    } else if (this.step == 2 && this.shipping_address.valid) {
-      this.step += 1;
-      console.log(this.step)
+    // if (this.step == 1 && this.contact.valid) {
+    //   console.log(this.checkoutForm.value);
+    //   this.step += 1;
+    // } else if (this.step == 2 && this.shipping_address.valid) {
+    //   this.step += 1;
+    //   console.log(this.step)
+    // }
+    if (this.step == 1) {
+      if (this.contact.valid) this.step += 1;
+      else {
+        Object.keys(this.contact.controls).forEach(field => { // {1}
+          const control = this.contact.get(field);            // {2}
+          control?.markAsTouched({ onlySelf: true });       // {3}
+        });
+      }
+    } else if (this.step == 2) {
+      if(this.shipping_address.valid)  this.step += 1;
+      else {
+        Object.keys(this.shipping_address.controls).forEach(field => { // {1}
+          const control = this.shipping_address.get(field);            // {2}
+          control?.markAsTouched({ onlySelf: true });       // {3}
+        });
+      }
     }
   }
   editFormGroup(step: number) {

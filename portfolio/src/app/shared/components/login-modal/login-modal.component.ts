@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, EventEmitter, Inject, Output, Renderer2 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/core/modals/login';
@@ -16,12 +17,14 @@ export class LoginModalComponent {
   @Output() closeEvent = new EventEmitter();
   //@Output() submitEvent = new EventEmitter();
 
+
+
   loginMode: boolean = true;
 
   loginError: string = "";
 
   loginForm = new FormGroup({
-    email: new FormControl("", [Validators.required, AppValidator.emailValidator()]),
+    email: new FormControl("", [Validators.required]),
     password: new FormControl("", [Validators.required])
   });
 
@@ -32,27 +35,33 @@ export class LoginModalComponent {
   });
 
   constructor(
+    @Inject(DOCUMENT) private document: Document,
+    protected renderer: Renderer2,
     private authService: AuthService,
     private router: Router
-  ) { 
-
+  ) {
+    this.renderer.setStyle(document.body, 'overflow', 'hidden');
   }
+
 
   ngOnInit(): void {
     this.registerForm.controls.confirmPassword.addValidators(AppValidator.confirmPasswordValidator(this.registerForm.controls.password))
+  }
+  ngOnDestroy(){
+    this.renderer.setStyle(document.body, 'overflow', 'visible');
   }
 
   close(): void {
     this.closeEvent.emit();
   }
-  switchMode(){
+  switchMode() {
     this.loginMode = !this.loginMode;
   }
-  register(){
+  register() {
 
     let formData: Registration = {
-      "email": this.registerForm.value.email??'',
-      "password": this.registerForm.value.password??''
+      "email": this.registerForm.value.email ?? '',
+      "password": this.registerForm.value.password ?? ''
     }
     this.authService.signUp(formData).subscribe({
       next: (data) => {
@@ -66,10 +75,10 @@ export class LoginModalComponent {
       }
     })
   }
-  login(){
+  login() {
     let formData: Login = {
-      "email": this.loginForm.value.email??'',
-      "password": this.loginForm.value.password??''
+      "email": this.loginForm.value.email ?? '',
+      "password": this.loginForm.value.password ?? ''
     }
     this.authService.login(formData).subscribe({
       next: (data) => {
@@ -82,11 +91,11 @@ export class LoginModalComponent {
         console.info("Login completado");
         this.close();
         this.router.navigate(['/', 'user'])
-        .then(nav => {
-          console.log(nav); // true if navigation is successful
-        }, err => {
-          console.log(err) // when there's an error
-        });
+          .then(nav => {
+            console.log(nav); // true if navigation is successful
+          }, err => {
+            console.log(err) // when there's an error
+          });
       }
     })
   }

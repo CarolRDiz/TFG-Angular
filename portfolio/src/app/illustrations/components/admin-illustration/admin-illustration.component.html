@@ -32,7 +32,7 @@
         <ul class="table__body">
             <li class="table__row" *ngFor="let illustration of illustrationListModified; index as i">
                 <div class="table__cell table__cell--small">
-                    <mat-checkbox  value="{{illustration.id}}" (change)="onIllustrationPressed($event)"
+                    <mat-checkbox value="{{illustration.id}}" (change)="onIllustrationPressed($event)"
                         [ngModel]="isIllustrationChecked(illustration.id)"></mat-checkbox>
                 </div>
                 <div class="table__cell table__cell--medium"><img class="table__image"
@@ -50,18 +50,10 @@
                         <button mat-menu-item (click)="editar(illustration.id)">Editar</button>
                         <button mat-menu-item>Vista previa</button>
                         <button mat-menu-item>Duplicar</button>
-                        <button mat-menu-item (click)="openModalDelete()">Eliminar</button>
+                        <button mat-menu-item (click)="setSelectedItem(illustration.id); openModalDelete()">Eliminar</button>
                     </mat-menu>
                 </div>
-                <app-dialog (closeEvent)="closeModalDelete()" *ngIf="modalDelete" [title]="'Eliminar ilustración'">
-                    <p>
-                        Se borrará esta ilustración de manera permanente.
-                    </p>
-                    <div class="dialog__buttons">
-                        <button class="button button--text" (click)="closeModalDelete()">Cancelar</button>
-                        <button class="button button--text" (click)="delete(illustration.id)">Eliminar</button>
-                    </div>
-                </app-dialog>
+                
             </li>
         </ul>
     </div>
@@ -76,12 +68,21 @@
         <div class="toolbar__options">
             <button class="toolbar__button button button--text--light" (click)="selectAllIllustrations()">
                 Seleccionar todo</button>
-            <button (click)="openModalDeleteList()"
-                class="toolbar__button button button--text--warn">Eliminar</button>
+            <button (click)="openModalDeleteList()" class="toolbar__button button button--text--warn">Eliminar</button>
         </div>
     </div>
 </main>
-<app-dialog (closeEvent)="closeModalDeleteList()" *ngIf="modalDeleteList" [title]="'Borrar '+selectedArray.length+' ilustración'">
+<app-dialog (closeEvent)="closeModalDelete()" *ngIf="modalDelete" [title]="'Eliminar producto'">
+    <p>
+        Se borrará este producto de manera permanente.
+    </p>
+    <div class="dialog__buttons">
+        <button class="button button--text" (click)="closeModalDelete()">Cancelar</button>
+        <button class="button button--text" (click)="delete()">Eliminar</button>
+    </div>
+</app-dialog>
+<app-dialog (closeEvent)="closeModalDeleteList()" *ngIf="modalDeleteList"
+    [title]="'Borrar '+selectedArray.length+' ilustración'">
     <p>
         {{selectedArray.length>1?'Se borrarán estas ilustraciones de manera permanente.':'Se borrará esta ilustración de manera permanente.'}}
     </p>

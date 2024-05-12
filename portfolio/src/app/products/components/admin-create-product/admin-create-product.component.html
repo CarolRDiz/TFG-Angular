@@ -19,11 +19,11 @@
                         <legend class="form__legend">Detalles</legend>
                         <!--NAME-->
                         <app-input formControlName="name" [label]="'Nombre del producto'"
-                        [placeholder]="'Sonic Fanart'" [required]="false"></app-input>
+                            [placeholder]="'Sonic Fanart'"></app-input>
 
                         <!--DESCRIPTION-->
-                        <app-input formControlName="description" [label]="'Descripción'"
-                        [textarea]="true" [placeholder]="'Describe tu producto'" [required]="false"></app-input>
+                        <app-input formControlName="description" [label]="'Descripción'" [textarea]="true"
+                            [placeholder]="'Describe tu producto'"></app-input>
                     </fieldset>
                 </div>
                 <div class="form__row">
@@ -88,7 +88,8 @@
                     <fieldset formGroupName="organization" class="form__group">
                         <legend class="form__legend">Organización</legend>
                         <!--VISIBILITY-->
-                        <app-toggle-input formControlName="visibility" [label]="'Visibilidad'" [ifTrue]="'Público'" [ifFalse]="'Oculto'"></app-toggle-input>
+                        <app-toggle-input formControlName="visibility" [label]="'Visibilidad'" [ifTrue]="'Público'"
+                            [ifFalse]="'Oculto'"></app-toggle-input>
                         <!--CATEGORIES-->
                         <app-categories-input (openModalEvent)="openModal()"></app-categories-input>
                         <!--TAGS-->
@@ -96,9 +97,10 @@
 
                     </fieldset>
                 </div>
-                
+
             </form>
         </div>
     </div>
-    <app-categories-modal *ngIf="categoriesModal" [selectedCategories]="getCategories()" (closeEvent)="closeModal()" (selectEvent)="selectCategories($event)"></app-categories-modal>
+    <app-categories-modal *ngIf="categoriesModal" [selectedCategories]="getCategories()" (closeEvent)="closeModal()"
+        (selectEvent)="selectCategories($event)"></app-categories-modal>
 </main>

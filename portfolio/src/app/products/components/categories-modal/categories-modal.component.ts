@@ -2,12 +2,15 @@ import {
   Component,
   ElementRef,
   EventEmitter,
+  Inject,
   Input,
   Output,
+  Renderer2,
 } from '@angular/core';
 import { CategoriesService } from '../../services/categories.service';
 import { Category } from '../../category';
 import { CategoryCreate } from '../../category-create';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-categories-modal',
@@ -26,11 +29,16 @@ export class CategoriesModalComponent {
   selectedCategoriesModified: Number[] = [];
   @Output() selectEvent = new EventEmitter();
 
-  constructor(
+  constructor(@Inject(DOCUMENT) private document: Document,
+    protected renderer: Renderer2,
     private categoriesService: CategoriesService,
     private elementRef: ElementRef
-  ) { 
+  ) {
+    this.renderer.setStyle(document.body, 'overflow', 'hidden');
+  }
 
+  ngOnDestroy() {
+    this.renderer.setStyle(document.body, 'overflow', 'visible');
   }
 
   ngOnInit(): void {
@@ -76,7 +84,7 @@ export class CategoriesModalComponent {
     let categoriesNames = this.categoriesList.map(category => category.name);
     if (categoriesNames.includes(value)) {
       console.log("La categoría ya existe")
-    } else if (value=='') {
+    } else if (value == '') {
       console.log("El nombre es requerido")
     }
     else {
@@ -86,7 +94,7 @@ export class CategoriesModalComponent {
       this.categoriesService.postCategory(newCategory).subscribe((data) => {
         this.getAllCategories();
       });
-      
+
     }
     console.log("añadir " + value)
   }

@@ -106,14 +106,14 @@ export class UserComponent {
     //  FORM
     this.contact = new FormGroup({
       email: new FormControl("", [Validators.required, AppValidator.emailValidator()]),
-      firstName: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
+      firstName: new FormControl('', [Validators.required, Validators.maxLength(150), AppValidator.nameValidator()]),
+      lastName: new FormControl('', [Validators.required, Validators.maxLength(150), AppValidator.nameValidator()]),
     });
     this.shipping_address = new FormGroup({
       //country: new FormControl('', Validators.required),
-      address: new FormControl('', Validators.required),
-      secondAddress: new FormControl(''),
-      city: new FormControl('', [Validators.required, AppValidator.cityValidator()]),
+      address: new FormControl('', [Validators.required, Validators.maxLength(150),]),
+      secondAddress: new FormControl('', Validators.maxLength(150),),
+      city: new FormControl('', [Validators.required, Validators.maxLength(150), AppValidator.cityValidator()]),
       postalCode: new FormControl('', [Validators.required, AppValidator.postalCodeValidator()]),
       phone: new FormControl('', [Validators.required, AppValidator.phoneValidator()])
     });

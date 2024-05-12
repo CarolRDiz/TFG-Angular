@@ -1,5 +1,7 @@
-import { Component, HostListener, Input } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, HostListener, Inject, Input, Renderer2 } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-lightbox',
@@ -7,19 +9,26 @@ import { Output, EventEmitter } from '@angular/core';
   styleUrls: ['./lightbox.component.scss']
 })
 export class LightboxComponent {
-   @Input() image="../../assets/images/gallery/PANTALLA_Gaelo_JPG_50porciento_RGB.jpg"
-   @Output() slideLeftEvent = new EventEmitter<void>();
-   @Output() slideRightEvent = new EventEmitter<void>();
-   @Output() closeEvent = new EventEmitter<void>();
+  @Input() image = "../../assets/images/gallery/PANTALLA_Gaelo_JPG_50porciento_RGB.jpg"
+  @Output() slideLeftEvent = new EventEmitter<void>();
+  @Output() slideRightEvent = new EventEmitter<void>();
+  @Output() closeEvent = new EventEmitter<void>();
 
-   slideLeft(){
+  constructor(@Inject(DOCUMENT) private document: Document,
+    protected renderer: Renderer2
+  ) {
+    this.renderer.setStyle(document.body, 'overflow', 'hidden');
+  }
+
+  slideLeft() {
     this.slideLeftEvent.emit();
-   }
-   slideRight(){
+  }
+  slideRight() {
     this.slideRightEvent.emit();
-   }
-   close(){
+  }
+  close() {
     this.closeEvent.emit();
-   }
-   
+    this.renderer.setStyle(document.body, 'overflow', 'visible');
+  }
+
 }

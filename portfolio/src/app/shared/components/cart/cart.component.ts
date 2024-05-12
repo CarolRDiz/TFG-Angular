@@ -5,6 +5,8 @@ import {
   Input,
   inject,
   Output,
+  Inject,
+  Renderer2,
 } from '@angular/core';
 import { ProductService } from '../../../products/services/product.service';
 import { CartService } from '../../../products/services/cart.service';
@@ -13,6 +15,7 @@ import { CartProduct } from '../../../products/cart-product';
 import { Router } from '@angular/router';
 import { CartItem } from '../../../products/cart-item';
 import { environment } from 'src/app/environments/environment';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-cart',
@@ -34,7 +37,16 @@ export class CartComponent {
   cartService: CartService = inject(CartService);
   imageUrl = environment.urlApiImage;
 
-  constructor(private router: Router){}
+  constructor(@Inject(DOCUMENT) private document: Document,
+    protected renderer: Renderer2,
+    private router: Router
+  ) {
+    this.renderer.setStyle(document.body, 'overflow', 'hidden');
+  }
+
+  ngOnDestroy() {
+    this.renderer.setStyle(document.body, 'overflow', 'visible');
+  }
   ngOnInit() {
 
     let cartItems = this.cartService.getItems();
@@ -49,9 +61,9 @@ export class CartComponent {
       });
       this.calculateTotal();
     });
-    
+
   }
-  
+
   calculateTotal() {
     this.totalPrice = this.cartProducts.reduce((total: any, item: any) => {
       return total + (item.amount * item.price)
@@ -67,13 +79,13 @@ export class CartComponent {
     });
     this.calculateTotal();
   }
-  checkout(){
+  checkout() {
     this.router.navigate(['/', 'checkout'])
-          .then(nav => {
-            console.log(nav); // true if navigation is successful
-          }, err => {
-            console.log(err) // when there's an error
-          });
+      .then(nav => {
+        console.log(nav); // true if navigation is successful
+      }, err => {
+        console.log(err) // when there's an error
+      });
   }
 
   close(): void {

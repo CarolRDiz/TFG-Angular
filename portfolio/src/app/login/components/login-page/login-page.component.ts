@@ -21,7 +21,7 @@ export class LoginPageComponent {
   loginError: string = "";
 
   loginForm = new FormGroup({
-    email: new FormControl("", [Validators.required, AppValidator.emailValidator()]),
+    email: new FormControl("", [Validators.required]),
     password: new FormControl("", [Validators.required])
   });
 
@@ -70,7 +70,6 @@ export class LoginPageComponent {
     }
     this.authService.login(formData).subscribe({
       next: (data) => {
-        console.log("Logueado");
       },
       error: (errorData) => {
         this.loginError = "La contraseña o el correo electrónico son incorrectos";

@@ -21,6 +21,8 @@ export class AdminIllustrationComponent {
   modalDelete = false;
   modalDeleteList = false;
 
+  selectedItem: number;
+
   constructor(
     private illustrationService: IllustrationService,
     private router: Router,
@@ -50,6 +52,10 @@ export class AdminIllustrationComponent {
   }
   closeModalDeleteList(){
     this.modalDeleteList  = false;
+  }
+
+  setSelectedItem(id: number){
+    this.selectedItem = id;
   }
 
   openSnackBar(message: string) {
@@ -95,9 +101,9 @@ export class AdminIllustrationComponent {
     })
     this.illustrationListModified = illustrationListWithName.filter((illustration) => illustration.name.includes(value));
   }
-  delete(id: any) {
+  delete() {
     this.closeModalDelete()
-    this.illustrationService.deleteIllustration(id).subscribe(
+    this.illustrationService.deleteIllustration(this.selectedItem).subscribe(
       {
         next: (data) => {
           this.getIllustrations();

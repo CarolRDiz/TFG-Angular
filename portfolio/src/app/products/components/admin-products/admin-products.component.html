@@ -51,18 +51,9 @@
                         <button mat-menu-item (click)="editar(item.id)">Editar</button>
                         <button mat-menu-item>Vista previa</button>
                         <button mat-menu-item>Duplicar</button>
-                        <button mat-menu-item (click)="openModalDelete()">Eliminar</button>
+                        <button mat-menu-item (click)="setSelectedItem(item.id); openModalDelete()">Eliminar</button>
                     </mat-menu>
                 </div>
-                <app-dialog (closeEvent)="closeModalDelete()" *ngIf="modalDelete" [title]="'Eliminar producto'">
-                    <p>
-                        Se borrará este producto de manera permanente.
-                    </p>
-                    <div class="dialog__buttons">
-                        <button class="button button--text" (click)="closeModalDelete()">Cancelar</button>
-                        <button class="button button--text" (click)="delete(item.id)">Eliminar</button>
-                    </div>
-                </app-dialog>
             </li>
         </ul>
     </div>
@@ -82,6 +73,15 @@
         </div>
     </div>
 </main>
+<app-dialog (closeEvent)="closeModalDelete()" *ngIf="modalDelete" [title]="'Eliminar producto'">
+    <p>
+        Se borrará este producto de manera permanente.
+    </p>
+    <div class="dialog__buttons">
+        <button class="button button--text" (click)="closeModalDelete()">Cancelar</button>
+        <button class="button button--text" (click)="delete()">Eliminar</button>
+    </div>
+</app-dialog>
 <app-dialog (closeEvent)="closeModalDeleteList()" *ngIf="modalDeleteList" [title]="'Borrar '+selectedArray.length+' producto'">
     <p>
         {{selectedArray.length>1?'Se borrarán estos productos de manera permanente.':'Se borrará este producto de manera permanente.'}}

@@ -54,10 +54,7 @@ export class AdminEditIllustrationComponent {
     // Get id from param
     this.id = this.route.snapshot.params['id']
     // Fetch Illustration by Id
-    console.log("1 Fetch")
     this.getIllustration();
-    console.log("3 Form")
-    console.log(this.editForm)
   }
   //  METHODS
 
@@ -100,7 +97,6 @@ export class AdminEditIllustrationComponent {
     }
     this.illustrationService.updateIllustration(this.illustration.id, illustration).subscribe({
       next: (data) => {
-        console.log(data)
       },
       error: (errorData) => {
         this.openSnackBar("Ha ocurrido un error")
@@ -131,7 +127,6 @@ export class AdminEditIllustrationComponent {
   getIllustration() {
     this.illustrationService.getIllustrationById(this.id).subscribe((data) => {
       this.illustration = data;
-      console.log(this.illustration)
       // pre-populate data
       this.editForm.patchValue(
         {
@@ -153,13 +148,11 @@ export class AdminEditIllustrationComponent {
   emitFiles(event: FileList) {
     const file = event && event.item(0);
     if (file) {
-      console.log(file)
       //  SET FILE
       this.updateImage(file);
       // SET URL FILE
       this.illustrationService.updateIllustrationImage(this.illustration.id, this.editForm.value.images.image)
       this.fileUrl = URL.createObjectURL(file);
-      console.log(this.fileUrl);
     }
   }
 

@@ -20,6 +20,7 @@ export class AdminProductsComponent {
   imageUrl = environment.urlApiImage;
   modalDelete = false;
   modalDeleteList = false;
+  selectedItem: number;
 
   constructor(
     private productService: ProductService,
@@ -42,6 +43,9 @@ export class AdminProductsComponent {
     this._snackBar.open(message);
   }
   // METHODS
+  setSelectedItem(id: number){
+    this.selectedItem = id;
+  }
   getProducts() {
     this.productService.getAllProducts().subscribe((data) => {
       this.productsList = data;
@@ -80,11 +84,10 @@ export class AdminProductsComponent {
     })
     this.itemsListModified = itemListWithName.filter((item) => item.name.includes(value));
   }
-  delete(id: any) {
+  delete() {
     this.closeModalDelete()
-    this.productService.delete(id).subscribe({
+    this.productService.delete(this.selectedItem).subscribe({
       next: (data) => {
-
       },
       error: (errorData) => {
         this.openSnackBar("Ha ocurrido un error")

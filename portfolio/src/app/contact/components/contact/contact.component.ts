@@ -43,16 +43,12 @@ export class ContactComponent {
     }
     this.contactService.sendEmail(formData).subscribe({
       next: (data) => {
-        console.log(formData)
-        console.log("Enviandose");
         this.contactForm.reset();
       },
       error: (errorData) => {
         this.openSnackBar("Ha ocurrido un error")
       },
       complete: () => {
-        console.info("Enviado");
-
         this.openSnackBar("Correo enviado con éxito")
         this.createForm()
       }

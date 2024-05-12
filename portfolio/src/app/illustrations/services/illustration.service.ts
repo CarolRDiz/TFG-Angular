@@ -20,7 +20,7 @@ export class IllustrationService {
     formData.append("visibility", newIllustration.visibility.toString());
     if(newIllustration.image) formData.append("image", newIllustration.image);
     if(newIllustration.visibility) formData.append("visibility", newIllustration.visibility.toString());
-    console.log(formData)
+
     return this.http
     .post<any>(`${this.baseUrl}`, formData)
     .pipe(
