@@ -18,6 +18,8 @@ export class AdminProductsComponent {
   nameSort: Boolean = false;
   selectedArray: number[] = [];
   imageUrl = environment.urlApiImage;
+  modalDelete = false;
+  modalDeleteList = false;
 
   constructor(
     private productService: ProductService,
@@ -78,7 +80,8 @@ export class AdminProductsComponent {
     })
     this.itemsListModified = itemListWithName.filter((item) => item.name.includes(value));
   }
-  async delete(id: any) {
+  delete(id: any) {
+    this.closeModalDelete()
     this.productService.delete(id).subscribe({
       next: (data) => {
 
@@ -92,7 +95,21 @@ export class AdminProductsComponent {
       }
     })
   }
-  async deleteList() {
+  openModalDelete(){
+    this.modalDelete  = true;
+  }
+  closeModalDelete(){
+    this.modalDelete  = false;
+  }
+  openModalDeleteList(){
+    this.modalDeleteList  = true;
+  }
+  closeModalDeleteList(){
+    this.modalDeleteList  = false;
+  }
+
+  deleteList() {
+    this.closeModalDeleteList()
     // //TODO
     // // ARE YOU SURE
     this.productService.deleteList(this.selectedArray).subscribe({

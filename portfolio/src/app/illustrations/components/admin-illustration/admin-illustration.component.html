@@ -50,27 +50,43 @@
                         <button mat-menu-item (click)="editar(illustration.id)">Editar</button>
                         <button mat-menu-item>Vista previa</button>
                         <button mat-menu-item>Duplicar</button>
-                        <button mat-menu-item (click)="deleteIllustration(illustration.id)">Eliminar</button>
+                        <button mat-menu-item (click)="openModalDelete()">Eliminar</button>
                     </mat-menu>
                 </div>
+                <app-dialog (closeEvent)="closeModalDelete()" *ngIf="modalDelete" [title]="'Eliminar ilustración'">
+                    <p>
+                        Se borrará esta ilustración de manera permanente.
+                    </p>
+                    <div class="dialog__buttons">
+                        <button class="button button--text" (click)="closeModalDelete()">Cancelar</button>
+                        <button class="button button--text" (click)="delete(illustration.id)">Eliminar</button>
+                    </div>
+                </app-dialog>
             </li>
         </ul>
     </div>
-    <div class="toolbar" *ngIf="illustrationSelectedArray.length>0">
+    <div class="toolbar" *ngIf="selectedArray.length>0">
         <div class="toolbar__selection">
             <button (click)="unselectAllIllustrations()" mat-icon-button
                 aria-label="Example icon button with a home icon">
                 <mat-icon>deselect</mat-icon>
             </button>
-            <span>{{illustrationSelectedArray.length}} seleccionado</span>
+            <span>{{selectedArray.length}} seleccionado</span>
         </div>
         <div class="toolbar__options">
             <button class="toolbar__button button button--text--light" (click)="selectAllIllustrations()">
                 Seleccionar todo</button>
-            <button (click)="deleteIllustrationList()"
+            <button (click)="openModalDeleteList()"
                 class="toolbar__button button button--text--warn">Eliminar</button>
         </div>
     </div>
-    <!-- <h2 class="content__title">Ordenar ilustraciones</h2>
-    <app-sort-gallery></app-sort-gallery> -->
 </main>
+<app-dialog (closeEvent)="closeModalDeleteList()" *ngIf="modalDeleteList" [title]="'Borrar '+selectedArray.length+' ilustración'">
+    <p>
+        {{selectedArray.length>1?'Se borrarán estas ilustraciones de manera permanente.':'Se borrará esta ilustración de manera permanente.'}}
+    </p>
+    <div class="dialog__buttons">
+        <button class="button button--text" (click)="closeModalDeleteList()">Cancelar</button>
+        <button class="button button--text" (click)="deleteList()">Eliminar</button>
+    </div>
+</app-dialog>

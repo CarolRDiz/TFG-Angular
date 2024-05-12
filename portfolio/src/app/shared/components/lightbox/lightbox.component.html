@@ -1,4 +1,4 @@
-<div class="lightbox">
+<div class="lightbox" (click)="close()">
     <div class="lightbox__button lightbox__close" (click)="close()">
         <mat-icon>
             close
@@ -6,19 +6,19 @@
     </div>
 
     <!-- <CloseIcon @click="closeLightbox()" class="lightbox__close svg-icon--black"></CloseIcon> -->
-    <div class="lightbox__button lightbox__slide prev" (click)="slideLeft()">
+    <div appClickStopPropagation class="lightbox__button lightbox__slide prev" (click)="slideLeft()">
         <mat-icon>
             chevron_left
         </mat-icon>
         <!-- <ArrowLeftIcon @click="prevImage()" class="svg-icon--black" ></ArrowLeftIcon> -->
     </div>
-    <div class="lightbox__button lightbox__slide next" (click)="slideRight()">
+    <div appClickStopPropagation class="lightbox__button lightbox__slide next" (click)="slideRight()" >
         <mat-icon>
             chevron_right
         </mat-icon>
         <!-- <ArrowRightIcon @click="nextImage()" class="svg-icon--black"></ArrowRightIcon> -->
     </div>
-    <div class="lightbox__box">
+    <div appClickStopPropagation class="lightbox__box">
         <img class="lightbox__img" [src]="image" alt="">
     </div>
 </div>

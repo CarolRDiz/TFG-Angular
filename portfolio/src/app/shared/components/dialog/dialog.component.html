@@ -1,0 +1,9 @@
+<div class="modal dialog">
+    <div class="dialog__header">
+        <h3>{{title}}</h3>
+    </div>
+    <div class="modal__content">
+        <ng-content></ng-content>
+    </div>
+</div>
+<div class="modal__backdrop" (click)="close()"></div>

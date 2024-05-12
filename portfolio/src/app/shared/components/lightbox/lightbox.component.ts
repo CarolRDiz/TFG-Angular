@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, HostListener, Input } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
 
 @Component({
@@ -21,4 +21,5 @@ export class LightboxComponent {
    close(){
     this.closeEvent.emit();
    }
+   
 }

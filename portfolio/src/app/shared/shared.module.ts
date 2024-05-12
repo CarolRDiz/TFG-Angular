@@ -11,13 +11,13 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarModule } from '@angular/material/snack-bar';
-import {DragDropModule} from '@angular/cdk/drag-drop'; 
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { HttpClientModule } from '@angular/common/http';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
@@ -26,7 +26,7 @@ import { ModalService } from './services/modal.service';
 import { ModalComponent } from './components/modal/modal.component';
 import { PublicPageContainerComponent } from './components/public-page-container/public-page-container.component';
 import { RouterModule } from '@angular/router';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import { InputComponent } from './components/form-components/input/input.component';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
 import { LoginModalComponent } from './components/login-modal/login-modal.component';
@@ -43,6 +43,8 @@ import { NavigationMobileBottomComponent } from './components/navigation-mobile-
 import { CartComponent } from './components/cart/cart.component';
 import { AdminHeaderMobileComponent } from './components/admin-header-mobile/admin-header-mobile.component';
 import { AdminNavigationMobileComponent } from './components/admin-navigation-mobile/admin-navigation-mobile.component';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { ClickStopPropagationDirective } from './directives/click-stop-propagation.directive';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,9 @@ import { AdminNavigationMobileComponent } from './components/admin-navigation-mo
     NavigationMobileBottomComponent,
     CartComponent,
     AdminHeaderMobileComponent,
-    AdminNavigationMobileComponent
+    AdminNavigationMobileComponent,
+    DialogComponent,
+    ClickStopPropagationDirective
   ],
   imports: [
     RouterModule,
@@ -93,25 +97,31 @@ import { AdminNavigationMobileComponent } from './components/admin-navigation-mo
     DragDropModule,
     MatRadioModule,
     NgxMaskDirective,
-    NgxMaskPipe
+    NgxMaskPipe,
+    
   ],
   exports: [
     PriceInputComponent,
     AddImageComponent,
     AdminHeaderComponent,
-    AdminPageContainerComponent,
-    HeaderComponent,
+    AdminPageContainerComponent, 
+    CommonModule, 
+    BrowserModule,
+    BrowserAnimationsModule, 
+    CategoriesInputComponent,
+    DialogComponent,
+    HeaderComponent, 
+    HeaderMobileComponent, 
+    HttpClientModule, 
+    InputComponent,
     LoaderComponent,
     LoginModalComponent,
     LightboxComponent,
     SearchBarComponent,
-    CommonModule,
     ModalComponent,
     MatIconModule,
     FormsModule,
     MatDialogModule,
-    BrowserModule,
-    BrowserAnimationsModule,
     MatCheckboxModule,
     MatMenuModule,
     MatButtonModule,
@@ -120,23 +130,20 @@ import { AdminNavigationMobileComponent } from './components/admin-navigation-mo
     MatSelectModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-    HttpClientModule,
     MatSlideToggleModule,
     DragDropModule,
     PublicPageContainerComponent,
     RouterModule,
     MatRadioModule,
-    InputComponent,
     NgxMaskDirective,
     NgxMaskPipe,
     SelectedImageComponent,
     SelectComponent,
     ToggleInputComponent,
     TagsInputComponent,
-    CategoriesInputComponent,
-    HeaderMobileComponent,
     NavigationMobileComponent,
-    CartComponent
+    CartComponent,
+    ClickStopPropagationDirective
   ],
   providers: [
     ModalService,
@@ -145,7 +152,7 @@ import { AdminNavigationMobileComponent } from './components/admin-navigation-mo
       provide: DATE_PIPE_DEFAULT_OPTIONS,
       useValue: { dateFormat: "short" }
     },
-    {provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: {duration: 2500}}
+    { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: { duration: 2500 } }
   ]
 })
 export class SharedModule { }

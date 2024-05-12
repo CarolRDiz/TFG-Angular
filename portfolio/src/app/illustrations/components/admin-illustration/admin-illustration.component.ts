@@ -15,9 +15,11 @@ export class AdminIllustrationComponent {
   illustrationListModified: Illustration[];
   visibilitySort: Boolean = false;
   nameSort: Boolean = false;
-  illustrationSelectedArray: Number[] = [];
+  selectedArray: Number[] = [];
   imageUrl = environment.urlApiImage;
-
+  // MODALS
+  modalDelete = false;
+  modalDeleteList = false;
 
   constructor(
     private illustrationService: IllustrationService,
@@ -36,6 +38,19 @@ export class AdminIllustrationComponent {
   // illustrationService: IllustrationService = inject(IllustrationService);
 
   // METHODS
+
+  openModalDelete(){
+    this.modalDelete  = true;
+  }
+  closeModalDelete(){
+    this.modalDelete  = false;
+  }
+  openModalDeleteList(){
+    this.modalDeleteList  = true;
+  }
+  closeModalDeleteList(){
+    this.modalDeleteList  = false;
+  }
 
   openSnackBar(message: string) {
     this._snackBar.open(message);
@@ -80,7 +95,8 @@ export class AdminIllustrationComponent {
     })
     this.illustrationListModified = illustrationListWithName.filter((illustration) => illustration.name.includes(value));
   }
-  async deleteIllustration(id: any) {
+  delete(id: any) {
+    this.closeModalDelete()
     this.illustrationService.deleteIllustration(id).subscribe(
       {
         next: (data) => {
@@ -95,10 +111,11 @@ export class AdminIllustrationComponent {
       }
     )
   }
-  async deleteIllustrationList() {
+  deleteList() {
+    this.closeModalDeleteList();
     //TODO
     // ARE YOU SURE DIALOG
-    this.illustrationService.deleteIllustrationList(this.illustrationSelectedArray).subscribe(
+    this.illustrationService.deleteIllustrationList(this.selectedArray).subscribe(
       {
         next: (data) => {
           this.getIllustrations();
@@ -117,21 +134,21 @@ export class AdminIllustrationComponent {
   onIllustrationPressed($event: any){
     let id: string = $event.source.value;
     if($event.checked){
-      this.illustrationSelectedArray.push(parseInt(id));
+      this.selectedArray.push(parseInt(id));
     }
     else{
-      this.illustrationSelectedArray = this.illustrationSelectedArray.filter((checkedId)=> checkedId!=parseInt(id))
+      this.selectedArray = this.selectedArray.filter((checkedId)=> checkedId!=parseInt(id))
     }
   }
   selectAllIllustrations(){
-    this.illustrationSelectedArray = this.illustrationListModified.map((illustration)=>illustration.id)
+    this.selectedArray = this.illustrationListModified.map((illustration)=>illustration.id)
     console.log(this.illustrationListModified.map((illustration)=>illustration.id.toString()))
-    console.log(this.illustrationSelectedArray)
+    console.log(this.selectedArray)
   }
   unselectAllIllustrations(){
-    this.illustrationSelectedArray = [];
+    this.selectedArray = [];
   }
   isIllustrationChecked(id: Number){
-    return this.illustrationSelectedArray.includes(id);
+    return this.selectedArray.includes(id);
   }
 }
