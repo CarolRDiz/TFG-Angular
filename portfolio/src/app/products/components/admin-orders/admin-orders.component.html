@@ -5,7 +5,7 @@
     </div>
     <!-- <app-search-bar (searchEvent)="search($event)" [placeholder]="'Buscar por nombre'"></app-search-bar> -->
     <div class="filters">
-        <app-search-bar [placeholder]="'Buscar por nombre...'"></app-search-bar>
+        <app-search-bar (searchEvent)="search($event)" [placeholder]="'Buscar por id'"></app-search-bar>
     </div>
     
 

@@ -72,13 +72,7 @@ export class AdminOrdersComponent {
     }
   }
   search(value: any) {
-    // let orderListWithName = this.orderList.map((order) => {
-    //   if (!order.name) {
-    //     order.name = '';
-    //   }
-    //   return order;
-    // })
-    // this.orderListModified = orderListWithName.filter((order) => order.name.includes(value));
+    this.orderListModified = this.orderList.filter((item) => item.id.toString().includes(value));
   }
   async deleteOrder(id: any) {
     // let success;

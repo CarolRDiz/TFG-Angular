@@ -70,13 +70,13 @@ export class AdminProductsComponent {
     }
   }
   search(value: any) {
-    // let illustrationListWithName = this.illustrationList.map((illustration) => {
-    //   if (!illustration.name) {
-    //     illustration.name = '';
-    //   }
-    //   return illustration;
-    // })
-    // this.itemsListModified = illustrationListWithName.filter((illustration) => illustration.name.includes(value));
+    let itemListWithName = this.productsList.map((item) => {
+      if (!item.name) {
+        item.name = '';
+      }
+      return item;
+    })
+    this.itemsListModified = itemListWithName.filter((item) => item.name.includes(value));
   }
   async delete(id: any) {
     this.productService.delete(id).subscribe({

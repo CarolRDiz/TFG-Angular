@@ -32,7 +32,7 @@
         <ul class="table__body">
             <li class="table__row" *ngFor="let illustration of illustrationListModified; index as i">
                 <div class="table__cell table__cell--small">
-                    <mat-checkbox value="{{illustration.id}}" (change)="onIllustrationPressed($event)"
+                    <mat-checkbox  value="{{illustration.id}}" (change)="onIllustrationPressed($event)"
                         [ngModel]="isIllustrationChecked(illustration.id)"></mat-checkbox>
                 </div>
                 <div class="table__cell table__cell--medium"><img class="table__image"
