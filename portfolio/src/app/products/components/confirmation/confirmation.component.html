@@ -1,4 +1,4 @@
-<main class="content">
+<main class="content confirmation">
     <h1>Gracias por tu pedido</h1>
     <p class="confirmation__important">Hemos recibido tu pedido <span
         class="confirmation__id">#{{this.order.id}}</span> y está en proceso.</p>
@@ -20,6 +20,6 @@
     </section> -->
 
     <!-- <h2>Tu pedido <span class="confirmation__id">#{{this.order.id}}</span></h2> -->
-    <app-order-summary [order]="order"></app-order-summary>
+    <app-order-summary class="order-summary__container" [order]="order"></app-order-summary>
     <!-- Su compra se ha completado: {{transactionID}} -->
 </main>

@@ -1,7 +1,8 @@
 .cart {
   background-color: var(--color-background);
   border-radius: 5px;
-  height: fit-content;
+  height: 100%;
+  max-height: 500px;
   left: 50%;
   overflow: auto;
   padding: 20px;
@@ -11,11 +12,14 @@
   // max-width: 1200px;
   // width: 100%;
   width: 80%;
+  min-width: 110px;
   z-index: 100;
   @include tablet {
+    min-width: none;
     //width: 90%;
     width: calc(100% - ($mobile-padding-sides*2));
   }
+
 }
 
 .cart__item {
@@ -34,6 +38,7 @@
   //   height: 100%;
   // }
   .cart__section--principal {
+    flex-grow: 1;
     justify-content: flex-start;
   }
   @include tablet {
@@ -65,12 +70,26 @@
   height: 100%;
   object-fit: cover;
 }
-
+.cart__name {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+  @include mobile {
+    flex-basis: 30%;
+  }
+}
 .cart__section {
   align-items: center;
   display: flex;
   height: 100%;
-  justify-content: space-between;
+  justify-content: end;
+  width: 100%;
+  
+  @include tablet {
+    justify-content: start;
+  }
 }
 .cart__subtotal {
   justify-content: space-between;

@@ -12,7 +12,7 @@
                     <div class="cart__image-container">
                         <img class="cart__image" [src]="imageUrl+product.thumbnail_image_id" aria-hidden="true">
                     </div>
-                    <span>{{product.name}}</span>
+                    <span [routerLink]="'/store/'+ product.id" class="cart__name">{{product.name}}</span>
                 </div>
                 <div class="cart__section cart__section--quantity">
                     <button mat-icon-button aria-label="Example icon-button with a menu"
