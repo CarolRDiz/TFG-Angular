@@ -5,22 +5,12 @@
 </div>
 
 <div class="store-catalog__content">
-    <!-- <section class="store-catalog__menu">
-        <ul class="store-catalog__categories">
-            <li class="store-catalog__category">
-                Todo
-            </li>
-            <li class="store-catalog__category" *ngFor="let category of categories; index as i">
-                {{category.name}}
-            </li>
-        </ul>
-    </section> -->
-
     <section class="products-list">
         <div class="products-list__product" *ngFor="let product of productsFiltered; index as i">
             <a [routerLink]="'/store/'+ product.id" class="products-list__image-link">
                 <img class="products-list__image easeload" onload="this.style.opacity=1" [src]="imageUrl+product.thumbnail_image_id"
-                    alt="">
+                [alt]="'Imagen del producto: '+ product.name"
+                >
             </a>
             <a [routerLink]="'/store/'+ product.id" class="products-list__name">
                 {{product.name}}

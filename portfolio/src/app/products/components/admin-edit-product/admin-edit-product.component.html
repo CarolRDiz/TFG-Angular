@@ -19,7 +19,7 @@
                         <legend class="form__legend">Detalles</legend>
                         <!--NAME-->
                         <app-input formControlName="name" [label]="'Nombre del producto'"
-                            [placeholder]="'Sonic Fanart'"></app-input>
+                            [placeholder]="''"></app-input>
 
                         <!--DESCRIPTION-->
                         <app-input formControlName="description" [label]="'Descripción'" [textarea]="true"
@@ -35,7 +35,7 @@
                             <div class="" *ngFor="let image of getImageIds(); let i=index;"
                                 class="multiple-images__item">
                                 <div class="selected-image">
-                                    <img class="selected-image__image" [src]="getImagePath(image)" alt="">
+                                    <img class="selected-image__image" [src]="getImagePath(image)" alt="Imagen del producto">
                                     <div class="selected-image__buttons">
                                         <div class="selected-image__top">
                                             <button type="button" mat-icon-button
@@ -66,9 +66,13 @@
                             </label>
                         </div>
                         <div class="thumbnail-image">
-                            <div class="thumbnail-image__frame">
-                                <img class="thumbnail-image__image" [src]="getThumbnailImage()" alt="">
+                            <div class="thumbnail-image__frame" >
+                                <img *ngIf="getThumbnailImage(); else noImage" class="thumbnail-image__image" [src]="getThumbnailImage()" alt="Imagen principal del producto">
+                                <ng-template #noImage>
+                                    <div class="thumbnail-image__image"></div>
+                                </ng-template>
                             </div>
+                            
                             <span class="thumbnail-image__label">Imagen destacada</span>
                         </div>
                         <!--ADD IMAGE-->

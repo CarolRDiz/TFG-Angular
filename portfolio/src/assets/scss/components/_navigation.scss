@@ -14,7 +14,7 @@
             .nav__link{
                 color: var(--color-text);
                 // font-size: var();
-                text-transform: uppercase;
+                text-transform:capitalize;
                 :visited {
                     color: var(--color-text);
                 }

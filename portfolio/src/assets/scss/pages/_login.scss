@@ -2,7 +2,8 @@
     align-items: center;
     display: flex;
     flex-direction: column;
-    padding-top: $padding-top;
+    padding: $padding-top $mobile-padding-sides;
+
 }
 .login__content {
     align-items: center;

@@ -59,7 +59,7 @@
                 <ul>
                     <li class="order-item" *ngFor="let orderItem of order.items; let i=index;">
                         <div class="order-item__image-frame">
-                            <img class="order-item__image" [src]="imageUrl+orderItem.product.thumbnail_image_id" alt="">
+                            <img class="order-item__image" [src]="imageUrl+orderItem.product.thumbnail_image_id" aria-hidden="true">
                         </div>
 
                         <div class="order-item__data">

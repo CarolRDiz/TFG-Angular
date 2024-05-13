@@ -94,7 +94,8 @@ export class AdminEditProductComponent {
   }
 
   getThumbnailImage() {
-    return this.imageUrl.concat(this.editForm.value.images.thumbnail_image_id);
+    if(this.editForm.value.images.thumbnail_image_id!='')return this.imageUrl.concat(this.editForm.value.images.thumbnail_image_id);
+    else return ''
   }
 
   initializeForm() {

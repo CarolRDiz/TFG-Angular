@@ -12,7 +12,8 @@
 @import 'base/base',
 'base/fonts',
 'base/typography',
-'base/helpers';
+'base/helpers',
+'base/accessibility';
 
 // 4. Layout-related sections
 @import 'layout/header',
@@ -61,7 +62,8 @@
 'pages/confirmation',
 'pages/admin-login',
 'pages/login',
-'pages/store-catalog';
+'pages/store-catalog',
+'pages/page404';
 
 // 7. Themes
 @import 'themes/default';

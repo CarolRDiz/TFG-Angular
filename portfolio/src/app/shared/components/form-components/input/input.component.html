@@ -1,12 +1,13 @@
 <div class="field">
-    <label [for]="formControl" class="label">{{getLabel}}</label>
-
+    <label [for]="label" class="label">{{getLabel}}</label>
     <div class="refillable-field">
         <div class="input-container">
-            <textarea maxlength="400" *ngIf="textarea; else input" [formControl]="formControl" class="textarea" [placeholder]="placeholder"
+            <textarea [id]="label" maxlength="400" *ngIf="textarea; else input" [formControl]="formControl" class="textarea" [placeholder]="placeholder"
                 [mask]="mask"></textarea>
             <ng-template #input>
-                <input [formControl]="formControl" type="{{password? 'password': 'text'}}" class="input"
+                <input 
+                [id]="label"
+                [formControl]="formControl" type="{{password? 'password': 'text'}}" class="input"
                     [placeholder]="placeholder" [mask]="mask" [class.input--invalid]="showError"  >
             </ng-template>
 

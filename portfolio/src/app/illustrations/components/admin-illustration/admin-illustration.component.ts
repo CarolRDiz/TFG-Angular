@@ -148,8 +148,6 @@ export class AdminIllustrationComponent {
   }
   selectAllIllustrations(){
     this.selectedArray = this.illustrationListModified.map((illustration)=>illustration.id)
-    console.log(this.illustrationListModified.map((illustration)=>illustration.id.toString()))
-    console.log(this.selectedArray)
   }
   unselectAllIllustrations(){
     this.selectedArray = [];

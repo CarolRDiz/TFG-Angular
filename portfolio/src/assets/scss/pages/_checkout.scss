@@ -2,6 +2,9 @@
     column-gap: 30px;
     display: flex;
     width: 100%;
+    @include mobile {
+        flex-direction: column;
+    }
 }
 
 
@@ -11,6 +14,9 @@
     flex-direction: column;
     row-gap: 40px;
     width: 70%;
+    @include mobile {
+        width: 100%;
+    }
 }
 
 .checkout__row {
@@ -105,6 +111,10 @@
     position: sticky;
     top: 20px;
     width: 30%;
+    @include mobile {
+        position: relative;
+        width: 100%;
+    }
 }
 
 .checkout-table {

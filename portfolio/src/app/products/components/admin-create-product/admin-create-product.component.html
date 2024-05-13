@@ -34,7 +34,7 @@
                         <div *ngIf="getShow() else elseBlock" class="multiple-images">
                             <div class="" *ngFor="let image of imagePaths; let i=index;" class="multiple-images__item">
                                 <div class="selected-image">
-                                    <img class="selected-image__image" [src]="image" alt="">
+                                    <img class="selected-image__image" [src]="image" alt="Imagen del producto">
                                     <div class="selected-image__buttons">
                                         <div class="selected-image__top">
                                             <button type="button" mat-icon-button
@@ -66,7 +66,10 @@
                         </div>
                         <div class="thumbnail-image">
                             <div class="thumbnail-image__frame">
-                                <img class="thumbnail-image__image" [src]="getThumbnailImage()" alt="">
+                                <img *ngIf="getThumbnailImage(); else noImage" class="thumbnail-image__image" [src]="getThumbnailImage()" alt="Imagen principal del producto">
+                                <ng-template #noImage>
+                                    <div class="thumbnail-image__image"></div>
+                                </ng-template>
                             </div>
                             <span class="thumbnail-image__label">Imagen destacada</span>
                         </div>

@@ -9,7 +9,7 @@
         <div *ngIf="cartProducts.length !=0; else emptyCart">
             <div *ngFor="let product of cartProducts; let i=index;" class="cart__item">
                 <div class="cart__section cart__section--principal">
-                    <img class="cart__image" [src]="imageUrl+product.thumbnail_image_id" alt="">
+                    <img class="cart__image" [src]="imageUrl+product.thumbnail_image_id" aria-hidden="true">
                     <span>{{product.name}}</span>
                 </div>
                 <div class="cart__section cart__section--quantity">
@@ -34,7 +34,7 @@
         </div>
         <ng-template #emptyCart>
             <div class="cart__empty">
-                <img class="cart__empty-image" src="../../../../assets/images/empty-cart.png" alt="">
+                <img class="cart__empty-image" src="../../../../assets/images/empty-cart.png" aria-hidden="true" alt="Ilustración de Laura Rodiz">
                 <h3>¡Tu bolsa de la compra está vacía!</h3>
             </div>
         </ng-template>

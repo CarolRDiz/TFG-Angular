@@ -1,6 +1,6 @@
 <main class="content">
     <div class="content__top">
-        <h1>Illustration</h1>
+        <h1>Ilustraciones</h1>
         <button class="button button--white" routerLink="/admin/create-illustration">Agregar ilustración</button>
     </div>
     <div class="filters">
@@ -32,11 +32,11 @@
         <ul class="table__body">
             <li class="table__row" *ngFor="let illustration of illustrationListModified; index as i">
                 <div class="table__cell table__cell--small">
-                    <mat-checkbox value="{{illustration.id}}" (change)="onIllustrationPressed($event)"
+                    <mat-checkbox [aria-label]="'isSelected'" value="{{illustration.id}}" (change)="onIllustrationPressed($event)"
                         [ngModel]="isIllustrationChecked(illustration.id)"></mat-checkbox>
                 </div>
                 <div class="table__cell table__cell--medium"><img class="table__image"
-                        [src]="imageUrl+illustration.image_id" alt=""></div>
+                        [src]="imageUrl+illustration.image_id" [alt]="illustration.name"></div>
                 <div class="table__cell table__cell--large">{{illustration.name}}</div>
                 <div class="table__cell table__cell--medium">{{illustration.visibility == true? "Público":
                     "Oculto"}}

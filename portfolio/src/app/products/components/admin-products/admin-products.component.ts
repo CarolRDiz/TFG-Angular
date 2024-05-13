@@ -123,6 +123,7 @@ export class AdminProductsComponent {
       },
       complete: () => {
         this.getProducts();
+        this.unselectAllItems();
         this.openSnackBar("Productos eliminados con éxito")
       }
     })

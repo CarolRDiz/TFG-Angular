@@ -37,7 +37,7 @@
                 </div>
                 <div class="table__cell table__cell--medium">
                     <img class="table__image"
-                        [src]="imageUrl+item.thumbnail_image_id" alt="">
+                        [src]="imageUrl+item.thumbnail_image_id" aria-hidden="true">
                 </div>
                 <div class="table__cell table__cell--large">{{item.name}}</div>
                 <div class="table__cell table__cell--medium">{{item.visibility == true? "Público": "Oculto"}}

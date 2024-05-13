@@ -103,15 +103,11 @@ export class AdminCreateProductComponent {
   }
 
   deleteImage(image: any) {
-    console.log("DELETE");
     let index = this.imagePaths.indexOf(image);
     let filesArray = this.image.value;
     filesArray.splice(index, 1);
     this.image.setValue(filesArray);
-    console.log(this.image.value)
-    console.log("REMOVE URL")
     this.imagePaths = this.imagePaths.filter(url => url != image)
-    console.log(this.imagePaths);
   }
 
   validatePrice($event: any) {
@@ -142,7 +138,6 @@ export class AdminCreateProductComponent {
   }
   //  SAVE ILLUSTRATION WITH VISIBILITY=FALSE
   save() {
-    console.log("save")
     // this.createForm.patchValue({
     //   organization: {
     //     visibility: false

@@ -26,12 +26,14 @@ import { AdminLoginComponent } from './admin/components/admin-login/admin-login.
 import { isAdminGuard } from './core/guards/is-admin.guard';
 import { isAuthenticatedGuard } from './core/guards/is-authenticated.guard';
 import { LoginPageComponent } from './login/components/login-page/login-page.component';
+import { PageNotFoundComponent } from './page-404/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
     path: '',
     component: PublicPageContainerComponent,
     children: [
+      
       {
         path: '', component: IllustrationComponent
       },
@@ -57,7 +59,7 @@ const routes: Routes = [
       },
       {
         path: 'user', component: UserComponent,
-        canActivate:[isAuthenticatedGuard],
+        canActivate: [isAuthenticatedGuard],
       },
       {
         path: 'contact', component: ContactComponent
@@ -78,29 +80,29 @@ const routes: Routes = [
   {
     path: 'admin',
     component: AdminPageContainerComponent,
-    canActivate:[isAdminGuard],
+    canActivate: [isAdminGuard],
     children: [
       // {
       //   path: '',
       //   component: AdminLoginComponent
       // },
-      { 
+      {
         path: '',
         component: AdminIllustrationComponent
       },
-      { 
+      {
         path: 'illustration',
         component: AdminIllustrationComponent
       },
-      { 
+      {
         path: 'create-illustration',
         component: AdminCreateIllustrationComponent
       },
-      { 
+      {
         path: 'edit-illustration/:id',
         component: AdminEditIllustrationComponent
       },
-      { 
+      {
         path: 'products',
         component: AdminProductsComponent
       },
@@ -108,7 +110,7 @@ const routes: Routes = [
         path: 'create-product',
         component: AdminCreateProductComponent
       },
-      { 
+      {
         path: 'edit-product/:id',
         component: AdminEditProductComponent
       },
@@ -121,11 +123,15 @@ const routes: Routes = [
         component: AdminOrderComponent
       }
     ]
-  }
+  },
+  {
+    path: '**', pathMatch: 'full',
+    component: PageNotFoundComponent
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes,{ anchorScrolling: 'enabled'})],
+  imports: [RouterModule.forRoot(routes, { anchorScrolling: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

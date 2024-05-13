@@ -5,7 +5,7 @@
         </button>
 
         <a [routerLink]="'/'">
-            <img class="header-mobile__logo" src="../../assets/images/logo.svg" alt="">
+            <img class="header-mobile__logo" src="../../assets/images/logo.svg" alt="Inicio">
         </a>
 
         <nav class="nav">
@@ -27,26 +27,30 @@
         <ul class="header__social">
             <li>
                 <a href="https://www.instagram.com/lau.rodiz/" target="_blank">
-                    <mat-icon svgIcon="instagram"></mat-icon>
+                    <mat-icon svgIcon="instagram" aria-hidden="true"></mat-icon>
+                    <span class="visually-hidden">Instagram</span>
                 </a>
             </li>
             <li>
                 <a href="https://twitter.com/LauRodiz" target="_blank">
-                    <mat-icon svgIcon="twitter"></mat-icon>
+                    <mat-icon svgIcon="twitter" aria-hidden="true"></mat-icon>
+                    <span class="visually-hidden">Twitter</span>
                 </a>
-
+    
             </li>
             <li>
                 <a href="https://www.tiktok.com/@lau.rodiz" target="_blank">
-                    <mat-icon svgIcon="tik-tok"></mat-icon>
+                    <mat-icon svgIcon="tik-tok" aria-hidden="true"></mat-icon>
+                    <span class="visually-hidden">Tik Tok</span>
                 </a>
-
+    
             </li>
             <li>
                 <a href="https://www.twitch.tv/laurodiz" target="_blank">
-                    <mat-icon svgIcon="twitch"></mat-icon>
+                    <mat-icon svgIcon="twitch" aria-hidden="true"></mat-icon>
+                    <span class="visually-hidden">Twitch</span>
                 </a>
-
+    
             </li>
         </ul>
         <span class="header__email">rodiz.lau@gmail.com</span>

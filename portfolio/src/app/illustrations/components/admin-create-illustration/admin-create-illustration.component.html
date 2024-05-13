@@ -35,21 +35,6 @@
                         <div *ngIf="getShow() else elseBlock">
                             <app-selected-image [fileUrl]="getFileUrl()??''"
                                 (deleteImageEvent)="deleteImage()"></app-selected-image>
-                            <!-- <div class="selected-image__container">
-                            <div class="selected-image">
-                                <img class="selected-image__image" [src]="getFileUrl()" alt="">
-                                <div class="selected-image__buttons">
-                                    <button type="button" mat-icon-button aria-label="Example icon-button with a menu">
-                                        <mat-icon>open_in_full</mat-icon>
-                                    </button>
-                                    <button type="button" mat-icon-button aria-label="Example icon-button with a menu"
-                                        (click)="deleteImage()" type="button">
-                                        <mat-icon class="icon--red">delete</mat-icon>
-                                    </button>
-                                </div>
-                            </div>
-                        </div> -->
-
                         </div>
                         <!--ADD IMAGE-->
                         <ng-template #elseBlock>
@@ -65,19 +50,11 @@
                         <legend class="form__legend">Detalles</legend>
                         <!--NAME-->
                         <app-input formControlName="name" [label]="'Nombre de la ilustración'"
-                            [placeholder]="'Sonic Fanart'"></app-input>
-                        <!-- <div class="form__field">
-                        <label class="label" for="name">Nombre de la ilustración </label>
-                        <div class="refillable-field">
-                            <div class="refillable-field__content">
-                                <input formControlName="name" id="name" type="text" class="refillable-field__input"
-                                    placeholder="Sonic Fanart">
-                            </div>
-                        </div>
-                    </div> -->
+                            [placeholder]="''"></app-input>
+
                         <!--DESCRIPTION-->
-                        <app-input formControlName="description" [label]="'Descripción'"
-                        [textarea]="true" [placeholder]="'Describe tu ilustración'" ></app-input>
+                        <app-input formControlName="description" [label]="'Descripción'" [textarea]="true"
+                            [placeholder]="'Describe tu ilustración'"></app-input>
                         <!-- <div class="form__field">
                         <label class="label" for="description">Descripción</label>
                         <div class="refillable-field">
@@ -87,7 +64,8 @@
                             </div>
                         </div>
                     </div> -->
-                    <app-toggle-input formControlName="visibility" [label]="'Visibilidad'" [ifTrue]="'Público'" [ifFalse]="'Oculto'"></app-toggle-input>
+                        <app-toggle-input formControlName="visibility" [label]="'Visibilidad'" [ifTrue]="'Público'"
+                            [ifFalse]="'Oculto'"></app-toggle-input>
 
                     </fieldset>
                 </div>

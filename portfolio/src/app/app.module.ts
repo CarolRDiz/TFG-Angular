@@ -14,6 +14,7 @@ import { ContactModule } from './contact/contact.module';
 import { AboutMeModule } from './about-me/about-me.module';
 import { AdminModule } from './admin/admin.module';
 import { LoginModule } from './login/login.module';
+import { Page404Module } from './page-404/page-404.module';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { LoginModule } from './login/login.module';
     ContactModule,
     AboutMeModule,
     AdminModule,
-    LoginModule
+    LoginModule,
+    Page404Module
   ],
   exports: [
   ],
