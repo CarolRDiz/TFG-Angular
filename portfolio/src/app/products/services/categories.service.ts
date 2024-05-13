@@ -25,6 +25,13 @@ export class CategoriesService {
       catchError(this.handlerError)
     );
   }
+  delete(id: number){
+    let url = `${this.baseUrl}${id}/`
+    return this.http.delete<any>(url)
+    .pipe(
+      catchError(this.handlerError)
+    );
+  }
   private handlerError(error: HttpErrorResponse){
     if(error.status===0){
       console.error("Error: "+error.error);

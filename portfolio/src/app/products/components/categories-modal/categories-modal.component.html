@@ -16,8 +16,7 @@
                         <mat-icon>more_horiz</mat-icon>
                     </button>
                     <mat-menu #menu="matMenu">
-                        <button mat-menu-item>Editar</button>
-                        <button mat-menu-item>Eliminar</button>
+                        <button mat-menu-item (click)="delete(category.id)">Eliminar</button>
                     </mat-menu>
                     <mat-checkbox value="{{category.id}}" (change)="onCategoryPressed($event)" [ngModel]="isCategoryChecked(category.id)"></mat-checkbox>
                 </div>

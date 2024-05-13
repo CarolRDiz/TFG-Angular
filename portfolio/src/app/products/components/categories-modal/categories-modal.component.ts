@@ -52,7 +52,18 @@ export class CategoriesModalComponent {
     }
     )
   }
+  delete(id: number){
+    this.categoriesService.delete(id).subscribe(
+      {
+        error: (errorData) => {
 
+        },
+        complete: () => {
+          this.getAllCategories();
+        }
+      }
+    );
+  }
   close(): void {
     this.closeEvent.emit();
   }
