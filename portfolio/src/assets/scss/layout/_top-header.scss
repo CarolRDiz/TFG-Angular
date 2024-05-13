@@ -7,7 +7,7 @@
     height: fit-content;
     justify-content: space-between;
     left:0;
-    padding-left: $header-width + $padding-sides;
+    padding-left: calc($header-width + $padding-sides);
     padding-bottom: $padding-top;
     padding-right: $padding-sides;
     padding-top: $padding-top;  

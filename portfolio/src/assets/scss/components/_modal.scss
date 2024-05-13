@@ -16,17 +16,24 @@
 .modal {
   background-color: var(--color-background);
   border-radius: 5px;
-  height: 100%;
   left: 50%;
-  max-height: 600px;
+
+  height: 90vh;
+  max-height: 650px;
+  
+
   overflow: auto;
   padding: 20px;
   position: fixed;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 500px;
+
+  min-width: auto;
+  width: calc((500px/1478px) * 100% );
+  //width: 500px;
   z-index: 100;
   @include mobile {
+    min-width: none;
     width: calc(100% - ($mobile-padding-sides * 2));
   }
 }
