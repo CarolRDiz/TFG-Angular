@@ -16,7 +16,7 @@
     }
     @include tablet {
         margin-left: 0;
-        padding: 0 $mobile-padding-sides;
+        padding: 0 $mobile-padding-sides $padding-bottom-page $mobile-padding-sides ;
     }
 }
 .content__title {

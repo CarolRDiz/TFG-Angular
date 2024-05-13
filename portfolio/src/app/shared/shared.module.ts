@@ -45,6 +45,7 @@ import { AdminHeaderMobileComponent } from './components/admin-header-mobile/adm
 import { AdminNavigationMobileComponent } from './components/admin-navigation-mobile/admin-navigation-mobile.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 import { ClickStopPropagationDirective } from './directives/click-stop-propagation.directive';
+import { LazyImgDirective } from './directives/lazy-img.directive';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { ClickStopPropagationDirective } from './directives/click-stop-propagati
     AdminHeaderMobileComponent,
     AdminNavigationMobileComponent,
     DialogComponent,
-    ClickStopPropagationDirective
+    ClickStopPropagationDirective,
+    LazyImgDirective
   ],
   imports: [
     RouterModule,
@@ -143,7 +145,8 @@ import { ClickStopPropagationDirective } from './directives/click-stop-propagati
     TagsInputComponent,
     NavigationMobileComponent,
     CartComponent,
-    ClickStopPropagationDirective
+    ClickStopPropagationDirective,
+    LazyImgDirective
   ],
   providers: [
     ModalService,
