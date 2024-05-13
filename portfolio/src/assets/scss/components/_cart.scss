@@ -55,10 +55,15 @@
     }
   }
 }
-
-.cart__image {
+.cart__image-container {
   height: 100px;
+  width: 100px;
   margin-right: 10px;
+}
+.cart__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .cart__section {

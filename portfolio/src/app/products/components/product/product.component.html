@@ -1,7 +1,10 @@
 <section class="product">
     <h1 class="product__name--tablet">{{product.name}}</h1>
     <div class="product__column-1" aria-hidden="true">
-        <img [src]="imageUrl+selectedImage" class="product__selected-image" alt="Imagen del producto" aria-hidden="true">
+        <div class="product__image-container">
+            <img [src]="imageUrl+selectedImage" class="product__selected-image" alt="Imagen del producto"
+                aria-hidden="true">
+        </div>
         <div class="product__images">
             <div (click)="selectImage(image_id)" class="product__image-box"
                 *ngFor="let image_id of product.image_ids; index as i">
@@ -32,13 +35,15 @@
     </div>
     <div class="modal__content">
         <section class="cart-confirmation__product">
-            <img class="cart-confirmation__image" [src]="imageUrl+selectedImage" alt="Imagen del producto" aria-hidden="true">
+            <img class="cart-confirmation__image" [src]="imageUrl+selectedImage" alt="Imagen del producto"
+                aria-hidden="true">
             <div class="cart-confirmation__product-info">
                 <span class="cart-confirmation__name">{{product.name}}</span>
-                <span >{{product.price}}€</span>
+                <span>{{product.price}}€</span>
             </div>
         </section>
-        <button [routerLink]="['/', 'checkout']" class=" cart-confirmation__button button button--white--large">Continuar con el pago</button>
+        <button [routerLink]="['/', 'checkout']"
+            class=" cart-confirmation__button button button--white--large">Continuar con el pago</button>
         <button (click)="close()" class="button button--empty--large">Seguir comprando</button>
     </div>
 </div>

@@ -28,13 +28,14 @@
   top: 50%;
   transform: translate(-50%, -50%);
 
-  min-width: auto;
+  min-width: 500px;
   width: calc((500px/1478px) * 100% );
   //width: 500px;
   z-index: 100;
   @include mobile {
-    min-width: none;
+    min-width: auto;
     width: calc(100% - ($mobile-padding-sides * 2));
+    // width: -webkit-calc(100% - ($mobile-padding-sides * 2));
   }
 }
 
