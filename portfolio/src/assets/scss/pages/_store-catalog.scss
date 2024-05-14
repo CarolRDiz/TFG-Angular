@@ -19,7 +19,7 @@ $image-width: calc(($gallery-width / $gallery-columns) - ($total-column-gap / $g
 }
 
 .store-catalog__filters {
-    align-items: end;
+    align-items: flex-end;
     column-gap: 50px;
     display: flex;
     justify-content: center;
