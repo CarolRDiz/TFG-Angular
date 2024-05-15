@@ -1,7 +1,8 @@
 .cart {
   background-color: var(--color-background);
   border-radius: 5px;
-  height: 100%;
+  height: fit-content;
+  min-height: 400px;
   max-height: 500px;
   left: 50%;
   overflow: auto;
