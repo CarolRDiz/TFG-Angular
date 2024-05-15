@@ -26,6 +26,7 @@ export class SelectComponent {
   select(item: string){
     console.log("select emit: "+item)
     this.selectEvent.emit(item);
+    this.isOpen = !this.isOpen
   }
 
   onClick(event: any) {
