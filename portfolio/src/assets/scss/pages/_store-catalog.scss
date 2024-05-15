@@ -6,8 +6,8 @@
 
 $gallery-columns: 3;
 $gallery-width: calc(100vw - $header-width - ($padding-sides * 2));
-$column-gap: 10;
-$total-column-gap: calc(($column-gap * ($gallery-columns - 1)) * 1px);
+$column-gap: 0.6vw;
+$total-column-gap: calc(($column-gap * ($gallery-columns - 1)));
 $image-width: calc(($gallery-width / $gallery-columns) - ($total-column-gap / $gallery-columns));
 
 
