@@ -2,7 +2,9 @@
     <h1 class="content__title">Finalizar compra</h1>
     <div class="checkout__container">
         <form id="form" [formGroup]="checkoutForm" class="checkout__form">
-            <section class="checkout__section" [class.checkout__section--unselected]="step != 1">
+            <!-- <section class="checkout__section" [class.checkout__section--unselected]="step != 1"> -->
+            <section class="checkout__section checkout__section--unselected">
+
                 <div class="checkout__section-header">
                     <h2>Contacto</h2>
                     <button *ngIf="isEditable(1)" (click)="editFormGroup(1)" mat-icon-button
@@ -21,7 +23,9 @@
                     <button (click)="saveStep()" class="button button--white--medium">Guardar</button>
                 </fieldset>
             </section>
-            <section class="checkout__section" [class.checkout__section--unselected]="step != 2">
+            <!-- <section class="checkout__section" [class.checkout__section--unselected]="step != 2"> -->
+            <!-- <section class="checkout__section checkout__section--unselected"> -->
+            <section class="checkout__section checkout__section--unselected">
                 <div class="checkout__section-header">
                     <h2>Entrega</h2>
                     <button *ngIf="isEditable(2)" (click)="editFormGroup(2)" mat-icon-button
