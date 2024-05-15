@@ -44,7 +44,7 @@ $image-width: calc(($gallery-width / $gallery-columns) - ($total-column-gap / $g
 .products-list {
     display: flex;
     width: 100%;
-    column-gap: 10px;
+    justify-content: space-between;
     row-gap: 20px;
     flex-wrap: wrap;
     // display: grid;
