@@ -23,7 +23,7 @@ export class OrderService {
     );
   }
   getOrder(id: number){
-    return this.http.get<Order>(`${environment.urlApi}${id}`)
+    return this.http.get<Order>(`${this.baseUrl}${id}`)
     .pipe(
       catchError(this.handlerError)
     );
@@ -32,7 +32,7 @@ export class OrderService {
     let body = {
       "shipped": status
     }
-    return this.http.patch<void>(`${environment.urlApi}${id}`, body)
+    return this.http.patch<void>(`${this.baseUrl}${id}`, body)
     .pipe(
       catchError(this.handlerError)
     );
@@ -41,7 +41,7 @@ export class OrderService {
     let body = {
       "shipped": status
     }
-    return this.http.patch<void>(`${environment.urlApi}list?ids=${ids}`, body)
+    return this.http.patch<void>(`${this.baseUrl}list?ids=${ids}`, body)
     .pipe(
       catchError(this.handlerError)
     );
