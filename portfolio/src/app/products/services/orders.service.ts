@@ -17,7 +17,7 @@ export class OrderService {
   ) {}
 
   getOrders(){
-    return this.http.get<Order[]>(`${environment.urlApi}order/`)
+    return this.http.get<Order[]>(`${this.baseUrl}`)
     .pipe(
       catchError(this.handlerError)
     );

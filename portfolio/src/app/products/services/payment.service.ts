@@ -14,7 +14,7 @@ export class PaymentService {
   totalAmount: number = 10;
   delivery: number = 4;
   private order: Order;
-  private baseUrl = environment.urlApi+'order';
+  private baseUrl = environment.urlApi+'order/';
 
   constructor(
     private http: HttpClient
