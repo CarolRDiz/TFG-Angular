@@ -66,6 +66,9 @@ const routes: Routes = [
       },
       {
         path: 'about-me', component: AboutMeComponent
+      },
+      {
+        path: 'order', component: ConfirmationComponent
       }
     ]
   },
