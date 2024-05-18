@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { PaymentService } from '../../services/payment.service';
 import { Order } from '../../order';
+import { OrderService } from '../../services/orders.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -49,12 +50,24 @@ export class ConfirmationComponent {
   //   "date": "2024-04-28T17:21:44.238+00:00"
   // }
 
-  constructor(private router: Router, private payment: PaymentService){}
+  constructor(
+    private router: Router, 
+    private payment: PaymentService,
+    private orderService: OrderService
+  ){}
 
 
   ngOnInit(){
     this.transactionID = this.payment.transactionID;
-    this.order = this.payment.getOrder();
+    let order = this.payment.getOrder();
+    this.orderService.getOrder(order.id).subscribe({
+      next: (data) => {
+        this.order = data;
+      },
+      error: (errorData)=> {
+        console.log("No existe este pedido")
+      }
+    })
   }
 
 }
