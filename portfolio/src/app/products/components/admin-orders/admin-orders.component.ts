@@ -3,11 +3,20 @@ import { Router } from '@angular/router';
 import { OrderService } from '../../services/orders.service';
 import { Order } from '../../order';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
+import { SearchBarComponent } from '../../../shared/components/search-bar/search-bar.component';
 
 @Component({
-  selector: 'app-admin-orders',
-  templateUrl: './admin-orders.component.html',
-  styleUrls: ['./admin-orders.component.scss']
+    selector: 'app-admin-orders',
+    templateUrl: './admin-orders.component.html',
+    styleUrls: ['./admin-orders.component.scss'],
+    standalone: true,
+    imports: [SearchBarComponent, NgIf, MatIconModule, NgFor, MatCheckboxModule, FormsModule, MatButtonModule, MatMenuModule, DatePipe]
 })
 export class AdminOrdersComponent {
   orderList: Order[] = [];

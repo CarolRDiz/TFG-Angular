@@ -1,17 +1,33 @@
 import { Component, Input, inject, HostListener } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
-import { ViewportScroller } from '@angular/common';
-import { ControlContainer, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ViewportScroller, NgIf } from '@angular/common';
+import { ControlContainer, FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IllustrationService } from '../../services/illustration.service';
 import { Illustration } from '../../illustration';
 import { IllustrationCreate } from '../../illustration-create';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ToggleInputComponent } from '../../../shared/components/form-components/toggle-input/toggle-input.component';
+import { InputComponent } from '../../../shared/components/form-components/input/input.component';
+import { AddImageComponent } from '../../../shared/components/add-image/add-image.component';
+import { SelectedImageComponent } from '../../../shared/components/selected-image/selected-image.component';
+import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 
 @Component({
-  selector: 'app-admin-create-illustration',
-  templateUrl: './admin-create-illustration.component.html',
-  styleUrls: ['./admin-create-illustration.component.scss'],
+    selector: 'app-admin-create-illustration',
+    templateUrl: './admin-create-illustration.component.html',
+    styleUrls: ['./admin-create-illustration.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        LoaderComponent,
+        FormsModule,
+        ReactiveFormsModule,
+        SelectedImageComponent,
+        AddImageComponent,
+        InputComponent,
+        ToggleInputComponent,
+    ],
 })
 export class AdminCreateIllustrationComponent {
 

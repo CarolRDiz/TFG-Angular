@@ -9,10 +9,15 @@ import {
   moveItemInArray,
   transferArrayItem,
 } from '@angular/cdk/drag-drop';
+import { LightboxComponent } from '../../../shared/components/lightbox/lightbox.component';
+import { LazyImgDirective } from '../../../shared/directives/lazy-img.directive';
+import { NgFor, NgIf } from '@angular/common';
 @Component({
-  selector: 'app-sort-gallery',
-  templateUrl: './sort-gallery.component.html',
-  styleUrls: ['./sort-gallery.component.scss']
+    selector: 'app-sort-gallery',
+    templateUrl: './sort-gallery.component.html',
+    styleUrls: ['./sort-gallery.component.scss'],
+    standalone: true,
+    imports: [CdkDropListGroup, CdkDropList, NgFor, LazyImgDirective, CdkDrag, NgIf, LightboxComponent]
 })
 export class SortGalleryComponent {
   @Input() illustrations: Illustration[];

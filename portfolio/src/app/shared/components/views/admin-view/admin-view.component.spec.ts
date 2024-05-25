@@ -8,8 +8,8 @@ describe('AdminViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AdminViewComponent]
-    });
+    imports: [AdminViewComponent]
+});
     fixture = TestBed.createComponent(AdminViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

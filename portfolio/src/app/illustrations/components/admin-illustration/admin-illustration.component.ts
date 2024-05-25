@@ -1,14 +1,25 @@
 import { Component, inject } from '@angular/core';
 import { Illustration } from '../../illustration';
 import { IllustrationService } from '../../services/illustration.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { environment } from 'src/app/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogComponent } from '../../../shared/components/dialog/dialog.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { LazyImgDirective } from '../../../shared/directives/lazy-img.directive';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { NgIf, NgFor } from '@angular/common';
+import { SearchBarComponent } from '../../../shared/components/search-bar/search-bar.component';
 
 @Component({
-  selector: 'app-admin-illustration',
-  templateUrl: './admin-illustration.component.html',
-  styleUrls: ['./admin-illustration.component.scss']
+    selector: 'app-admin-illustration',
+    templateUrl: './admin-illustration.component.html',
+    styleUrls: ['./admin-illustration.component.scss'],
+    standalone: true,
+    imports: [RouterLink, SearchBarComponent, NgIf, MatIconModule, NgFor, MatCheckboxModule, FormsModule, LazyImgDirective, MatButtonModule, MatMenuModule, DialogComponent]
 })
 export class AdminIllustrationComponent {
   illustrationList: Illustration[] = [];

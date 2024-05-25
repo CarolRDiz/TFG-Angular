@@ -1,12 +1,16 @@
 import { Component, ElementRef, EventEmitter, Input, Output } from '@angular/core';
+import { NgFor } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-select',
-  templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss'],
-  host: {
-    '(document:click)': 'onClick($event)',
-  },
+    selector: 'app-select',
+    templateUrl: './select.component.html',
+    styleUrls: ['./select.component.scss'],
+    host: {
+        '(document:click)': 'onClick($event)',
+    },
+    standalone: true,
+    imports: [MatIconModule, NgFor],
 })
 export class SelectComponent {
   @Input() label: string;

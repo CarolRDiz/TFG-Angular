@@ -1,10 +1,12 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-price-input',
-  templateUrl: './price-input.component.html',
-  styleUrls: ['./price-input.component.scss']
+    selector: 'app-price-input',
+    templateUrl: './price-input.component.html',
+    styleUrls: ['./price-input.component.scss'],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule]
 })
 export class PriceInputComponent {
   @Input() parentForm: FormGroup;

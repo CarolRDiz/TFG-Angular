@@ -1,16 +1,13 @@
 import { Component, Input, forwardRef, Optional, Self } from '@angular/core';
-import {
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-  FormControl,
-  FormGroup,
-  NgControl
-} from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, FormGroup, NgControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 @Component({
-  selector: 'app-toggle-input',
-  templateUrl: './toggle-input.component.html',
-  styleUrls: ['./toggle-input.component.scss']
+    selector: 'app-toggle-input',
+    templateUrl: './toggle-input.component.html',
+    styleUrls: ['./toggle-input.component.scss'],
+    standalone: true,
+    imports: [MatSlideToggleModule, FormsModule, ReactiveFormsModule]
 })
 export class ToggleInputComponent implements ControlValueAccessor {
 

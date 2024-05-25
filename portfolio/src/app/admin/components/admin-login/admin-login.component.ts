@@ -1,15 +1,18 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/core/modals/login';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UsersService } from 'src/app/core/services/users.service';
 import { AppValidator } from 'src/app/models/custom-validator';
+import { InputComponent } from '../../../shared/components/form-components/input/input.component';
 
 @Component({
-  selector: 'app-admin-login',
-  templateUrl: './admin-login.component.html',
-  styleUrls: ['./admin-login.component.scss']
+    selector: 'app-admin-login',
+    templateUrl: './admin-login.component.html',
+    styleUrls: ['./admin-login.component.scss'],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, InputComponent]
 })
 export class AdminLoginComponent {
 

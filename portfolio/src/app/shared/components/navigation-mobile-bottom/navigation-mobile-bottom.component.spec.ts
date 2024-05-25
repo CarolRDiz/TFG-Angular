@@ -8,8 +8,8 @@ describe('NavigationMobileBottomComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NavigationMobileBottomComponent]
-    });
+    imports: [NavigationMobileBottomComponent]
+});
     fixture = TestBed.createComponent(NavigationMobileBottomComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

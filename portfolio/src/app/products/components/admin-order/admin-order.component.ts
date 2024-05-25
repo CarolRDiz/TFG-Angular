@@ -3,11 +3,15 @@ import { Order } from '../../order';
 import { OrderService } from '../../services/orders.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { OrderSummaryComponent } from '../order-summary/order-summary.component';
+import { NgIf, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-admin-order',
-  templateUrl: './admin-order.component.html',
-  styleUrls: ['./admin-order.component.scss']
+    selector: 'app-admin-order',
+    templateUrl: './admin-order.component.html',
+    styleUrls: ['./admin-order.component.scss'],
+    standalone: true,
+    imports: [NgIf, OrderSummaryComponent, DatePipe]
 })
 export class AdminOrderComponent {
   id: number;

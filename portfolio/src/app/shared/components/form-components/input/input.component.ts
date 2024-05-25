@@ -1,27 +1,26 @@
 import { Component, Input, forwardRef, Optional, Self, Inject, Injector } from '@angular/core';
-import {
-  ControlValueAccessor,
-  NG_VALUE_ACCESSOR,
-  FormControl,
-  FormGroup,
-  NgControl,
-  Validators,
-  NG_VALIDATORS,
-  Validator,
-  NG_ASYNC_VALIDATORS
-} from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormControl, FormGroup, NgControl, Validators, NG_VALIDATORS, Validator, NG_ASYNC_VALIDATORS, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxMaskDirective } from 'ngx-mask';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-input',
-  templateUrl: './input.component.html',
-  styleUrls: ['./input.component.scss'],
-  providers: [
+    selector: 'app-input',
+    templateUrl: './input.component.html',
+    styleUrls: ['./input.component.scss'],
+    providers: [
     // {
     //   provide: NG_VALUE_ACCESSOR,
     //   useExisting: forwardRef(() => InputComponent),
     //   multi: true,
     // },
-  ],
+    ],
+    standalone: true,
+    imports: [
+        NgIf,
+        FormsModule,
+        NgxMaskDirective,
+        ReactiveFormsModule,
+    ],
 })
 export class InputComponent implements ControlValueAccessor {
   //@Input() parentForm: FormGroup;

@@ -8,8 +8,8 @@ describe('AdminHeaderMobileComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AdminHeaderMobileComponent]
-    });
+    imports: [AdminHeaderMobileComponent]
+});
     fixture = TestBed.createComponent(AdminHeaderMobileComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

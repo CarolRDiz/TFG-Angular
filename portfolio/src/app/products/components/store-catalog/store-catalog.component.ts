@@ -1,16 +1,22 @@
 import { Component, inject } from '@angular/core';
 import { ProductService } from '../../services/product.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { Product } from '../../product';
 import { CategoriesService } from '../../services/categories.service';
 import { Category } from '../../category';
 import { environment } from 'src/app/environments/environment';
+import { LazyImgDirective } from '../../../shared/directives/lazy-img.directive';
+import { NgFor } from '@angular/common';
+import { SelectComponent } from '../../../shared/components/select/select.component';
+import { SearchBarComponent } from '../../../shared/components/search-bar/search-bar.component';
 
 @Component({
-  selector: 'app-store-catalog',
-  templateUrl: './store-catalog.component.html',
-  styleUrls: ['./store-catalog.component.scss']
+    selector: 'app-store-catalog',
+    templateUrl: './store-catalog.component.html',
+    styleUrls: ['./store-catalog.component.scss'],
+    standalone: true,
+    imports: [SearchBarComponent, SelectComponent, NgFor, RouterLink, LazyImgDirective]
 })
 export class StoreCatalogComponent {
   products: Product[];

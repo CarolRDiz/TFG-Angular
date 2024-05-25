@@ -8,8 +8,8 @@ describe('SortGalleryComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [SortGalleryComponent]
-    });
+    imports: [SortGalleryComponent]
+});
     fixture = TestBed.createComponent(SortGalleryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

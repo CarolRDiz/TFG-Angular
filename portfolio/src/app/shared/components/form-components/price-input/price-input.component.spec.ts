@@ -8,8 +8,8 @@ describe('PriceInputComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PriceInputComponent]
-    });
+    imports: [PriceInputComponent]
+});
     fixture = TestBed.createComponent(PriceInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

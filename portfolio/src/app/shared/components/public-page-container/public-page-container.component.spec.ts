@@ -8,8 +8,8 @@ describe('PublicPageContainerComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PublicPageContainerComponent]
-    });
+    imports: [PublicPageContainerComponent]
+});
     fixture = TestBed.createComponent(PublicPageContainerComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

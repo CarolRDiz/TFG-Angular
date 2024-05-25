@@ -1,13 +1,20 @@
 import { Component, TemplateRef, Input, inject, HostListener } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../product';
-import { Router } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { LoginModalComponent } from '../../../shared/components/login-modal/login-modal.component';
+import { CartComponent } from '../../../shared/components/cart/cart.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-store',
-  templateUrl: './store.component.html',
-  styleUrls: ['./store.component.scss']
+    selector: 'app-store',
+    templateUrl: './store.component.html',
+    styleUrls: ['./store.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatButtonModule, MatIconModule, RouterOutlet, CartComponent, LoginModalComponent]
 })
 export class StoreComponent {
   productService: ProductService = inject(ProductService);

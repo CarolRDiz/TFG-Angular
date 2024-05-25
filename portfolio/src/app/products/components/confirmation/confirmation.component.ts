@@ -3,11 +3,14 @@ import { Router } from '@angular/router';
 import { PaymentService } from '../../services/payment.service';
 import { Order } from '../../order';
 import { OrderService } from '../../services/orders.service';
+import { OrderSummaryComponent } from '../order-summary/order-summary.component';
 
 @Component({
-  selector: 'app-confirmation',
-  templateUrl: './confirmation.component.html',
-  styleUrls: ['./confirmation.component.scss']
+    selector: 'app-confirmation',
+    templateUrl: './confirmation.component.html',
+    styleUrls: ['./confirmation.component.scss'],
+    standalone: true,
+    imports: [OrderSummaryComponent]
 })
 export class ConfirmationComponent {
 

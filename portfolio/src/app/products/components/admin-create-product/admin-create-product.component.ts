@@ -1,7 +1,7 @@
 import { Component, TemplateRef, Input, inject, HostListener } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
-import { ViewportScroller } from '@angular/common';
-import { ControlContainer, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ViewportScroller, NgIf, NgFor } from '@angular/common';
+import { ControlContainer, FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IllustrationService } from 'src/app/illustrations/services/illustration.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -12,11 +12,24 @@ import {
 } from '@angular/material/dialog';
 import { CategoriesService } from '../../services/categories.service';
 import { Category } from '../../category';
+import { CategoriesModalComponent } from '../categories-modal/categories-modal.component';
+import { TagsInputComponent } from '../../../shared/components/form-components/tags-input/tags-input.component';
+import { CategoriesInputComponent } from '../../../shared/components/form-components/categories-input/categories-input.component';
+import { ToggleInputComponent } from '../../../shared/components/form-components/toggle-input/toggle-input.component';
+import { PriceInputComponent } from '../../../shared/components/form-components/price-input/price-input.component';
+import { AddImageComponent } from '../../../shared/components/add-image/add-image.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { LazyImgDirective } from '../../../shared/directives/lazy-img.directive';
+import { InputComponent } from '../../../shared/components/form-components/input/input.component';
+import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 
 @Component({
-  selector: 'app-admin-create-product',
-  templateUrl: './admin-create-product.component.html',
-  styleUrls: ['./admin-create-product.component.scss']
+    selector: 'app-admin-create-product',
+    templateUrl: './admin-create-product.component.html',
+    styleUrls: ['./admin-create-product.component.scss'],
+    standalone: true,
+    imports: [NgIf, LoaderComponent, FormsModule, ReactiveFormsModule, InputComponent, NgFor, LazyImgDirective, MatButtonModule, MatIconModule, AddImageComponent, PriceInputComponent, ToggleInputComponent, CategoriesInputComponent, TagsInputComponent, CategoriesModalComponent]
 })
 export class AdminCreateProductComponent {
 

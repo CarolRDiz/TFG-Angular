@@ -1,16 +1,20 @@
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgIf } from '@angular/common';
 import { Component, EventEmitter, Inject, Output, Renderer2 } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Login } from 'src/app/core/modals/login';
 import { Registration } from 'src/app/core/modals/registration';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AppValidator } from 'src/app/models/custom-validator';
+import { InputComponent } from '../form-components/input/input.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-login-modal',
-  templateUrl: './login-modal.component.html',
-  styleUrls: ['./login-modal.component.scss']
+    selector: 'app-login-modal',
+    templateUrl: './login-modal.component.html',
+    styleUrls: ['./login-modal.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatIconModule, FormsModule, ReactiveFormsModule, InputComponent]
 })
 export class LoginModalComponent {
 

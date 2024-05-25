@@ -5,12 +5,10 @@ import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-  declarations: [
-    AboutMeComponent
-  ],
-  imports: [
-    SharedModule
-  ],
-  exports: [AboutMeComponent]
+    imports: [
+        SharedModule,
+        AboutMeComponent
+    ],
+    exports: [AboutMeComponent]
 })
 export class AboutMeModule { }

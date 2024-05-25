@@ -1,14 +1,17 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/app/environments/environment';
 import { AppValidator } from 'src/app/models/custom-validator';
 import { ContactService } from '../../services/contact.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { InputComponent } from '../../../shared/components/form-components/input/input.component';
 
 @Component({
-  selector: 'app-contact',
-  templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.scss']
+    selector: 'app-contact',
+    templateUrl: './contact.component.html',
+    styleUrls: ['./contact.component.scss'],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, InputComponent]
 })
 export class ContactComponent {
 

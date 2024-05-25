@@ -8,8 +8,8 @@ describe('PublicViewComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [PublicViewComponent]
-    });
+    imports: [PublicViewComponent]
+});
     fixture = TestBed.createComponent(PublicViewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 import { IllustrationService } from '../../services/illustration.service';
 import { Illustration } from '../../illustration';
+import { GalleryComponent } from '../gallery/gallery.component';
 
 @Component({
-  selector: 'app-illustration',
-  templateUrl: './illustration.component.html',
-  styleUrls: ['./illustration.component.scss']
+    selector: 'app-illustration',
+    templateUrl: './illustration.component.html',
+    styleUrls: ['./illustration.component.scss'],
+    standalone: true,
+    imports: [GalleryComponent]
 })
 export class IllustrationComponent {
   illustrationList: Illustration[];

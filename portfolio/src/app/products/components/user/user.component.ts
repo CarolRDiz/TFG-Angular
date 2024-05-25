@@ -2,15 +2,21 @@ import { Component } from '@angular/core';
 import { UsersService } from '../../../core/services/users.service';
 import { environment } from 'src/app/environments/environment';
 import { User } from 'src/app/core/modals/user';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppValidator } from 'src/app/models/custom-validator';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { InputComponent } from '../../../shared/components/form-components/input/input.component';
+import { LazyImgDirective } from '../../../shared/directives/lazy-img.directive';
+import { MatIconModule } from '@angular/material/icon';
+import { NgIf, NgFor, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+    selector: 'app-user',
+    templateUrl: './user.component.html',
+    styleUrls: ['./user.component.scss'],
+    standalone: true,
+    imports: [NgIf, MatIconModule, NgFor, LazyImgDirective, RouterLink, FormsModule, ReactiveFormsModule, InputComponent, DatePipe]
 })
 export class UserComponent {
 

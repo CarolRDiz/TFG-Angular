@@ -1,7 +1,7 @@
 import { Component, Input, inject, HostListener } from '@angular/core';
 import { Output, EventEmitter } from '@angular/core';
-import { ViewportScroller } from '@angular/common';
-import { ControlContainer, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ViewportScroller, NgIf } from '@angular/common';
+import { ControlContainer, FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IllustrationService } from '../../services/illustration.service';
 import { Illustration } from '../../illustration';
 import { IllustrationCreate } from '../../illustration-create';
@@ -9,11 +9,18 @@ import { IllustrationEdit } from '../../illustration-edit';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { environment } from 'src/app/environments/environment';
+import { ToggleInputComponent } from '../../../shared/components/form-components/toggle-input/toggle-input.component';
+import { InputComponent } from '../../../shared/components/form-components/input/input.component';
+import { AddImageComponent } from '../../../shared/components/add-image/add-image.component';
+import { SelectedImageComponent } from '../../../shared/components/selected-image/selected-image.component';
+import { LoaderComponent } from '../../../shared/components/loader/loader.component';
 
 @Component({
-  selector: 'app-admin-edit-illustration',
-  templateUrl: './admin-edit-illustration.component.html',
-  styleUrls: ['./admin-edit-illustration.component.scss']
+    selector: 'app-admin-edit-illustration',
+    templateUrl: './admin-edit-illustration.component.html',
+    styleUrls: ['./admin-edit-illustration.component.scss'],
+    standalone: true,
+    imports: [NgIf, LoaderComponent, FormsModule, ReactiveFormsModule, SelectedImageComponent, AddImageComponent, InputComponent, ToggleInputComponent]
 })
 export class AdminEditIllustrationComponent {
 

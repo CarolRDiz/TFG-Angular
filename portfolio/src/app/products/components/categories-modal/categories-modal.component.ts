@@ -10,12 +10,20 @@ import {
 import { CategoriesService } from '../../services/categories.service';
 import { Category } from '../../category';
 import { CategoryCreate } from '../../category-create';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgFor } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { SearchBarComponent } from '../../../shared/components/search-bar/search-bar.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-categories-modal',
-  templateUrl: './categories-modal.component.html',
-  styleUrls: ['./categories-modal.component.scss']
+    selector: 'app-categories-modal',
+    templateUrl: './categories-modal.component.html',
+    styleUrls: ['./categories-modal.component.scss'],
+    standalone: true,
+    imports: [MatIconModule, SearchBarComponent, NgFor, MatButtonModule, MatMenuModule, MatCheckboxModule, FormsModule]
 })
 export class CategoriesModalComponent {
 

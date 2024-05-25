@@ -1,11 +1,19 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { LoginModalComponent } from '../login-modal/login-modal.component';
+import { CartComponent } from '../cart/cart.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
+import { LazyImgDirective } from '../../directives/lazy-img.directive';
 
 @Component({
-  selector: 'app-header-mobile',
-  templateUrl: './header-mobile.component.html',
-  styleUrls: ['./header-mobile.component.scss']
+    selector: 'app-header-mobile',
+    templateUrl: './header-mobile.component.html',
+    styleUrls: ['./header-mobile.component.scss'],
+    standalone: true,
+    imports: [RouterLink, LazyImgDirective, NgIf, MatButtonModule, MatIconModule, CartComponent, LoginModalComponent]
 })
 export class HeaderMobileComponent {
   @Output() openEvent = new EventEmitter();

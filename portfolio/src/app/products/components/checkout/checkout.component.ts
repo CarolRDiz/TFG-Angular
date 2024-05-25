@@ -1,7 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { PaymentService } from '../../services/payment.service';
 import { Router } from '@angular/router';
-import { ControlContainer, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ControlContainer, FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppValidator } from 'src/app/models/custom-validator';
 import { Product } from '../../product';
 import { CartService } from '../../services/cart.service';
@@ -11,11 +11,17 @@ import { CartItem } from '../../cart-item';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { UsersService } from 'src/app/core/services/users.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { InputComponent } from '../../../shared/components/form-components/input/input.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss']
+    selector: 'app-checkout',
+    templateUrl: './checkout.component.html',
+    styleUrls: ['./checkout.component.scss'],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, NgIf, MatButtonModule, MatIconModule, InputComponent]
 })
 export class CheckoutComponent {
 

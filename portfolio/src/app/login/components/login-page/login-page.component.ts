@@ -1,15 +1,20 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { Login } from 'src/app/core/modals/login';
 import { Registration } from 'src/app/core/modals/registration';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { AppValidator } from 'src/app/models/custom-validator';
+import { InputComponent } from '../../../shared/components/form-components/input/input.component';
+import { NgIf } from '@angular/common';
+import { LazyImgDirective } from '../../../shared/directives/lazy-img.directive';
 
 @Component({
-  selector: 'app-login-page',
-  templateUrl: './login-page.component.html',
-  styleUrls: ['./login-page.component.scss']
+    selector: 'app-login-page',
+    templateUrl: './login-page.component.html',
+    styleUrls: ['./login-page.component.scss'],
+    standalone: true,
+    imports: [RouterLink, LazyImgDirective, NgIf, FormsModule, ReactiveFormsModule, InputComponent]
 })
 export class LoginPageComponent {
 

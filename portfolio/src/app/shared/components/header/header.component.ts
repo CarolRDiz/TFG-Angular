@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { MatIconRegistry } from "@angular/material/icon";
+import { MatIconRegistry, MatIconModule } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
+import { LazyImgDirective } from '../../directives/lazy-img.directive';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    standalone: true,
+    imports: [RouterLink, LazyImgDirective, MatIconModule]
 })
 export class HeaderComponent {
 

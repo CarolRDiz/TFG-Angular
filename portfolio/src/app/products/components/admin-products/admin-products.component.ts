@@ -1,15 +1,26 @@
 
 import { Component, inject } from '@angular/core';
 import { Illustration } from 'src/app/illustrations/illustration';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../product';
 import { environment } from 'src/app/environments/environment';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { DialogComponent } from '../../../shared/components/dialog/dialog.component';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { LazyImgDirective } from '../../../shared/directives/lazy-img.directive';
+import { FormsModule } from '@angular/forms';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatIconModule } from '@angular/material/icon';
+import { NgIf, NgFor } from '@angular/common';
+import { SearchBarComponent } from '../../../shared/components/search-bar/search-bar.component';
 @Component({
-  selector: 'app-admin-products',
-  templateUrl: './admin-products.component.html',
-  styleUrls: ['./admin-products.component.scss']
+    selector: 'app-admin-products',
+    templateUrl: './admin-products.component.html',
+    styleUrls: ['./admin-products.component.scss'],
+    standalone: true,
+    imports: [RouterLink, SearchBarComponent, NgIf, MatIconModule, NgFor, MatCheckboxModule, FormsModule, LazyImgDirective, MatButtonModule, MatMenuModule, DialogComponent]
 })
 export class AdminProductsComponent {
   productsList: Product[] = [];

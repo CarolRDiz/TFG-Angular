@@ -1,11 +1,14 @@
 import { Component, Input, inject, HostListener } from '@angular/core';
-import { ControlContainer, FormGroup } from '@angular/forms';
+import { ControlContainer, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Output, EventEmitter } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-add-image',
-  templateUrl: './add-image.component.html',
-  styleUrls: ['./add-image.component.scss']
+    selector: 'app-add-image',
+    templateUrl: './add-image.component.html',
+    styleUrls: ['./add-image.component.scss'],
+    standalone: true,
+    imports: [FormsModule, ReactiveFormsModule, MatIconModule]
 })
 export class AddImageComponent {
   @Output() selectImageEvent = new EventEmitter<File>();

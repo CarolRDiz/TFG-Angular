@@ -8,8 +8,8 @@ describe('OrderSummaryComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [OrderSummaryComponent]
-    });
+    imports: [OrderSummaryComponent]
+});
     fixture = TestBed.createComponent(OrderSummaryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

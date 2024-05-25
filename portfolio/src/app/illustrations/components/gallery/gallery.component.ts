@@ -2,10 +2,15 @@ import { Component, Input } from '@angular/core';
 import { Illustration } from '../../illustration';
 import { IllustrationService } from '../../services/illustration.service';
 import { environment } from 'src/app/environments/environment';
+import { LightboxComponent } from '../../../shared/components/lightbox/lightbox.component';
+import { LazyImgDirective } from '../../../shared/directives/lazy-img.directive';
+import { NgFor, NgIf } from '@angular/common';
 @Component({
-  selector: 'app-gallery',
-  templateUrl: './gallery.component.html',
-  styleUrls: ['./gallery.component.scss']
+    selector: 'app-gallery',
+    templateUrl: './gallery.component.html',
+    styleUrls: ['./gallery.component.scss'],
+    standalone: true,
+    imports: [NgFor, LazyImgDirective, NgIf, LightboxComponent]
 })
 export class GalleryComponent {
   @Input() illustrations: Illustration[];

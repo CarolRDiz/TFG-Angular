@@ -8,8 +8,8 @@ describe('AdminOrderComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AdminOrderComponent]
-    });
+    imports: [AdminOrderComponent]
+});
     fixture = TestBed.createComponent(AdminOrderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

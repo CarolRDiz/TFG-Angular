@@ -8,8 +8,8 @@ describe('ToggleInputComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ToggleInputComponent]
-    });
+    imports: [ToggleInputComponent]
+});
     fixture = TestBed.createComponent(ToggleInputComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

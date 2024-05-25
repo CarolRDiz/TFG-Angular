@@ -1,15 +1,19 @@
 import { Component, TemplateRef, Input, inject, HostListener, EventEmitter, Output, Inject, Renderer2 } from '@angular/core';
-import { ActivatedRoute, Router, ParamMap } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap, RouterLink } from '@angular/router';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../product';
 import { CartService } from '../../services/cart.service';
 import { environment } from 'src/app/environments/environment';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgFor, NgIf } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
+import { LazyImgDirective } from '../../../shared/directives/lazy-img.directive';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+    selector: 'app-product',
+    templateUrl: './product.component.html',
+    styleUrls: ['./product.component.scss'],
+    standalone: true,
+    imports: [LazyImgDirective, NgFor, MatIconModule, NgIf, RouterLink]
 })
 export class ProductComponent {
 

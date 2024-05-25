@@ -12,15 +12,20 @@ import { ProductService } from '../../../products/services/product.service';
 import { CartService } from '../../../products/services/cart.service';
 import { Product } from '../../../products/product';
 import { CartProduct } from '../../../products/cart-product';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CartItem } from '../../../products/cart-item';
 import { environment } from 'src/app/environments/environment';
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgIf, NgFor } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { LazyImgDirective } from '../../directives/lazy-img.directive';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-cart',
-  templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+    selector: 'app-cart',
+    templateUrl: './cart.component.html',
+    styleUrls: ['./cart.component.scss'],
+    standalone: true,
+    imports: [MatIconModule, NgIf, NgFor, LazyImgDirective, RouterLink, MatButtonModule]
 })
 export class CartComponent {
   @Output() closeEvent = new EventEmitter();

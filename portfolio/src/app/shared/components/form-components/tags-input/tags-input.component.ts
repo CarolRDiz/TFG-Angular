@@ -1,10 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
+import { NgFor } from '@angular/common';
 
 @Component({
-  selector: 'app-tags-input',
-  templateUrl: './tags-input.component.html',
-  styleUrls: ['./tags-input.component.scss']
+    selector: 'app-tags-input',
+    templateUrl: './tags-input.component.html',
+    styleUrls: ['./tags-input.component.scss'],
+    standalone: true,
+    imports: [NgFor, MatIconModule, FormsModule]
 })
 export class TagsInputComponent {
 
