@@ -1,140 +1,130 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { IllustrationComponent } from './illustrations/components/illustration/illustration.component';
-import { StoreComponent } from './products/components/store/store.component';
-// import { PublicComponent } from './views/public/public/public.component';
-import { AdminViewComponent } from './shared/components/views/admin-view/admin-view.component';
-import { AdminIllustrationComponent } from './illustrations/components/admin-illustration/admin-illustration.component';
-import { AdminCreateIllustrationComponent } from './illustrations/components/admin-create-illustration/admin-create-illustration.component';
-import { AdminEditIllustrationComponent } from './illustrations/components/admin-edit-illustration/admin-edit-illustration.component';
-import { AdminProductsComponent } from './products/components/admin-products/admin-products.component';
-import { AdminCreateProductComponent } from './products/components/admin-create-product/admin-create-product.component';
-import { PublicPageContainerComponent } from './shared/components/public-page-container/public-page-container.component';
-import { AdminPageContainerComponent } from './shared/components/admin-page-container/admin-page-container.component';
-import { AdminEditProductComponent } from './products/components/admin-edit-product/admin-edit-product.component';
-import { ProductComponent } from './products/components/product/product.component';
-import { CartComponent } from './shared/components/cart/cart.component';
-import { CheckoutComponent } from './products/components/checkout/checkout.component';
-import { ConfirmationComponent } from './products/components/confirmation/confirmation.component';
-import { UserComponent } from './products/components/user/user.component';
-import { ContactComponent } from './contact/components/contact/contact.component';
-import { AboutMeComponent } from './about-me/components/about-me/about-me.component';
-import { StoreCatalogComponent } from './products/components/store-catalog/store-catalog.component';
-import { AdminOrdersComponent } from './products/components/admin-orders/admin-orders.component';
-import { AdminOrderComponent } from './products/components/admin-order/admin-order.component';
-import { AdminLoginComponent } from './admin/components/admin-login/admin-login.component';
-import { isAdminGuard } from './core/guards/is-admin.guard';
-import { isAuthenticatedGuard } from './core/guards/is-authenticated.guard';
-import { LoginPageComponent } from './login/components/login-page/login-page.component';
-import { PageNotFoundComponent } from './page-404/components/page-not-found/page-not-found.component';
+// import { NgModule } from '@angular/core';
+// import { RouterModule, Routes } from '@angular/router';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: PublicPageContainerComponent,
-    children: [
+// import { AdminViewComponent } from './shared/components/views/admin-view/admin-view.component';
+// import { ProductComponent } from './features/products/pages/product/product.component';
+// import { CartComponent } from './shared/components/cart/cart.component';
+
+// import { LoginPageComponent } from './core/auth/pages/login/login-page.component';
+// import { PageNotFoundComponent } from './page-404/page-not-found.component';
+// import { ContactComponent } from './features/contact/pages/contact-page/contact.component';
+// import { AboutMeComponent } from './features/about-me/about-me.component';
+// import { IllustrationComponent } from './features/illustrations/components/illustration/illustration.component';
+// import { StoreComponent } from './features/products/pages/store/store.component';
+// import { StoreCatalogComponent } from './features/products/pages/store-catalog/store-catalog.component';
+// import { CheckoutComponent } from './features/checkout/pages/checkout/checkout.component';
+// import { ConfirmationComponent } from './features/checkout/pages/confirmation/confirmation.component';
+// import { UserComponent } from './features/user/pages/user/user.component';
+// import { isAuthenticatedGuard } from './core/auth/guards/is-authenticated.guard';
+// import { isAdminGuard } from './core/auth/guards/is-admin.guard';
+// import { PublicPageContainerComponent } from './shared/components/public-page-container/public-page-container.component';
+// import { AdminLoginComponent } from './core/auth/pages/admin-login/admin-login.component';
+// import { AdminPageContainerComponent } from './core/layout/admin-page-container/admin-page-container.component';
+// import { AdminIllustrationComponent } from './features/admin-illustrations/pages/admin-illustration/admin-illustration.component';
+// import { AdminCreateIllustrationComponent } from './features/admin-illustrations/pages/admin-create-illustration/admin-create-illustration.component';
+// import { AdminEditIllustrationComponent } from './features/admin-illustrations/pages/admin-edit-illustration/admin-edit-illustration.component';
+// import { AdminProductsComponent } from './features/admin-products/pages/admin-products/admin-products.component';
+// import { AdminCreateProductComponent } from './features/admin-products/pages/admin-create-product/admin-create-product.component';
+// import { AdminEditProductComponent } from './features/admin-products/pages/admin-edit-product/admin-edit-product.component';
+// import { AdminOrdersComponent } from './features/admin-orders/pages/admin-orders/admin-orders.component';
+// import { AdminOrderComponent } from './features/admin-orders/pages/admin-order/admin-order.component';
+
+// const routes: Routes = [
+//   {
+//     path: '',
+//     component: PublicPageContainerComponent,
+//     children: [
       
-      {
-        path: '', component: IllustrationComponent
-      },
-      {
-        path: 'store', component: StoreComponent,
-        children: [
-          {
-            path: '', component: StoreCatalogComponent
-          },
-          {
-            path: ':id', component: ProductComponent
-          },
-        ]
-      },
-      {
-        path: 'cart', component: CartComponent
-      },
-      {
-        path: 'checkout', component: CheckoutComponent
-      },
-      {
-        path: 'confirmation', component: ConfirmationComponent
-      },
-      {
-        path: 'user', component: UserComponent,
-        canActivate: [isAuthenticatedGuard],
-      },
-      {
-        path: 'contact', component: ContactComponent
-      },
-      {
-        path: 'about-me', component: AboutMeComponent
-      },
-      {
-        path: 'order', component: ConfirmationComponent
-      }
-    ]
-  },
-  {
-    path: 'admin-login',
-    component: AdminLoginComponent
-  },
-  {
-    path: 'login',
-    component: LoginPageComponent,
-  },
-  {
-    path: 'admin',
-    component: AdminPageContainerComponent,
-    canActivate: [isAdminGuard],
-    children: [
-      // {
-      //   path: '',
-      //   component: AdminLoginComponent
-      // },
-      {
-        path: '',
-        component: AdminIllustrationComponent
-      },
-      {
-        path: 'illustration',
-        component: AdminIllustrationComponent
-      },
-      {
-        path: 'create-illustration',
-        component: AdminCreateIllustrationComponent
-      },
-      {
-        path: 'edit-illustration/:id',
-        component: AdminEditIllustrationComponent
-      },
-      {
-        path: 'products',
-        component: AdminProductsComponent
-      },
-      {
-        path: 'create-product',
-        component: AdminCreateProductComponent
-      },
-      {
-        path: 'edit-product/:id',
-        component: AdminEditProductComponent
-      },
-      {
-        path: 'orders',
-        component: AdminOrdersComponent
-      },
-      {
-        path: 'order/:id',
-        component: AdminOrderComponent
-      }
-    ]
-  },
-  {
-    path: '**', pathMatch: 'full',
-    component: PageNotFoundComponent
-  },
-];
+//       {
+//         path: '', component: IllustrationComponent
+//       },
+//       {
+//         path: 'store', component: StoreComponent,
+//         children: [
+//           {
+//             path: '', component: StoreCatalogComponent
+//           },
+//           {
+//             path: ':id', component: ProductComponent
+//           },
+//         ]
+//       },
+//       {
+//         path: 'cart', component: CartComponent
+//       },
+//       {
+//         path: 'checkout', component: CheckoutComponent
+//       },
+//       {
+//         path: 'confirmation', component: ConfirmationComponent
+//       },
+//       {
+//         path: 'user', component: UserComponent,
+//         canActivate: [isAuthenticatedGuard],
+//       },
+//       {
+//         path: 'contact', component: ContactComponent
+//       },
+//       {
+//         path: 'about-me', component: AboutMeComponent
+//       },
+//       {
+//         path: 'order', component: ConfirmationComponent
+//       }
+//     ]
+//   },
+//   {
+//     path: 'admin-login',
+//     component: AdminLoginComponent
+//   },
+//   {
+//     path: 'login',
+//     component: LoginPageComponent,
+//   },
+//   {
+//     path: 'admin',
+//     component: AdminPageContainerComponent,
+//     canActivate: [isAdminGuard],
+//     children: [
+//       // {
+//       //   path: '',
+//       //   component: AdminLoginComponent
+//       // },
+//       {
+//         path: '',
+//         component: AdminIllustrationComponent
+//       },
+      
+//       {
+//         path: 'products',
+//         component: AdminProductsComponent
+//       },
+//       {
+//         path: 'create-product',
+//         component: AdminCreateProductComponent
+//       },
+//       {
+//         path: 'edit-product/:id',
+//         component: AdminEditProductComponent
+//       },
+//       {
+//         path: 'orders',
+//         component: AdminOrdersComponent
+//       },
+//       {
+//         path: 'order/:id',
+//         component: AdminOrderComponent
+//       }
+//     ]
+//   },
+//   {
+//     path: '**', pathMatch: 'full',
+//     component: PageNotFoundComponent
+//   },
+// ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes, { anchorScrolling: 'enabled' })],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+// @NgModule({
+//   imports: [RouterModule.forRoot(routes, { anchorScrolling: 'enabled' })],
+//   exports: [RouterModule]
+// })
+// export class AppRoutingModule { }

@@ -1,0 +1,93 @@
+<main class="content">
+    <div class="content__top">
+        <h1>Productos</h1>
+        <button class="button button--white" routerLink="/admin/products/create-product">Agregar producto</button>
+    </div>
+    <div class="filters">
+            <app-search-bar (searchEvent)="search($event)" [placeholder]="'Buscar por nombre...'"></app-search-bar>
+    </div>
+    <div class="table product-table">
+        <div class="table__header">
+            <div class="table__cell table__cell--small"></div>
+            <div class="table__cell table__cell--medium--click" (click)="sortName()">Producto
+                <mat-icon *ngIf="!this.visibilitySort" class="material-symbols-outlined">
+                    arrow_drop_down
+                </mat-icon>
+                <mat-icon *ngIf="this.visibilitySort" class="material-symbols-outlined">
+                    arrow_drop_up
+                </mat-icon>
+            </div>
+            <div class="table__cell table__cell--large"></div>
+            <div class="table__cell table__cell--medium--click" (click)="sortVisibility()">Visibilidad
+                <mat-icon *ngIf="!this.visibilitySort" class="material-symbols-outlined">
+                    arrow_drop_down
+                </mat-icon>
+                <mat-icon *ngIf="this.visibilitySort" class="material-symbols-outlined">
+                    arrow_drop_up
+                </mat-icon>
+            </div>
+            <div class="table__cell"></div>
+            <div class="table__cell table__cell--small"></div>
+        </div>
+        <ul class="table__body">
+            <li class="table__row" *ngFor="let item of itemsListModified; index as i">
+                <div class="table__cell table__cell--small">
+                    <mat-checkbox value="{{item.id}}" (change)="onItemPressed($event)"
+                        [ngModel]="isItemChecked(item.id)"></mat-checkbox>
+                </div>
+                <div class="table__cell table__cell--medium">
+                    <img class="table__image"
+                        [src]="imageUrl+item.thumbnail_image_id" aria-hidden="true">
+                </div>
+                <div class="table__cell table__cell--large">{{item.name}}</div>
+                <div class="table__cell table__cell--medium">{{item.visibility == true? "Público": "Oculto"}}
+                </div>
+                <div class="table__cell"></div>
+                <div class="table__cell table__cell--small">
+                    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                        <mat-icon>more_horiz</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="editar(item.id)">Editar</button>
+                        <button mat-menu-item>Vista previa</button>
+                        <button mat-menu-item>Duplicar</button>
+                        <button mat-menu-item (click)="setSelectedItem(item.id); openModalDelete()">Eliminar</button>
+                    </mat-menu>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="toolbar" *ngIf="selectedArray.length>0">
+        <div class="toolbar__selection">
+            <button (click)="unselectAllItems()" mat-icon-button
+                aria-label="Example icon button with a home icon">
+                <mat-icon>deselect</mat-icon>
+            </button>
+            <span>{{selectedArray.length}} seleccionado</span>
+        </div>
+        <div class="toolbar__options">
+            <button class="toolbar__button button button--text--light" (click)="selectAllItems()">
+                Seleccionar todo</button>
+            <button (click)="openModalDeleteList()"
+                class="toolbar__button button button--text--warn">Eliminar</button>
+        </div>
+    </div>
+</main>
+<app-dialog (closeEvent)="closeModalDelete()" *ngIf="modalDelete" [title]="'Eliminar producto'">
+    <p>
+        Se borrará este producto de manera permanente.
+    </p>
+    <div class="dialog__buttons">
+        <button class="button button--text" (click)="closeModalDelete()">Cancelar</button>
+        <button class="button button--text" (click)="delete()">Eliminar</button>
+    </div>
+</app-dialog>
+<app-dialog (closeEvent)="closeModalDeleteList()" *ngIf="modalDeleteList" [title]="'Borrar '+selectedArray.length+' producto'">
+    <p>
+        {{selectedArray.length>1?'Se borrarán estos productos de manera permanente.':'Se borrará este producto de manera permanente.'}}
+    </p>
+    <div class="dialog__buttons">
+        <button class="button button--text" (click)="closeModalDeleteList()">Cancelar</button>
+        <button class="button button--text" (click)="deleteList()">Eliminar</button>
+    </div>
+</app-dialog>

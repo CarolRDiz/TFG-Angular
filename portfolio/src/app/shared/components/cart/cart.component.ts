@@ -8,17 +8,17 @@ import {
   Inject,
   Renderer2,
 } from '@angular/core';
-import { ProductService } from '../../../products/services/product.service';
-import { CartService } from '../../../products/services/cart.service';
-import { Product } from '../../../products/product';
-import { CartProduct } from '../../../products/cart-product';
+import { ProductService } from '../../../features/admin-products/product.service';
+import { Product } from '../../../features/products/product';
+import { CartProduct } from '../../../features/cart/cart-product';
 import { Router, RouterLink } from '@angular/router';
-import { CartItem } from '../../../products/cart-item';
+import { CartItem } from '../../../features/cart/cart-item';
 import { environment } from 'src/app/environments/environment';
 import { DOCUMENT, NgIf, NgFor } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { LazyImgDirective } from '../../directives/lazy-img.directive';
 import { MatIconModule } from '@angular/material/icon';
+import { CartService } from 'src/app/features/cart/cart.service';
 
 @Component({
     selector: 'app-cart',

@@ -1,27 +1,25 @@
-import { DOCUMENT, NgIf } from '@angular/common';
-import { Component, EventEmitter, Inject, Output, Renderer2 } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { Login } from 'src/app/core/auth/models/login';
 import { AppValidator } from 'src/app/models/custom-validator';
-import { InputComponent } from '../form-components/input/input.component';
-import { MatIconModule } from '@angular/material/icon';
-import { Registration } from 'src/app/core/auth/models/registration';
-import { AuthService } from 'src/app/core/auth/services/auth.service';
+import { InputComponent } from '../../../../shared/components/form-components/input/input.component';
+import { NgIf } from '@angular/common';
+import { LazyImgDirective } from '../../../../shared/directives/lazy-img.directive';
+import { AuthService } from '../../services/auth.service';
+import { Registration } from '../../models/registration';
 
 @Component({
-    selector: 'app-login-modal',
-    templateUrl: './login-modal.component.html',
-    styleUrls: ['./login-modal.component.scss'],
+    selector: 'app-login-page',
+    templateUrl: './login-page.component.html',
+    styleUrls: ['./login-page.component.scss'],
     standalone: true,
-    imports: [NgIf, MatIconModule, FormsModule, ReactiveFormsModule, InputComponent]
+    imports: [RouterLink, LazyImgDirective, NgIf, FormsModule, ReactiveFormsModule, InputComponent]
 })
-export class LoginModalComponent {
+export class LoginPageComponent {
 
   @Output() closeEvent = new EventEmitter();
   //@Output() submitEvent = new EventEmitter();
-
-
 
   loginMode: boolean = true;
 
@@ -39,25 +37,16 @@ export class LoginModalComponent {
   });
 
   constructor(
-    @Inject(DOCUMENT) private document: Document,
-    protected renderer: Renderer2,
     private authService: AuthService,
     private router: Router
   ) {
-    this.renderer.setStyle(document.body, 'overflow', 'hidden');
-  }
 
+  }
 
   ngOnInit(): void {
     this.registerForm.controls.confirmPassword.addValidators(AppValidator.confirmPasswordValidator(this.registerForm.controls.password))
   }
-  ngOnDestroy(){
-    this.renderer.setStyle(document.body, 'overflow', 'visible');
-  }
 
-  close(): void {
-    this.closeEvent.emit();
-  }
   switchMode() {
     this.loginMode = !this.loginMode;
   }
@@ -71,7 +60,7 @@ export class LoginModalComponent {
       next: (data) => {
       },
       error: (errorData) => {
-        this.loginError = "Este correo electrónico ya está en uso";
+        this.loginError = "Este correo electrónico ya está en uso.";
       },
       complete: () => {
         this.loginMode = true;
@@ -86,14 +75,14 @@ export class LoginModalComponent {
     }
     this.authService.login(formData).subscribe({
       next: (data) => {
-        console.log("Logueado");
       },
       error: (errorData) => {
-        this.loginError = "El correo electrónico o la contraseña son incorrectos.";
+        this.loginError = "La contraseña o el correo electrónico son incorrectos";
+
       },
       complete: () => {
         console.info("Login completado");
-        this.close();
+
         this.router.navigate(['/', 'user'])
           .then(nav => {
             console.log(nav); // true if navigation is successful
@@ -103,11 +92,4 @@ export class LoginModalComponent {
       }
     })
   }
-
-  // submit(): void {
-  //   this.elementRef.nativeElement.remove();
-  //   this.submitEvent.emit();
-  // }
-
-
 }
