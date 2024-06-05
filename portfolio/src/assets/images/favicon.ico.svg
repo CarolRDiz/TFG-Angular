@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="16mm"
+   height="16mm"
+   viewBox="0 0 16.000001 16"
+   version="1.1"
+   id="svg8"
+   sodipodi:docname="favicon.ico.svg"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
+   inkscape:export-filename="/home/carolina/Documentos/favicon.png"
+   inkscape:export-xdpi="95.25"
+   inkscape:export-ydpi="95.25">
+  <defs
+     id="defs2">
+    <style
+       id="style2">
+      .cls-1 {
+        fill: #069999;
+        stroke-width: 0px;
+      }
+    </style>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="7.9195959"
+     inkscape:cx="3.1486053"
+     inkscape:cy="20.41188"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1848"
+     inkscape:window-height="1009"
+     inkscape:window-x="72"
+     inkscape:window-y="34"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-86.330455,-111.57094)">
+    <g
+       transform="matrix(0.05734767,0,0,0.05734767,89.169165,111.57094)"
+       data-name="Capa 4"
+       id="Capa_4">
+      <g
+         id="g12">
+        <path
+           style="fill:#069999;stroke-width:0px"
+           inkscape:connector-curvature="0"
+           id="path6"
+           d="M 144,0 H 63 V 99 H 90 V 81 h 54 v 18 h 27 V 0 Z m 0,45 v 9 H 90 V 27 h 54 z"
+           class="cls-1" />
+        <path
+           style="fill:#069999;stroke-width:0px"
+           d="m 63,162 v 27 27 h 27 27 27 27 v -27 -27 -9 -18 -9 h -27 v 9 18 9 27 H 117 90 v -27 -9 -18 -9 H 63 v 9 18 z"
+           id="polygon8"
+           inkscape:connector-curvature="0" />
+        <path
+           style="fill:#069999;stroke-width:0px"
+           d="M 0,279 H 36 180 V 243 H 36 V 0 H 0 Z"
+           id="polygon10"
+           inkscape:connector-curvature="0" />
+      </g>
+    </g>
+  </g>
+</svg>
