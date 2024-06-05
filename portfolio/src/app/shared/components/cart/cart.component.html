@@ -27,7 +27,7 @@
                 </div>
                 <div class="cart__section cart__section--price">
                     <span>{{product.amount * product.price}}€</span>
-                    <button mat-icon-button aria-label="Example icon-button with a menu">
+                    <button (click)="removeItem(product.id)" mat-icon-button aria-label="Example icon-button with a menu">
                         <mat-icon>close</mat-icon>
                     </button>
                 </div>

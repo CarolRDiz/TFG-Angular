@@ -61,6 +61,7 @@ export class CartService {
   }
 
   removeItem(product_id: number){
+    console.log("Remove")
     this.items = this.items.filter(item => item.product_id != product_id);
     this.saveCart();
   }
