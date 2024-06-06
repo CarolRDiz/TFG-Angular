@@ -26,6 +26,7 @@ export class ProductComponent {
   cartService: CartService = inject(CartService);
   confirmationOn: boolean = false;
   imageUrl = environment.urlApiImage;
+  loading: boolean = true;
 
   constructor(@Inject(DOCUMENT) private document: Document,
     protected renderer: Renderer2,
@@ -39,8 +40,10 @@ export class ProductComponent {
   }
 
   ngOnInit() {
+    this.loading = true;
     this.id = this.route.snapshot.params['id']
     this.getProduct();
+    this.loading = false;
   }
 
   getProduct() {
