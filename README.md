@@ -1,3 +1,3 @@
 # TFG-Angular
 
-Despliegue: [netlify](https://tfg-carolina-rdiz.netlify.app/)
+Despliegue: [https://tfg-carolina-rdiz.netlify.app/](https://laurodiz.netlify.app/)
